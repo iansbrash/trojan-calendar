@@ -1,0 +1,19 @@
+{
+  "name": "trojan-calendar",
+  "version": "1.0.0",
+  "description": "Trojan Calendar is a service that integrates USC's Blackboard, Gradescope, Turnitin, Canvas, and more into a single webapp for ease and convenience.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iansbrash/trojan-calendar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iansbrash/trojan-calendar/issues"
+  },
+  "homepage": "https://github.com/iansbrash/trojan-calendar#readme"
+}
