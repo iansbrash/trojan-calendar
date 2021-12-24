@@ -11,13 +11,14 @@ const { tryCatchWrapper } = require('../functions/tryCatchWrapper');
 const { genHeaders } = require('../usc/genHeaders');
 const he = require('he');
 const qs = require('qs');
+const fs = require('fs');
 
 
 const getGradescopeCookies = async (bbCookies) => {
     let allCookies = bbCookies;
 
     // As it turns out, this is kinda irrelevant
-    const course_id = `_251705_1`;
+    const course_id = `_275718_1`;
 
     // This is very relevant. This value works.
     const blti_placement_id= `_237_1`
@@ -91,16 +92,46 @@ const getGradescopeCookies = async (bbCookies) => {
         method: 'post',
         url: 'https://www.gradescope.com/auth/lti/callback',
         headers: { 
+            'Connection': 'keep-alive', 
+            'Pragma': 'no-cache', 
+            'Cache-Control': 'no-cache', 
+            'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="96", "Google Chrome";v="96"', 
+            'sec-ch-ua-mobile': '?0', 
+            'sec-ch-ua-platform': '"Windows"', 
+            'Origin': 'https://blackboard.usc.edu', 
+            'Upgrade-Insecure-Requests': '1', 
+            'DNT': '1', 
             'Content-Type': 'application/x-www-form-urlencoded', 
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9', 
+            'Sec-Fetch-Site': 'cross-site', 
+            'Sec-Fetch-Mode': 'navigate', 
+            'Sec-Fetch-Dest': 'document', 
+            'Referer': 'https://blackboard.usc.edu/', 
+            'Accept-Language': 'en-US,en;q=0.9',
+            cookie: joinCookies(allCookies)
           },
         maxRedirects: 0,
         validateStatus: VS,
-        data: qs.stringify(LTIData)
+        data: qs.stringify(LTIData).split('%20').join('+').split('amp%3B').join('')
     }), "GSCallbackResponse");
 
     allCookies = accumulateCookies(allCookies, returnParsedCookies(GSCallbackResponse.headers['set-cookie']));
 
     console.log(GSCallbackResponse)
+
+
+    // const FFF = await tryCatchWrapper(() => axios({
+    //     method: 'get',
+    //     url: `https://www.gradescope.com/`,
+    //     headers: genHeaders(allCookies),
+    //     maxRedirects: 0,
+    //     validateStatus: VS,
+    // }), "LaunchPlacementResponse");
+
+    // await fs.promises.writeFile('res.txt', FFF.data);
+
+    console.log(qs.stringify(LTIData).split('%20').join('+').split('amp%3B').join(''))
 
     return returnParsedCookies(GSCallbackResponse.headers['set-cookie']);
 }
