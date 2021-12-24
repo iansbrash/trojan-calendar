@@ -86,8 +86,6 @@ const getGradescopeCookies = async (bbCookies) => {
 
     Object.keys(LTIData).forEach(k => LTIData[k] = getValueByDelimiters(shortenedData, `<input type="hidden" name="${k}" id="${k}" value="`, '"      />'))
 
-    console.log(LTIData)
-
     const GSCallbackResponse = await tryCatchWrapper(() => axios({
         method: 'post',
         url: 'https://www.gradescope.com/auth/lti/callback',
@@ -118,22 +116,10 @@ const getGradescopeCookies = async (bbCookies) => {
 
     allCookies = accumulateCookies(allCookies, returnParsedCookies(GSCallbackResponse.headers['set-cookie']));
 
-    console.log(GSCallbackResponse)
-
-
-    // const FFF = await tryCatchWrapper(() => axios({
-    //     method: 'get',
-    //     url: `https://www.gradescope.com/`,
-    //     headers: genHeaders(allCookies),
-    //     maxRedirects: 0,
-    //     validateStatus: VS,
-    // }), "LaunchPlacementResponse");
-
-    // await fs.promises.writeFile('res.txt', FFF.data);
-
-    console.log(qs.stringify(LTIData).split('%20').join('+').split('amp%3B').join(''))
-
-    return returnParsedCookies(GSCallbackResponse.headers['set-cookie']);
+    return {
+        cookies: returnParsedCookies(GSCallbackResponse.headers['set-cookie']),
+        link: getValueByDelimiters(GSCallbackResponse.data, 'You are being <a href="', '">')
+    };
 }
 
 module.exports.getGradescopeCookies = getGradescopeCookies;

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>20213_math_225_39541 Dashboard | Gradescope</title>
+	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="shortcut icon" type="image/x-icon"
+		href="/assets/logo/icons/64x64-6ef0a2640fa1cce7b0f29a71365bf737aa372d201790172a8b8b9e30b329c89d.png" />
+	<script>
+		//<![CDATA[
+window.gon = {};gon.text_assignment_supported_file_extensions=["doc","docx","pdf","ppt","pptx","rtf","txt"];gon.page_context={"environment":"production","i18n":{"locale":"en","messages":{"actionBar.more":"More","actionBar.next":"Next","actionBar.nextUngraded":"Next Ungraded","actionBar.nextUngradedAnswer":"Next Ungraded Answer","actionBar.previous":"Previous","actionBar.previousUngraded":"Previous Ungraded","actionBarLabel.group":"(Group {groupTitle})","actionBarLabel.grouped":"(part of Group {groupTitle})","actionBarLabel.of":"of","actionBarLabel.submission":"Submission:","actionBarLabel.submissions":"Submissions","actionBarLabel.ungrouped":"(Ungrouped)","addNewEmailModal.addEmailButton":"Add Email","addNewEmailModal.cancel":"Cancel","addNewEmailModal.confirmPassword":"Confirm Password","addNewEmailModal.currentEmails":"Existing Email Addresses","addNewEmailModal.heading":"Add New Email Address","addNewEmailModal.incorrectPassword":"Incorrect password","addNewEmailModal.invalid":"Invalid format","addNewEmailModal.newEmail":"New email address","addNewEmailModal.primary":"Primary Address","addNewEmailModal.unconfirmed":"Unconfirmed","adjustmentComment.groupPlaceholder":"Provide comments specific to this group","adjustmentComment.submissionPlaceholder":"Provide comments specific to this submission","adjustmentForm.groupAdjustments":"Group Specific Adjustments","adjustmentForm.pountAdjustment":"Point Adjustment","adjustmentForm.submissionAdjustments":"Submission Specific Adjustments","adjustmentForm.usePreviousComment":"Apply Previously Used Comments","answerGroup.anotherGroupWithMultipleSubmissions":"Another group (with {count} answers) already has the name \u003cstrong\u003e{name}\u003c/strong\u003e.","answerGroup.anotherGroupWithOneSubmission":"Another group (with 1 answer) already has the name \u003cstrong\u003e{name}\u003c/strong\u003e.","answerGroup.answerRegionForDrawer.addTitle":"Add Title","answerGroup.answerRegionForDrawer.delete":"Delete","answerGroup.answerRegionForDrawer.edit":"Edit","answerGroup.answerRegionForDrawer.editTitle":"Edit Title","answerGroup.answerRegionForDrawer.merge":"Merge","answerGroup.answerRegionForDrawer.title":"View","answerGroup.answerRegionForDrawer.undoAnswer":"Undo 1 answer assigned here.","answerGroup.answerRegionForDrawer.undoAnswers":"Undo {count} answers assigned here.","answerGroup.answerRegionForGroup.answerInUngroupedAnswers":"You will find it in Ungrouped Answers.","answerGroup.answerRegionForGroup.answerWasRemoved.longVersion":"Answer has been removed from this group.","answerGroup.answerRegionForGroup.answerWasRemoved.mediumVersion":"Answer removed from group.","answerGroup.answerRegionForGroup.answerWasRemoved.shortVersion":"Answer removed.","answerGroup.answerRegionForGroup.remove":"REMOVE","answerGroup.answerRegionForGroup.spacebar":"space","answerGroup.answerRegionForGroup.undo":"UNDO","answerGroup.answerRegionForIndex.addTitle":"Add Title","answerGroup.answerRegionForIndex.allConfirmed":"All {numConfirmed} Answers Confirmed","answerGroup.answerRegionForIndex.answersConfirmed":"{numConfirmed} / {total} Answers Confirmed","answerGroup.answerRegionForIndex.delete":"Delete","answerGroup.answerRegionForIndex.deleteAndUngroup":"Delete \u0026 Ungroup Answers","answerGroup.answerRegionForIndex.grade":"Grade","answerGroup.answerRegionForIndex.graded":"Graded","answerGroup.answerRegionForIndex.groupNumber":"Group {number}","answerGroup.answerRegionForIndex.merge":"Merge","answerGroup.answerRegionForIndex.rename":"Rename","answerGroup.answerRegionForUngrouped.deselect":"DESELECT","answerGroup.answerRegionForUngrouped.select":"SELECT","answerGroup.answerRegionForUngrouped.spacebar":"space","answerGroup.answerRegionImage.missingImage":"Grade individually: answer may be on a different page","answerGroup.answerRegionImage.missingPage":"Page Missing","answerGroup.answerRegionImage.missingSubmissions":"No answers in this group.","answerGroup.answerSelectedModal.answersSelected":"You currently have \u003cstrong\u003e{count}\u003c/strong\u003e answers selected. Navigating away from this page will remove this selection.","answerGroup.answerSelectedModal.continueGrouping":"Continue Grouping","answerGroup.answerSelectedModal.gradeAnswers":"Grade Answers","answerGroup.answerSelectedModal.heading":"Answers Selected","answerGroup.answerSelectedModal.instructions":"Create a group with the selection or continue on to Grade Answers.","answerGroup.answerSelectedModal.oneAnswerSelected":"You currently have \u003cstrong\u003e1\u003c/strong\u003e answer selected. Navigating away from this page will remove this selection.","answerGroup.answerSelectedModal.subheading":"Dont forget to create a group with your answers selected!","answerGroup.cancel":"Cancel","answerGroup.deleteGroupConfirmation.removesAnswer":"This will remove the group.\u003cbr /\u003e\u003cstrong\u003e1 answer\u003c/strong\u003e will be\u003cbr /\u003eungraded and moved to Ungrouped Answers.","answerGroup.deleteGroupConfirmation.removesAnswers":"This will remove the group.\u003cbr /\u003e\u003cstrong\u003e{count} answers\u003c/strong\u003e will be\u003cbr /\u003eungraded and moved to Ungrouped Answers.","answerGroup.deleteGroupConfirmation.title":"Are you sure?","answerGroup.drawer.answersSelected":"\u003cstrong\u003e{count}\u003c/strong\u003e answers selected.","answerGroup.drawer.createGroupButton":"Create a Group","answerGroup.drawer.createGroupMessage":"Create a group above to assign answers to it.","answerGroup.drawer.empty":"You have no groups.","answerGroup.drawer.noAnswersSelected":"No answers selected.","answerGroup.drawer.oneAnswerSelected":"\u003cstrong\u003e1\u003c/strong\u003e answer selected.","answerGroup.editTitleModal.cancel":"Close","answerGroup.editTitleModal.heading":"Edit Title","answerGroup.editTitleModal.placeholder":"Add Title","answerGroup.editTitleModal.subheading":"Give this group a name.","answerGroup.editTitleModal.submit":"Save","answerGroup.explanationLink":"Explanation","answerGroup.explanationModal.altText":"Graphic showing how answers can be grouped and then graded by group.","answerGroup.explanationModal.faster":"You can grade even faster by grading groups of answers at once.","answerGroup.explanationModal.heading":"Welcome to Answer Groups!","answerGroup.explanationModal.reviewGroups":"Review Groups","answerGroup.explanationModal.step1.description":"Review suggested groups – or form your own – using our new grouping interface.","answerGroup.explanationModal.step1.title":"Step 1","answerGroup.explanationModal.step2.description":"Grade the resulting groups, using the same interface you would use to grade individual responses.","answerGroup.explanationModal.step2.title":"Step 2","answerGroup.gradeSubmissionsButton":"Grade Submissions","answerGroup.groupDeleted.message.base":"Deleted Group{title}.","answerGroup.groupDeleted.message.withSubmission":"Deleted Group{title}. 1 Answer moved to Ungrouped.","answerGroup.groupDeleted.message.withSubmissions":"Deleted Group{title}. {count} Answers moved to Ungrouped.","answerGroup.groupShowSubmissions.addAnswers":"Add more answers to this group from Ungrouped Answers.","answerGroup.groupShowSubmissions.instructions":"Make sure all answers here actually belong in the group.","answerGroup.groupShowSubmissions.noAnswers":"There are no answers in this group.","answerGroup.groupShowSubmissions.subtitle":"Answers we were not quite sure about are presented first, in \u003cspan className='word-red'\u003ered\u003c/span\u003e.","answerGroup.groupShowSubmissions.ungroupedAnswers":"Ungrouped Answers","answerGroup.groupShowTabs.confirmed":"Confirmed","answerGroup.groupShowTabs.unconfirmed":"Unconfirmed","answerGroup.groupShowViewActionBar.actionButton.allConfirmed.reviewNextGroup":"Review Next Group","answerGroup.groupShowViewActionBar.actionButton.allConfirmed.reviewUngrouped":"Review Ungrouped","answerGroup.groupShowViewActionBar.actionButton.notAllConfirmed.reviewNextGroup":"Confirm Review Next Group","answerGroup.groupShowViewActionBar.actionButton.notAllConfirmed.reviewUngrouped":"Confirm Review Ungrouped","answerGroup.groupShowViewActionBar.next":"Next Group","answerGroup.groupShowViewActionBar.previous":"Previous Group","answerGroup.groupShowViewHeader.answerGroups":"Answer Groups","answerGroup.groupShowViewHeader.groupNumber":"Group {current} / {total}","answerGroup.groupingProgressBar.answersConfirmed":"Confirmed Answers","answerGroup.groupingProgressBar.answersUnconfirmed":"{numUnconfirmed} Answers Unconfirmed","answerGroup.groupingProgressBar.answersUngrouped":"{numUngrouped} Ungrouped Answers","answerGroup.groupingProgressBar.groupsConfirmed":"Groups Confirmed","answerGroup.indexMainViewActionBar.allConfirmed":"All groups have been confirmed.","answerGroup.indexMainViewActionBar.cancelMerge":"Cancel Merge","answerGroup.indexMainViewActionBar.forming":"Forming Answer Groups...","answerGroup.indexMainViewActionBar.grade":"Grade","answerGroup.indexMainViewActionBar.gradeAnswers":"Grade Answers","answerGroup.indexMainViewActionBar.merge":"Merge Selected","answerGroup.indexMainViewActionBar.mergeGroups":"Merge Groups...","answerGroup.indexMainViewActionBar.processing":"Answers Processing...","answerGroup.indexMainViewActionBar.reset":"Reset Answer Groups \u0026 Grades","answerGroup.indexMainViewActionBar.review":"Review unconfirmed groups.","answerGroup.indexMainViewActionBar.reviewFirst":"Review First Group","answerGroup.indexMainViewActionBar.reviewNext":"Review Next Group","answerGroup.indexMainViewActionBar.reviewUngroupedAnswers":"Review Ungrouped Answers","answerGroup.indexMainViewActionBar.selectGroupsToMerge":"Select groups to merge.","answerGroup.indexMainViewActionBar.trimGroups":"Trim Groups","answerGroup.indexViewContent.editFinalAnswerArea.hasArea":"Note that the answers were grouped by the contents of the {finalAnswerAreaLink} only.","answerGroup.indexViewContent.editFinalAnswerArea.noArea":"Indicate a {finalAnswerAreaLink} if there is a specific part of the question region that you would like to group answers by.","answerGroup.indexViewContent.editMarkRegions":"Edit Mark Regions","answerGroup.indexViewContent.editType":"Edit type","answerGroup.indexViewContent.emptyStateAssisted.cta":"Review Ungrouped Answers","answerGroup.indexViewContent.emptyStateAssisted.manuallyGroup":"You can still manually group answers and then grade the groups.","answerGroup.indexViewContent.emptyStateAssisted.subheading":"We're not sure how to automatically group answers for this {question}.","answerGroup.indexViewContent.emptyStateComplex.cta":"Review Ungrouped Answers","answerGroup.indexViewContent.emptyStateComplex.subheading":"There are no answer groups for this \u003cstrong\u003eManually-grouped Question\u003c/strong\u003e","answerGroup.indexViewContent.explanation.cta":"Let us know!","answerGroup.indexViewContent.explanation.instructions.default":"We found {groupOrGroups} for this {question}","answerGroup.indexViewContent.explanation.instructions.groupWithoutInternalTitle":"There is {groupOrGroups} for this {question}","answerGroup.indexViewContent.explanation.instructions.groupsWithoutInternalTitle":"There are {groupOrGroups} for this {question}","answerGroup.indexViewContent.explanation.prompt":"Something doesn't look right?","answerGroup.indexViewContent.finalAnswerArea":"Final Answer Area","answerGroup.indexViewContent.mergeInstructions":"Select the groups that you would like to merge.","answerGroup.indexViewContent.mergeSelections.multipleAnswers":"({count} answers)","answerGroup.indexViewContent.mergeSelections.singleAnswer":"(1 answer)","answerGroup.indexViewContent.multipleGroups":"{count} groups","answerGroup.indexViewContent.multipleGroupsSelected":"{count} groups selected","answerGroup.indexViewContent.optionsSeparator":"or","answerGroup.indexViewContent.questionType":"{questionType} Question","answerGroup.indexViewContent.singleGroup":"1 group","answerGroup.indexViewContent.singleGroupSelected":"1 group selected","answerGroup.indexViewHeader.heading":"Answer Groups","answerGroup.multipleUsers.heading":"Multiple Users:","answerGroup.multipleUsers.multipleOtherUsers":"{userNames} are currently reviewing groups for this question. To prevent data loss, we recommend that only one grader makes edits at a time.","answerGroup.multipleUsers.oneOtherUser":"{userName} is currently reviewing groups for this question. To prevent data loss, we recommend that only one grader makes edits at a time.","answerGroup.notGrouped.heading":"You have chosen not to group answers to this question.","answerGroup.notGrouped.subheading":"Continue to grade below, or {setQuestionTypeLink} to group answers.","answerGroup.notGrouped.subheading.cta":"set question type","answerGroup.procesingFailedState.error":"Something went wrong","answerGroup.procesingFailedState.explanation":"There has been an unexpected problem and we have been notified of the error.","answerGroup.procesingFailedState.stillIndividuallyGradeable":"You can still grade submissions individually.","answerGroup.procesingLongerThanExpectd.cta":"Let us know and skip to grading","answerGroup.procesingLongerThanExpectd.prompt":"Taking longer than expected?","answerGroup.procesingProgress.processing":"Answers Processing...","answerGroup.procesingProgress.subheading":"When submissions are processed, you will be able to review suggested answer groups.","answerGroup.procesingProgressBar.count":"{numProcessedSubmissions} / {numTotalSubmissions} Submissions Processed","answerGroup.questionAbbr":"Q{questionIndex}","answerGroup.questionPreview.studentAnswer":"Student answer {submissionIndex}","answerGroup.questionPreview.subheading":"Question Preview","answerGroup.questionPreview.template":"Template","answerGroup.questionRegionEditor.intructions.common":"Click and drag to create final answer area.","answerGroup.questionRegionEditor.intructions.mc":"Click and drag to create MC mark regions.","answerGroup.questionRegionEditor.modalLabel":"Select a final answer region. Press escape to close modal.","answerGroup.questionTypeActionBar.gradeIndividually":"Grade Individually","answerGroup.questionTypeActionBar.reviewGroups":"Review Answer Groups","answerGroup.questionTypeDrawer.blank":"Blank Answers Only (Manual Grouping)","answerGroup.questionTypeDrawer.math":"Math Fill-in-the-blank","answerGroup.questionTypeDrawer.mc":"Multiple Choice Marks","answerGroup.questionTypeDrawer.radioGroupLabel":"AI Assists With Recognizing","answerGroup.questionTypeDrawer.text":"Text Fill-in-the-blank","answerGroup.questionTypeSelection.applyToAll":"Apply grading method to all other questions.","answerGroup.questionTypeSelection.complex":"\u003cstrong\u003eManually grouped (not assisted)\u003c/strong\u003e: Works for all types of questions. Use this if your question type is not currently supported, or if the suggested groups are not helpful.","answerGroup.questionTypeSelection.editMarkRegions":"Edit Mark Regions.","answerGroup.questionTypeSelection.finalAnswerArea":"Please indicate a {finalAnswerAreaLink} if there is a specific part of the question region that you want to group answers by.","answerGroup.questionTypeSelection.finalAnswerArea.cta":"Final Answer Area","answerGroup.questionTypeSelection.formGroupsFirst":"Form Answer Groups First","answerGroup.questionTypeSelection.gradeIndividually":"Grade Individually","answerGroup.questionTypeSelection.heading":"How would you like to grade this question?","answerGroup.questionTypeSelection.markRegionsIssue":"If the squares are not properly over the answer areas,","answerGroup.questionTypeSelection.math":"\u003cstrong\u003eMath Fill-in-the-blank\u003c/strong\u003e: Works best for math questions with a small, predefined answer area.","answerGroup.questionTypeSelection.math.canadaWarning":"Note: Using this feature will send the cropped question regions outside of Canada. If the cropped region contains sensitive information, you may not want to use this feature.","answerGroup.questionTypeSelection.mc":"\u003cstrong\u003eMultiple Choice\u003c/strong\u003e: Works best when students bubble or check their answer within a clear circle or a square mark.","answerGroup.questionTypeSelection.notGrouped":"\u003cstrong\u003eGrade Individually (Skip Grouping)\u003c/strong\u003e: Works for all types of questions. Manually grade each answer to this question.","answerGroup.questionTypeSelection.subheading":"Grading Method","answerGroup.questionTypeSelection.warning.confirmation":"I understand.","answerGroup.questionTypeSelection.warning.message":"Switching question type with confirmed answers will reset answer grouping progress.","answerGroup.questionTypeSelection.words":"\u003cstrong\u003eText Fill-in-the-blank\u003c/strong\u003e: Works best for questions with a small, predefined answer area for a handwritten word or two.","answerGroup.renameModal.cancel":"Continue Renaming","answerGroup.renameModal.heading":"Rename \u0026 Merge","answerGroup.renameModal.prompt":"Would you like to merge the two groups together?","answerGroup.renameModal.subheading":"Multiple groups can't have the same name.","answerGroup.renameModal.submit":"Merge Groups","answerGroup.reportModal.andGradeSubmissions":"\u0026 Grade Submissions","answerGroup.reportModal.giveFeedback":"Give Feedback","answerGroup.reportModal.instructions":"Assisted grouping is new, and we appreciate hearing if something doesn't seem right to you.","answerGroup.reportModal.justGradeSubmissions":"Continue directly to Grade Submissions","answerGroup.reportModal.submitFeedback":"Submit Feedback","answerGroup.reportModal.successMessage":"Message sent. Thanks for reporting an issue with Answer Groups.","answerGroup.save":"Save","answerGroup.settings":"Settings","answerGroup.settingsModal.heading":"Answer Grouping Settings","answerGroup.settingsModal.subheading":"Change the question type below.","answerGroup.trimGroupsModal.body":"Only show groups with at least {numberInput} answers. The rest will show up in Ungrouped.","answerGroup.trimGroupsModal.cancel":"Cancel","answerGroup.trimGroupsModal.heading":"Trim Groups","answerGroup.trimGroupsModal.subheading":"Choose the minimum number of answers in a group.","answerGroup.trimGroupsModal.submit":"Trim Groups","answerGroup.undo":"Undo","answerGroup.undoMerge.withAnswer":"Merged 1 Answer from {numOfGroups} Groups","answerGroup.undoMerge.withAnswers":"Merged {count} Answers from {numOfGroups} Groups","answerGroup.ungroupedView.deselectAll":"Deselect All","answerGroup.ungroupedView.emptyState.cta":"Grade Answers","answerGroup.ungroupedView.emptyState.heading":"All answers have been grouped!","answerGroup.ungroupedView.emptyState.subheading":"Continue on to grade your answer groups.","answerGroup.ungroupedView.instructions.editTypeLinkWrapper":"({editTypeLink}).","answerGroup.ungroupedView.instructions.hereAreUngroupedAnswersIntro":"Here are answers that are about to be graded individually for this","answerGroup.ungroupedView.intructions.currentType":"{questionType} Question","answerGroup.ungroupedView.intructions.editType":"Edit type","answerGroup.ungroupedView.intructions.moveToGroups":"Move them into groups if it would save you time.","answerGroup.ungroupedView.selectAll":"Select All","answerGroup.ungroupedViewActionBar.clusterAnswers":"Cluster Answers","answerGroup.ungroupedViewActionBar.gradeAnswers":"Grade Answers","answerGroup.ungroupedViewActionBar.multipleSelected":"Click on a group to assign {count} selected answers to it.","answerGroup.ungroupedViewActionBar.noneSelected":"Click on answers that you want to assign to a group.","answerGroup.ungroupedViewActionBar.oneSelected":"Click on a group to assign 1 selected answer to it.","answerGroup.ungroupedViewActionBar.viewGroups":"View Groups","answerGroup.ungroupedViewHeader.answerGroups":"Answer Groups","answerGroup.ungroupedViewHeader.ungroupedAnswers":"Ungrouped Answers","answerGroup.unprocessableState.error":"Problem with processing this question","answerGroup.unprocessableState.explanation":"It is not possible to use this AI-assisted grading for this question, because less than half of all submissions have the required page.","answerGroup.unprocessableState.stillIndividuallyGradeable":"You can still grade submissions individually.","answerGroups.warning.individuallyGraded":"This group cannot be graded because all\u003cbr /\u003e\u003cstrong\u003e\u003ca href={link}\u003e\u003cIcon name='list-ul'\u003e{count, plural, =0 {Submissions} one {submission} other {submissions}}\u003c/Icon\u003e\u003c/a\u003e\u003c/strong\u003e\u003cbr /\u003ein this group have been graded individually.","assignment.branch.placeholder":"Select a branch…","assignment.branch.title":"Branch","assignment.renderRepoAndTime.lastUpdated":"Last updated at: {updatedAt}","assignment.repositoryDropDown.placeholder":"Select a repository…","assignment.repositoryDropDown.title":"Repository","assignment.repositorySelector.connectToService":"Connect to {serviceName}","assignment.repositorySelector.connectYourAccount":"Connect your account","assignment.settings.submissionAnonymization.caption":"Hide identifiable student information from being listed with submissions.","assignment.settings.submissionAnonymization.label":"Enable Anonymous Grading","assignment.settings.submissionAnonymization.title":"Submission Anonymization","assignment.submissionMethod.bitbucket":"Bitbucket","assignment.submissionMethod.github":"GitHub","assignment.submissionMethod.title":"Submission Method","assignment.submissionMethod.upload":"Upload","assignmentPreview.settingsInfo.choicesShuffled":"Multiple Choice and Select All options are shuffled for students","assignmentPreview.settingsInfo.questionsAndChoicesShuffled":"Questions and choices are shuffled for students","assignmentPreview.settingsInfo.questionsShuffled":"Questions are shuffled for students","assignmentRubric.createGroupButton.matrix":"New Grid","assignmentRubric.createGroupButton.vertical":"Create Group","assignmentRubric.gridView.addCellToRow":"Add cell to row","assignmentRubric.gridView.addColumnToTable":"Add column to table","assignmentRubric.gridView.addRowToTable":"Add row to table","assignmentRubric.importRubricButton.compact":"Import...","assignmentRubric.importRubricButton.wide":"Import Rubric","assignmentRubric.newItemButton.matrix":"New Rubric Item","assignmentRubric.newItemButton.vertical":"Add Rubric Item","assignmentRubric.pageHeadline":"Create Rubric","assignmentRubric.questionAbbr":"Q{number}","assignmentRubric.reorderItem":"Reorder","assignmentRubric.reorderMoveDown":"Move down","assignmentRubric.reorderMoveUp":"Move up","assignmentRubric.rubricLayoutSelector.gridView":"Grid View","assignmentRubric.rubricLayoutSelector.listView":"List View","assignmentViewer.sidebar.graded":"Graded","assignmentViewer.sidebar.pts.one":"{points} pt","assignmentViewer.sidebar.pts.other":"{points} pts","assignmentViewer.sidebar.question":"Question {number}","assignmentViewer.sidebar.totalPoints":"Total Points","assignmentViewer.sidebar.ungraded":"Ungraded","bubbleSheet.answerKeyChanged":"The answer key has been changed but has not been saved.","bubbleSheet.gradingDefault.points":"Points","bubbleSheet.gradingDefault.resetToGradingDefault":"Reset to Grading Defaults","bubbleSheet.gradingDefault.type.descriptions.either":"Full credit is awarded for marking any of the correct letters. \u003cbr /\u003e If any other letter is marked, the total score becomes 0.","bubbleSheet.gradingDefault.type.descriptions.exact":"Full credit is awarded only for the exact correct answer.","bubbleSheet.gradingDefault.type.descriptions.partial":"Partial credit is awarded for marking each correct letter. \u003cbr /\u003e If any other letter is marked, the total score becomes 0.","bubbleSheet.gradingDefault.type.names.either":"Either/Or","bubbleSheet.gradingDefault.type.names.exact":"Exact","bubbleSheet.gradingDefault.type.names.partial":"Partial","bubbleSheet.gradingDefaults.gradingOverrides":"Grading Overrides","bubbleSheet.gradingDefaults.heading":"Question Grading Defaults","bubbleSheet.gradingDefaults.scoring":"Scoring","bubbleSheet.heading":"Bubble Sheet Answer Key","bubbleSheet.instructions.200questionTemplate":"Bubble sheet assignments use our {link} template.","bubbleSheet.instructions.setCorrectAnswers":"Set the correct answers below. If a question does not have an answer set, it will not be graded.","bubbleSheet.instructions.stoppedSupportingOldTempate":"Please note that we have stopped supporting the old {v1ThreePage} template on new assignments. If you already handed out the old template to students, you can email {helpEmail} to switch this assignment to that template.","bubbleSheet.instructions.switchingToOldTemplate":"You are switching to the \u003cstrong\u003eold template\u003c/strong\u003e (displayed below), which has 30 questions per page, arranged in two columns.","bubbleSheet.instructions.usingNewQuestionTemplate":"This assignment is using the new {v2} template. If you already handed out the old {v1} template to students, you can {switch} to that version.","bubbleSheet.instructions.usingNewQuestionTemplate2":"We will stop supporting the old template on new assignments after {date}. Existing assignments won't be affected.","bubbleSheet.instructions.usingOldQuestionTemplate":"This assignment is using the old {v1} template. We will stop supporting the old template on new assignments after {date}. Existing assignments won't be affected. If you want to update the assignment to the new {v2} template, you can {switch}.","bubbleSheet.instructions.usingV1Template":"This bubble sheet assignment is using our v1 template: {twoPageLink} (60 questions) or {threePageLink} (90 questions).","bubbleSheet.pageNumber":"Page {number}","bubbleSheet.questionNumber":"Question {questionNumber}","bubbleSheet.questionPts":"{numPoints} pts","bubbleSheet.saveAnswerKey":"Save Answer Key","bubbleSheet.switchTemplate.areYouSure":"Are you sure?","bubbleSheet.switchTemplate.cancel":"Cancel","bubbleSheet.switchTemplate.existingSubmissionsRegraded":"Existing submissions will be re-graded.","bubbleSheet.switchTemplate.title":"Switch Template","bubbleSheet.templates.200question":"200-question","bubbleSheet.templates.2page":"2-page","bubbleSheet.templates.3page":"3-page","bubbleSheet.templates.60/90question":"60/90-question","confirmMergeModal.account1":"Account 1","confirmMergeModal.account2":"Account 2","confirmMergeModal.accountName":"Account name","confirmMergeModal.cancel":"Cancel","confirmMergeModal.currentlyLoggedIn":"(Currently logged in)","confirmMergeModal.email":"Email address","confirmMergeModal.heading":"Review Account Merge","confirmMergeModal.hideCourses":"Hide Courses","confirmMergeModal.note":"\u003cstrong\u003eNote:\u003c/strong\u003e After merging accounts you will continue to log in with this account's password.","confirmMergeModal.primaryEmail":"Primary email address","confirmMergeModal.submit":"Merge Accounts","confirmMergeModal.verificationCheckbox":"I have verified that the above email addresses are correct and belong to me. I understand that merging these accounts cannot be undone.","confirmMergeModal.viewCourses":"View Courses","confirmMergeModal.willNotifyUponCompletion":"An email will be sent once merging accounts is complete.","createAssignmentModal.buttons.cancel":"Cancel","createAssignmentModal.buttons.next":"Next","createAssignmentModal.buttons.submit":"Create Assignment","createAssignmentModal.form.autograder.label":"Autograder Points","createAssignmentModal.form.dates.allowLateSubmissions":"Allow Late Submissions","createAssignmentModal.form.dates.due":"Due Date","createAssignmentModal.form.dates.late":"Late Due Date","createAssignmentModal.form.dates.release":"Release Date","createAssignmentModal.form.dates.start":"Start Date","createAssignmentModal.form.group.checkbox":"Enable Group Submission","createAssignmentModal.form.group.label":"Group Submission","createAssignmentModal.form.group.size.label":"Limit Group Size:","createAssignmentModal.form.group.size.placeholder":"No Max","createAssignmentModal.form.indexSubmissions.checkbox":"Index submissions to your school's submission repository","createAssignmentModal.form.indexSubmissions.tfsMode.checkbox":"Add submissions to Turnitin's standard paper repository","createAssignmentModal.form.leaderboard.checkbox":"Enable Leaderboard","createAssignmentModal.form.leaderboard.entries.label":"Default # of entries","createAssignmentModal.form.leaderboard.entries.placeholder":"No Max","createAssignmentModal.form.leaderboard.entries.title":"The number of entries shown by default","createAssignmentModal.form.leaderboard.help":"Leaderboard documentation","createAssignmentModal.form.leaderboard.label":"Leaderboard","createAssignmentModal.form.manualGrading.checkbox":"Enable Manual Grading","createAssignmentModal.form.manualGrading.label":"Manual Grading","createAssignmentModal.form.name.label":"Assignment Name","createAssignmentModal.form.name.placeholder":"Name your assignment","createAssignmentModal.form.similarityReport.checkbox":"Enable Similarity Reports","createAssignmentModal.form.similarityReport.help":"\u003ca href={helpdocsUrl} target='_blank' rel='noopener noreferrer'\u003eLearn More\u003c/a\u003e about Similarity Reports.","createAssignmentModal.form.similarityReport.label":"Similarity Reports","createAssignmentModal.form.submissionType.fixedLength.description":"Students submit work where answers are in fixed locations (like worksheets).","createAssignmentModal.form.submissionType.fixedLength.option":"Templated (Fixed Length)","createAssignmentModal.form.submissionType.label":"Submission type","createAssignmentModal.form.submissionType.variableLength.description":"Students submit any number of pages and indicate the pages where their question responses are.","createAssignmentModal.form.submissionType.variableLength.option":"Variable Length","createAssignmentModal.form.submitter.instructor":"Instructor","createAssignmentModal.form.submitter.label":"Who will upload submissions?","createAssignmentModal.form.submitter.student":"Student","createAssignmentModal.form.template.button":"Select PDF","createAssignmentModal.form.template.download":"Download PDF","createAssignmentModal.form.template.label":"Template","createAssignmentModal.form.template.uploadPrompt":"Please select a file","createAssignmentModal.form.templateVisibility.checkbox":"Allow students to view and download the template","createAssignmentModal.form.templateVisibility.label":"Template Visibility","createAssignmentModal.form.timelimit.checkbox":"Enforce time limit","createAssignmentModal.form.timelimit.label":"Maximum Time Permitted (minutes)","createAssignmentModal.form.totalPoints.label":"Total Points","createAssignmentModal.gradescopeComplete.accessMessage":"{assignemntTypeText} are a \u003cstrong\u003eGradescope Complete\u003c/strong\u003e feature. You have complimentary access to this feature for this term.","createAssignmentModal.gradescopeComplete.accessMessageDemo":"{assignemntTypeText} are a \u003cstrong\u003eGradescope Complete\u003c/strong\u003e feature. Try it out in this demo course. Learn how to enable this feature in your courses.","createAssignmentModal.gradescopeComplete.badge":"Complete","createAssignmentModal.gradescopeComplete.beta.paid":"{assignemntTypeText} are in beta. Feedback or ideas? Reach out to us at \u003cstrong\u003e\u003ca href='mailto:help@gradescope.com'\u003ehelp@gradescope.com\u003c/a\u003e\u003c/strong\u003e.","createAssignmentModal.gradescopeComplete.beta.unpaid":"{assignemntTypeText} are a \u003cstrong\u003eGradescope Complete\u003c/strong\u003e feature. While the feature is in beta, you have access to it! Feedback or ideas? Email us at \u003cstrong\u003e\u003ca href='mailto:help@gradescope.com'\u003ehelp@gradescope.com\u003c/a\u003e\u003c/strong\u003e.","createAssignmentModal.gradescopeComplete.getAccess":"Get access to {assignemntTypeText} with \u003cstrong\u003eGradescope Complete\u003c/strong\u003e. Learn how to enable this feature in your courses.","createAssignmentModal.gradescopeComplete.learnMore":"Learn More","createAssignmentModal.heading":"Create Assignment","createAssignmentModal.heading.backButton":"Assignment Settings","createAssignmentModal.heading.backButtonLabel":"Go back and view assignment types","createAssignmentModal.learnMore":"Learn More","createAssignmentModal.overview.altText":"assignments overview","createAssignmentModal.overview.content":"Gradescope supports a variety of paper-based, online, and code assignments. Click on one to learn more.","createAssignmentModal.overview.heading":"Select an Assignment Type","createAssignmentModal.sidebar.ariaLabel":"Assignment Types","createAssignmentModal.sidebar.beta":"Beta","createAssignmentModal.sidebar.headings.basicTypes":"Assignment Types","createAssignmentModal.sidebar.headings.confirmedType":"Assignment Type","createAssignmentModal.sidebar.headings.gradescopeCompleteTypes":"Gradescope Complete","createAssignmentModal.types.bubble.description":"Using the \u003cstrong\u003e\u003ca target='_blank' rel='noopener noreferrer' href='https://gradescope-static-assets.s3.amazonaws.com/examples/bubble_sheet_v2/template.pdf'\u003e\u003cIcon name='download'\u003eGradescope Bubble Sheet Template\u003c/Icon\u003e\u003c/a\u003e\u003c/strong\u003e instructors can mark the correct answers for each question ahead of time, and all student submissions will be automatically graded.","createAssignmentModal.types.bubble.name":"Bubble Sheet","createAssignmentModal.types.bubble.namePlural":"Bubble Sheets","createAssignmentModal.types.examQuiz.description":"Instructors administer an assessment then collect and scan student work. Students answer each question in designated regions.","createAssignmentModal.types.examQuiz.name":"Exam / Quiz","createAssignmentModal.types.examQuiz.namePlural":"Exams / Quizzes","createAssignmentModal.types.homework.description":"Instructors specify a window of time that students can submit their work. Students upload their work via their phone or computer.","createAssignmentModal.types.homework.name":"Homework / Problem Set","createAssignmentModal.types.homework.namePlural":"Homework / Problem Sets","createAssignmentModal.types.online.description":"Instructors create questions directly on Gradescope. Students will be able to log in and submit responses within the Gradescope interface.","createAssignmentModal.types.online.name":"Online Assignment","createAssignmentModal.types.online.namePlural":"Online Assignments","createAssignmentModal.types.programming.description":"Instructors can automatically grade student code with a custom written autograder and/or manually grade using the traditional Gradescope grading interface.","createAssignmentModal.types.programming.name":"Programming Assignment","createAssignmentModal.types.programming.namePlural":"Programming Assignments","createAssignmentModal.types.text.description":"Instructors specify a window of time that students can submit their work. Students upload their typed work to Gradescope.","createAssignmentModal.types.text.name":"Essay / Report","createAssignmentModal.types.text.namePlural":"Essays / Reports","currentTag.current":"current","dataTables.aria.sortAscending":" - click or press Return to sort in ascending order","dataTables.aria.sortDescending":" - click or press Return to sort in descending order","dataTables.emptyTable":"No data available in table","dataTables.findAStudent":"Find a student…","dataTables.info":"Showing _START_ to _END_ of _TOTAL_ entries","dataTables.infoEmpty":"Showing 0 to 0 of 0 entries","dataTables.infoFiltered":"(filtered from _MAX_ total entries)","dataTables.lengthMenu":"Show _MENU_ entries","dataTables.loadingRecords":"Loading...","dataTables.paginate.first":"First","dataTables.paginate.last":"Last","dataTables.paginate.next":"Next","dataTables.paginate.previous":"Previous","dataTables.processing":"Processing...","dataTables.searchPlaceholder":"Search","dataTables.zeroRecords":"No matching records found","deleteExtension.courseWideError":"Please visit the course extensions page to delete this course-wide extension.","deleteExtension.remove":"Remove","deleteExtensionModal.body":"Are you sure that you want to delete this extension for \u003cstrong\u003e{studentName}\u003c/strong\u003e in \u003cstrong\u003e{resourceName}\u003c/strong\u003e? You cannot undo this action.","deleteExtensionModal.cancel":"Cancel","deleteExtensionModal.heading":"Delete this extension?","deleteExtensionModal.submit":"Delete Extension","editOutline.onlineAssignment.actionBar.allChangesSaved":"All of your changes have been saved.","editOutline.onlineAssignment.actionBar.changesSaved":"All changes are saved.","editOutline.onlineAssignment.actionBar.discardChanges":"Discard Changes","editOutline.onlineAssignment.actionBar.manageSubmissions":"Manage Submissions","editOutline.onlineAssignment.actionBar.unsavedChanges":"You have unsaved changes.","editOutline.onlineAssignment.addPearsonQuestions":"Add Pearson Questions","editOutline.onlineAssignment.addQuestion.add":"Add \u003cstrong\u003eQuestion {index}\u003c/strong\u003e","editOutline.onlineAssignment.addQuestion.addChildQuestion":"Add \u003cstrong\u003eQuestion {index}\u003c/strong\u003e","editOutline.onlineAssignment.addQuestion.addSubquestion":"Add \u003cstrong\u003eSubquestion\u003c/strong\u003e","editOutline.onlineAssignment.addQuestion.insert":"Insert \u003cstrong\u003eQuestion {index}\u003c/strong\u003e","editOutline.onlineAssignment.addQuestion.insertChildQuestion":"Insert \u003cstrong\u003eQuestion {index}\u003c/strong\u003e","editOutline.onlineAssignment.allChangesSaved":"All of your changes have been saved.","editOutline.onlineAssignment.discardWarningModal.areYouSureYouWantToDiscard":"Are you sure you want to discard your changes? This action cannot be undone.","editOutline.onlineAssignment.discardWarningModal.cancel":"Cancel","editOutline.onlineAssignment.discardWarningModal.discardChanges":"Discard Changes","editOutline.onlineAssignment.discardWarningModal.discardChanges.heading":"Discard Changes","editOutline.onlineAssignment.editAssignment.heading":"Edit Assignment","editOutline.onlineAssignment.insertImageModal.pleaseSelectImages":"Please select image(s)","editOutline.onlineAssignment.insertImageModal.selectImages":"Select Image(s)","editOutline.onlineAssignment.insertImageModal.upload":"Upload","editOutline.onlineAssignment.localChangesModal.anotherHasChangedTheOutline":"Another instructor or TA has changed the outline.","editOutline.onlineAssignment.localChangesModal.continueWorking":"Continue Working","editOutline.onlineAssignment.localChangesModal.discardChanges":"Discard Changes","editOutline.onlineAssignment.localChangesModal.outdatedChanges.heading":"Outdated Changes","editOutline.onlineAssignment.localChangesModal.youCanContinueWorking":"You can continue working and override the latest changes or accept them (discarding your outdated changes).","editOutline.onlineAssignment.questionForm.deleteQuestion":"Delete Question","editOutline.onlineAssignment.questionForm.description":"Description","editOutline.onlineAssignment.questionForm.insertField.fileUpload":"File Upload","editOutline.onlineAssignment.questionForm.insertField.freeResponse":"Free Response","editOutline.onlineAssignment.questionForm.insertField.heading":"Insert Field","editOutline.onlineAssignment.questionForm.insertField.multipleChoice":"Multiple Choice","editOutline.onlineAssignment.questionForm.insertField.selectAll":"Select All","editOutline.onlineAssignment.questionForm.insertField.shortAnswer":"Short Answer","editOutline.onlineAssignment.questionForm.insertImages":"Insert Images","editOutline.onlineAssignment.questionForm.points":"Points","editOutline.onlineAssignment.questionForm.problem":"Problem","editOutline.onlineAssignment.questionForm.problemPlaceholder":"Type your problem here","editOutline.onlineAssignment.questionForm.question":"Question {index}","editOutline.onlineAssignment.questionForm.questionPlaceholder":"Title","editOutline.onlineAssignment.saveAssignment":"Save Assignment","editOutline.onlineAssignment.warning.assignmentHasBeenReleasedToStudents":"This assignment has been released to students. Updating questions will not affect students' existing submissions. You can use the \u003cem\u003eRegrade All Submissions\u003c/em\u003e button on the \u003ca href={url}\u003eManage Submissions\u003c/a\u003e page to regrade all existing submissions.","editOutline.onlineAssignment.warning.concurrentEditors.multipleTabsOrBrowser":"You may be editing this assignment in multiple tabs or browser windows. To prevent data loss, we recommend editing in only one window at a time.","editOutline.onlineAssignment.warning.concurrentEditors.onlyOneUserAtATime":"{user} currently editing this assignment. To prevent data loss, we recommend that only one user make edits at a time.","editOutline.onlineAssignment.warning.editRejected.changesCouldNotBeSaved":"Your changes could not be saved. Please review {question} below and try again.","editOutline.onlineAssignment.warning.sinceStudentsHaveAlreadyStarted":"Since students have already started working on this assignment, answer fields cannot be removed or rearranged. If you need to add a new answer field, you can add it at the end of this question.","editOutline.onlineAssignment.warningModal.cancel":"Cancel","editOutline.onlineAssignment.warningModal.confirmRemovingQuestions":"Confirm Removing Questions","editOutline.onlineAssignment.warningModal.discardChanges":"Discard Changes","editOutline.onlineAssignment.warningModal.outlineChanged":"The outline has changed since you started working. Saving the outline will overwrite the most current changes.","editOutline.onlineAssignment.warningModal.outlineHasChanged":"Outline Has Changed","editOutline.onlineAssignment.warningModal.saveChangesAnyway":"Save Changes Anyway","editOutline.onlineAssignment.warningModal.studentsHaveSubmittedAnswers.plural":"Students have submitted answers to the questions that you are about to delete. Their work for these question will also be deleted.","editOutline.onlineAssignment.warningModal.studentsHaveSubmittedAnswers.singular":"Students have submitted answers to the question that you are about to delete. Their work for this question will also be deleted.","enrollmentNotificationModal.cancel":"Cancel","enrollmentNotificationModal.content1":"Notify your students that they have been added to this course. Only students who have not logged in since they have been added to the course will be notified.","enrollmentNotificationModal.content2":"Students should make sure that they are logging in with the email address that is on this roster. They can also email us at {link} if they have any questions.","enrollmentNotificationModal.heading":"Send Enrollment Notification","enrollmentNotificationModal.submit":"Send Emails","extensions.blankState.addAnExtension":"Add an extension","extensionsModal.studentSelector.byName.placeholder":"Search student by name…","extensionsModal.studentSelector.byNameOrEmail.placeholder":"Search students by name or email…","groupMembersModal.memberDropdown.byName.placeholder":"Search student by name…","groupMembersModal.memberDropdown.byNameOrEmail.placeholder":"Search students by name or email…","groupMembersModal.memberDropdown.label":"Add Student","importRubricModal.assignment":"Assignment","importRubricModal.cancel":"Cancel","importRubricModal.heading":"Import Rubric","importRubricModal.preview":"Rubric Preview","importRubricModal.question":"Question","importRubricModal.subheading":"Select a rubric from another question to import.","importRubricModal.submit":"Import Rubric","manageScans.heading":"Manage Scans","manageSubmissions.all":"All","manageSubmissions.allStudentsMatched":"All {total} Students Have Been Matched","manageSubmissions.allStudentsSubmitted":"All {total} Students Have Submitted","manageSubmissions.autoAssigned_html":"\u003cstrong\u003e{number}\u003c/strong\u003e Auto-Assigned","manageSubmissions.automaticallyAssigned":"Automatically Assigned","manageSubmissions.blankState.heading":"There are no submissions for this assignment.","manageSubmissions.blankState.manageScans":"Manage Scans","manageSubmissions.blankState.studentHeading":"Your students have not submitted anything yet.","manageSubmissions.blankState.studentSubheading":"Submissions will show up here as your students submit work.","manageSubmissions.blankState.subheading":"Upload and split scans before assigning names to submissions.","manageSubmissions.deleteSubmission":"Delete Submission","manageSubmissions.edit":"Edit","manageSubmissions.enterStudentName":"Enter student name","manageSubmissions.graded":"Graded","manageSubmissions.heading":"Manage Submissions","manageSubmissions.hide":"Hide","manageSubmissions.hideDetails":"Hide Details","manageSubmissions.instructions":"On this page you can assign names to student submissions, replace individual submission PDFs, and remove submissions. Use the \u003cspan class='keyboardShortcut--icon'\u003etab\u003c/span\u003e key to quickly go through the name assignment fields. ","manageSubmissions.late":"Late","manageSubmissions.nameID":"Name \u0026 ID Region","manageSubmissions.next":"Next","manageSubmissions.noSubmissionsMatch":"There are no submissions matching your search.","manageSubmissions.pluralStudentMatched":"{number} Students Have Not Been Matched","manageSubmissions.pluralStudentSubmitted":"{number} Students Have Not Submitted","manageSubmissions.previous":"Previous","manageSubmissions.replacePDF":"Replace PDF","manageSubmissions.search":"Search by name","manageSubmissions.showDetails":"Show Details","manageSubmissions.singularStudentMatched":"{number} Student Has Not Been Matched","manageSubmissions.singularStudentSubmitted":"{number} Student Has Not Submitted","manageSubmissions.student":"Student","manageSubmissions.studentProbablyRemoved":"Student was probably removed from roster.","manageSubmissions.submissionDirectUpload":"This \u003ca href={submissionUrl}\u003esubmission\u003c/a\u003e is a direct upload.","manageSubmissions.submissionFrom":"This \u003ca href={submissionUrl}\u003esubmission\u003c/a\u003e is from an \u003ca href={batchUrl}\u003einstructor scan\u003c/a\u003e.","manageSubmissions.submissions":"{numSubmissions, plural, =0 {Submissions} one {Submission} other {Submissions}}","manageSubmissions.submissions.one_html":"\u003cstrong\u003e1\u003c/strong\u003e Submission","manageSubmissions.submissions.other_html":"\u003cstrong\u003e{numSubmissions}\u003c/strong\u003e Submissions","manageSubmissions.submissionsIndex":"Submissions {firstIndex} - {secondInd} of {totalCount} {totalWhat}","manageSubmissions.submitted":"Submitted","manageSubmissions.submittedInstructions":"On this page you can replace individual submission PDFs and remove submissions.","manageSubmissions.turnOffMatchingInstructions":"If something does not look right, you can {button} automatic roster matching.","manageSubmissions.unassigned_html":"\u003cstrong\u003e{number}\u003c/strong\u003e Unassigned","manageSubmissions.uploadSubmission":"Upload Submission","manageSubmissions.version":"Version","manageSubmissions.viewPage":"View page","manageSubmissions.warning.autoMatch.disabled":"Automatic roster matching has been disabled for this assignment. You can always {reenableItButton}.","manageSubmissions.warning.autoMatch.indicateIDRegion":"To help increase the number of automatic matches, please indicate the ID region on the \u003ca href={url}\u003eEdit Outline\u003c/a\u003e page.","manageSubmissions.warning.autoMatch.overlap":"To help increase the number of automatic matches, please make sure that the Name and ID regions do not overlap on the \u003ca href={url}\u003eEdit Outline\u003c/a\u003e page.","manageSubmissions.warning.autoMatch.reenableit":"re-enable it","manageSubmissions.warning.importMoreStudents":"All students have been assigned a submission. You will not be able to assign any more names until you \u003ca href={url}\u003eimport more students\u003c/a\u003e.","manageSubmissions.warning.indicateNameIDRegion":"Please indicate name and/or ID region in the assignment template by going to\u0026nbsp;\u003ca href={url}\u003eEdit Outline\u003c/a\u003e.","manageSubmissions.warning.noStudents":"There are no students in this course. Please import students in the \u003ca href={url}\u003eCourse Roster\u003c/a\u003e.","manageSubmissions.zoomIn":"Zoom In","manageSubmissions.zoomOut":"Zoom Out","mathForm.edit":"Edit","mathForm.preview":"Preview","memberList.group":"Group","memberList.student":"Student","modal.close":"Close","onlineAssignment.footer.closeBrowser":"Close Browser","onlineAssignment.footer.endExam":"End Exam","onlineAssignment.footer.submit":"Save All Answers","onlineAssignment.footer.submitAndCloseBrowser":"Submit \u0026 Close Browser","onlineAssignment.footer.submitAndEndExam":"Submit \u0026 End Exam","onlineAssignment.footer.submitAndViewSubmission":"Submit \u0026 View Submission","onlineAssignment.footer.viewSubmission":"View Submission","onlineAssignment.statusBar.questionsAnswered":"\u003cstrong\u003e{numAnsweredQuestions}/{totalNumQuestions}\u003c/strong\u003e Questions Answered","onlineAssignment.statusBar.saved":"Saved","onlineAssignment.statusBar.savingInProgress":"Saving...","onlineAssignment.statusBar.unsavedQuestion":"\u003cstrong\u003e{numUnsavedQuestions}\u003c/strong\u003e question with unsaved changes","onlineAssignment.statusBar.unsavedQuestions":"\u003cstrong\u003e{numUnsavedQuestions}\u003c/strong\u003e questions with unsaved changes","onlineAssignment.submitButtonArea.lastSaved":"Last saved on \u003cstrong\u003e{submittedAt}\u003c/strong\u003e","onlineAssignment.submitButtonArea.save":"Save Answer","onlineAssignment.submitButtonArea.unsavedChanges":"*Unsaved Changes","onlineAssignmentSubmitter.studentSelector.byName.placeholder":"Search student by name…","onlineAssignmentSubmitter.studentSelector.byNameOrEmail.placeholder":"Search students by name or email…","onlineAssignmentSubmitter.studentSelector.label":"Student Name","outlineSidebar.cancel":"Cancel","outlineSidebar.createIDRegion":"Create ID Region","outlineSidebar.createNameRegion":"Create Name Region","outlineSidebar.editIDRegion":"Edit ID Region","outlineSidebar.editNameRegion":"Edit Name Region","outlineSidebar.fixedInstructions":"Create questions and subquestions via the + buttons below, or by dragging boxes on the template. Reorder and indent questions by dragging them in the outline.","outlineSidebar.instructions":"Create questions and subquestions via the + buttons below. Reorder and indent questions by dragging them in the outline.","outlineSidebar.newQuestion":"new question","outlineSidebar.onlineAssignment.noFilesUploaded":"No files uploaded","outlineSidebar.outlineFor":"Outline for {entity}","outlineSidebar.points":"Points","outlineSidebar.pointsTotal":"{value} {points} total","outlineSidebar.question":"Question title","outlineSidebar.saveOutline":"Save Outline","outlineSidebar.subquestion":"Subquestion title","outlineSidebar.title":"Title","pageSwitcherModal.all":"All {entity}","pageSwitcherModal.content":"Select pages in this submission. Press escape to close modal.","pageSwitcherModal.entity.images":"Images","pageSwitcherModal.entity.pages":"Pages","pageSwitcherModal.openPdf":"Open PDF","pageSwitcherModal.selected":"Selected {entity} for Question {number}","pageViewer.controls.allPagesButtonImage":"All Images","pageViewer.controls.allPagesButtonPages":"All Pages","postGrades.assignment.heading":"Linked {lms} Assignment","postGrades.cancel":"Close","postGrades.course.heading":"Linked {lms} Course","postGrades.edit":"(edit)","postGrades.error":"{message}. If this is unexpected, please contact {link}.","postGrades.genericError":"Sorry something went wrong","postGrades.instructions.heading":"Instructions","postGrades.instructions.part1":"Grades from linked users' submissions will be posted to the {lms} assignment listed below.","postGrades.instructions.part2":"Existing grades in {lms} (for linked users) will be overwritten.","postGrades.noAssignmentLinked":"No {lms} assignment linked.","postGrades.noCourseLinked":"No {lms} course linked.","postGrades.nothingToPost":"There are no grades to post. To post grades, sync your roster and grade the linked users' submissions.","postGrades.posting":"Posting grades...","postGrades.postingError":"Error posting grades. Please sync the roster and try again. If the problem persists, contact {link}.","postGrades.submit":"Post Grades","progressBar.xGraded":"{numGradedSubmissions} of {numSubmissions} graded","progressBarWithGroups.gradingSubmission":"Grading 1 Submission","progressBarWithGroups.gradingSubmissions":"Grading {answerGroupSize} submissions","progressBarWithGroups.xGraded":"{numGradedSubmissions} / {numSubmissions} Graded","questionSelector.blank":"This assignment doesn't have any questions.","questionSelector.loading":"Questions are loading...","questionSwitcher.next":"Next","questionSwitcher.previous":"Previous","regradeRequestModal.aria":"Explain your regrade request.","regradeRequestModal.cancel":"Cancel","regradeRequestModal.entity.assignment":"assignment","regradeRequestModal.entity.question":"question","regradeRequestModal.instructions":"If you have any issues with how this {entity} was graded, you can use this form to email the instructor who graded this {entity}. Please refer to your course’s regrade policy before submitting a request, and be clear and concise with your explanation.","regradeRequestModal.request":"Request a Regrade","regradeRequestModal.requestForQuestion":"Request a Regrade for Question {title}","regradeRequestModal.subheading":"Explain your regrade request below.","regradeRequestModal.update":"Update Regrade Request","regradeRequestModal.updateForQuestion":"Update Regrade Request for Question {title}","reviewGrades.postToLms.button":"Post Grades to {lms}","reviewGrades.postToLms.modalHeading":"Post Grades to {lms}","reviewGrades.postToLms.title":"Post grades to {lms} for linked students.","rubricEntries.empty":"There are no rubric items.","rubricPreview.emptyGroup":"No rubric items in this group","rubricPreview.emptyQuestion":"This question doesn't have any rubric items.","rubricPreview.selectQuestion":"Select a question to preview the rubric.","rubricSettings.title":"Rubric Settings","rubricSettingsModal.cancel":"Cancel","rubricSettingsModal.ceiling":"Ceiling (maximum score is {weight})","rubricSettingsModal.defaultScoring":"Default Scoring Settings","rubricSettingsModal.floor":"Floor (minimum score is 0)","rubricSettingsModal.heading":"Rubric Options","rubricSettingsModal.negativeScoring":"Negative Scoring (points are subtracted from {weight})","rubricSettingsModal.positiveScoring":"Positive Scoring (points are added to 0)","rubricSettingsModal.rubricType":"Scoring method","rubricSettingsModal.scoreBounds":"Score bounds","rubricSettingsModal.subheading":"Set rubric options for this question.","rubricSettingsModal.subheadingWithTitle":"Set rubric options for {fullIndex} {title}","rubricSettingsModal.submit":"Save","rubricSettingsModal.visitAssignmentOrCourseSettings":"Go to \u003ca href={editAssignmentLink}\u003eAssignment Settings\u003c/a\u003e or \u003ca href={editCourseLink}\u003eCourse Settings\u003c/a\u003e to change default scoring settings.","rubricSettingsModal.visitAssignmentSettings":"Go to \u003ca href={editAssignmentLink}\u003eAssignment Settings\u003c/a\u003e to change default scoring settings.","scansManager.actionBar.createPrintouts":"Create Printouts","scansManager.actionBar.manageSubmissions":"Manage Submissions","scansManager.actionBar.stats":"Submissions created for {processed} out of {total} scans.","scansManager.createPrintoutsModal.createPrintout":"Create Printout","scansManager.createPrintoutsModal.createPrintouts":"Create Printouts","scansManager.createPrintoutsModal.creationError":"Something went wrong in creating the printouts.","scansManager.createPrintoutsModal.deleteError":"Something went wrong in deleting the printout.","scansManager.createPrintoutsModal.fetchError":"Something went wrong in fetching the printouts.","scansManager.createPrintoutsModal.heading":"Create Labeled Printouts","scansManager.createPrintoutsModal.instructions":"Create printouts with a special label on each page for error-proof scan splitting. If you drop the stack of papers, no need to worry! Just scan them in any order, and Gradescope will be able to reconstruct the submissions.","scansManager.createPrintoutsModal.intructionsHeader":"Error-proof Printouts","scansManager.createPrintoutsModal.printPreview":"Print Preview","scansManager.createPrintoutsModal.printPreviewInstructions":"The special label will be placed in the top-right corner of each page, as indicated below. Please make sure that your template has no important text there.","scansManager.createPrintoutsModal.printoutToBeCreated":"1 Printout to be created ({numPages} pages total)","scansManager.createPrintoutsModal.printouts":"Printouts","scansManager.createPrintoutsModal.printoutsToBeCreated":"{numPrintouts} Printouts to be created ({numPages} pages total)","scansManager.createPrintoutsModal.showAllPages":"Show all pages","scansManager.createPrintoutsModal.showFirstPages":"Hide all but first pages","scansManager.createPrintoutsModal.submissionCount":"Number of submissions","scansManager.deleteOrUndo.cancel":"Cancel","scansManager.deleteOrUndo.confirm":"This scan will be removed.","scansManager.deleteOrUndo.delete":"Delete","scansManager.deleteOrUndo.deleteDescription.multiple":"This scan \u003cspan\u003eand its \u003cstrong\u003e{num} active submissions\u003c/strong\u003e\u003c/span\u003e\u003cspan\u003e (plus \u003cstrong\u003eany associated grading\u003c/strong\u003e)\u003c/span\u003e will be removed.","scansManager.deleteOrUndo.deleteDescription.single":"This scan \u003cspan\u003eand its \u003cstrong\u003e1 active submission\u003c/strong\u003e\u003c/span\u003e\u003cspan\u003e (plus \u003cstrong\u003eany associated grading\u003c/strong\u003e)\u003c/span\u003e will be removed.","scansManager.deleteOrUndo.undo":"Undo Split","scansManager.deleteOrUndo.undoDescription.multiple":"\u003cspan\u003e\u003cstrong\u003e{num} active submissions\u003c/strong\u003e\u003c/span\u003e\u003cspan\u003e (plus \u003cstrong\u003eany associated grading\u003c/strong\u003e)\u003c/span\u003e will be removed.","scansManager.deleteOrUndo.undoDescription.single":"\u003cspan\u003e\u003cstrong\u003e1 active submission\u003c/strong\u003e\u003c/span\u003e\u003cspan\u003e (plus \u003cstrong\u003eany associated grading\u003c/strong\u003e)\u003c/span\u003e will be removed.","scansManager.deleteOrUndo.warning":"Warning: this cannot be undone.","scansManager.error.failedToCreateSubmissions":"Failed to create submissions. Please refresh the page and try again. Email help@gradescope.com if this problem persists.","scansManager.error.failedToRemoveScan":"Failed to remove scan, potentially because another user has updated it. Please refresh the page and try again. Email help@gradescope.com if this problem persists.","scansManager.error.failedToSplit":"Failed to split manually, potentially because another user has updated the scan. Please refresh the page and try again. Email help@gradescope.com if this problem persists.","scansManager.error.failedToUndoSplit":"Failed to undo automatic split, as another user has probably updated the scan. Please refresh the page and try again. Email help@gradescope.com if this problem persists.","scansManager.error.failedToUpdateBatch":"Failed to update batch.","scansManager.error.onlyPDFs":"You must upload PDF files only.","scansManager.error.uploadInProgress":"Your files have not finished uploading yet. If you leave this page, you will lose your upload progress.","scansManager.instruction.bubbleSheetSplit":"The proposed split is based on special markers on the bubble sheet template.","scansManager.instruction.part1":"Upload scans in PDF format. A single file can contain multiple student submissions (it is more efficient to scan in batches). Multiple files can be uploaded at once.","scansManager.instruction.part2.ifWeFail":"For scans that are not automatically split, click \u003cstrong\u003eShow\u003c/strong\u003e to review the proposed submissions (you can change split points and re-order pages), then click \u003cstrong\u003eCreate Submissions\u003c/strong\u003e.","scansManager.instruction.part2.weTry":"Gradescope attempts to split each uploaded scan into submissions.","scansManager.labeledPrintout.delete":"Delete","scansManager.labeledPrintout.failed":"Printout failed to create","scansManager.labeledPrintout.generating":"Generating PDF file...","scansManager.labeledPrintout.stats":"{numPages} pages total - Created {createdAt}","scansManager.processedBatch.multipleAutomaticSubmissions":"{numActiveSubmissions} Active submissions created automatically","scansManager.processedBatch.multipleSubmissions":"{numActiveSubmissions} Active submissions","scansManager.processedBatch.noSubmissions":"No active submissions","scansManager.processedBatch.oneAutomaticSubmission":"1 Active submission created automatically","scansManager.processedBatch.oneSubmission":"1 Active submission","scansManager.processedBatchBody.delete":"Delete","scansManager.processedBatchBody.forTraining":"Used for training","scansManager.processedBatchBody.hideDetails":"Hide details","scansManager.processedBatchBody.undo":"Undo Automatic Split","scansManager.proposedPage.split":"split","scansManager.proposedSubmission.merge":"merge with previous","scansManager.proposedSubmission.rotate":"rotate submission","scansManager.proposedSubmission.title":"Proposed submission {number}","scansManager.proposedSubmission.tooFewPages":"Warning: not enough pages","scansManager.proposedSubmission.tooManyPages":"Warning: more pages than expected from the template.","scansManager.showBatchButton":"Show","scansManager.submission.assignedTo":"assigned to {userNames}.","scansManager.submission.invactive":"Currently inactive.","scansManager.submission.loading":"Loading...","scansManager.submission.title":"Submission {number}","scansManager.unprocessedBatch.extracting":"Extracting pages","scansManager.unprocessedBatch.failed":"Failed","scansManager.unprocessedBatch.finding":"Finding split points","scansManager.unprocessedBatch.ready.automaticOverruled":"Ready to create submissions (Automatic split overruled)","scansManager.unprocessedBatch.ready.unableToAutomaticallySplit":"Ready to create submissions (Unable to confidently auto-split)","scansManager.unprocessedBatchBody.createSubmission":"Create 1 submission","scansManager.unprocessedBatchBody.createSubmissions":"Create {numSubmissions} submissions","scansManager.unprocessedBatchBody.delete":"Delete","scansManager.unprocessedBatchBody.failed":"This scan failed to process! Please delete it and try again.","scansManager.unprocessedBatchBody.finding":"This scan is currently being aligned to the template. This will refresh when ready.","scansManager.unprocessedBatchBody.hideDetails":"Hide details","scansManager.unprocessedBatchBody.loading":"Loading data...","scansManager.unprocessedBatchBody.processing":"This scan is currently processing. This will refresh when ready.","scansManager.unprocessedBatchBody.reset":"Reset","scansManager.unprocessedBatchBody.rotate":"Rotate PDF","scansManager.unprocessedBatchBody.splitManually":"Split Manually","scansManager.uploadArea.instruction":"Drop files anywhere on the page, or select files using the button below.","scansManager.uploadArea.selectFiles":"Select PDF Files","scansManager.warning":"Proposed scan splits will likely be more accurate if you first set up the \u003ca href={link}\u003eAssignment Outline\u003c/a\u003e.","sidebar.collapseView":"Collapse View","sidebar.expandView":"Expand View","sidebar.popOut":"Grid View","sidebar.totalPoints":"Total Points","startMergeModal.accountToMerge":"Account to be merged","startMergeModal.aria.accountToMerge":"Account to be merged","startMergeModal.aria.confirmPassword":"Confirm password","startMergeModal.cancel":"Cancel","startMergeModal.confirmPassword":"Confirm Password","startMergeModal.currentAccount":"Current Account","startMergeModal.heading":"Merge Accounts","startMergeModal.incorrectPassword":"Incorrect password","startMergeModal.invalidFormat":"Invalid format","startMergeModal.placeholder":"secondary-email@example.edu","startMergeModal.submit":"Start Account Merge","studentAccountsSignupForm.differentGeoWarning":"Note that your institution is using the {instance} instance of Gradescope. Please try signing up on the {link} website.","submissionGrader.deleteColumnModalButton":"Delete","submissionGrader.deleteColumnModalHeader":"Delete Column","submissionGrader.deleteMatrixColumnButtonLabel":"Delete column","submissionGrader.deleteRubricItemGroupMatrixCellButtonLabel.gridView":"Delete Row","submissionGrader.deleteRubricItemGroupMatrixCellButtonLabel.listView":"Delete Rubric Item Group","submissionGrader.deleteRubricItemGroupModal.message.gridView":"Are you sure? Deleting this row will affect all submissions that have rubric items in this row applied.","submissionGrader.deleteRubricItemGroupModal.message.listView":"Are you sure? Deleting this rubric item group will affect all submissions that have rubric items in this group applied.","submissionGrader.deleteRubricItemGroupModalButton.gridView":"Delete","submissionGrader.deleteRubricItemGroupModalButton.listView":"Delete","submissionGrader.deleteRubricItemGroupModalHeader.gridView":"Delete Row","submissionGrader.deleteRubricItemGroupModalHeader.listView":"Delete Rubric Item Group","submissionGrader.deleteRubricItemMatrixCellButtonLabel":"Delete rubric item","submissionGrader.deleteRubricItemMatrixStandaloneButtonLabel":"Delete rubric item","submissionGrader.deleteRubricItemModalButton":"Delete","submissionGrader.deleteRubricItemModalHeader":"Delete Rubric Item","submissionGrader.gradingPopout.toggleMode.toEdit":"Edit Rubric","submissionGrader.gradingPopout.toggleMode.toGrading":"Done","submissionGrader.groupSettingsButtonLabel":"Choose selection style","submissionGrader.shiftColumnLeftLabel":"Shift column left","submissionGrader.shiftColumnRightLabel":"Shift column right","submissionGrader.shiftRowDownLabel":"Shift row down","submissionGrader.shiftRowUpLabel":"Shift row up","submissionHistoryModal.aria":"Submission {number}, submitted {date}","submissionHistoryModal.at":"at","submissionHistoryModal.heading":"Submission History","submissionHistoryModal.noSubmissions":"There are no submissions.","submissionHistoryModal.submittedBy":"Submitters","submissionHistoryModal.submittedOn":"Submitted On","submissionViewerActionBar.downloadGradedCopy":"Download Graded Copy","submissionViewerActionBar.downloadOriginal":"Download Original","submissionViewerActionBar.editGroup":"Group Members","submissionViewerActionBar.grade":"Grade","submissionViewerActionBar.nextQuestion":"Next Question","submissionViewerActionBar.questionLabel.error":"Cannot display submission.","submissionViewerActionBar.questionLabel.processing":"Please wait.","submissionViewerActionBar.questionLabel.select":"Select a question.","submissionViewerActionBar.requestRegrade":"Request Regrade","submissionViewerActionBar.requestRegrade.aria":"Request Regrade for {title}","submissionViewerActionBar.requestRegrade.disabledInfo":"Please select a question.","submissionViewerActionBar.reselectPages":"Reselect Pages","submissionViewerActionBar.resubmit":"Resubmit","submissionViewerActionBar.submissionHistory":"Submission History","successfulSubmissionModal.heading":"{title} submitted successfully!","successfulSubmissionModal.onceGraded":"Once graded, click a question to view the grading rubric and you will have the option to submit a regrade request (if your instructor has enabled it).","successfulSubmissionModal.success":"A receipt of your submission has been sent to {submitterEmail}. You can resubmit any number of times until the due date (\u003cstrong\u003e{date}\u003c/strong\u003e).","successfulSubmissionModal.success.withTimelimit":"A receipt of your submission has been sent to {submitterEmail}. You can resubmit any number of times until the deadline.","validatorMessage.invalidFileExtension":"Invalid file extension","validatorMessage.invalidFileType":"Invalid file type","validatorMessage.invalidFormat":"Invalid format","validatorMessage.mustMatchPassword":"Must match password","validatorMessage.required":"Required","validatorMessage.tooShort":"Too short"}},"user_trn":"trn:user:us:gs::2021211","org_trn":"trn:org:us:gs::253","params":{"controller":"courses","action":"show","id":"301601"},"csrf_token":"ZWCnQ1/iSThnJF6n8ZlCIOg2GC7mMDS7swsOrQGyCHgz7SS3y92yC9BXrE4aPBkC7ktrcAQpXK6P6GV9cPxgzg==","ltiv1p3_launch_id":null,"ltiv1p3_session_key":null,"tfs_mode":false};
+//]]>
+	</script>
+	<link rel="stylesheet" media="all"
+		href="/assets/application2-02f43ff5c946993cf586c7c0fd1922de9f17333576c0385861e3c84fd262698f.css"
+		debug="false" />
+	<script src="/packs/manifest-7bd5a7ab1d9c50989816.js"></script>
+	<script src="/packs/vendor-14be364e7b084371a46c.js"></script>
+	<script src="/packs/global_components-108d5e1f1db2f58d2620.js"></script>
+	<script src="/assets/application-fd225a5316862fbf9eeb193e96bcc9e91e2444bad0a25876b2ea77dd720c340e.js" debug="false">
+	</script>
+	<meta name="csrf-param" content="authenticity_token" />
+	<meta name="csrf-token"
+		content="EzUr0j27wcom9tfa1ijHKA5Nt7JaITzhaTNQgJJLu5RFuKgmqYQ6+ZGFJTM9jZwKCDDE7Lg4VPRV0DtQ4wXTIg==" />
+	<meta name="pinterest" content="nopin" />
+</head>
+
+<body data-action="show" data-controller="courses">
+	<script type="text/javascript">
+		bugsnagClient.context = "courses#show"
+bugsnagClient.config.releaseStage = "production";bugsnagClient.user = {name: "Ian Brash", email: "brash@usc.edu", id: "2021211"};
+	</script><a class="sr-only sr-only-focusable btn modal--btnPrimary skipLink" href="#main-content">Skip to
+		content</a>
+	<nav class="l-sidebar">
+		<div class="sidebar--content">
+			<div class="sidebar--logoHeader">
+				<div class="logo"><a aria-label="back to home" href="/"><svg xmlns="http://www.w3.org/2000/svg"
+							width="29" height="26" viewBox="0 0 29 26" aria-hidden="true">
+							<g fill-rule="evenodd">
+								<path
+									d="M0 14.763h5.915V25.5H0zM15.057 0h5.915v25.5h-5.915zM7.528 8.589h5.915V25.5H7.528zM22.585 6.174H28.5V25.5h-5.915z">
+								</path>
+							</g>
+						</svg>
+						<div aria-hidden="true" class="logo--text">gradescope</div>
+					</a></div>
+				<div aria-label="toggle sidebar" class="collapseIcon js-toggleSidebar js-interactiveElement">
+					<i aria-hidden="true" class="fa fa-chevron-left collapseIcon--leftArrow"></i><i aria-hidden="true" class="fa fa-bars collapseIcon--hamburger"></i><i aria-hidden="true" class="fa fa-chevron-right collapseIcon--rightArrow"></i>
+				</div>
+			</div>
+			<div class="sidebar--collapsedHomeIcon"><a aria-label="back to home" href="/"><svg
+						xmlns="http://www.w3.org/2000/svg" width="29" height="26" viewBox="0 0 29 26"
+						aria-hidden="true">
+						<g fill-rule="evenodd">
+							<path
+								d="M0 14.763h5.915V25.5H0zM15.057 0h5.915v25.5h-5.915zM7.528 8.589h5.915V25.5H7.528zM22.585 6.174H28.5V25.5h-5.915z">
+							</path>
+						</g>
+					</svg>
+				</a></div>
+			<h1 class="sidebar--title"><a href="/courses/301601">20213_math_225_39541</a></h1>
+			<div class="sidebar--subtitle">20213_math_225_39541: Linear Algebra and Linear Differential Equations</div>
+			<ul class="sidebar--menu">
+				<li class="sidebar--menuItem"><a aria-label="Dashboard" href="/courses/301601" class="active">
+						<div class="sidebar--menuItemIcon"><i aria_hidden="true" class="fa fa-tasks"></i></div>
+						<div class="sidebar--menuItemLabel">Dashboard</div>
+					</a></li>
+				<li class="sidebar--menuItem"><a aria-label="Regrade Requests" href="/courses/301601/regrade_requests">
+						<div class="sidebar--menuItemIcon"><i aria_hidden="true" class="fa fa-repeat"></i></div>
+						<div class="sidebar--menuItemLabel">Regrade Requests</div>
+					</a></li>
+			</ul>
+			<h2 class="sidebar--menuHeader">Instructor</h2>
+			<ul class="sidebar--menu sidebar--menu-hiddenWhenCollapsed js-sidebarRoster">
+				<li class="sidebar--menuItem" id="sidebar-instructor-377183">
+					<div class="sidebar--menuItemIcon">
+						<div class="fa-stack-container">
+							<span class="fa-stack fa-lg"><i class="fa fa-circle-thin fa-stack-2x"></i><i class="fa fa-user fa-stack-1x"></i></span>
+						</div>
+					</div>
+					<div class="sidebar--menuItemLabel">Ricardo Orjuela Mancera</div>
+				</li>
+			</ul>
+			<div class="sidebar--userProfileMenuMobile">
+				<h2 class="sidebar--menuHeader">More</h2><a class="sidebar--userProfileMenuMobileLink" target="_blank"
+					rel="noopener"
+					href="https://help.gradescope.com"><i aria-hidden="true" class="fa fa-question-circle"></i>
+					Help</a><a class="sidebar--userProfileMenuMobileLink"
+					href="/account/edit"><i aria-hidden="true" class="fa fa-user"></i> Edit Account</a><a
+					class="sidebar--userProfileMenuMobileLink"
+					href="/logout?tfs_mode=false"><i aria-hidden="true" class="fa fa-power-off"></i> Log Out</a>
+			</div>
+		</div>
+		<div aria-label="toggle more options" class="sidebar--userProfile">
+			<div aria-hidden="true" class="sidebar--userProfileIcon" role="presentation">
+				<div class="fa-stack-container">
+					<span class="fa-stack fa-lg"><i aria-hidden="true" class="fa fa-circle-thin fa-stack-2x"></i><i aria-hidden="true" class="fa fa-user fa-stack-1x"></i></span>
+				</div>
+			</div>
+			<div class="sidebar--userProfileName">Account</div>
+			<div class="sidebar--userProfileMenuToggle">
+				<i aria-label="toggle account menu" role="img" class="fa fa-angle-up"></i></div>
+		</div>
+		<div class="modal modal-helpCenter js-helpCenterModal">
+			<div class="js-helpCenter" data-url="/help/contents"></div>
+		</div>
+	</nav>
+	<div class="sidebar--userProfileMenu"><a class="popover--listItem popover--listItem-userProfileMenu" target="_blank"
+			rel="noopener" href="https://help.gradescope.com"><i aria-hidden="true" class="fa fa-question-circle"></i>
+			Help</a><a class="popover--listItem popover--listItem-userProfileMenu"
+			href="/account/edit"><i aria-hidden="true" class="fa fa-user"></i> Edit Account</a><a
+			class="popover--listItem popover--listItem-userProfileMenu"
+			href="/logout?tfs_mode=false"><i aria-hidden="true" class="fa fa-power-off"></i> Log Out</a></div>
+	<nav class="l-mobileTopNav">
+		<div aria-expanded="false" aria-label="expand sidebar"
+			class="collapseIcon js-toggleSidebarMobile collapseIcon-is-collapsed js-interactiveElement">
+			<i aria-hidden="true" class="fa fa-chevron-left collapseIcon--leftArrow"></i><i aria-hidden="true" class="fa fa-bars collapseIcon--hamburger"></i><i aria-hidden="true" class="fa fa-chevron-right collapseIcon--rightArrow"></i>
+		</div>
+		<div class="logo"><a aria-label="back to home" href="/"><svg xmlns="http://www.w3.org/2000/svg" width="29"
+					height="26" viewBox="0 0 29 26" aria-hidden="true">
+					<g fill-rule="evenodd">
+						<path
+							d="M0 14.763h5.915V25.5H0zM15.057 0h5.915v25.5h-5.915zM7.528 8.589h5.915V25.5H7.528zM22.585 6.174H28.5V25.5h-5.915z">
+						</path>
+					</g>
+				</svg>
+				<div class="logo--text">gradescope</div>
+			</a></div>
+	</nav>
+	<div class="l-mainWrapper">
+		<div class="sidebar--mobileOverlay"></div>
+		<main class="l-main" id="main-content" tabindex="-1">
+			<div class="l-header">
+				<div class="alert alert-flashMessage alert-maintenance">
+					<span>The Gradescope website will be undergoing scheduled maintenance on Friday, January 7. The maintenance window will be from  8:00PM- 9:00PM PST /   4:00AM to  5:00AM GMT, with approximately 30 minutes of interrupted service. For live updates, please subscribe to our <a href="https://gradescope.statuspage.io">Status Page</a>.</span><button aria-label="close message" class="alert--close btn btn-link"><i class="fa fa-times"></i></button>
+				</div>
+			</div>
+			<div class="l-contentWrapper">
+				<div class="l-content">
+					<header class="courseHeader">
+						<h1 class="courseHeader--title">20213_math_225_39541</h1>
+						<div class="courseHeader--term">Fall 2021</div>
+					</header>
+					<section class="courseDashboard">
+						<div class="courseDashboard--panel courseDashboard--panel-description">
+							<h2 class="courseDashboard--panelHeading">Description</h2>
+							<p>Math 225 10am</p>
+						</div>
+					</section>
+					<section>
+						<table class="table" id="assignments-student-table">
+							<caption class="sr-only">Assignments List</caption>
+							<thead>
+								<tr role="row">
+									<th role="columnheader" scope="col">Name</th>
+									<th role="columnheader" scope="col">Status</th>
+									<th class="table--complexHeader sorting-right" role="columnheader" scope="col">
+										<div aria-label="Due Date">
+											<span aria-hidden="true" class="table--cell-hiddenOnMobile">Released</span><span>Due (<abbr title="Pacific Time (US &amp; Canada)">PST</abbr>)</span>
+										</div>
+									</th>
+									<th class="table--hiddenColumn">Release Date</th>
+									<th class="table--hiddenColumn">Due Date</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr role="row">
+									<th class="table--primaryLink" role="rowheader" scope="row"><a
+											aria-label="View Hw-0"
+											href="/courses/301601/assignments/1447528/submissions/86034860">Hw-0</a>
+									</th>
+									<td class="submissionStatus">
+										<div class="submissionStatus--score">50.0 / 50.0</div>
+									</td>
+									<td>
+										<div class="submissionTimeChart">
+											<div class="progressBar--caption">
+												<span aria-label="Released at August 29" class="submissionTimeChart--releaseDate">Aug 29</span><span aria-label="Due at September 02 at 10:00AM" class="submissionTimeChart--dueDate">Sep 02 at 10:00AM</span><br /><span aria-label="Late Due Date at September 03 at 10:00AM" class="submissionTimeChart--dueDate">Late Due Date: Sep 03 at 10:00AM</span>
+											</div>
+										</div>
+									</td>
+									<td class="hidden-column">2021-08-29 12:00:00 -0700</td>
+									<td class="hidden-column">2021-09-02 10:00:00 -0700</td>
+								</tr>
+								<tr role="row">
+									<th class="table--primaryLink" role="rowheader" scope="row"><a
+											aria-label="View Hw-1"
+											href="/courses/301601/assignments/1447532/submissions/86034968">Hw-1</a>
+									</th>
+									<td class="submissionStatus">
+										<div class="submissionStatus--score">55.0 / 60.0</div>
+									</td>
+									<td>
+										<div class="submissionTimeChart">
+											<div class="progressBar--caption">
+												<span aria-label="Released at August 29" class="submissionTimeChart--releaseDate">Aug 29</span><span aria-label="Due at September 02 at 10:00AM" class="submissionTimeChart--dueDate">Sep 02 at 10:00AM</span><br /><span aria-label="Late Due Date at September 03 at 10:00AM" class="submissionTimeChart--dueDate">Late Due Date: Sep 03 at 10:00AM</span>
+											</div>
+										</div>
+									</td>
+									<td class="hidden-column">2021-08-29 13:00:00 -0700</td>
+									<td class="hidden-column">2021-09-02 10:00:00 -0700</td>
+								</tr>
+								<tr role="row">
+									<th class="table--primaryLink" role="rowheader" scope="row">Quiz1</th>
+									<td class="submissionStatus submissionStatus-warning">
+										<div aria-hidden="true" class="submissionStatus--bullet" role="presentation">
+										</div>
+										<div class="submissionStatus--text">No Submission</div>
+									</td>
+									<td>
+										<div class="submissionTimeChart">
+											<div class="progressBar--caption">
+												<span aria-label="Released at September 02" class="submissionTimeChart--releaseDate">Sep 02</span><span aria-label="Due at September 02 at 10:00AM" class="submissionTimeChart--dueDate">Sep 02 at 10:00AM</span><br /><span aria-label="Late Due Date at September 22 at 10:00AM" class="submissionTimeChart--dueDate">Late Due Date: Sep 22 at 10:00AM</span>
+											</div>
+										</div>
+									</td>
+									<td class="hidden-column">2021-09-02 08:00:00 -0700</td>
+									<td class="hidden-column">2021-09-02 10:00:00 -0700</td>
+								</tr>
+								<tr role="row">
+									<th class="table--primaryLink" role="rowheader" scope="row"><a aria-label="View HW2"
+											href="/courses/301601/assignments/1494643/submissions/88079139">HW2</a></th>
+									<td class="submissionStatus">
+										<div class="submissionStatus--score">58.0 / 60.0</div>
+									</td>
+									<td>
+										<div class="submissionTimeChart">
+											<div class="progressBar--caption">
+												<span aria-label="Released at September 15" class="submissionTimeChart--releaseDate">Sep 15</span><span aria-label="Due at September 16 at 12:00PM" class="submissionTimeChart--dueDate">Sep 16 at 12:00PM</span>
+											</div>
+										</div>
+									</td>
+									<td class="hidden-column">2021-09-15 11:00:00 -0700</td>
+									<td class="hidden-column">2021-09-16 12:00:00 -0700</td>
+								</tr>
+								<tr role="row">
+									<th class="table--primaryLink" role="rowheader" scope="row">Quiz2</th>
+									<td class="submissionStatus submissionStatus-warning">
+										<div aria-hidden="true" class="submissionStatus--bullet" role="presentation">
+										</div>
+										<div class="submissionStatus--text">No Submission</div>
+									</td>
+									<td>
+										<div class="submissionTimeChart">
+											<div class="progressBar--caption">
+												<span aria-label="Released at September 21" class="submissionTimeChart--releaseDate">Sep 21</span><span aria-label="Due at September 21 at 10:00AM" class="submissionTimeChart--dueDate">Sep 21 at 10:00AM</span>
+											</div>
+										</div>
+									</td>
+									<td class="hidden-column">2021-09-21 08:00:00 -0700</td>
+									<td class="hidden-column">2021-09-21 10:00:00 -0700</td>
+								</tr>
+								<tr role="row">
+									<th class="table--primaryLink" role="rowheader" scope="row"><a aria-label="View HW3"
+											href="/courses/301601/assignments/1515531/submissions/90393710">HW3</a></th>
+									<td class="submissionStatus">
+										<div class="submissionStatus--score">52.5 / 60.0</div>
+									</td>
+									<td>
+										<div class="submissionTimeChart">
+											<div class="progressBar--caption">
+												<span aria-label="Released at September 22" class="submissionTimeChart--releaseDate">Sep 22</span><span aria-label="Due at September 28 at 12:00PM" class="submissionTimeChart--dueDate">Sep 28 at 12:00PM</span>
+											</div>
+										</div>
+									</td>
+									<td class="hidden-column">2021-09-22 12:00:00 -0700</td>
+									<td class="hidden-column">2021-09-28 12:00:00 -0700</td>
+								</tr>
+								<tr role="row">
+									<th class="table--primaryLink" role="rowheader" scope="row"><a
+											aria-label="View Midterm-1"
+											href="/courses/301601/assignments/1535084/submissions/90612561">Midterm-1</a>
+									</th>
+									<td class="submissionStatus">
+										<div class="submissionStatus--score">64.5 / 100.0</div>
+									</td>
+									<td>
+										<div class="submissionTimeChart">
+											<div class="progressBar--caption">
+												<span aria-label="Released at September 29" class="submissionTimeChart--releaseDate">Sep 29</span><span aria-label="Due at September 29 at  1:00PM" class="submissionTimeChart--dueDate">Sep 29 at  1:00PM</span><br /><span aria-label="Late Due Date at September 29 at  1:00PM" class="submissionTimeChart--dueDate">Late Due Date: Sep 29 at  1:00PM</span>
+											</div>
+										</div>
+									</td>
+									<td class="hidden-column">2021-09-29 10:00:00 -0700</td>
+									<td class="hidden-column">2021-09-29 13:00:00 -0700</td>
+								</tr>
+								<tr role="row">
+									<th class="table--primaryLink" role="rowheader" scope="row"><a aria-label="View HW4"
+											href="/courses/301601/assignments/1566833/submissions/95566612">HW4</a></th>
+									<td class="submissionStatus">
+										<div class="submissionStatus--score">53.5 / 60.0</div>
+									</td>
+									<td>
+										<div class="submissionTimeChart">
+											<div class="progressBar--caption">
+												<span aria-label="Released at October 10" class="submissionTimeChart--releaseDate">Oct 10</span><span aria-label="Due at October 22 at 12:00PM" class="submissionTimeChart--dueDate">Oct 22 at 12:00PM</span>
+											</div>
+										</div>
+									</td>
+									<td class="hidden-column">2021-10-10 12:00:00 -0700</td>
+									<td class="hidden-column">2021-10-22 12:00:00 -0700</td>
+								</tr>
+								<tr role="row">
+									<th class="table--primaryLink" role="rowheader" scope="row">Quiz3</th>
+									<td class="submissionStatus submissionStatus-warning">
+										<div aria-hidden="true" class="submissionStatus--bullet" role="presentation">
+										</div>
+										<div class="submissionStatus--text">No Submission</div>
+									</td>
+									<td>
+										<div class="submissionTimeChart">
+											<div class="progressBar--caption">
+												<span aria-label="Released at October 21" class="submissionTimeChart--releaseDate">Oct 21</span><span aria-label="Due at October 21 at 10:00AM" class="submissionTimeChart--dueDate">Oct 21 at 10:00AM</span>
+											</div>
+										</div>
+									</td>
+									<td class="hidden-column">2021-10-21 08:00:00 -0700</td>
+									<td class="hidden-column">2021-10-21 10:00:00 -0700</td>
+								</tr>
+								<tr role="row">
+									<th class="table--primaryLink" role="rowheader" scope="row"><a aria-label="View HW5"
+											href="/courses/301601/assignments/1616692/submissions/97750845">HW5</a></th>
+									<td class="submissionStatus">
+										<div class="submissionStatus--score">11.0 / 19.0</div>
+									</td>
+									<td>
+										<div class="submissionTimeChart">
+											<div class="progressBar--caption">
+												<span aria-label="Released at October 28" class="submissionTimeChart--releaseDate">Oct 28</span><span aria-label="Due at November 04 at 12:00AM" class="submissionTimeChart--dueDate">Nov 04 at 12:00AM</span>
+											</div>
+										</div>
+									</td>
+									<td class="hidden-column">2021-10-28 11:00:00 -0700</td>
+									<td class="hidden-column">2021-11-04 00:00:00 -0700</td>
+								</tr>
+								<tr role="row">
+									<th class="table--primaryLink" role="rowheader" scope="row"><a aria-label="View HW6"
+											href="/courses/301601/assignments/1649589/submissions/100541081">HW6</a>
+									</th>
+									<td class="submissionStatus">
+										<div class="submissionStatus--score">58.0 / 60.0</div>
+									</td>
+									<td>
+										<div class="submissionTimeChart">
+											<div class="progressBar--caption">
+												<span aria-label="Released at November 10" class="submissionTimeChart--releaseDate">Nov 10</span><span aria-label="Due at November 16 at 12:00PM" class="submissionTimeChart--dueDate">Nov 16 at 12:00PM</span>
+											</div>
+										</div>
+									</td>
+									<td class="hidden-column">2021-11-10 09:00:00 -0800</td>
+									<td class="hidden-column">2021-11-16 12:00:00 -0800</td>
+								</tr>
+								<tr role="row">
+									<th class="table--primaryLink" role="rowheader" scope="row"><a aria-label="View HW7"
+											href="/courses/301601/assignments/1649600/submissions/102613080">HW7</a>
+									</th>
+									<td class="submissionStatus">
+										<div class="submissionStatus--score">56.0 / 60.0</div>
+									</td>
+									<td>
+										<div class="submissionTimeChart">
+											<div class="progressBar--caption">
+												<span aria-label="Released at November 09" class="submissionTimeChart--releaseDate">Nov 09</span><span aria-label="Due at November 30 at 12:00PM" class="submissionTimeChart--dueDate">Nov 30 at 12:00PM</span>
+											</div>
+										</div>
+									</td>
+									<td class="hidden-column">2021-11-09 09:00:00 -0800</td>
+									<td class="hidden-column">2021-11-30 12:00:00 -0800</td>
+								</tr>
+								<tr role="row">
+									<th class="table--primaryLink" role="rowheader" scope="row">Quiz4</th>
+									<td class="submissionStatus submissionStatus-warning">
+										<div aria-hidden="true" class="submissionStatus--bullet" role="presentation">
+										</div>
+										<div class="submissionStatus--text">No Submission</div>
+									</td>
+									<td>
+										<div class="submissionTimeChart">
+											<div class="progressBar--caption">
+												<span aria-label="Released at November 18" class="submissionTimeChart--releaseDate">Nov 18</span><span aria-label="Due at December 02 at 10:00AM" class="submissionTimeChart--dueDate">Dec 02 at 10:00AM</span>
+											</div>
+										</div>
+									</td>
+									<td class="hidden-column">2021-11-18 08:00:00 -0800</td>
+									<td class="hidden-column">2021-12-02 10:00:00 -0800</td>
+								</tr>
+								<tr role="row">
+									<th class="table--primaryLink" role="rowheader" scope="row">Quiz5</th>
+									<td class="submissionStatus submissionStatus-warning">
+										<div aria-hidden="true" class="submissionStatus--bullet" role="presentation">
+										</div>
+										<div class="submissionStatus--text">No Submission</div>
+									</td>
+									<td>
+										<div class="submissionTimeChart">
+											<div class="progressBar--caption">
+												<span aria-label="Released at November 30" class="submissionTimeChart--releaseDate">Nov 30</span><span aria-label="Due at December 02 at 11:00AM" class="submissionTimeChart--dueDate">Dec 02 at 11:00AM</span>
+											</div>
+										</div>
+									</td>
+									<td class="hidden-column">2021-11-30 08:00:00 -0800</td>
+									<td class="hidden-column">2021-12-02 11:00:00 -0800</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+					<dialog aria-describedby="submit-fixed-length-modal-subheading"
+						aria-labelledby="submit-fixed-length-modal-heading" aria-modal="true" class="modal"
+						id="submit-fixed-length-modal" open="" tabindex="-1">
+						<div role="document">
+							<h1 class="modal--heading" id="submit-fixed-length-modal-heading">Submit Assignment</h1>
+							<div class="modal-subtitle modal--subheading">
+								<span class="modal-subtitle-icon modal--subheadingIcon"><i aria-hidden="true" class="fa fa-info-circle"></i></span><span class="modal-subtitle-text" id="submit-fixed-length-modal-subheading">Upload a PDF containing your responses to the assignment.</span>
+							</div>
+							<div class="modal-body modal--body">
+								<div class="msg warning msg-warning late-submission-warning">This submission will be
+									marked late. Please refer to your course&#39;s policy for handling late work.</div>
+								<div class="msg msg-info msg-noIconMargin js-downloadPDFTemplate is-hidden">
+									<p>Your instructor has provided a PDF to help you complete your assignment.<br /><a
+											class="link link-noUnderline js-downloadPDFTemplate--link" href=""
+											target="_blank"><i class="fa fa-download"></i><span class="js-downloadPDFTemplate--label"></span></a>
+									</p>
+								</div>
+								<form id="submit-fixed-length-form" enctype="multipart/form-data"
+									action="/courses/301601" accept-charset="UTF-8" method="post">
+									<input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="foRZnPF7mkxVMP0dPWabTSdYuCuTqimmjfr3fhbIGVxvaUZBI/ksBx4/hykS2P10BYZGAfLvNZrYi8Us8IClVQ==" />
+									<div class="fileUpload">
+										<label for="submission_pdf_attachment"><label class="form-label form--label-header"><span>File</span></label><input required="required" name="pdf_attachment" class="fileUpload--input " tabindex="-1" aria-hidden="true" type="file" id="submission_pdf_attachment" /><i aria_hidden="true" class="fa fa-file-text-o"></i><span class="fileUpload--prompt js-fileUploadPrompt"></span><span class="btnContainer"><span class="btn btn-fileUpload js-interactiveElement">Select PDF</span></span></label>
+									</div>
+									<div class="btnContainer">
+										<input type="submit" name="commit" value="Upload PDF" id="submit" class="btn btn-primary modal--btnPrimary" data-disable-with="Upload PDF" /><button class="btn btn-cancel modal--btnCancel" type="button">Cancel</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</dialog>
+					<dialog aria-describedby="submit-variable-length-modal-subheading"
+						aria-labelledby="submit-variable-length-modal-heading" aria-modal="true"
+						class="modal modal-withFooter" id="submit-variable-length-modal" open="" tabindex="-1">
+						<div role="document">
+							<h1 class="modal--heading" id="submit-variable-length-modal-heading">Submit Assignment</h1>
+							<div class="modal-subtitle modal--subheading">
+								<span class="modal-subtitle-icon modal--subheadingIcon"><i aria-hidden="true" class="fa fa-info-circle"></i></span><span class="modal-subtitle-text" id="submit-variable-length-modal-subheading">Submit images for each question, or a single PDF.</span>
+							</div>
+							<div class="modal-body modal--body">
+								<div class="msg error msg-error">The outline for this assignment has not been set up
+									yet. Notify your instructor to fix this problem.</div>
+								<div class="msg warning msg-warning late-submission-warning">This submission will be
+									marked late. Please refer to your course&#39;s policy for handling late work.</div>
+								<div class="msg msg-info msg-noIconMargin js-downloadPDFTemplate is-hidden">
+									<p>Your instructor has provided a PDF to help you complete your assignment.<br /><a
+											class="link link-noUnderline js-downloadPDFTemplate--link" href=""
+											target="_blank"><i class="fa fa-download"></i><span class="js-downloadPDFTemplate--label"></span></a>
+									</p>
+								</div>
+								<p class="u-instructionText">Attach one or more image files for your answer to each
+									question. You can also submit a single PDF, and then select the pages corresponding
+									to each question in the next step.</p>
+								<div class="linkGallery" id="submit-links-container"><a
+										class="submit-variable-length-choice linkGallery--link"
+										id="submit-variable-length-images"><i aria-hidden="true" class="fa fa-image"></i>
+										<div class="submit-variable-length-text linkGallery--linkText">Submit Images
+										</div>
+										</a><button class="submit-variable-length-choice btn-link linkGallery--link" id="submit-variable-length-pdf"><i aria-hidden="true" class="fa fa-file-pdf-o"></i><div class="submit-variable-length-text linkGallery--linkText">Submit PDF</div></button>
+								</div>
+							</div>
+							<div class="modal--footer modal--footer-closeButton js-closeModal js-interactiveElement">
+								<span aria-hidden="true" class="fa-stack modal--footerIcon"><i class="fa fa-circle-thin fa-stack-2x"></i><i class="fa fa-times fa-stack-1x"></i></span><span class="text modal--footerText">Close</span>
+							</div>
+						</div>
+					</dialog>
+					<dialog aria-describedby="submit-typed-document-modal-subheading"
+						aria-labelledby="submit-typed-document-modal-heading" aria-modal="true" class="modal"
+						id="submit-typed-document-modal" open="" tabindex="-1">
+						<div role="document">
+							<h1 class="modal--heading" id="submit-typed-document-modal-heading">Submit Assignment</h1>
+							<div class="modal-subtitle modal--subheading">
+								<span class="modal-subtitle-icon modal--subheadingIcon"><i aria-hidden="true" class="fa fa-info-circle"></i></span><span class="modal-subtitle-text" id="submit-typed-document-modal-subheading">Upload a document containing your responses to the assignment.</span>
+							</div>
+							<div class="modal-body modal--body">
+								<div class="msg msg-warning js-lateSubmissionWarning">This submission will be marked
+									late. Please refer to your course's policy for handling
+									late work.</div>
+								<form class="form js-submitTypedDocumentForm" enctype="multipart/form-data"
+									action="/courses/301601" accept-charset="UTF-8" method="post">
+									<input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="r1So6s3KWEwOgvkwLos/H0IHp7KCQDoyiHQVRpFJERO+ubc3H0juB0WNgwQBNVkmYNlZmOMFJg7dBScUdwGtGg==" />
+									<div class="form--group">
+										<div class="fileUpload">
+											<label for="submission_file"><label class="form-label form--label-header"><span>File</span></label><input required="required" name="file" class="fileUpload--input " tabindex="-1" aria-hidden="true" type="file" id="submission_file" /><i aria_hidden="true" class="fa fa-file-text-o"></i><span class="fileUpload--prompt js-fileUploadPrompt"></span><span class="btnContainer"><span class="btn btn-fileUpload js-interactiveElement">Select Document</span></span></label>
+										</div>
+										<div class="type-caption">Supported types: doc, docx, pdf, ppt, pptx, rtf, txt
+										</div>
+									</div>
+									<div class="btnContainerv7">
+										<input type="submit" name="commit" value="Upload Document" class="btnv7 btnv7-primary" data-disable-with="Upload Document" /><button class="btnv7 btnv7-danger js-closeModal js-cancelForm" type="button">Cancel</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</dialog>
+					<dialog aria-describedby="submit-code-modal-subheading" aria-labelledby="submit-code-modal-heading"
+						aria-modal="true" class="js-submitCodeModal modal" id="submit-code-modal" open="" tabindex="-1">
+						<div role="document">
+							<h1 class="modal--heading" id="submit-code-modal-heading">Submit Programming Assignment</h1>
+							<div class="modal-subtitle modal--subheading">
+								<span class="modal-subtitle-icon modal--subheadingIcon"><i aria-hidden="true" class="fa fa-info-circle"></i></span><span class="modal-subtitle-text" id="submit-code-modal-subheading">Upload all files for your submission</span>
+							</div>
+							<div class="modal-body modal--body">
+								<div class="msg msg-warning js-lateSubmissionWarning">This submission will be marked
+									late. Please refer to your course&#39;s policy or handling late work.</div>
+								<form autocomplete="off" class="form js-submitCodeForm" enctype="multipart/form-data"
+									action="/courses/301601" accept-charset="UTF-8" method="post">
+									<input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="m5RfDpmkuU6tULrIYbk1cMw7WHhh34Fzdm9zqfEwUOeKeUDTSyYPBeZfwPxOB1NJ7uWmUgCanU8jHkH7F3js7g==" />
+									<div class="js-submissionMethodSwitcher"></div>
+									<div class="form--group">
+										<div class="fileUploadArea">
+											<div aria-label="Select to upload files"
+												class="form-file-drop-area js-interactiveElement">
+												<div class="form-file-drop-area-header">Drag &amp; Drop</div>
+												<div class="form-file-drop-area-text">Any file(s) including .zip. Click
+													to browse.</div>
+											</div>
+											<div class="form-file-drop-message">Add files via Drag &amp; Drop or
+												<button class="btn btn-link btn-tealLink form-file-drop-browse" type="button">Browse Files.</button>
+											</div>
+											<div class="form-file-previews-container">
+												<div class="form-file-previews-header">
+													<div class="form-file-preview-filename">Name</div>
+													<div class="form-file-preview-file-size">Size</div>
+													<div class="form-file-preview-file-progress-container-header">
+														Progress</div>
+													<div class="form-file-preview-remove-button-header">
+														<i aria-label="Remove file" role="img" class="fa fa-times"></i>
+													</div>
+												</div>
+												<div class="form-file-previews"></div>
+											</div>
+										</div>
+									</div>
+									<div class="js-repositorySelector"
+										data-bitbucket-authentication-path="/bitbucket_authentication/new?assignment_id=nil"
+										data-bitbucket-is-authenticated="false"
+										data-bitbucket-repositories-url="https://www.gradescope.com/bitbucket_projects"
+										data-github-authentication-path="/github_authentication/new?assignment_id=nil"
+										data-github-is-authenticated="false"
+										data-github-repositories-url="https://www.gradescope.com/github_repositories">
+									</div>
+									<div class="form--group js-leaderboardGroup is-hidden">
+										<label class=" form-label form--label-header" for="submission_leaderboard_name">Leaderboard Name</label><input type="text" name="submission[leaderboard_name]" id="submission_leaderboard_name" placeholder="Provide a name for the leaderboard" required="required" class=" form--textInput" /></div>
+										<div class="btnContainerv7">
+											<button class="btnv7 btnv7-primary js-submitCode" type="submit">Upload</button><button class="btnv7 btnv7-danger js-closeModal" type="button">Cancel</button>
+										</div>
+								</form>
+							</div>
+						</div>
+					</dialog>
+					<div class="hidden" id="dropzone-preview-template">
+						<div class="form-file-preview">
+							<div class="form-file-preview-filename"><span data-dz-name=""></span></div>
+							<div class="form-file-preview-file-size"><span data-dz-size=""></span></div>
+							<div class="form-file-preview-file-progress-container">
+								<div data-dz-uploadprogress=""></div>
+							</div>
+							<div class="form-file-preview-remove-button">
+								<span data-dz-remove=""><i class="fa fa-times"></i></span></div>
+							<div class="form-file-preview-error-msg">
+								<div data-dz-errormessage=""></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+</body>
+
+</html>
