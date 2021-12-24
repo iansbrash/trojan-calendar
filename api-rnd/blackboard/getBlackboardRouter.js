@@ -47,11 +47,8 @@ const getBlackboardRouter = async (myUscCookies) => {
 
     allCookies = accumulateCookies(allCookies, returnParsedCookies(BBSamlRedirectResponse.headers['set-cookie']));
 
-    console.log(`BBAuthSamlResponse.headers.location: ${BBAuthSamlResponse.headers.location}`)
-
     let samlRes = getValueByDelimiters(BBSamlRedirectResponse.data, '<input type="hidden" name="SAMLResponse" value="', '" />') //
     samlRes = he.decode(samlRes);
-
 
     const BBPostAuthSamlResponse = await tryCatchWrapper(() => axios({
         method: 'post',
@@ -66,6 +63,7 @@ const getBlackboardRouter = async (myUscCookies) => {
 
     allCookies = accumulateCookies(allCookies, returnParsedCookies(BBPostAuthSamlResponse.headers['set-cookie']));
 
+    // has DefaultTab in the url idk
     const BBGetDefaultTabResponse = await tryCatchWrapper(() => axios({
         method: 'get',
         url: BBPostAuthSamlResponse.headers.location,
