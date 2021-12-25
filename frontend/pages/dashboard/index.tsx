@@ -4,8 +4,7 @@ import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import Header from '../../components/header/Header'
 import Assignments from '../../components/assignments/Assignments'
-import Assignments2 from '../../components/assignments/Assignments2'
-import Assignments3 from '../../components/assignments/Assignments3'
+import Grades from '../../components/grades/Grades'
 
 const Dashboard : NextPage = () => {
     return (
@@ -20,10 +19,10 @@ const Dashboard : NextPage = () => {
                 <Header />
 
                 {/* Main Item Holder */}
-                <div className="w-full flex flex-1 flex-row justify-start items-center">
+                <div className="w-full flex flex-1 flex-row justify-start items-center p-5">
                     <Assignments />
-                    <Assignments2 />
-                    <Assignments3 />
+
+                    <Grades />
                 </div>
                 
             </main>
