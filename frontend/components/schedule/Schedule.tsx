@@ -55,7 +55,10 @@ const Schedule : FC = () => {
                             </div>
 
                             <div className={`${n % 2 === 0 ? 'bg-zinc-100' : 'bg-zinc-200'} flex flex-1 h-full`}>
-
+                                {/* Absolutely positiion elements by doing this
+                                    endTime - startTime
+                                    and use that to dyamically set height of that absolutely positioned thing in the calendar
+                                */}
                             </div>
                         </div>    
                     )}
