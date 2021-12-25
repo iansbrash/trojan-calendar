@@ -5,6 +5,7 @@ import styles from '../../styles/Home.module.css'
 import Header from '../../components/header/Header'
 import Assignments from '../../components/assignments/Assignments'
 import Grades from '../../components/grades/Grades'
+import Schedule from '../../components/schedule/Schedule'
 
 const Dashboard : NextPage = () => {
     return (
@@ -23,6 +24,8 @@ const Dashboard : NextPage = () => {
                     <Assignments />
 
                     <Grades />
+
+                    <Schedule />
                 </div>
                 
             </main>
