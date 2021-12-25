@@ -30,15 +30,20 @@ const Assignments : FC = () => {
                         </div>
 
                         {/* Top Header */}
-                        <div className="h-auto w-full rounded-t-md bg-sky-400 flex justify-center items-center py-2">
+                        <div className="h-auto w-full rounded-t-md bg-sky-500 flex justify-center items-center py-2">
                             <div className="font-bold text-3xl text-zinc-50">
                                 MATH-225
                             </div>
                         </div>
 
                         {/* Content */}
-                        <div className="w-full h-full bg-sky-300 rounded-b-md px-2 py-2 text-zinc-50 text-2xl text-center">
+                        <div className="w-full h-full bg-sky-300 px-2 py-2 text-zinc-50 text-2xl text-center">
                             Homework 8
+                        </div>
+
+                        {/* Due Date */}
+                        <div className="text-center font-bold text-zinc-50 w-full h-auto rounded-b-md bg-sky-300">
+                            Due 12:00 PM
                         </div>
                     </div>
 
@@ -50,15 +55,20 @@ const Assignments : FC = () => {
                             </div>
                         </div>
                         {/* Top Header */}
-                        <div className="h-auto w-full rounded-t-md bg-indigo-400 flex justify-center items-center py-2">
+                        <div className="h-auto w-full rounded-t-md bg-indigo-500 flex justify-center items-center py-2">
                             <div className="font-bold text-3xl text-zinc-50">
                                 MATH-225
                             </div>
                         </div>
 
                         {/* Content */}
-                        <div className="rounded-b-md w-full h-full bg-indigo-300 px-2 py-2 text-zinc-50 text-2xl text-center">
+                        <div className="w-full h-full bg-indigo-300 px-2 py-2 text-zinc-50 text-2xl text-center">
                             Homework 9
+                        </div>
+
+                        {/* Due Date */}
+                        <div className="text-center font-bold text-zinc-50 w-full h-auto rounded-b-md bg-indigo-300">
+                            Due 11:59 PM
                         </div>
                     </div>
 
@@ -71,15 +81,20 @@ const Assignments : FC = () => {
                         </div>
 
                         {/* Top Header */}
-                        <div className="h-auto w-full rounded-t-md bg-rose-400 flex justify-center items-center py-2">
+                        <div className="h-auto w-full rounded-t-md bg-rose-500 flex justify-center items-center py-2">
                             <div className="font-bold text-3xl text-zinc-50">
                                 CSCI-270
                             </div>
                         </div>
 
                         {/* Content */}
-                        <div className="w-full h-full bg-rose-300 px-2 py-2 text-zinc-50 text-2xl text-center rounded-b-md">
+                        <div className="w-full h-full bg-rose-300 px-2 py-2 text-zinc-50 text-2xl text-center ">
                             PA 4
+                        </div>
+
+                        {/* Due Date */}
+                        <div className="text-center font-bold text-zinc-50 w-full h-auto rounded-b-md bg-rose-300">
+                            Due 1:45 PM
                         </div>
                     </div>
                 </div>
