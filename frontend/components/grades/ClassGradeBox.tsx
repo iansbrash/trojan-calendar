@@ -78,8 +78,8 @@ const ClassGradeBox : FC<ClassGradeBoxProps> = ({
 
             {/* Grades */}
             <div className={`${isToggled ? 'flex' : 'hidden'} w-full h-auto flex-col justify-start items-center`}>
-                {data.map((gradeObject : any) => 
-                    <div className="w-full flex flex-row justify-between items-center">
+                {data.map((gradeObject : any, index : number) => 
+                    <div className="w-full flex flex-row justify-between items-center" key={index}>
                         <div className="flex flex-row justify-start items-center">
                             {/* Bullet Point */}
                             <div className={`font-bold text-3xl mx-2.5 ${getColorBasedOnStatus(gradeObject.assignmentStatus)}`}>

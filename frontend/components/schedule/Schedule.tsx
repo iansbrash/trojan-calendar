@@ -47,18 +47,25 @@ const Schedule : FC = () => {
                 {/* Container just in case */}
                 <div className="w-full h-full flex flex-col justify-start items-center">
                     {[8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map(n => 
-                        <div className={`w-full flex flex-1 justify-start items-center`}>
-                            <div className="h-full flex flex-col justify-start items-start w-12 bg-zinc-300">
-                                <div className={`font-medium text-slate-800 text-md`}>
+                        <div className={`w-full flex flex-1 justify-start items-center border-t`}>
+                            <div className="h-full flex flex-col justify-start items-start w-12">
+                                <div className={`font-medium text-slate-900 text-md`}>
                                     {`${n === 12 || n === 24 ? 12 : n % 12}${n >= 12 ? 'PM' : 'AM'}`}
                                 </div>
                             </div>
 
-                            <div className={`${n % 2 === 0 ? 'bg-zinc-100' : 'bg-zinc-200'} flex flex-1 h-full`}>
-                                {/* Absolutely positiion elements by doing this
-                                    endTime - startTime
-                                    and use that to dyamically set height of that absolutely positioned thing in the calendar
-                                */}
+                            {/* ${n % 2 === 0 ? 'bg-zinc-100' : 'bg-zinc-200'} */}
+                            <div className={` flex flex-1 h-full relative`}> 
+                                {Math.random() * 10 > 9 ? 
+                                <>
+                                    <CalendarItem 
+                                        className='MATH-225'
+                                        classType='Lecture'
+                                        classLocation="SGM-152"
+                                        bgColor={Math.random() * 10 > 5 ? 'bg-sky-400' : 'bg-emerald-400'}
+                                    />
+                                </>
+                                : null}
                             </div>
                         </div>    
                     )}
@@ -68,6 +75,39 @@ const Schedule : FC = () => {
 
             </div>
         </ColumnContainer>
+    )
+}
+
+interface CalendarItemProps {
+    className: string,
+    classType: string,
+    classLocation: string,
+    bgColor: string
+}
+
+const CalendarItem : FC<CalendarItemProps> = ({
+    className,
+    classType,
+    classLocation,
+    bgColor
+} : CalendarItemProps) => {
+    return (
+        <div className={`absolute top-0 left-0 right-0 h-10/6 ${bgColor} rounded-md flex flex-col justify-start items-center`}>
+            <div className="w-full h-full relative flex flex-col justify-start items-center px-2 py-1">
+                <div className="font-medium text-white text-lg w-full">
+                    {className}
+                </div>
+                <div className="text-white text-lg w-full -mt-2">
+                    {classLocation}
+                </div>
+
+                <div className="absolute -top-2 -right-2 w-auto">
+                    <div className="bg-red-600 rounded-md font-medium text-md text-white px-1">
+                        {classType}
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
 
