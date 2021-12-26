@@ -8,8 +8,17 @@ import Grades from '../../components/grades/Grades'
 import Schedule from '../../components/schedule/Schedule'
 import Notes from '../../components/notes/Notes'
 import Announcements from '../../components/announcements/Announcements'
+import React, {
+    FC,
+    useState
+} from 'react';
 
 const Dashboard : NextPage = () => {
+
+    const [userIsLoaded, setUserIsLoaded] = useState<boolean>(true);
+
+    
+
     return (
         <div className={"w-screen h-screen bg-slate-100"}>
             <Head>
@@ -18,23 +27,39 @@ const Dashboard : NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main className="w-full h-full flex justify-start flex-col items-center flex-row">
+            <main className="w-full h-full flex justify-start flex-col items-center">
                 <Header />
 
                 {/* Main Item Holder */}
                 <div className="w-full flex flex-1 flex-row justify-start items-center p-5">
-                    <Assignments />
-
-                    <Grades />
-
-                    <Schedule />
-
-                    <Notes />
-
-                    <Announcements />
+                    {userIsLoaded ? <UserLoadedDashboard /> : <UserNotLoadedPlaceholder />}
                 </div>
                 
             </main>
+        </div>
+    )
+}
+
+const UserLoadedDashboard : FC = () => {
+    return (
+        <>
+            <Assignments />
+
+            <Grades />
+
+            <Schedule />
+
+            <Notes />
+
+            <Announcements />
+        </>
+    )
+}
+
+const UserNotLoadedPlaceholder : FC = () => {
+    return(
+        <div>
+
         </div>
     )
 }

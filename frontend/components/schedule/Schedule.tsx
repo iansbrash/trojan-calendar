@@ -47,7 +47,9 @@ const Schedule : FC = () => {
                 {/* Container just in case */}
                 <div className="w-full h-full flex flex-col justify-start items-center">
                     {[8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map(n => 
-                        <div className={`w-full flex flex-1 justify-start items-center border-t`}>
+                        <div className={`w-full flex flex-1 justify-start items-center border-t`}
+                        key={n}
+                        >
                             <div className="h-full flex flex-col justify-start items-start w-12">
                                 <div className={`font-medium text-slate-900 text-md`}>
                                     {`${n === 12 || n === 24 ? 12 : n % 12}${n >= 12 ? 'PM' : 'AM'}`}
