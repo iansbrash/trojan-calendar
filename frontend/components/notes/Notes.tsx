@@ -21,6 +21,7 @@ const Notes : FC = () => {
                 </svg>
             }
             header={`My Notes`}
+            breakpoint='lg:block'
         >
             {/* Content */}
             <div className="w-full rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-start items-center space-y-4 pb-4">

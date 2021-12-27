@@ -5,12 +5,13 @@ import React, {
     FC,
     useState,
     ReactNode,
-    useContext
+    useContext,
+    useEffect
 } from 'react';
 import MainButton from '../../components/login-signup/MainButton';
 import SubButton from '../../components/login-signup/SubButton';
 import { AccountContext } from '../../constants/cognito/Account';
-import UserPool from '../../constants/cognito/UserPool';
+import { useRouter } from 'next/router'
 
 const Home: NextPage = () => {
 
@@ -20,7 +21,8 @@ const Home: NextPage = () => {
 
     const [isSigningUp, setIsSigningUp] = useState<boolean>(false);
 
-    const { register } = useContext(AccountContext)
+    const { register, getSession } = useContext(AccountContext)
+    const Router = useRouter();
 
 
     const onSignUp = async (event : any) => {
@@ -36,6 +38,18 @@ const Home: NextPage = () => {
 
         setIsSigningUp(false)
     }
+
+    // Redirects us if we're already logged in
+    useEffect(() => {
+
+        getSession().then((session : any) => {
+            console.log("Session", session)
+            Router.push('/dashboard')
+        })
+
+        return () => {
+        }
+    }, [])
 
     return (
         <div className={"w-screen h-screen bg-slate-100"}>

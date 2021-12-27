@@ -15,6 +15,7 @@ const Grades : FC = () => {
                 </svg>
             }
             header={`My Grades`}
+            breakpoint='md:block'
         >
             {/* Content */}
             <div className="w-full h-auto rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-start items-center space-y-4">

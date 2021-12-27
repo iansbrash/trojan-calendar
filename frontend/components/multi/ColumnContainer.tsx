@@ -6,16 +6,18 @@ import React, {
 interface ColumnContainerProps {
     header: string,
     icon: ReactNode,
-    children: ReactNode
+    children: ReactNode,
+    breakpoint?: string
 }
 
 const ColumnContainer : FC<ColumnContainerProps> = ({
     header,
     icon,
-    children
+    children,
+    breakpoint
 } : ColumnContainerProps) => {
     return (
-        <div className="h-full w-1/5 p-5">
+        <div className={`h-full flex-1 p-5 ${breakpoint ? `hidden ${breakpoint}` : 'block'}`}>
             <div className="w-full h-full flex flex-col justify-start items-center drop-shadow-md">
 
                 {/* Header */}

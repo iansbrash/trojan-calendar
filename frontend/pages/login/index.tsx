@@ -11,6 +11,8 @@ import React, {
 import MainButton from '../../components/login-signup/MainButton';
 import SubButton from '../../components/login-signup/SubButton';
 import { AccountContext } from '../../constants/cognito/Account';
+import UserPool from '../../constants/cognito/UserPool';
+import { useRouter } from 'next/router'
 
 const Home: NextPage = () => {
 
@@ -23,11 +25,16 @@ const Home: NextPage = () => {
 
     const [isAuthed, setIsAuthed] = useState<boolean>(false);
 
+    const Router = useRouter();
+
     const onLogin = async (event : any) => {
         event.preventDefault()
         try {
             const data = await authenticate(username, password)
             console.log(data)
+
+            // Now navigate to /dashboard
+            Router.push('/dashboard')
         }
         catch (err) {
             console.error(err);
@@ -35,11 +42,13 @@ const Home: NextPage = () => {
         setIsLoggingIn(false);
     }
 
+    // Redirects us if we're already logged in
     useEffect(() => {
-        
+
         getSession().then((session : any) => {
             console.log("Session", session)
             setIsAuthed(true);
+            Router.push('/dashboard')
         })
 
         return () => {

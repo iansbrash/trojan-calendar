@@ -10,12 +10,32 @@ import Notes from '../../components/notes/Notes'
 import Announcements from '../../components/announcements/Announcements'
 import React, {
     FC,
+    useContext,
+    useEffect,
     useState
 } from 'react';
+import { useRouter } from 'next/router'
+import { AccountContext } from '../../constants/cognito/Account'
 
 const Dashboard : NextPage = () => {
 
     const [userIsLoaded, setUserIsLoaded] = useState<boolean>(true);
+    const Router = useRouter();
+    const { getSession } = useContext(AccountContext)
+
+    // Redirects us if we're already logged in
+    useEffect(() => {
+
+        getSession().then((session : any) => {
+            console.log("Session", session)
+        }).catch((err : Error) => {
+            console.error("Error", err)
+            Router.push('/login')
+        })
+
+        return () => {
+        }
+    }, [])
 
     
 

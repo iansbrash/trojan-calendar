@@ -40,6 +40,7 @@ const Schedule : FC = () => {
                 </svg>
             }
             header={`My Schedule`}
+            breakpoint='xl:block'
         >
             {/* Content */}
             <div className="w-full flex-1 rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-between items-center">
