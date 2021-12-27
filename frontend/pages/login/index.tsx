@@ -4,44 +4,47 @@ import Link from 'next/link';
 import React, {
     FC,
     useState,
-    ReactNode
+    ReactNode,
+    useContext,
+    useEffect
 } from 'react';
-import {
-    CognitoUser,
-    AuthenticationDetails
-} from 'amazon-cognito-identity-js'
-import UserPool from '../../constants/cognito/UserPool';
+import MainButton from '../../components/login-signup/MainButton';
+import SubButton from '../../components/login-signup/SubButton';
+import { AccountContext } from '../../constants/cognito/Account';
 
 const Home: NextPage = () => {
 
     const [password, setPassword] = useState<string>('');
     const [username, setUsername] = useState<string>('');
 
-    const onLogin = (event : any) => {
+    const { authenticate, getSession } = useContext(AccountContext)
+
+    const [isLoggingIn, setIsLoggingIn] = useState<boolean>(false);
+
+    const [isAuthed, setIsAuthed] = useState<boolean>(false);
+
+    const onLogin = async (event : any) => {
         event.preventDefault()
-
-        const user = new CognitoUser({
-            Username: username,
-            Pool: UserPool
-        });
-
-        const authDetails = new AuthenticationDetails({
-            Username: username,
-            Password: password
-        })
-
-        user.authenticateUser(authDetails, {
-            onSuccess: (data) => {
-                console.log("onSuccess: ", data)
-            },
-            onFailure: (data) => {
-                console.error("onFailure: ", data)
-            },
-            newPasswordRequired: (data) => {
-                console.log("newPasswordRequired: ", data)
-            }
-        })
+        try {
+            const data = await authenticate(username, password)
+            console.log(data)
+        }
+        catch (err) {
+            console.error(err);
+        }
+        setIsLoggingIn(false);
     }
+
+    useEffect(() => {
+        
+        getSession().then((session : any) => {
+            console.log("Session", session)
+            setIsAuthed(true);
+        })
+
+        return () => {
+        }
+    }, [])
 
     return (
         <div className={"w-screen h-screen bg-slate-100"}>
@@ -71,7 +74,7 @@ const Home: NextPage = () => {
                                 </svg>
                             </div>
                             <div className="font-bold text-2xl text-slate-900 w-full text-start">
-                                Login
+                                {isAuthed ? "Already logged in" : 'Login'}
                             </div>
                         </div>
 
@@ -106,22 +109,22 @@ const Home: NextPage = () => {
                         <div className="flex flex-col w-full h-auto justify-start items-center space-y-2">
                             {/* Login/Signup */}
                             <div className="w-full h-auto flex flex-row justify-center items-center space-x-4">
-                                <Link
-                                href="signup">
-                                    <div className="drop-shadow-md border-2 border-sky-400 cursor-pointer flex flex-1 justify-center items-center rounded-md bg-zinc-50 h-auto px-2 py-1">
-                                        <div className="text-2xl text-sky-400 font-medium">
-                                            Sign Up
-                                        </div>
-                                    </div>
-                                </Link>
+                                
 
-                                <div className="border-2 border-sky-400 drop-shadow-md cursor-pointer flex flex-1 justify-center items-center rounded-md bg-sky-400 h-auto px-2 py-1"
-                                onClick={(event) => onLogin(event)}
-                                >
-                                    <div className="text-2xl text-white font-medium">
-                                        Login
-                                    </div>
-                                </div>
+                                <SubButton 
+                                    path="/signup"
+                                    text={'Sign Up'}
+                                    isLoading={isLoggingIn}
+                                />
+
+                                <MainButton 
+                                    onClick={async (event) => {
+                                        setIsLoggingIn(true);
+                                        await onLogin(event)
+                                    }}
+                                    text={'Login'}
+                                    isLoading={isLoggingIn}
+                                />
                             </div>
                         </div>
                     </div>

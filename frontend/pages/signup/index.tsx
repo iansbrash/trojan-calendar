@@ -4,8 +4,12 @@ import Link from 'next/link';
 import React, {
     FC,
     useState,
-    ReactNode
+    ReactNode,
+    useContext
 } from 'react';
+import MainButton from '../../components/login-signup/MainButton';
+import SubButton from '../../components/login-signup/SubButton';
+import { AccountContext } from '../../constants/cognito/Account';
 import UserPool from '../../constants/cognito/UserPool';
 
 const Home: NextPage = () => {
@@ -14,15 +18,23 @@ const Home: NextPage = () => {
     const [confirmPassword, setConfirmPassword] = useState<string>('');
     const [username, setUsername] = useState<string>('');
 
-    const onSignUp = (event : any) => {
+    const [isSigningUp, setIsSigningUp] = useState<boolean>(false);
+
+    const { register } = useContext(AccountContext)
+
+
+    const onSignUp = async (event : any) => {
         event.preventDefault();
 
-        UserPool.signUp(username, password, [], [], (err, data) => {
-            if (err) {
-                console.error(err)
-            }
-            console.log(data)
-        });
+        try {
+            const res = await register(username, confirmPassword);
+            console.log(res)
+        }
+        catch (err) {
+            console.error(err)
+        }
+
+        setIsSigningUp(false)
     }
 
     return (
@@ -92,24 +104,22 @@ const Home: NextPage = () => {
                     <div className="flex flex-col w-full h-auto justify-start items-center space-y-2">
                         {/* Login/Signup */}
                         <div className="w-full h-auto flex flex-row justify-center items-center space-x-4">
-                            <Link
-                            href="/login"
-                            >
-                                <div className="drop-shadow-md border-2 border-sky-400 cursor-pointer flex flex-1 justify-center items-center rounded-md bg-zinc-50 h-auto px-2 py-1">
-                                    <div className="text-2xl text-sky-400 font-medium">
-                                        Login
-                                    </div>
-                                </div>
-                            </Link>
+                            
+                            <SubButton
+                                path="/login"
+                                text={'Log In'}
+                                isLoading={isSigningUp}
+                            />
                             
 
-                            <div className="border-2 border-sky-400 drop-shadow-md cursor-pointer flex flex-1 justify-center items-center rounded-md bg-sky-400 h-auto px-2 py-1"
-                            onClick={(event : any) => onSignUp(event)}
-                            >
-                                <div className="text-2xl text-white font-medium">
-                                    Sign Up
-                                </div>
-                            </div>
+                            <MainButton 
+                                    onClick={async (event) => {
+                                        setIsSigningUp(true);
+                                        await onSignUp(event)
+                                    }}
+                                    text={'Sign Up'}
+                                    isLoading={isSigningUp}
+                                />
                         </div>
                     </div>
 
