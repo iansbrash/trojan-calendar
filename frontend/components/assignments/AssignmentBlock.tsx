@@ -41,4 +41,29 @@ const AssignmentBlock : FC<AssignmentBlockProps> = ({
     )
 }
 
+export const UnloadedAssignmentBlock : FC = () => {
+    return (
+        <div className="animate-pulse cursor-pointer w-full h-auto py-2 flex flex-col justify-start items-center drop-shadow-md relative">
+            {/* Due Date */}
+            <div className="px-2 absolute w-auto h-5 bg-gray-300 rounded-md top-0 -right-3 flex justify-center items-center">
+                <div className="font-bold text-white">
+                    {'ㅤㅤ'}
+                </div>
+            </div>
+
+            {/* Top Header */}
+            <div className={`h-auto w-full rounded-t-md bg-gray-200 flex justify-center items-center py-2`}>
+                <div className="font-bold text-3xl text-zinc-50">
+                    {'ㅤ'}
+                </div>
+            </div>
+
+            {/* Content */}
+            <div className={`w-full h-full bg-gray-200 rounded-b-md px-2 py-2 text-zinc-50 text-2xl text-center`}>
+                {'ㅤ'}
+            </div>
+        </div>
+    )
+}
+
 export default AssignmentBlock;

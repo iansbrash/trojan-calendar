@@ -83,9 +83,9 @@ const Note : FC<NoteProps> = ({
 
             <div className={`px-2 py-1 ${contentColor} rounded-b-md w-full`}>
                 <div className="text-lg text-white">
-                    {noteContents.split('\n').map(line => {
+                    {noteContents.split('\n').map((line, index) => {
                         return (
-                            <div>
+                            <div key={index}>
                                 {line}
                             </div>
                         )
