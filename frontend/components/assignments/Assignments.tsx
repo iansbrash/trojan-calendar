@@ -1,8 +1,8 @@
 import React, {
     FC
 } from 'react';
-import AssignmentBlock, { UnloadedAssignmentBlock } from './AssignmentBlock';
-import DayContainer from './DayContainer';
+import AssignmentBlock, { LoadingAssignmentBlock } from './AssignmentBlock';
+import DayContainer, { LoadingDayContainer } from './DayContainer';
 import ColumnContainer from '../multi/ColumnContainer';
 import { UpcomingAssignment } from '../../pages/dashboard/cache';
 
@@ -26,12 +26,13 @@ const Assignments : FC<AssignmentsProps> = ({
             >
                 {/* Content */}
                 <div className="w-full h-auto rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-start items-center space-y-8">
-                    <DayContainer
-                        dayTitle={'Today'}
-                        dayDate={'12/25/21'}
-                    >
-                        <UnloadedAssignmentBlock />
-                    </DayContainer>
+                    <LoadingDayContainer>
+                        <LoadingAssignmentBlock />
+                        <LoadingAssignmentBlock />
+                    </LoadingDayContainer>
+                    <LoadingDayContainer>
+                        {Array.apply(null, Array(Math.floor(Math.random() * 3) + 1)).map(function () {}).map(v => <LoadingAssignmentBlock />)}
+                    </LoadingDayContainer>
                 </div>
             </ColumnContainer>
         )

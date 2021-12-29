@@ -41,13 +41,13 @@ const AssignmentBlock : FC<AssignmentBlockProps> = ({
     )
 }
 
-export const UnloadedAssignmentBlock : FC = () => {
+export const LoadingAssignmentBlock : FC = () => {
     return (
-        <div className="animate-pulse cursor-pointer w-full h-auto py-2 flex flex-col justify-start items-center drop-shadow-md relative">
+        <div className="cursor-pointer w-full h-auto py-2 flex flex-col justify-start items-center drop-shadow-md relative">
             {/* Due Date */}
             <div className="px-2 absolute w-auto h-5 bg-gray-300 rounded-md top-0 -right-3 flex justify-center items-center">
                 <div className="font-bold text-white">
-                    {'ㅤㅤ'}
+                    {Array.apply(null, Array(Math.floor(Math.random() * 2) + 2)).map(function () {}).map(v => 'ㅤ')}
                 </div>
             </div>
 

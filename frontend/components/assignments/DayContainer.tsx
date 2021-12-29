@@ -26,4 +26,19 @@ const DayContainer : FC<DayContainerProps> = ({
     )
 }
 
+export const LoadingDayContainer : FC = (props) => {
+    return (
+        <div className="w-full flex flex-col justify-start items-center animate-pulse">
+            {/* Day Text */}
+            <div className="text-slate-800 w-full font-bold px-2 flex justify-start items-center">
+                <span className="text-lg bg-gray-300 rounded-md">
+
+                    {Array.apply(null, Array(Math.floor(Math.random() * 6) + 6)).map(function () {}).map(v => 'ㅤ')}
+                </span> 
+            </div>
+            {props.children}
+        </div>
+    )
+}
+
 export default DayContainer;
