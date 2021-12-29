@@ -1,6 +1,7 @@
 import React, {
     FC
 } from 'react';
+import getInitializedArray from '../../constants/functions/getInitializedArray';
 
 interface AssignmentBlockProps {
     headerColor: string,
@@ -47,7 +48,7 @@ export const LoadingAssignmentBlock : FC = () => {
             {/* Due Date */}
             <div className="px-2 absolute w-auto h-5 bg-gray-300 rounded-md top-0 -right-3 flex justify-center items-center">
                 <div className="font-bold text-white">
-                    {Array.apply(null, Array(Math.floor(Math.random() * 2) + 2)).map(function () {}).map(v => 'ㅤ')}
+                    {getInitializedArray(2, 2).map(function () {}).map(v => 'ㅤ')}
                 </div>
             </div>
 

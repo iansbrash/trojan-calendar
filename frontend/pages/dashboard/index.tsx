@@ -27,29 +27,17 @@ const Dashboard : NextPage = () => {
     const [session, setSession] = useState<CognitoUserSession | null>(null);
     const [cachedData, setCachedData] = useState<Cache | null>(null);
 
-    // // Redirects us if we're already logged in
-    // useEffect(() => {
-
-    //     getSession().then((session : any) => {
-    //         console.log("Session", session)
-    //         setSession(session)
-    //     }).catch((err : Error) => {
-    //         console.error("Error", err)
-    //         Router.push('/login')
-    //     })
-
-    //     return () => {
-    //     }
-    // }, [])
-
     const [isLoadingCacheData, setIsLoadingCacheData] = useState<boolean>(false);
 
     // Load data from cache
     useEffect(() => {
 
-        if (session !== null) {
+        return;
+
+        if (session === null) {
             return;
         }
+
 
         setIsLoadingCacheData(true);
 
@@ -57,6 +45,7 @@ const Dashboard : NextPage = () => {
 
             try {
 
+                // @ts-ignore
                 const token = session.getIdToken().getJwtToken()
                 console.log(session)
 
@@ -105,9 +94,13 @@ const Dashboard : NextPage = () => {
                             assignments={cachedData ? cachedData.assignments : null}
                         />
 
-                        <Grades />
+                        <Grades 
+                            grades={cachedData ? cachedData.grades : null}
+                        />
 
-                        <Schedule />
+                        <Schedule 
+                            schedule={cachedData ? cachedData.schedule : null}
+                        />
 
                         <Notes />
 

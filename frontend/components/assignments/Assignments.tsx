@@ -5,6 +5,7 @@ import AssignmentBlock, { LoadingAssignmentBlock } from './AssignmentBlock';
 import DayContainer, { LoadingDayContainer } from './DayContainer';
 import ColumnContainer from '../multi/ColumnContainer';
 import { UpcomingAssignment } from '../../pages/dashboard/cache';
+import getInitializedArray from '../../constants/functions/getInitializedArray';
 
 interface AssignmentsProps {
     assignments: UpcomingAssignment[] | null
@@ -31,7 +32,7 @@ const Assignments : FC<AssignmentsProps> = ({
                         <LoadingAssignmentBlock />
                     </LoadingDayContainer>
                     <LoadingDayContainer>
-                        {Array.apply(null, Array(Math.floor(Math.random() * 3) + 1)).map(function () {}).map(v => <LoadingAssignmentBlock />)}
+                        {getInitializedArray(1, 3).map(v => <LoadingAssignmentBlock />)}
                     </LoadingDayContainer>
                 </div>
             </ColumnContainer>

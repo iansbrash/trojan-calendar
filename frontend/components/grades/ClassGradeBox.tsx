@@ -3,6 +3,7 @@ import React, {
     FC,
     useState
 } from 'react';
+import getInitializedArray from '../../constants/functions/getInitializedArray';
 
 enum AssignmentStatus {
     GRADED,
@@ -99,6 +100,22 @@ const ClassGradeBox : FC<ClassGradeBoxProps> = ({
                         </div>
                     </div>    
                 )}
+            </div>
+        </div>
+    )
+}
+
+export const LoadingClassGradeBox : FC = () => {
+
+    return (
+        <div className={`animate-pulse wh-auto flex flex-row justify-start items-center w-full `}>
+
+            {/* Header with Chevron */}
+            <div className={`w-auto bg-gray-300 flex flex-row justify-start items-center cursor-pointer transition duration-250 ease-in-out  py-1 rounded-md`}
+            >
+                <div className="font-medium text-2xl text-slate-800">
+                    {getInitializedArray(8, 4).map(v => 'ㅤ')}
+                </div>
             </div>
         </div>
     )

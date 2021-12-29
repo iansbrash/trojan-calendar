@@ -2,6 +2,7 @@ import React, {
     FC,
     ReactNode
 } from 'react';
+import getInitializedArray from '../../constants/functions/getInitializedArray';
 
 interface DayContainerProps {
     children: ReactNode,
@@ -33,7 +34,7 @@ export const LoadingDayContainer : FC = (props) => {
             <div className="text-slate-800 w-full font-bold px-2 flex justify-start items-center">
                 <span className="text-lg bg-gray-300 rounded-md">
 
-                    {Array.apply(null, Array(Math.floor(Math.random() * 6) + 6)).map(function () {}).map(v => 'ㅤ')}
+                    {getInitializedArray(6, 6).map(v => 'ㅤ')}
                 </span> 
             </div>
             {props.children}
