@@ -32,7 +32,7 @@ const Dashboard : NextPage = () => {
     // Load data from cache
     useEffect(() => {
 
-        return;
+        // return;
 
         if (session === null) {
             return;
@@ -89,7 +89,8 @@ const Dashboard : NextPage = () => {
                     <Header />
 
                     {/* Main Item Holder */}
-                    <div className="w-full flex flex-1 flex-row justify-start items-center p-5">
+                    <div className="overflow-y-hidden overflow-x-visible w-full h-auto flex flex-1 flex-row justify-start items-center p-5">
+
                         <Assignments 
                             assignments={cachedData ? cachedData.assignments : null}
                         />
@@ -102,9 +103,14 @@ const Dashboard : NextPage = () => {
                             schedule={cachedData ? cachedData.schedule : null}
                         />
 
-                        <Notes />
+                        <Notes 
+                            notes={cachedData ? [] : null}
+                        />
 
-                        <Announcements />
+                        <Announcements 
+                            announcements={cachedData ? [] : null}
+                        
+                        />
                     </div>
                 </AuthRoute>
                 

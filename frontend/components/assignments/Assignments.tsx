@@ -1,5 +1,5 @@
 import React, {
-    FC
+    FC, useEffect, useState
 } from 'react';
 import AssignmentBlock, { LoadingAssignmentBlock } from './AssignmentBlock';
 import DayContainer, { LoadingDayContainer } from './DayContainer';
@@ -14,6 +14,68 @@ interface AssignmentsProps {
 const Assignments : FC<AssignmentsProps> = ({
     assignments
 } : AssignmentsProps) => {
+
+    const todaysDate = (new Date()).getDate();
+    const [as, setAs] = useState<any>([])
+    const [assignmentDays, setAssignmentDays] = useState<number[]>();
+    
+
+    useEffect(() => {
+
+        if (assignments === null) {
+            return;
+        }
+
+        let obj : any = {
+
+        }
+
+        assignments?.forEach(a => {
+            const day = (new Date()).getDay()
+            
+            if (!obj[day]) {
+                obj[day] = [a];
+            }
+            else {
+                obj[day] = [...obj[day], a];
+            }
+        })
+
+        setAs(obj)
+
+        console.log(obj)
+
+        // We have confirmed sort() works
+        // Remember the keys are strings though... now it works (high coding)
+        let daysWithAssignments : any = Object.keys(obj);
+        daysWithAssignments = daysWithAssignments.map((s : string) => parseInt(s));
+        daysWithAssignments.sort(function(a : string, b : string){return parseInt(a)-parseInt(b)});
+
+        daysWithAssignments = ["0", "1", "2", "3", "4", "5", "6", "7"];
+
+
+        let startingDate;
+        for (let i = todaysDate, k = 0; k < 32; i++, k++) {
+
+            if (obj[i + '']) {
+                startingDate = i;
+                break;
+            }
+
+            if (i === 31) {
+                i = 0;
+            }
+            
+        }
+
+        daysWithAssignments = [...daysWithAssignments, ...daysWithAssignments].slice(daysWithAssignments.indexOf(startingDate + ''), daysWithAssignments.indexOf(startingDate + '') + daysWithAssignments.length);
+        console.log(daysWithAssignments)
+
+        setAssignmentDays(daysWithAssignments)
+
+    }, [assignments]);
+
+    
 
     if (assignments === null) {
         return (
@@ -32,7 +94,7 @@ const Assignments : FC<AssignmentsProps> = ({
                         <LoadingAssignmentBlock />
                     </LoadingDayContainer>
                     <LoadingDayContainer>
-                        {getInitializedArray(1, 3).map(v => <LoadingAssignmentBlock />)}
+                        {getInitializedArray(1, 3).map((v, i) => <LoadingAssignmentBlock key={i}/>)}
                     </LoadingDayContainer>
                 </div>
             </ColumnContainer>
@@ -50,12 +112,68 @@ const Assignments : FC<AssignmentsProps> = ({
             header={`My Assignments`}
         >
             {/* Content */}
-            <div className="w-full h-auto rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-start items-center space-y-8">
+            <div className="w-full h-full rounded-b-xl bg-zinc-50 px-4 pb-2 py-2 flex flex-col justify-start items-center">
+                <div className="w-full h-full flex flex-col justify-start items-center overflow-y-scroll scrollbar-hide bg-red-300">
+
+                {assignmentDays?.map((day, index) => {
+                    let assignmentList : UpcomingAssignment[] = as[day + ''];
+                    // return;
+                    if (!assignmentList) {
+                        console.log("Something very not good happened (Assignments.tsx")
+                        return;
+                    }
+
+                    let header;
+                    if (day === todaysDate) {
+                        header = "Today"
+                    }
+                    else {
+                        header = "Eventually"
+                    }
+
+                    console.log( 'assignmentList', assignmentList)
+
+                    return <>
+                        <DayContainer
+                        dayTitle={header}
+                        dayDate={'12/25/21'}
+                        >
+                            {assignmentList.map((a, i) => {
+                                return <AssignmentBlock 
+                                    key={i}
+                                    headerColor={'bg-sky-500'}
+                                    contentColor={'bg-sky-300'}
+                                    dueTime={'1:69 PM'}
+                                    className={a.className}
+                                    assignmentTitle={a.assignmentTitle}
+                                />
+                            })}
+                        </DayContainer>
+                    </>
+                })}
+
                 <DayContainer
                     dayTitle={'Today'}
                     dayDate={'12/25/21'}
                 >
+                    
                     <AssignmentBlock 
+                        headerColor={'bg-sky-500'}
+                        contentColor={'bg-sky-300'}
+                        dueTime={'1:45 PM'}
+                        className={'MATH-225'}
+                        assignmentTitle={'Homework 8'}
+                    />
+
+<AssignmentBlock 
+                        headerColor={'bg-sky-500'}
+                        contentColor={'bg-sky-300'}
+                        dueTime={'1:45 PM'}
+                        className={'MATH-225'}
+                        assignmentTitle={'Homework 8'}
+                    />
+
+<AssignmentBlock 
                         headerColor={'bg-sky-500'}
                         contentColor={'bg-sky-300'}
                         dueTime={'1:45 PM'}
@@ -104,7 +222,9 @@ const Assignments : FC<AssignmentsProps> = ({
                         assignmentTitle={'Quiz 5'}
                     />
                 </DayContainer>
-            </div>
+                </div>
+
+                </div>
         </ColumnContainer>
     )
 }

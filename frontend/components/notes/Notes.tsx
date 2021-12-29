@@ -2,15 +2,53 @@ import React, {
     FC,
     useState
 } from 'react';
+import getInitializedArray from '../../constants/functions/getInitializedArray';
 import ColumnContainer from '../multi/ColumnContainer';
+import Note, { LoadingNote } from './Note'
 
-const Notes : FC = () => {
+interface NotesProps {
+    notes: string[] | null
+}
+
+const Notes : FC<NotesProps> = ({
+    notes
+} : NotesProps) => {
+
+
+    
 
     const newNote = () => {
 
     }
 
-    
+    if (notes === null) {
+        return (
+            <ColumnContainer
+            icon={
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+            }
+            header={`My Notes`}
+            breakpoint='lg:block'
+        >
+            {/* Content */}
+            <div className="w-full rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-start items-center space-y-4 pb-4">
+
+                {/* New Mock */}
+                <div className="animate-pulse py-1 cursor-pointer bg-gray-300 transition duration-250 ease-in-out rounded-md w-full flex flex-row justify-start items-center"
+                onClick={() => newNote()}
+                >
+                    <div className="text-slate-700 font-medium text-lg">
+                        {'ㅤ'}
+                    </div>
+                </div>
+
+                {getInitializedArray(2, 3).map((v, i) => <LoadingNote key={i}/>)}
+            </div>
+        </ColumnContainer>
+        )
+    }
 
     return (
 
@@ -59,41 +97,6 @@ const Notes : FC = () => {
     )
 }
 
-interface NoteProps {
-    noteTitle: string,
-    noteContents: string,
-    headerColor: string,
-    contentColor: string
-}
 
-const Note : FC<NoteProps> = ({
-    noteTitle,
-    noteContents,
-    headerColor,
-    contentColor
-} : NoteProps) => {
-    return (
-        <div className="w-full h-auto flex flex-col justify-start items-center drop-shadow-md">
-            {/* Header */}
-            <div className={`px-2 py-1 ${headerColor} rounded-t-md w-full`}>
-                <div className="text-lg font-bold text-white">
-                    {noteTitle}
-                </div>
-            </div>
-
-            <div className={`px-2 py-1 ${contentColor} rounded-b-md w-full`}>
-                <div className="text-lg text-white">
-                    {noteContents.split('\n').map((line, index) => {
-                        return (
-                            <div key={index}>
-                                {line}
-                            </div>
-                        )
-                    })}
-                </div>
-            </div>
-        </div>
-    )
-}
 
 export default Notes;

@@ -28,7 +28,7 @@ const Grades : FC<GradesProps> = ({
         >
             {/* Content */}
             <div className="w-full pb-4 rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-start items-center space-y-4">
-                {getInitializedArray(3, 3).map(v => <LoadingClassGradeBox />)}
+                {getInitializedArray(3, 3).map((v, i) => <LoadingClassGradeBox key={i}/>)}
             </div>
             </ColumnContainer>
         )

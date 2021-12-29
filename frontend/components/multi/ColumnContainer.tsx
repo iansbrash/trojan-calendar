@@ -17,7 +17,7 @@ const ColumnContainer : FC<ColumnContainerProps> = ({
     breakpoint
 } : ColumnContainerProps) => {
     return (
-        <div className={`h-full flex-1 p-5 ${breakpoint ? `hidden ${breakpoint}` : 'block'}`}>
+        <div className={`h-full w-full bg-black p-5 ${breakpoint ? `hidden ${breakpoint}` : 'block'}`}>
             <div className="w-full h-full flex flex-col justify-start items-center drop-shadow-md">
 
                 {/* Header */}
@@ -29,7 +29,9 @@ const ColumnContainer : FC<ColumnContainerProps> = ({
                         {header}
                     </div>
                 </div>
-                {children}
+                <div className="overflow-x-visible w-full flex flex-col justify-start items-center h-full overflow-y-scroll scrollbar-hide ">
+                    {children}
+                </div>
             </div>
         </div>
     )
