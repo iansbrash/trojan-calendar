@@ -18,10 +18,10 @@ const ColumnContainer : FC<ColumnContainerProps> = ({
 } : ColumnContainerProps) => {
     return (
         <div className={`h-full w-full bg-black p-5 ${breakpoint ? `hidden ${breakpoint}` : 'block'}`}>
-            <div className="w-full h-full flex flex-col justify-start items-center drop-shadow-md">
+            <div className="relative bg-cyan-400 w-full h-full flex-col justify-start items-center drop-shadow-md">
 
                 {/* Header */}
-                <div className="w-full h-16 rounded-t-xl bg-zinc-50 px-4 flex flex-row justify-start items-center">
+                <div className="absolute top-0 left-0 right-0 h-16 rounded-t-xl bg-zinc-50 px-4 flex flex-row justify-start items-center">
                     <div className="mr-1 text-slate-700">
                         {icon}
                     </div>
@@ -29,9 +29,10 @@ const ColumnContainer : FC<ColumnContainerProps> = ({
                         {header}
                     </div>
                 </div>
-                <div className="overflow-x-visible w-full flex flex-col justify-start items-center h-full overflow-y-scroll scrollbar-hide ">
+                <div className="pt-16 flex w-full flex-col justify-start items-center h-full bg-emerald-300">
                     {children}
                 </div>
+                
             </div>
         </div>
     )

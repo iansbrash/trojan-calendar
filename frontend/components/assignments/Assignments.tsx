@@ -112,8 +112,8 @@ const Assignments : FC<AssignmentsProps> = ({
             header={`My Assignments`}
         >
             {/* Content */}
-            <div className="w-full h-full rounded-b-xl bg-zinc-50 px-4 pb-2 py-2 flex flex-col justify-start items-center">
-                <div className="w-full h-full flex flex-col justify-start items-center overflow-y-scroll scrollbar-hide bg-red-300">
+            <div className="rounded-b-xl bg-zinc-50 w-full h-full flex flex-col justify-start items-center">
+                <div className="overflow-y-scroll scrollbar-hide px-4 pb-2 py-2  w-full h-full flex flex-col justify-start items-center">
 
                 {assignmentDays?.map((day, index) => {
                     let assignmentList : UpcomingAssignment[] = as[day + ''];

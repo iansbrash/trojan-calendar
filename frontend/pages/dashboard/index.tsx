@@ -86,10 +86,12 @@ const Dashboard : NextPage = () => {
                 path={'/login'}
                 setSession={setSession}
                 >
-                    <Header />
+                    <div className="absolute top-0 left-0 right-0 flex justify-start flex-col items-center">
+                        <Header />
+                    </div>
 
                     {/* Main Item Holder */}
-                    <div className="overflow-y-hidden overflow-x-visible w-full h-auto flex flex-1 flex-row justify-start items-center p-5">
+                    <div className="pt-20 w-full h-full flex flex-row justify-start items-center p-5">
 
                         <Assignments 
                             assignments={cachedData ? cachedData.assignments : null}

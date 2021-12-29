@@ -46,6 +46,11 @@ const ClassGradeBox : FC<ClassGradeBoxProps> = ({
             assignmentTitle: 'Midterm 1',
             assignmentGrade: '0/100',
             assignmentStatus: AssignmentStatus.NEEDS_GRADING
+        },
+        {
+            assignmentTitle: 'Midterm 1',
+            assignmentGrade: '0/100',
+            assignmentStatus: AssignmentStatus.NEEDS_GRADING
         }
     ]
 
