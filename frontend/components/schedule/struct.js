@@ -59,7 +59,15 @@ const struct = {
     lastSynced: 1642000000 // Timestamp, you get the idea
 }
 
+// Settings
+const settings = {
+    general: {
 
+    },
+    account: {
+        
+    }
+}
 
 // API
 const api = {

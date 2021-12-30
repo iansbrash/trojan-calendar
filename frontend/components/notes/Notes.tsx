@@ -3,11 +3,12 @@ import React, {
     useState
 } from 'react';
 import getInitializedArray from '../../constants/functions/getInitializedArray';
+import { Note } from '../../pages/dashboard/cache';
 import ColumnContainer from '../multi/ColumnContainer';
-import Note, { LoadingNote } from './Note'
+import NoteComponent, { LoadingNote } from './Note'
 
 interface NotesProps {
-    notes: string[] | null
+    notes: Note[] | null
 }
 
 const Notes : FC<NotesProps> = ({
@@ -15,6 +16,33 @@ const Notes : FC<NotesProps> = ({
 } : NotesProps) => {
 
 
+    const noteColors = [
+        {
+            'bg600': 'bg-blue-600',
+            'bg400': 'bg-blue-400'
+        },
+        {
+            'bg600': 'bg-red-600',
+            'bg400': 'bg-red-400'
+        },
+        {
+            'bg600': 'bg-green-600',
+            'bg400': 'bg-green-400'
+        },
+        {
+            'bg600': 'bg-amber-600',
+            'bg400': 'bg-amber-400'
+        },
+        {
+            'bg600': 'bg-pink-600',
+            'bg400': 'bg-pink-400'
+        },
+        {
+            'bg600': 'bg-teal-600',
+            'bg400': 'bg-teal-400'
+        },
+        
+    ]
     
 
     const newNote = () => {
@@ -78,20 +106,20 @@ const Notes : FC<NotesProps> = ({
                     </div>
                 </div>
 
-                <Note 
-                    noteTitle={`To-do list`}
-                    noteContents={`Math HW\n Work on resume\nRenew meal plan\nTalk with prof`}
-                    headerColor={'bg-rose-600'}
-                    contentColor={'bg-rose-400'}
-                />
+                {
+                    notes.map((n, i) => {
 
-                <Note 
-                    noteTitle={`Reminders`}
-                    noteContents={`Meditate each morning even if you don't feel like it\n3parts water 1part concentrate costco cold brew`}
-                    headerColor={'bg-teal-600'}
-                    contentColor={'bg-teal-400'}
-                />
+                        console.log(n)
 
+                        return <NoteComponent 
+                            key={n.noteId}
+                            noteTitle={n.noteTitle}
+                            noteContents={n.noteContent}
+                            headerColor={noteColors[i % noteColors.length]['bg600']}
+                            contentColor={noteColors[i % noteColors.length]['bg400']}
+                        />
+                    })
+                }
             </div>
         </ColumnContainer>
     )

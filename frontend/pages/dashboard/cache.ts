@@ -37,4 +37,10 @@ export interface SubmittedAssignment {
     grade: string
 }
 
+export interface Note {
+    noteTitle: string,
+    noteId: string,
+    noteContent: string
+}
+
 export default Cache;

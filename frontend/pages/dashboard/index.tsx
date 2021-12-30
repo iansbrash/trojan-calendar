@@ -18,7 +18,9 @@ import axios from 'axios';
 import { CognitoUserSession } from 'amazon-cognito-identity-js'
 import AuthRoute from '../../components/authRoute/AuthRoute'
 import api from '../../constants/api-gateway/api'
-import Cache from './cache'
+import Cache, { Note } from './cache'
+import Modal from '../../components/multi/Modal'
+import SettingsModal from '../../components/settings/SettingsModal'
 
 const Dashboard : NextPage = () => {
 
@@ -26,8 +28,75 @@ const Dashboard : NextPage = () => {
 
     const [session, setSession] = useState<CognitoUserSession | null>(null);
     const [cachedData, setCachedData] = useState<Cache | null>(null);
+    const [notes, setNotes] = useState<Note[] | null>(null);
+    const [settings, setSettings] = useState<any | null>(null)
 
     const [isLoadingCacheData, setIsLoadingCacheData] = useState<boolean>(false);
+    const [isLoadingNotes, setIsLoadingNotes] = useState<boolean>(false);
+    const [isLoadingSettings, setIsLoadingSettings] = useState<boolean>(false);
+
+    // Modal
+    const [settingsModalVisible, setSettingsModalVisible] = useState<boolean>(false);
+
+    // Load Notes
+    useEffect(() => {
+        if (session === null) return;
+        setIsLoadingNotes(true);
+
+        (async () => {
+            try {
+                // @ts-ignore
+                const token = session.getIdToken().getJwtToken()
+                const notesData = await axios({
+                    method: 'get',
+                    url: `${api}/account/notes`,
+                    headers: {
+                        'Authorization': token
+                    },
+                })
+
+                setNotes(notesData.data)
+
+                console.log('notesData', notesData.data)
+            }
+            catch (err) {
+                console.error(err)
+            }
+            finally {
+                setIsLoadingNotes(false);
+            }
+        })();
+    }, [session])
+
+    // Load Settings
+    useEffect(() => {
+        if (session === null) return;
+        setIsLoadingSettings(true);
+
+        (async () => {
+            try {
+                // @ts-ignore
+                const token = session.getIdToken().getJwtToken()
+                const settingsData = await axios({
+                    method: 'get',
+                    url: `${api}/account/settings`,
+                    headers: {
+                        'Authorization': token
+                    },
+                })
+
+                setSettings(settingsData.data)
+
+                console.log('settingsData', settingsData.data)
+            }
+            catch (err) {
+                console.error(err)
+            }
+            finally {
+                setIsLoadingSettings(false);
+            }
+        })();
+    }, [session])
 
     // Load data from cache
     useEffect(() => {
@@ -47,8 +116,6 @@ const Dashboard : NextPage = () => {
 
                 // @ts-ignore
                 const token = session.getIdToken().getJwtToken()
-                console.log(session)
-
                 const cachedData = await axios({
                     method: 'get',
                     url: `${api}/account/cache`,
@@ -57,7 +124,7 @@ const Dashboard : NextPage = () => {
                     },
                 })
 
-                setCachedData(cachedData.data.cache)
+                setCachedData(cachedData.data)
 
                 console.log('cachedData', cachedData.data)
             }
@@ -82,12 +149,21 @@ const Dashboard : NextPage = () => {
 
             <main className="w-full h-full flex justify-start flex-col items-center">
                 <AuthRoute
-                redirectIfAuth={false}
-                path={'/login'}
-                setSession={setSession}
+                    redirectIfAuth={false}
+                    path={'/login'}
+                    setSession={setSession}
                 >
+
+                    <SettingsModal 
+                        settings={['General', 'Account', 'About']}
+                        settingsModalVisible={settingsModalVisible}
+                        setSettingsModalVisible={setSettingsModalVisible}
+                    />
+
                     <div className="absolute top-0 left-0 right-0 flex justify-start flex-col items-center">
-                        <Header />
+                        <Header 
+                            setSettingsModal={setSettingsModalVisible}
+                        />
                     </div>
 
                     {/* Main Item Holder */}
@@ -105,10 +181,12 @@ const Dashboard : NextPage = () => {
                             schedule={cachedData ? cachedData.schedule : null}
                         />
 
+                        {/* For now we're gonna used cachedData, but we'll eventually set up a separate endpoiint */}
                         <Notes 
-                            notes={cachedData ? [] : null}
+                            notes={notes ? notes : null}
                         />
 
+                        {/* For now we're gonna used cachedData, but we'll eventually set up a separate endpoiint */}
                         <Announcements 
                             announcements={cachedData ? [] : null}
                         

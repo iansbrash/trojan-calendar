@@ -34,8 +34,6 @@ const Assignments : FC<AssignmentsProps> = ({
 
         }
 
-        console.log(`assignments`,assignments)
-
         let listOfC = new Set<string>();
 
         assignments?.forEach(a => {
@@ -54,15 +52,13 @@ const Assignments : FC<AssignmentsProps> = ({
         setAs(obj)
         setListOfClasses(Array.from(listOfC))
 
-        console.log(obj)
-
         // We have confirmed sort() works
         // Remember the keys are strings though... now it works (high coding)
         let daysWithAssignments : any = Object.keys(obj);
         daysWithAssignments = daysWithAssignments.map((s : string) => parseInt(s));
         daysWithAssignments.sort(function(a : string, b : string){return parseInt(a)-parseInt(b)});
 
-        daysWithAssignments = ["0", "1", "2", "3", "4", "5", "6", "7"];
+        // daysWithAssignments = ["0", "1", "2", "3", "4", "5", "6", "7"];
 
 
         let startingDate;
@@ -80,7 +76,6 @@ const Assignments : FC<AssignmentsProps> = ({
         }
 
         daysWithAssignments = [...daysWithAssignments, ...daysWithAssignments].slice(daysWithAssignments.indexOf(startingDate + ''), daysWithAssignments.indexOf(startingDate + '') + daysWithAssignments.length);
-        console.log(daysWithAssignments)
 
         setAssignmentDays(daysWithAssignments)
 
@@ -127,7 +122,6 @@ const Assignments : FC<AssignmentsProps> = ({
                 <div className="overflow-y-scroll scrollbar-hide px-4 pb-2 py-2  w-full h-full flex flex-col justify-start items-center">
 
                 {assignmentDays?.map((day, index) => {
-                    console.log(`as`, as)
                     let assignmentList : UpcomingAssignment[] = as[day + ''];
                     // return;
                     if (!assignmentList) {
@@ -144,8 +138,6 @@ const Assignments : FC<AssignmentsProps> = ({
                         header = date.getDay();
                         header = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][header];
                     }
-
-                    console.log( 'assignmentList', assignmentList)
 
 
                     return <>

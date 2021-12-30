@@ -19,8 +19,6 @@ const CalendarItem : FC<CalendarItemProps> = ({
     height // h-10/6
 } : CalendarItemProps) => {
 
-    console.log(`calendarItemHeight: ${height}`)
-
     return (
         <div className={`absolute top-0 left-0 right-0 ${height} ${bgColor} rounded-md flex flex-col justify-start items-center`}>
             <div className="w-full h-full relative flex flex-col justify-start items-center px-2 py-1">

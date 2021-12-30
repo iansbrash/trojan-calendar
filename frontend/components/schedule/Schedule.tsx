@@ -179,8 +179,6 @@ const Schedule : FC<ScheduleProps> = ({
 
                             let heightIncrement = (hourDifference * 6) + (minuteDifference / 10);
 
-                            console.log(`heightIncrement: ${heightIncrement}`)
-
                             // @ts-ignore
                             height = timeIncrements[`${heightIncrement}/6`];
                             

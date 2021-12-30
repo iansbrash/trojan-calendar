@@ -54,6 +54,7 @@ const Grades : FC<GradesProps> = ({
 
                         return (
                             <ClassGradeBox 
+                                key={g.className}
                                 chevronColor={colors[i]['text400']}
                                 className={g.className}
                                 highlightColor={colors[i]['hoverbg100']}
