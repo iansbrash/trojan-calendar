@@ -30,7 +30,7 @@ export interface ClassGrades {
     assignments: SubmittedAssignment[]
 }
 
-interface SubmittedAssignment {
+export interface SubmittedAssignment {
     assignmentTitle: string,
     status: "Needs Grading" | "Graded" | "Not Submitted",
     grade: string

@@ -1,9 +1,11 @@
 
 import React, {
     FC,
+    useEffect,
     useState
 } from 'react';
 import getInitializedArray from '../../constants/functions/getInitializedArray';
+import { SubmittedAssignment } from '../../pages/dashboard/cache';
 
 enum AssignmentStatus {
     GRADED,
@@ -17,7 +19,14 @@ interface ClassGradeBoxProps {
     highlightColor: string,
     bulletColor: string,
     gradeTextColor: string,
-    gradeBgColor: string
+    gradeBgColor: string,
+    submittedAssignments: SubmittedAssignment[]
+}
+
+interface MappingProps {
+    assignmentTitle: string,
+    grade: string,
+    status: AssignmentStatus
 }
 
 const ClassGradeBox : FC<ClassGradeBoxProps> = ({
@@ -26,33 +35,45 @@ const ClassGradeBox : FC<ClassGradeBoxProps> = ({
     highlightColor,
     bulletColor,
     gradeTextColor,
-    gradeBgColor
+    gradeBgColor,
+    submittedAssignments
 } : ClassGradeBoxProps) => {
 
     const [isToggled, setIsToggled] = useState<boolean>(false);
 
-    const data : any = [
-        {
-            assignmentTitle: 'Homework 1',
-            assignmentGrade: '89/100',
-            assignmentStatus: AssignmentStatus.GRADED
-        },
-        {
-            assignmentTitle: 'Homework 2',
-            assignmentGrade: '0/100',
-            assignmentStatus: AssignmentStatus.NOT_SUBMITTED
-        },
-        {
-            assignmentTitle: 'Midterm 1',
-            assignmentGrade: '0/100',
-            assignmentStatus: AssignmentStatus.NEEDS_GRADING
-        },
-        {
-            assignmentTitle: 'Midterm 1',
-            assignmentGrade: '0/100',
-            assignmentStatus: AssignmentStatus.NEEDS_GRADING
-        }
-    ]
+    //"Needs Grading"
+    //"Graded"
+    //"Not Submitted"
+    const [ass, setAss] = useState<MappingProps[]>()
+
+    useEffect(() => {
+
+        if (!submittedAssignments) return;
+
+        let a : MappingProps[] = submittedAssignments.map(s => {
+
+            let enumStatus;
+    
+            
+            if (s.status === 'Graded') {
+                enumStatus = AssignmentStatus.GRADED
+            }
+            else if (s.status === 'Not Submitted') {
+                enumStatus = AssignmentStatus.NOT_SUBMITTED
+            }
+            else {
+                enumStatus = AssignmentStatus.NEEDS_GRADING
+            }
+    
+            return {
+                assignmentTitle: s.assignmentTitle,
+                grade: s.grade.split(' ').join('/'),
+                status: enumStatus
+            }
+        })
+
+        setAss(a);
+    })
 
     const getColorBasedOnStatus = (status : AssignmentStatus) => {
         switch (status) {
@@ -84,11 +105,11 @@ const ClassGradeBox : FC<ClassGradeBoxProps> = ({
 
             {/* Grades */}
             <div className={`${isToggled ? 'flex' : 'hidden'} w-full h-auto flex-col justify-start items-center`}>
-                {data.map((gradeObject : any, index : number) => 
+                {ass?.map((gradeObject : any, index : number) => 
                     <div className="w-full flex flex-row justify-between items-center" key={index}>
                         <div className="flex flex-row justify-start items-center">
                             {/* Bullet Point */}
-                            <div className={`font-bold text-3xl mx-2.5 ${getColorBasedOnStatus(gradeObject.assignmentStatus)}`}>
+                            <div className={`font-bold text-3xl mx-2.5 ${getColorBasedOnStatus(gradeObject.status)}`}>
                                 •
                             </div>
 
@@ -101,7 +122,7 @@ const ClassGradeBox : FC<ClassGradeBoxProps> = ({
                         {/* Grade */}
                         {/* Assignment Title */}
                         <div className={`text-lg ${gradeTextColor} font-medium ${gradeBgColor} px-2 rounded-md`}>
-                            {gradeObject.assignmentGrade}
+                            {gradeObject.grade}
                         </div>
                     </div>    
                 )}

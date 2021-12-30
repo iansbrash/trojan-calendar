@@ -6,6 +6,7 @@ import DayContainer, { LoadingDayContainer } from './DayContainer';
 import ColumnContainer from '../multi/ColumnContainer';
 import { UpcomingAssignment } from '../../pages/dashboard/cache';
 import getInitializedArray from '../../constants/functions/getInitializedArray';
+import colors from './colors'
 
 interface AssignmentsProps {
     assignments: UpcomingAssignment[] | null
@@ -18,7 +19,10 @@ const Assignments : FC<AssignmentsProps> = ({
     const todaysDate = (new Date()).getDate();
     const [as, setAs] = useState<any>([])
     const [assignmentDays, setAssignmentDays] = useState<number[]>();
+    const [listOfClasses, setListOfClasses] = useState<string[]>();
+
     
+
 
     useEffect(() => {
 
@@ -30,8 +34,14 @@ const Assignments : FC<AssignmentsProps> = ({
 
         }
 
+        console.log(`assignments`,assignments)
+
+        let listOfC = new Set<string>();
+
         assignments?.forEach(a => {
-            const day = (new Date()).getDay()
+            const day = (new Date(a.dueDate)).getDay()
+
+            listOfC.add(a.className)
             
             if (!obj[day]) {
                 obj[day] = [a];
@@ -42,6 +52,7 @@ const Assignments : FC<AssignmentsProps> = ({
         })
 
         setAs(obj)
+        setListOfClasses(Array.from(listOfC))
 
         console.log(obj)
 
@@ -116,34 +127,52 @@ const Assignments : FC<AssignmentsProps> = ({
                 <div className="overflow-y-scroll scrollbar-hide px-4 pb-2 py-2  w-full h-full flex flex-col justify-start items-center">
 
                 {assignmentDays?.map((day, index) => {
+                    console.log(`as`, as)
                     let assignmentList : UpcomingAssignment[] = as[day + ''];
                     // return;
                     if (!assignmentList) {
                         console.log("Something very not good happened (Assignments.tsx")
                         return;
                     }
+                    let date = new Date(assignmentList[0].dueDate);
 
                     let header;
                     if (day === todaysDate) {
                         header = "Today"
                     }
                     else {
-                        header = "Eventually"
+                        header = date.getDay();
+                        header = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][header];
                     }
 
                     console.log( 'assignmentList', assignmentList)
 
+
                     return <>
                         <DayContainer
                         dayTitle={header}
-                        dayDate={'12/25/21'}
+                        // Notice we do +1 because the months are zero-indexed...
+                        dayDate={`${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`}
                         >
                             {assignmentList.map((a, i) => {
+
+                                let indAssignmentDate = new Date(a.dueDate);
+
+                                let hours = indAssignmentDate.getHours();
+                                let minutes = indAssignmentDate.getMinutes();
+
+                                let isPM = hours > 12;
+
+                                let classIndex = listOfClasses?.indexOf(a.className);
+
+                                if (classIndex === -1) console.log('uhh wtf')
+
                                 return <AssignmentBlock 
                                     key={i}
-                                    headerColor={'bg-sky-500'}
-                                    contentColor={'bg-sky-300'}
-                                    dueTime={'1:69 PM'}
+
+                                    headerColor={colors[classIndex! % colors.length]['bg500']}
+                                    contentColor={colors[classIndex! % colors.length]['bg300']}
+                                    dueTime={`${isPM ? hours - 12 : hours}:${minutes < 10 ? `0${minutes}` : minutes} ${isPM ? 'PM' : 'AM'}`}
                                     className={a.className}
                                     assignmentTitle={a.assignmentTitle}
                                 />

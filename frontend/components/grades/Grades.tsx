@@ -6,6 +6,7 @@ import getInitializedArray from '../../constants/functions/getInitializedArray';
 import { ClassGrades } from '../../pages/dashboard/cache';
 import ColumnContainer from '../multi/ColumnContainer';
 import ClassGradeBox, { LoadingClassGradeBox } from './ClassGradeBox';
+import colors from '../assignments/colors';
 
 interface GradesProps {
     grades: ClassGrades[] | null
@@ -48,17 +49,32 @@ const Grades : FC<GradesProps> = ({
         >
             {/* Content */}
             <div className="overflow-y-scroll scrollbar-hide w-full pb-4 h-auto rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-start items-center space-y-4">
+                {
+                    grades.map((g, i) => {
 
-                <ClassGradeBox 
+                        return (
+                            <ClassGradeBox 
+                                chevronColor={colors[i]['text400']}
+                                className={g.className}
+                                highlightColor={colors[i]['hoverbg100']}
+                                bulletColor={colors[i]['text200']}
+                                gradeTextColor={colors[i]['text700']}
+                                gradeBgColor={colors[i]['bg100']}
+                                submittedAssignments={g.assignments}
+                            />
+                        )
+                    })
+                }
+                {/* <ClassGradeBox 
                     chevronColor='text-sky-400'
                     className='MATH-225'
                     highlightColor='hover:bg-sky-100'
                     bulletColor='text-sky-200'
                     gradeTextColor='text-sky-700'
                     gradeBgColor='bg-sky-100'
-                />
+                /> */}
 
-                <ClassGradeBox 
+                {/* <ClassGradeBox 
                     chevronColor='text-rose-400'
                     className='CSCI-270'
                     highlightColor='hover:bg-rose-100'
@@ -92,7 +108,7 @@ const Grades : FC<GradesProps> = ({
                     bulletColor='text-orange-200'
                     gradeTextColor='text-orange-700'
                     gradeBgColor='bg-orange-100'
-                />
+                /> */}
 
             </div>
         </ColumnContainer>
