@@ -7,17 +7,22 @@ interface CalendarItemProps {
     className: string,
     classType: string,
     classLocation: string,
-    bgColor: string
+    bgColor: string,
+    height: string
 }
 
 const CalendarItem : FC<CalendarItemProps> = ({
     className,
     classType,
     classLocation,
-    bgColor
+    bgColor,
+    height // h-10/6
 } : CalendarItemProps) => {
+
+    console.log(`calendarItemHeight: ${height}`)
+
     return (
-        <div className={`absolute top-0 left-0 right-0 h-10/6 ${bgColor} rounded-md flex flex-col justify-start items-center`}>
+        <div className={`absolute top-0 left-0 right-0 ${height} ${bgColor} rounded-md flex flex-col justify-start items-center`}>
             <div className="w-full h-full relative flex flex-col justify-start items-center px-2 py-1">
                 <div className="font-medium text-white text-lg w-full">
                     {className}

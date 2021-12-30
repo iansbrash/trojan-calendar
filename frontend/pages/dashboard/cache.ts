@@ -12,11 +12,12 @@ export interface Schedule {
     friday: Event[],
 }
 
-interface Event {
+export interface Event {
     className: string, //'BAEP-470',
     startTime: string, //'8:00',
     endTime: string, //'8:50',
-    classType: string, //'Lecture'
+    classType: "Lecture" | "Discussion" | "Quiz", //'Lecture',
+    classLocation: string
 }
 
 export interface UpcomingAssignment {

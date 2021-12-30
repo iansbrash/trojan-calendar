@@ -67,13 +67,13 @@ const ClassGradeBox : FC<ClassGradeBoxProps> = ({
     
             return {
                 assignmentTitle: s.assignmentTitle,
-                grade: s.grade.split(' ').join('/'),
+                grade: enumStatus === AssignmentStatus.NEEDS_GRADING ? 'N/A' : s.grade.split(' ').join('/'),
                 status: enumStatus
             }
         })
 
         setAss(a);
-    })
+    }, [])
 
     const getColorBasedOnStatus = (status : AssignmentStatus) => {
         switch (status) {
