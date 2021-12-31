@@ -54,7 +54,8 @@ const SettingsModal : FC<SettingsModalProps> = ({
                     {/* Different settings options */}
                     <div className="flex flex-col justify-start items-start space-y-4 w-full">
                         {settings.map(s => (
-                            <SettingButton 
+                            <SettingButton
+                                key={s} 
                                 text={s}
                                 selectedSetting={selectedSetting}
                                 setSelectedSetting={setSelectedSetting}

@@ -35,8 +35,62 @@ const Dashboard : NextPage = () => {
     const [isLoadingNotes, setIsLoadingNotes] = useState<boolean>(false);
     const [isLoadingSettings, setIsLoadingSettings] = useState<boolean>(false);
 
+    // Sync
+    const [lastSynced, setLastSynced] = useState<number>()
+
     // Modal
     const [settingsModalVisible, setSettingsModalVisible] = useState<boolean>(false);
+
+
+    // Check if we can sync
+    useEffect(() => {
+        if (session === null) return;
+        (async () => {
+            let canSync = false;
+            const token = session.getIdToken().getJwtToken()
+
+            try {
+                const checkSyncData = await axios({
+                    method: 'get',
+                    url: `${api}/account/sync`,
+                    headers: {
+                        'Authorization': token
+                    },
+                })
+
+                canSync = checkSyncData.data.canSync;
+
+                setLastSynced(checkSyncData.data.lastSynced)
+
+                console.log('checkSyncData', checkSyncData.data)
+            }
+            catch (err) {
+                console.error(err)
+                setLastSynced(0);
+            }   
+
+            // If it has been like 12 or 1 day or sumn
+            if (canSync) {
+                // Tell server to fetch new data and wait for response
+                try {
+                    console.log("We can sync: Will retrieve data now")
+                    
+                    const getSyncDataResponse = await axios({
+                        method: 'post',
+                        url: `${api}/account/sync`,
+                        headers: {
+                            'Authorization': token
+                        },
+                    })
+
+                    console.log(getSyncDataResponse.data)
+                }
+                catch (err) {
+
+                }
+            }
+        })();
+    }, [session])
 
     // Load Notes
     useEffect(() => {

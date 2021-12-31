@@ -108,9 +108,6 @@ const Notes : FC<NotesProps> = ({
 
                 {
                     notes.map((n, i) => {
-
-                        console.log(n)
-
                         return <NoteComponent 
                             key={n.noteId}
                             noteTitle={n.noteTitle}
