@@ -1,12 +1,14 @@
-// DynamoDB
+// DynamoDB (as of 12/30)
 const struct = {
     userId: '123-123-123', // Primary Key
     cache: {
+        // Should probably add 'Source' (where it is from: Blackboard, GS, DEN, etc)
         assignments: [
             {
                 assignmentTitle: 'Homework 1',
                 className: 'BAEP-470',
-                dueDate: 1640000000
+                dueDate: 1640000000,
+                source: "Gradescope | Blackboard | USCDen | Canvas" // Tentative
             }
         ],
         grades: [
@@ -16,18 +18,29 @@ const struct = {
                     {
                         assignmentTitle: 'HW 2',
                         status: 'Needs Grading',
-                        grade: null
+                        grade: null,
+                        source: "Gradescope | Blackboard | USCDen | Canvas" // Tentative
                     }
                 ]
             }
         ],
         schedule: {
+            // courseName
+            // courseTitle
+            // ----
+            // sectionId
+            // sectionType
+            // sectionSchedule
+            // sectionLocation
+            // sectionInstructor
+            // sectionInfo (NOT NEEDED PROLLY)
             monday: [
                 {
                     className: 'BAEP-470',
                     startTime: '8:00',
                     endTime: '8:50',
-                    classType: 'Lecture'
+                    classType: 'Lecture',
+                    classLocation: 'SGM 123 & Online & TBA & Office... etc' // Not yet implemented
                 }
             ],
             tuesday: [

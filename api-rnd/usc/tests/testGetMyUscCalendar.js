@@ -6,8 +6,4 @@ const { username, password } = require('../../private/usclogin');
     let allCookies = await getMyUscCookies(username, password)
 
     let res = await getMyUscCalendar(allCookies)
-
-
-    
-
 })();

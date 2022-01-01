@@ -93,39 +93,6 @@ exports.handler = async (event) => {
         })
     }) 
 
-    // const bbRouterPromise = async () => {
-    //     let blackboardRouterCookies = await getBlackboardRouter(myUscCookies)
-
-    //     return await Promise.all([
-    //         async () => {
-    //             // \|/ BLACKBOARD \|/
-    //             const blackboardCourseAssignmentsRes = await getCourseAssignments(blackboardRouterCookies);
-
-    //             let bbArray =  blackboardCourseAssignmentsRes.map(r => {
-    //                 return {
-    //                     title: r.title,
-    //                     end: r.end,
-    //                 }
-    //             });
-    //             // /|\ BLACKBOARD /|\
-
-    //             return bbArray;
-    //         },
-    //         async () => {
-    //             // \|/ GRADESCOPE \|/
-    //             let gsResponse = await getGradescopeCookies(blackboardRouterCookies)
-    //             let gradescopeCookies = gsResponse.cookies;
-    //             let gsLink = gsResponse.link;
-
-    //             // Returns an array for now
-    //             let gradescopeAssignments = await getGSAssignmentsAndGrades(gradescopeCookies, gsLink);
-    //             // /|\ GRADESCOPE /|\
-
-    //             return gradescopeAssignments;
-    //         }
-    //     ])
-    // }
-    
     const bbRouterPromise = new Promise(async (resolve, reject) => {
         let blackboardRouterCookies = await getBlackboardRouter(myUscCookies);
 
@@ -176,9 +143,8 @@ exports.handler = async (event) => {
     //                                          \--> getBlackboardAssignments
    
     let bigRes = await Promise.all([
-        schedulePromise, //getMyUscCalendar(myUscCookies), 
+        schedulePromise, 
         bbRouterPromise, 
-        32
     ]);
 
     
