@@ -3,13 +3,13 @@ import React, {
     useState
 } from 'react';
 import getInitializedArray from '../../constants/functions/getInitializedArray';
-import { ClassGrades } from '../../pages/dashboard/cache';
+import { CompiledGrades } from '../../pages/dashboard/cache';
 import ColumnContainer from '../multi/ColumnContainer';
 import ClassGradeBox, { LoadingClassGradeBox } from './ClassGradeBox';
 import colors from '../assignments/colors';
 
 interface GradesProps {
-    grades: ClassGrades[] | null
+    grades: CompiledGrades | null
 }
 
 const Grades : FC<GradesProps> = ({
@@ -50,21 +50,21 @@ const Grades : FC<GradesProps> = ({
             {/* Content */}
             <div className="overflow-y-scroll scrollbar-hide w-full pb-4 h-auto rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-start items-center space-y-4">
                 {
-                    grades.map((g, i) => {
+                    Object.keys(grades).map(key =>  Object.keys(grades[key]).map((k2, i) => {
 
                         return (
                             <ClassGradeBox 
-                                key={g.className}
+                                key={k2}
                                 chevronColor={colors[i]['text400']}
-                                className={g.className}
+                                className={k2}
                                 highlightColor={colors[i]['hoverbg100']}
                                 bulletColor={colors[i]['text200']}
                                 gradeTextColor={colors[i]['text700']}
                                 gradeBgColor={colors[i]['bg100']}
-                                submittedAssignments={g.assignments}
+                                individualGrades={grades[key][k2]}
                             />
                         )
-                    })
+                    }))
                 }
                 {/* <ClassGradeBox 
                     chevronColor='text-sky-400'

@@ -21,6 +21,7 @@ import api from '../../constants/api-gateway/api'
 import Cache, { Note } from './cache'
 import Modal from '../../components/multi/Modal'
 import SettingsModal from '../../components/settings/SettingsModal'
+import {CompiledAssignments, CompiledGrades, Schedule as ScheduleInterface} from './cache'
 
 const Dashboard : NextPage = () => {
 
@@ -28,12 +29,19 @@ const Dashboard : NextPage = () => {
 
     const [session, setSession] = useState<CognitoUserSession | null>(null);
     const [cachedData, setCachedData] = useState<Cache | null>(null);
+
+    const [assignments, setAssignments] = useState<CompiledAssignments>();
+    const [grades, setGrades] = useState<CompiledGrades>();
+    const [schedule, setSchedule] = useState<ScheduleInterface>();
+
     const [notes, setNotes] = useState<Note[] | null>(null);
     const [settings, setSettings] = useState<any | null>(null)
 
     const [isLoadingCacheData, setIsLoadingCacheData] = useState<boolean>(false);
     const [isLoadingNotes, setIsLoadingNotes] = useState<boolean>(false);
     const [isLoadingSettings, setIsLoadingSettings] = useState<boolean>(false);
+
+    const [isSyncing, setIsSyncing] = useState<boolean>(false);
 
     // Sync
     const [lastSynced, setLastSynced] = useState<number>()
@@ -73,6 +81,7 @@ const Dashboard : NextPage = () => {
             if (canSync) {
                 // Tell server to fetch new data and wait for response
                 try {
+                    setIsSyncing(true)
                     console.log("We can sync: Will retrieve data now")
                     
                     const getSyncDataResponse = await axios({
@@ -84,9 +93,13 @@ const Dashboard : NextPage = () => {
                     })
 
                     console.log(getSyncDataResponse.data)
+                    setSchedule(getSyncDataResponse.data.bigRes[0])
                 }
                 catch (err) {
 
+                }
+                finally {
+                    setIsSyncing(false)
                 }
             }
         })();
@@ -178,7 +191,17 @@ const Dashboard : NextPage = () => {
                     },
                 })
 
-                setCachedData(cachedData.data)
+                const {
+                    schedule,
+                    assignments,
+                    grades
+                } = cachedData.data
+
+                // setCachedData(cachedData.data)
+
+                setSchedule(schedule)
+                setGrades(grades)
+                setAssignments(assignments)
 
                 console.log('cachedData', cachedData.data)
             }
@@ -217,6 +240,8 @@ const Dashboard : NextPage = () => {
                     <div className="absolute top-0 left-0 right-0 flex justify-start flex-col items-center">
                         <Header 
                             setSettingsModal={setSettingsModalVisible}
+                            isSyncing={isSyncing}
+                            lastSynced={lastSynced ? lastSynced : 0}
                         />
                     </div>
 
@@ -224,15 +249,15 @@ const Dashboard : NextPage = () => {
                     <div className="pt-20 w-full h-full flex flex-row justify-start items-center p-5">
 
                         <Assignments 
-                            assignments={cachedData ? cachedData.assignments : null}
+                            assignments={assignments ? assignments : null}
                         />
 
                         <Grades 
-                            grades={cachedData ? cachedData.grades : null}
+                            grades={grades ? grades : null}
                         />
 
                         <Schedule 
-                            schedule={cachedData ? cachedData.schedule : null}
+                            schedule={schedule ? schedule : null}
                         />
 
                         {/* For now we're gonna used cachedData, but we'll eventually set up a separate endpoiint */}

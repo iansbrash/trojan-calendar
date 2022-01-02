@@ -6,11 +6,15 @@ import { AccountContext } from '../../constants/cognito/Account';
 
 
 interface HeaderProps {
-    setSettingsModal: (b : boolean) => void
+    setSettingsModal: (b : boolean) => void,
+    isSyncing: boolean,
+    lastSynced: number
 }
 
 const Header : FC<HeaderProps> = ({
-    setSettingsModal
+    setSettingsModal,
+    isSyncing,
+    lastSynced
 } : HeaderProps) => {
 
 
@@ -33,7 +37,7 @@ const Header : FC<HeaderProps> = ({
                     </svg>
                 </div>
                 <div className="flex flex-row justify-start items-center text-slate-800 ml-2">
-                    My Dashboard <span className="hidden md:block font-medium text-slate-400 text-base pt-1 ml-1">(last updated 9 hours ago)</span>
+                    My Dashboard <span className="hidden md:block font-medium text-slate-400 text-base pt-1 ml-1">{isSyncing ? 'Syncing...' : `(last updated ${lastSynced})`}</span>
                 </div>
             </div>
 

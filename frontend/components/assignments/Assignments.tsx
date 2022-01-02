@@ -4,12 +4,12 @@ import React, {
 import AssignmentBlock, { LoadingAssignmentBlock } from './AssignmentBlock';
 import DayContainer, { LoadingDayContainer } from './DayContainer';
 import ColumnContainer from '../multi/ColumnContainer';
-import { UpcomingAssignment } from '../../pages/dashboard/cache';
+import { CompiledAssignments, UpcomingAssignment } from '../../pages/dashboard/cache';
 import getInitializedArray from '../../constants/functions/getInitializedArray';
 import colors from './colors'
 
 interface AssignmentsProps {
-    assignments: UpcomingAssignment[] | null
+    assignments: CompiledAssignments | null
 }
 
 const Assignments : FC<AssignmentsProps> = ({
@@ -30,13 +30,16 @@ const Assignments : FC<AssignmentsProps> = ({
             return;
         }
 
+        let assignmentsCopy : UpcomingAssignment[] = [];
+        Object.keys(assignments).forEach(key => assignmentsCopy = [...assignmentsCopy, ...assignments[key]])
+
         let obj : any = {
 
         }
 
         let listOfC = new Set<string>();
 
-        assignments?.forEach(a => {
+        assignmentsCopy?.forEach(a => {
             const day = (new Date(a.dueDate)).getDay()
 
             listOfC.add(a.className)
@@ -75,7 +78,14 @@ const Assignments : FC<AssignmentsProps> = ({
             
         }
 
-        daysWithAssignments = [...daysWithAssignments, ...daysWithAssignments].slice(daysWithAssignments.indexOf(startingDate + ''), daysWithAssignments.indexOf(startingDate + '') + daysWithAssignments.length);
+        // Change the array so the the first element is the closest day to today's date
+        // i.e. Today is Jan. 5
+        //      Orignally, the list is [1, 4, 6, 10, 11]
+        //      It changes the list so the first index is the closest to 5 (without going backwards)
+        //      So the list is now     [6, 10, 11, 1, 4]
+        // We do this because it lets us order the assignments in order of most close to being due
+        // This assumes that we don't load any assignments that are past the due date.
+        daysWithAssignments = [...daysWithAssignments, ...daysWithAssignments].slice(daysWithAssignments.indexOf(startingDate), daysWithAssignments.indexOf(startingDate + '') + daysWithAssignments.length);
 
         setAssignmentDays(daysWithAssignments)
 
@@ -122,6 +132,7 @@ const Assignments : FC<AssignmentsProps> = ({
                 <div className="overflow-y-scroll scrollbar-hide px-4 pb-2 py-2  w-full h-full flex flex-col justify-start items-center">
 
                 {assignmentDays?.map((day, index) => {
+
                     let assignmentList : UpcomingAssignment[] = as[day + ''];
                     // return;
                     if (!assignmentList) {
@@ -161,7 +172,6 @@ const Assignments : FC<AssignmentsProps> = ({
 
                                 return <AssignmentBlock 
                                     key={i}
-
                                     headerColor={colors[classIndex! % colors.length]['bg500']}
                                     contentColor={colors[classIndex! % colors.length]['bg300']}
                                     dueTime={`${isPM ? hours - 12 : hours}:${minutes < 10 ? `0${minutes}` : minutes} ${isPM ? 'PM' : 'AM'}`}
@@ -173,79 +183,9 @@ const Assignments : FC<AssignmentsProps> = ({
                     </>
                 })}
 
-                <DayContainer
-                    dayTitle={'Today'}
-                    dayDate={'12/25/21'}
-                >
-                    
-                    <AssignmentBlock 
-                        headerColor={'bg-sky-500'}
-                        contentColor={'bg-sky-300'}
-                        dueTime={'1:45 PM'}
-                        className={'MATH-225'}
-                        assignmentTitle={'Homework 8'}
-                    />
-
-<AssignmentBlock 
-                        headerColor={'bg-sky-500'}
-                        contentColor={'bg-sky-300'}
-                        dueTime={'1:45 PM'}
-                        className={'MATH-225'}
-                        assignmentTitle={'Homework 8'}
-                    />
-
-<AssignmentBlock 
-                        headerColor={'bg-sky-500'}
-                        contentColor={'bg-sky-300'}
-                        dueTime={'1:45 PM'}
-                        className={'MATH-225'}
-                        assignmentTitle={'Homework 8'}
-                    />
-
-                    <AssignmentBlock 
-                        headerColor={'bg-rose-500'}
-                        contentColor={'bg-rose-300'}
-                        dueTime={'12:00 PM'}
-                        className={'CSCI-270'}
-                        assignmentTitle={'PA 4'}
-                    />
-                </DayContainer>
-
-                <DayContainer
-                    dayTitle={'Tomorrow'}
-                    dayDate={'12/26/21'}
-                >
-                    <AssignmentBlock 
-                        headerColor={'bg-indigo-500'}
-                        contentColor={'bg-indigo-300'}
-                        dueTime={'12:00 PM'}
-                        className={'BAEP-470'}
-                        assignmentTitle={'Reflection 3'}
-                    />
-                </DayContainer>
-
-                <DayContainer
-                    dayTitle={'Monday'}
-                    dayDate={'12/27/21'}
-                >
-                    <AssignmentBlock 
-                        headerColor={'bg-emerald-500'}
-                        contentColor={'bg-emerald-300'}
-                        dueTime={'11:59 PM'}
-                        className={'WRIT-340'}
-                        assignmentTitle={'Essay 2'}
-                    />
-                    <AssignmentBlock 
-                        headerColor={'bg-orange-500'}
-                        contentColor={'bg-orange-300'}
-                        dueTime={'5:00 PM'}
-                        className={'CSCI-201'}
-                        assignmentTitle={'Quiz 5'}
-                    />
-                </DayContainer>
                 </div>
 
-                </div>
+            </div>
         </ColumnContainer>
     )
 }

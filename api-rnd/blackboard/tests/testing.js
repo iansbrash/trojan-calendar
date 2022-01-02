@@ -11,10 +11,14 @@ const { getCourseAssignments } = require('../getCourseAssignments');
 
     const res = await getCourseAssignments(allCookies);
 
+    console.log(res[0])
+
     console.log(res.map(r => {
         return {
             title: r.title,
             end: r.end,
+            eventType: r.eventType, // Test or Assignment.. some other weird shit too
+            className: r.calendarName
         }
     }));
 })();

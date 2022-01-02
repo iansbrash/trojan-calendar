@@ -1,7 +1,7 @@
 interface Cache {
     schedule: Schedule,
-    assignments: UpcomingAssignment[],
-    grades: ClassGrades[]
+    assignments: CompiledAssignments,
+    grades: CompiledGrades
 }
 
 export interface Schedule {
@@ -26,21 +26,32 @@ export interface UpcomingAssignment {
     dueDate: number
 }
 
-export interface ClassGrades {
-    className: string,
-    assignments: SubmittedAssignment[]
+export interface CompiledAssignments {
+    [s : string]: UpcomingAssignment[], 
 }
 
-export interface SubmittedAssignment {
+
+export interface CompiledGrades {
+    [s : string]: ClassGrades, 
+}
+
+interface ClassGrades {
+    [s : string]: IndividualGrade[]
+}
+
+export interface IndividualGrade {
     assignmentTitle: string,
     status: "Needs Grading" | "Graded" | "Not Submitted",
     grade: string
 }
+
+
 
 export interface Note {
     noteTitle: string,
     noteId: string,
     noteContent: string
 }
+
 
 export default Cache;

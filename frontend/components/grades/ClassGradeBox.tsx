@@ -5,7 +5,7 @@ import React, {
     useState
 } from 'react';
 import getInitializedArray from '../../constants/functions/getInitializedArray';
-import { SubmittedAssignment } from '../../pages/dashboard/cache';
+import { IndividualGrade } from '../../pages/dashboard/cache';
 
 enum AssignmentStatus {
     GRADED,
@@ -20,7 +20,7 @@ interface ClassGradeBoxProps {
     bulletColor: string,
     gradeTextColor: string,
     gradeBgColor: string,
-    submittedAssignments: SubmittedAssignment[]
+    individualGrades: IndividualGrade[]
 }
 
 interface MappingProps {
@@ -36,7 +36,7 @@ const ClassGradeBox : FC<ClassGradeBoxProps> = ({
     bulletColor,
     gradeTextColor,
     gradeBgColor,
-    submittedAssignments
+    individualGrades
 } : ClassGradeBoxProps) => {
 
     const [isToggled, setIsToggled] = useState<boolean>(false);
@@ -48,9 +48,9 @@ const ClassGradeBox : FC<ClassGradeBoxProps> = ({
 
     useEffect(() => {
 
-        if (!submittedAssignments) return;
+        if (!individualGrades) return;
 
-        let a : MappingProps[] = submittedAssignments.map(s => {
+        let a : MappingProps[] = individualGrades.map(s => {
 
             let enumStatus;
     
