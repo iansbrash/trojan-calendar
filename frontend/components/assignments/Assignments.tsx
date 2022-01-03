@@ -40,7 +40,7 @@ const Assignments : FC<AssignmentsProps> = ({
         let listOfC = new Set<string>();
 
         assignmentsCopy?.forEach(a => {
-            const day = (new Date(a.dueDate)).getDay()
+            const day = (new Date(a.dueDate)).getDate()
 
             listOfC.add(a.className)
             
@@ -52,6 +52,8 @@ const Assignments : FC<AssignmentsProps> = ({
             }
         })
 
+        console.log(`obj`, obj)
+
         setAs(obj)
         setListOfClasses(Array.from(listOfC))
 
@@ -60,6 +62,8 @@ const Assignments : FC<AssignmentsProps> = ({
         let daysWithAssignments : any = Object.keys(obj);
         daysWithAssignments = daysWithAssignments.map((s : string) => parseInt(s));
         daysWithAssignments.sort(function(a : string, b : string){return parseInt(a)-parseInt(b)});
+
+        console.log(`daysWithAssignments`, daysWithAssignments)
 
         // daysWithAssignments = ["0", "1", "2", "3", "4", "5", "6", "7"];
 
@@ -85,7 +89,9 @@ const Assignments : FC<AssignmentsProps> = ({
         //      So the list is now     [6, 10, 11, 1, 4]
         // We do this because it lets us order the assignments in order of most close to being due
         // This assumes that we don't load any assignments that are past the due date.
-        daysWithAssignments = [...daysWithAssignments, ...daysWithAssignments].slice(daysWithAssignments.indexOf(startingDate), daysWithAssignments.indexOf(startingDate + '') + daysWithAssignments.length);
+        daysWithAssignments = [...daysWithAssignments, ...daysWithAssignments].slice(daysWithAssignments.indexOf(startingDate), daysWithAssignments.indexOf(startingDate) + daysWithAssignments.length);
+
+        console.log(`daysWithAssignments after 1iner`, daysWithAssignments)
 
         setAssignmentDays(daysWithAssignments)
 
@@ -151,8 +157,9 @@ const Assignments : FC<AssignmentsProps> = ({
                     }
 
 
-                    return <>
+                    return (
                         <DayContainer
+                        key={index}
                         dayTitle={header}
                         // Notice we do +1 because the months are zero-indexed...
                         dayDate={`${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`}
@@ -179,8 +186,7 @@ const Assignments : FC<AssignmentsProps> = ({
                                     assignmentTitle={a.assignmentTitle}
                                 />
                             })}
-                        </DayContainer>
-                    </>
+                        </DayContainer>)
                 })}
 
                 </div>

@@ -5,7 +5,7 @@ const {
 const { tryCatchWrapper } = require('../functions/tryCatchWrapper');
 const { genHeaders } = require('../usc/genHeaders');
 
-const getCourseAssignments = async (
+const getBlackboardAssignments = async (
     bbCookies,
 ) => {
 
@@ -27,7 +27,14 @@ const getCourseAssignments = async (
         validateStatus: VS,
     }), "getCalendarEventsResponse");
 
-    return getCalendarEventsResponse.data;
+    return getCalendarEventsResponse.data.map(r => {
+        return {
+            assignmentTitle: r.title,
+            dueDate: (new Date(r.end)).getTime(),
+            // eventType: r.eventType, // Test or Assignment.. some other weird shit too
+            className: r.calendarName
+        }
+    });
 }
 
-module.exports.getCourseAssignments = getCourseAssignments;
+module.exports.getBlackboardAssignments = getBlackboardAssignments;

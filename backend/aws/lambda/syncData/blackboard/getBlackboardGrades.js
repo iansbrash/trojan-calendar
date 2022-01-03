@@ -5,18 +5,14 @@ const {
     VS, getValueByDelimiters 
 } = require("../functions/requestFunctions");
 const { tryCatchWrapper } = require('../functions/tryCatchWrapper');
-const { genHeaders } = require('../usc/genHeaders');
+const { genHeaders } = require('../my.usc.edu/genHeaders');
 
-const getBBGrades = async (
+const getBlackboardGrades = async (
     bbCookies,
 ) => {
 
     const course_id = '_275718_1'; //'_251705_1'
 
-    const dayInMilli = 86400000
-
-    //<div id="grades_wrapper" role="rowgroup">
-    
     const base = 'https://blackboard.usc.edu/webapps/bb-mygrades-BB5fd94affdac6c/myGrades';
 
     const getMyGradesResponse = await tryCatchWrapper(() => axios({
@@ -31,12 +27,9 @@ const getBBGrades = async (
     let courseName = getValueByDelimiters(getMyGradesResponse.data, '<span class="context">', '</span>')
     courseName = courseName.split(':')[0]
 
-    console.log(peelingData)
-
     let returnData = {
         [courseName]: []
     }
-
 
     while (peelingData.indexOf('<!-- Calculated Rows -->') !== -1) {
         let gradeDiv = getValueByDelimiters(peelingData, '<!-- Calculated Rows -->', '<!--  Status Column -->')
@@ -70,4 +63,4 @@ const getBBGrades = async (
     return returnData;
 }
 
-module.exports.getBBGrades = getBBGrades;
+module.exports.getBlackboardGrades = getBlackboardGrades;

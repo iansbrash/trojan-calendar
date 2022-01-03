@@ -27,15 +27,18 @@ export interface UpcomingAssignment {
 }
 
 export interface CompiledAssignments {
+    // Key is Blackboard, Gradescope, etc (source)
     [s : string]: UpcomingAssignment[], 
 }
 
 
 export interface CompiledGrades {
+    // Key is Blackboard, Gradescope, etc (source)
     [s : string]: ClassGrades, 
 }
 
 interface ClassGrades {
+    // Key is class (i.e. Math225, CSCI270, etc)
     [s : string]: IndividualGrade[]
 }
 

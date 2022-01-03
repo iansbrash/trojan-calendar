@@ -7,21 +7,20 @@ import Schedule from '../../components/schedule/Schedule'
 import Notes from '../../components/notes/Notes'
 import Announcements from '../../components/announcements/Announcements'
 import React, {
-    FC,
-    useContext,
     useEffect,
     useState
 } from 'react';
-import { useRouter } from 'next/router'
-import { AccountContext } from '../../constants/cognito/Account'
 import axios from 'axios';
 import { CognitoUserSession } from 'amazon-cognito-identity-js'
 import AuthRoute from '../../components/authRoute/AuthRoute'
 import api from '../../constants/api-gateway/api'
-import Cache, { Note } from './cache'
-import Modal from '../../components/multi/Modal'
 import SettingsModal from '../../components/settings/SettingsModal'
-import {CompiledAssignments, CompiledGrades, Schedule as ScheduleInterface} from './cache'
+import Cache, {
+    Note, 
+    CompiledAssignments, 
+    CompiledGrades, 
+    Schedule as ScheduleInterface
+} from './cache'
 
 const Dashboard : NextPage = () => {
 
@@ -92,8 +91,13 @@ const Dashboard : NextPage = () => {
                         },
                     })
 
-                    console.log(getSyncDataResponse.data)
-                    setSchedule(getSyncDataResponse.data.bigRes[0])
+                    const syncData : Cache = getSyncDataResponse.data;
+
+                    console.log(syncData)
+
+                    setSchedule(syncData.schedule)
+                    setAssignments(syncData.assignments)
+                    setGrades(syncData.grades)
                 }
                 catch (err) {
 

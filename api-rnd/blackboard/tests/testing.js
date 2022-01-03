@@ -1,8 +1,8 @@
 const { getMyUscCookies } = require("../../usc/getMyUscCookies");
 const { username, password } = require('../../private/usclogin');
 const { getBlackboardRouter } = require('../getBlackboardRouter');
-const { getCourseAssignments } = require('../getCourseAssignments');
-const { getBBGrades } = require("../getBBGrades");
+const { getBlackboardAssignments } = require('../getBlackboardAssignments');
+const { getBlackboardGrades } = require("../getBlackboardGrades");
 
 (async () => {
     let allCookies = await getMyUscCookies(username, password);
@@ -10,20 +10,11 @@ const { getBBGrades } = require("../getBBGrades");
 
     console.log(allCookies)
 
-    const res = await getCourseAssignments(allCookies);
+    const res = await getBlackboardAssignments(allCookies);
 
-    console.log(res[0])
+    console.log(res);
 
-    console.log(res.map(r => {
-        return {
-            title: r.title,
-            end: r.end,
-            eventType: r.eventType, // Test or Assignment.. some other weird shit too
-            className: r.calendarName
-        }
-    }));
+    // const getBBGradesRes = await getBlackboardGrades(allCookies);
 
-    const getBBGradesRes = await getBBGrades(allCookies);
-
-    console.log(getBBGradesRes)
+    // console.log(getBBGradesRes)
 })();

@@ -3,7 +3,8 @@ const { getBlackboardRouter } = require("./blackboard/getBlackboardRouter");
 const { getGSAssignmentsAndGrades } = require("./gradescope/getGSAssignmentsAndGrades");
 const { getMyUscCookies } = require("./my.usc.edu/getMyUscCookies");
 const { getMyUscCalendar } = require('./my.usc.edu/getMyUscCalendar');
-const { getCourseAssignments } = require("./blackboard/getCourseAssignments");
+const { getBlackboardAssignments } = require("./blackboard/getBlackboardAssignments");
+const { getBlackboardGrades } = require('./blackboard/getBlackboardGrades')
 const { getGradescopeCookies } = require("./gradescope/getGradescopeCookies");
 
 AWS.config.update({
@@ -97,26 +98,8 @@ exports.handler = async (event) => {
         let blackboardRouterCookies = await getBlackboardRouter(myUscCookies);
 
         Promise.all([
-            new Promise(async (resolve, reject) => {
-                // \|/ BLACKBOARD \|/
-
-                try {
-                    const blackboardCourseAssignmentsRes = await getCourseAssignments(blackboardRouterCookies);
-                    let bbArray =  blackboardCourseAssignmentsRes.map(r => {
-                        return {
-                            title: r.title,
-                            end: r.end,
-                        }
-                    });
-
-                    resolve(bbArray)
-                }
-                catch (err) {
-                    reject(err);
-                }
-                // /|\ BLACKBOARD /|\
-
-            }),
+            
+            // Gradescope Assignments + Grades
             new Promise(async (resolve, reject) => {
                 // \|/ GRADESCOPE \|/
                 try {
@@ -129,33 +112,77 @@ exports.handler = async (event) => {
 
                     resolve (gradescopeAssignments)
                 }
-                    // /|\ GRADESCOPE /|\
                 catch (err) {
                     reject(err);
                 }
-            })
+                // /|\ GRADESCOPE /|\
+            }),
+            // Blackboard Assignments
+            new Promise(async (resolve, reject) => {
+                // \|/ BLACKBOARD \|/
+
+                try {
+                    const blackboardCourseAssignmentsRes = await getBlackboardAssignments(blackboardRouterCookies);
+                    
+
+                    resolve(blackboardCourseAssignmentsRes)
+                }
+                catch (err) {
+                    reject(err);
+                }
+                // /|\ BLACKBOARD /|\
+
+            }),
+            // Blackboard Grades
+            new Promise(async (resolve, reject) => {
+                // \|/ BLACKBOARD \|/
+
+                try {
+                    const blackboardGradesRes = await getBlackboardGrades(blackboardRouterCookies);
+                    
+
+                    resolve(blackboardGradesRes)
+                }
+                catch (err) {
+                    reject(err);
+                }
+                // /|\ BLACKBOARD /|\
+
+            }),
         ]).then(v => resolve(v)).catch(e => reject(e))
     });
 
     // Promise Tree
     //                /--> getUscSchedule
-    // getMyUscCookie/---> getBlackboardRouter \---> getGradescopeAssignments
+    // getMyUscCookie/---> getBlackboardRouter \---> getGradescopeCookies --> getGSAssignmentsAndGrades
     //                                          \--> getBlackboardAssignments
+    //                                           \-> getBlackboardGrades
    
-    let bigRes = await Promise.all([
+
+    // Schedule, bbRouterPromise
+    let compiledPromise = await Promise.all([
         schedulePromise, 
+        // GS Assignments+Grades, BB Assignments, BB Grades
         bbRouterPromise, 
     ]);
+
+    let finalResponse = {
+        assignments: {
+            gradescope: compiledPromise[1][0]['assignments'],
+            blackboard: compiledPromise[1][1]
+        },
+        grades: {
+            gradescope: compiledPromise[1][0]['grades'],
+            blackboard: compiledPromise[1][2]
+        },
+        schedule: compiledPromise[0]
+    }
+
 
     
     let cantSyncResponse = {
         statusCode: 200,
-        body: JSON.stringify({
-            // gs: gradescopeAssignments,
-            // bb: bbArray,
-            // schedule: scheduleRes
-            bigRes: bigRes
-        }),
+        body: JSON.stringify(finalResponse),
         headers: {
             'Access-Control-Allow-Origin': '*'
         }
