@@ -33,6 +33,19 @@ const getGSAssignmentsAndGrades = async (gsCookies, courseLink) => {
     // Skip the head which contains <tr> which we don't want
     let peelingData = AssignmentsStudentTable.substring(AssignmentsStudentTable.indexOf('<tbody>'));
 
+    let courseName = getValueByDelimiters(GetCoursePageResponse.data, '<h1 class="courseHeader--title">', '</h1>')
+
+    let todaysDate = Date.now();
+
+    let returnData = {
+        assignments: [
+            
+        ],
+        grades: {
+
+        },
+    };
+
 
     // While we still have assignments to parse
     while (peelingData.indexOf('<tr role="row">') !== -1) {
@@ -66,6 +79,8 @@ const getGSAssignmentsAndGrades = async (gsCookies, courseLink) => {
             console.log("Unable to correctly parse submissionScore/Status")
         }
 
+        submissionScore = submissionScore.split(' / ').join(' ')
+
         // Cut off what we don't need
         tr = tr.substring(tr.indexOf('</td>') + '</td>'.length)
 
@@ -81,8 +96,32 @@ const getGSAssignmentsAndGrades = async (gsCookies, courseLink) => {
         let dueDate = getValueByDelimiters(tr, '<td class="hidden-column">', '</td>')
         dueDate = gradescopeTimestampToISO(dueDate)
 
-        console.log(`${homeworkParsed}: ${submissionStatus ? submissionStatus : submissionScore} (Due on ${dueDate})`);
+        const submissionDueDate = (new Date(dueDate)).getTime()
 
+        console.log(`${homeworkParsed}: ${submissionStatus ? submissionStatus : submissionScore} (Due on ${submissionDueDate})`);
+
+
+        // Decide if we push it to assignments or to grades (based on due date)
+        // If it is due in the past
+        if (todaysDate > submissionDueDate) {
+            // It goes in grades
+            if (!returnData.grades[courseName]) {
+                returnData.grades[courseName] = [];
+            }
+            
+            returnData.grades[courseName].push({
+                assignmentTitle: homeworkParsed,
+                status: submissionStatus !== 'No Submission' && submissionStatus !== 'Needs Grading' ? 'Graded' : submissionStatus,
+                grade: submissionStatus === 'No Submission' ? '0 69' : submissionScore
+            })
+        }
+        else {
+            returnData.assignments.push({
+                assignmentTitle: homeworkParsed,
+                className: courseName,
+                dueDate: submissionDueDate
+            })
+        }
 
         // Finally cut off the entire <tr> we just parsed from our big string of data
         peelingData = peelingData.substring(
@@ -91,7 +130,7 @@ const getGSAssignmentsAndGrades = async (gsCookies, courseLink) => {
 
     }
 
-    return;
+    return returnData;
 }
 
 const gradescopeTimestampToISO = (gsTS) => {

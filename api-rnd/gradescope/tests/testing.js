@@ -19,4 +19,6 @@ const { getGSAssignmentsAndGrades } = require('../getGSAssignmentsAndGrades');
 
     let res = await getGSAssignmentsAndGrades(gradescopeCookies, gsLink);
 
+    console.log(res);
+
 })();
