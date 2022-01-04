@@ -53,6 +53,9 @@ const Dashboard : NextPage = () => {
     useEffect(() => {
         if (session === null) return;
         (async () => {
+
+            let lastSynced = 0;
+
             let canSync = false;
             const token = session.getIdToken().getJwtToken()
 
@@ -68,6 +71,7 @@ const Dashboard : NextPage = () => {
                 canSync = checkSyncData.data.canSync;
 
                 setLastSynced(checkSyncData.data.lastSynced)
+                lastSynced = checkSyncData.data.lastSynced;
 
                 console.log('checkSyncData', checkSyncData.data)
             }
@@ -81,13 +85,16 @@ const Dashboard : NextPage = () => {
                 // Tell server to fetch new data and wait for response
                 try {
                     setIsSyncing(true)
-                    console.log("We can sync: Will retrieve data now")
+                    console.log("We can sync: Will retrieve data now. LastSynced: " + lastSynced)
+
+
                     
                     const getSyncDataResponse = await axios({
                         method: 'post',
                         url: `${api}/account/sync`,
                         headers: {
-                            'Authorization': token
+                            'Authorization': token,
+                            'lastsynced': lastSynced + ''
                         },
                     })
 
@@ -99,8 +106,8 @@ const Dashboard : NextPage = () => {
                     setAssignments(syncData.assignments)
                     setGrades(syncData.grades)
                 }
-                catch (err) {
-
+                catch (err : any) {
+                    console.log(err.message)
                 }
                 finally {
                     setIsSyncing(false)

@@ -43,7 +43,13 @@ const getBlackboardGrades = async (
         }
 
         // Graded Upcoming
-        const gradeStatus = getValueByDelimiters(gradeDiv, '<span class="activityType">', '</span>')
+        let gradeStatus = getValueByDelimiters(gradeDiv, '<span class="activityType">', '</span>')
+
+        if (gradeStatus === "Upcoming") {
+            // To fit our schema
+            gradeStatus = "Needs Grading"
+        }
+
         let gradeNumerator = gradeDiv.substring(gradeDiv.indexOf('<span class="grade"') + '<span class="grade"'.length)
         gradeNumerator = getValueByDelimiters(gradeNumerator, '>', '</span>')
         gradeNumerator === '-' ? gradeNumerator = 0 : null;

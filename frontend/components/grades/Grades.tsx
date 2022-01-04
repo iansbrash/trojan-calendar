@@ -66,51 +66,6 @@ const Grades : FC<GradesProps> = ({
                         )
                     }))
                 }
-                {/* <ClassGradeBox 
-                    chevronColor='text-sky-400'
-                    className='MATH-225'
-                    highlightColor='hover:bg-sky-100'
-                    bulletColor='text-sky-200'
-                    gradeTextColor='text-sky-700'
-                    gradeBgColor='bg-sky-100'
-                /> */}
-
-                {/* <ClassGradeBox 
-                    chevronColor='text-rose-400'
-                    className='CSCI-270'
-                    highlightColor='hover:bg-rose-100'
-                    bulletColor='text-rose-200'
-                    gradeTextColor='text-rose-700'
-                    gradeBgColor='bg-rose-100'
-                />
-
-                <ClassGradeBox 
-                    chevronColor='text-indigo-400'
-                    className='BAEP-470'
-                    highlightColor='hover:bg-indigo-100'
-                    bulletColor='text-indigo-200'
-                    gradeTextColor='text-indigo-700'
-                    gradeBgColor='bg-indigo-100'
-                />
-
-                <ClassGradeBox 
-                    chevronColor='text-emerald-400'
-                    className='WRIT-340'
-                    highlightColor='hover:bg-emerald-100'
-                    bulletColor='text-emerald-200'
-                    gradeTextColor='text-emerald-700'
-                    gradeBgColor='bg-emerald-100'
-                />
-
-                <ClassGradeBox 
-                    chevronColor='text-orange-400'
-                    className='CSCI-201'
-                    highlightColor='hover:bg-orange-100'
-                    bulletColor='text-orange-200'
-                    gradeTextColor='text-orange-700'
-                    gradeBgColor='bg-orange-100'
-                /> */}
-
             </div>
         </ColumnContainer>
     )

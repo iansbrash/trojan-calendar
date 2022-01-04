@@ -74,6 +74,11 @@ const getGSAssignmentsAndGrades = async (gsCookies, courseLink) => {
         }
         else if (submissionScore.includes('<div class="submissionStatus--text">')) {
             submissionStatus = getValueByDelimiters(submissionScore, '<div class="submissionStatus--text">', '</div>')
+
+            if (submissionStatus === "No Submission") {
+                // To fit our Schema
+                submissionStatus = "Not Submitted"
+            }
         }
         else {
             console.log("Unable to correctly parse submissionScore/Status")
@@ -111,8 +116,8 @@ const getGSAssignmentsAndGrades = async (gsCookies, courseLink) => {
             
             returnData.grades[courseName].push({
                 assignmentTitle: homeworkParsed,
-                status: submissionStatus !== 'No Submission' && submissionStatus !== 'Needs Grading' ? 'Graded' : submissionStatus,
-                grade: submissionStatus === 'No Submission' ? '0 69' : submissionScore
+                status: submissionStatus !== 'Not Submitted' && submissionStatus !== 'Needs Grading' ? 'Graded' : submissionStatus,
+                grade: submissionStatus === 'Not Submitted' ? '0 0' : submissionScore
             })
         }
         else {

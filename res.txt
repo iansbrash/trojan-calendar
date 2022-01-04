@@ -1,11 +1,328 @@
-// My QS.Stringify
-tool_consumer_info_product_family_code=BlackboardLearn&custom_blackboard_course_shortname=20213_math_225_39541&context_title=20213_math_225_39541%3A%20Linear%20Algebra%20and%20Linear%20Differential%20Equations&roles=urn%3Alti%3Arole%3Aims%2Flis%2FLearner&lis_person_name_family=Brash&tool_consumer_instance_name=University%20of%20Southern%20California&tool_consumer_instance_guid=2d9c6efeed7c4a1fb8b19ac174157ffa&custom_blackboard_course_name=20213_math_225_39541%3A%20Linear%20Algebra%20and%20Linear%20Differential%20Equations&resource_link_id=_275718_1gradescope&oauth_signature_method=HMAC-SHA1&oauth_version=1.0&ext_fnds_user_id=2603ede1-e12e-11eb-aa5c-1fc81e3588fe&custom_caliper_profile_url=https%3A%2F%2Fblackboard.usc.edu%2Flearn%2Fapi%2Fv1%2Ftelemetry%2Fcaliper%2Fprofile%2F_275718_1gradescope&launch_presentation_return_url=https%3A%2F%2Fblackboard.usc.edu%2Fwebapps%2Fblackboard%2Fexecute%2Fblti%2FlaunchReturn%3Fcourse_id%3D_275718_1%26amp%3Bnonce%3Df6e5c9ca168d4affaeaf7e05080afe6c%26amp%3Blaunch_id%3D05505bd5-2d64-498c-84dd-e5e3f510b0e0%26amp%3Blink_id%3D_275718_1gradescope%26amp%3Blaunch_time%3D1640384737926&ext_launch_id=05505bd5-2d64-498c-84dd-e5e3f510b0e0&ext_fnds_tenant_id=e113d537-b9c5-41e0-8299-e6bca979e17e&ext_lms=bb-3900.28.0-rel.22%2B1a80aa0&lti_version=LTI-1p0&custom_launch_url=https%3A%2F%2Fwww.gradescope.com%2Fauth%2Flti%2Fcallback&lis_person_contact_email_primary=brash%40usc.edu&oauth_signature=2cd%2BspAg5fDOk2%2BtYQVWUYuOw54%3D&tool_consumer_instance_description=University%20of%20Southern%20California&ext_fnds_course_id=15713855-e18b-11eb-af8b-b5c7b4617588&oauth_consumer_key=253_blackboard&launch_presentation_locale=en-US&custom_caliper_federated_session_id=https%3A%2F%2Fcaliper-mapping.cloudbb.blackboard.com%2Fv1%2Fsites%2F4da0a596-99be-4a6d-b4ce-2f9313e6c492%2Fsessions%2F5BF4EEA3E15217427C5FF27C27A892F0&custom_blackboard_course_membership_role=S&lis_person_sourcedid=brash&oauth_timestamp=1640384737&lis_person_name_full=Ian%20Brash&tool_consumer_instance_contact_email=blackboard%40usc.edu&custom_lms_name=blackboard&lis_person_name_given=Ian&custom_tc_profile_url=https%3A%2F%2Fblackboard.usc.edu%2Flearn%2Fapi%2Fv1%2Flti%2Fprofile%3Flti_version%3DLTI-1p0&custom_gs_school_id=253&oauth_nonce=447115774580119&lti_message_type=basic-lti-launch-request&user_id=f22e6717ea2e4f958864dbe8aba50b39&oauth_callback=about%3Ablank&tool_consumer_info_version=3900.28.0-rel.22%2B1a80aa0&custom_blackboard_course_id=_275718_1&context_id=681b7c0ebb0d490abb9c630e3d724175&custom_blackboard_user_id=_397301_1&context_label=20213_math_225_39541&launch_presentation_document_target=window&ext_launch_presentation_css_url=https%3A%2F%2Fblackboard.usc.edu%2Fcommon%2Fshared.css%2Chttps%3A%2F%2Fblackboard.usc.edu%2Fthemes%2Fas_2015%2Ftheme.css
-
-// QS with replacing %20
-tool_consumer_info_product_family_code=BlackboardLearn&custom_blackboard_course_shortname=20213_math_225_39541&context_title=20213_math_225_39541%3A+Linear+Algebra+and+Linear+Differential+Equations&roles=urn%3Alti%3Arole%3Aims%2Flis%2FLearner&lis_person_name_family=Brash&tool_consumer_instance_name=University+of+Southern+California&tool_consumer_instance_guid=2d9c6efeed7c4a1fb8b19ac174157ffa&custom_blackboard_course_name=20213_math_225_39541%3A+Linear+Algebra+and+Linear+Differential+Equations&resource_link_id=_275718_1gradescope&oauth_signature_method=HMAC-SHA1&oauth_version=1.0&ext_fnds_user_id=2603ede1-e12e-11eb-aa5c-1fc81e3588fe&custom_caliper_profile_url=https%3A%2F%2Fblackboard.usc.edu%2Flearn%2Fapi%2Fv1%2Ftelemetry%2Fcaliper%2Fprofile%2F_275718_1gradescope&launch_presentation_return_url=https%3A%2F%2Fblackboard.usc.edu%2Fwebapps%2Fblackboard%2Fexecute%2Fblti%2FlaunchReturn%3Fcourse_id%3D_275718_1%26amp%3Bnonce%3D9578e7831705403eb5f2c525625a2460%26amp%3Blaunch_id%3D5e016cdd-c652-43c3-b3a2-88e773b7d5a4%26amp%3Blink_id%3D_275718_1gradescope%26amp%3Blaunch_time%3D1640385316991&ext_launch_id=5e016cdd-c652-43c3-b3a2-88e773b7d5a4&ext_fnds_tenant_id=e113d537-b9c5-41e0-8299-e6bca979e17e&ext_lms=bb-3900.28.0-rel.22%2B1a80aa0&lti_version=LTI-1p0&custom_launch_url=https%3A%2F%2Fwww.gradescope.com%2Fauth%2Flti%2Fcallback&lis_person_contact_email_primary=brash%40usc.edu&oauth_signature=2hPMTczxAXUVS3UOZPmp9SYnx8M%3D&tool_consumer_instance_description=University+of+Southern+California&ext_fnds_course_id=15713855-e18b-11eb-af8b-b5c7b4617588&oauth_consumer_key=253_blackboard&launch_presentation_locale=en-US&custom_caliper_federated_session_id=https%3A%2F%2Fcaliper-mapping.cloudbb.blackboard.com%2Fv1%2Fsites%2F4da0a596-99be-4a6d-b4ce-2f9313e6c492%2Fsessions%2FFB7A6A7F95714965AEA9555D57A6D09B&custom_blackboard_course_membership_role=S&lis_person_sourcedid=brash&oauth_timestamp=1640385316&lis_person_name_full=Ian+Brash&tool_consumer_instance_contact_email=blackboard%40usc.edu&custom_lms_name=blackboard&lis_person_name_given=Ian&custom_tc_profile_url=https%3A%2F%2Fblackboard.usc.edu%2Flearn%2Fapi%2Fv1%2Flti%2Fprofile%3Flti_version%3DLTI-1p0&custom_gs_school_id=253&oauth_nonce=447694923227487&lti_message_type=basic-lti-launch-request&user_id=f22e6717ea2e4f958864dbe8aba50b39&oauth_callback=about%3Ablank&tool_consumer_info_version=3900.28.0-rel.22%2B1a80aa0&custom_blackboard_course_id=_275718_1&context_id=681b7c0ebb0d490abb9c630e3d724175&custom_blackboard_user_id=_397301_1&context_label=20213_math_225_39541&launch_presentation_document_target=window&ext_launch_presentation_css_url=https%3A%2F%2Fblackboard.usc.edu%2Fcommon%2Fshared.css%2Chttps%3A%2F%2Fblackboard.usc.edu%2Fthemes%2Fas_2015%2Ftheme.css
-
-// Fiddlr Payload
-tool_consumer_info_product_family_code=BlackboardLearn&custom_blackboard_course_shortname=20213_math_225_39541&context_title=20213_math_225_39541%3A+Linear+Algebra+and+Linear+Differential+Equations&roles=urn%3Alti%3Arole%3Aims%2Flis%2FLearner&lis_person_name_family=Brash&tool_consumer_instance_name=University+of+Southern+California&tool_consumer_instance_guid=2d9c6efeed7c4a1fb8b19ac174157ffa&custom_blackboard_course_name=20213_math_225_39541%3A+Linear+Algebra+and+Linear+Differential+Equations&resource_link_id=_275718_1gradescope&oauth_signature_method=HMAC-SHA1&oauth_version=1.0&ext_fnds_user_id=2603ede1-e12e-11eb-aa5c-1fc81e3588fe&custom_caliper_profile_url=https%3A%2F%2Fblackboard.usc.edu%2Flearn%2Fapi%2Fv1%2Ftelemetry%2Fcaliper%2Fprofile%2F_275718_1gradescope&launch_presentation_return_url=https%3A%2F%2Fblackboard.usc.edu%2Fwebapps%2Fblackboard%2Fexecute%2Fblti%2FlaunchReturn%3Fcourse_id%3D_275718_1%26nonce%3D58b3c7a117404e9e8bb38384f968a119%26launch_id%3D3bf5e63f-ecc8-44d4-9d3c-f1c64df55111%26link_id%3D_275718_1gradescope%26launch_time%3D1640384220447&ext_launch_id=3bf5e63f-ecc8-44d4-9d3c-f1c64df55111&ext_fnds_tenant_id=e113d537-b9c5-41e0-8299-e6bca979e17e&ext_lms=bb-3900.28.0-rel.22%2B1a80aa0&lti_version=LTI-1p0&custom_launch_url=https%3A%2F%2Fwww.gradescope.com%2Fauth%2Flti%2Fcallback&lis_person_contact_email_primary=brash%40usc.edu&oauth_signature=TYmlCWobH5EmAYOHKs5IilOPu2s%3D&tool_consumer_instance_description=University+of+Southern+California&ext_fnds_course_id=15713855-e18b-11eb-af8b-b5c7b4617588&oauth_consumer_key=253_blackboard&launch_presentation_locale=en-US&custom_caliper_federated_session_id=https%3A%2F%2Fcaliper-mapping.cloudbb.blackboard.com%2Fv1%2Fsites%2F4da0a596-99be-4a6d-b4ce-2f9313e6c492%2Fsessions%2FC947C62679580CFB77B61E57A618FD5D&custom_blackboard_course_membership_role=S&lis_person_sourcedid=brash&oauth_timestamp=1640384220&lis_person_name_full=Ian+Brash&tool_consumer_instance_contact_email=blackboard%40usc.edu&custom_lms_name=blackboard&lis_person_name_given=Ian&custom_tc_profile_url=https%3A%2F%2Fblackboard.usc.edu%2Flearn%2Fapi%2Fv1%2Flti%2Fprofile%3Flti_version%3DLTI-1p0&custom_gs_school_id=253&oauth_nonce=446598355597115&lti_message_type=basic-lti-launch-request&user_id=f22e6717ea2e4f958864dbe8aba50b39&oauth_callback=about%3Ablank&tool_consumer_info_version=3900.28.0-rel.22%2B1a80aa0&custom_blackboard_course_id=_275718_1&context_id=681b7c0ebb0d490abb9c630e3d724175&custom_blackboard_user_id=_397301_1&context_label=20213_math_225_39541&launch_presentation_document_target=window&ext_launch_presentation_css_url=https%3A%2F%2Fblackboard.usc.edu%2Fcommon%2Fshared.css%2Chttps%3A%2F%2Fblackboard.usc.edu%2Fthemes%2Fas_2015%2Ftheme.css
-
-// Browser raw Payload
-tool_consumer_info_product_family_code=BlackboardLearn&custom_blackboard_course_shortname=20213_math_225_39541&context_title=20213_math_225_39541%3A+Linear+Algebra+and+Linear+Differential+Equations&roles=urn%3Alti%3Arole%3Aims%2Flis%2FLearner&lis_person_name_family=Brash&tool_consumer_instance_name=University+of+Southern+California&tool_consumer_instance_guid=2d9c6efeed7c4a1fb8b19ac174157ffa&custom_blackboard_course_name=20213_math_225_39541%3A+Linear+Algebra+and+Linear+Differential+Equations&resource_link_id=_275718_1gradescope&oauth_signature_method=HMAC-SHA1&oauth_version=1.0&ext_fnds_user_id=2603ede1-e12e-11eb-aa5c-1fc81e3588fe&custom_caliper_profile_url=https%3A%2F%2Fblackboard.usc.edu%2Flearn%2Fapi%2Fv1%2Ftelemetry%2Fcaliper%2Fprofile%2F_275718_1gradescope&launch_presentation_return_url=https%3A%2F%2Fblackboard.usc.edu%2Fwebapps%2Fblackboard%2Fexecute%2Fblti%2FlaunchReturn%3Fcourse_id%3D_275718_1%26nonce%3Dd8eed0ef8e1146cd847ffa23dd5b116c%26launch_id%3Dc6571ca6-e857-43d2-8f32-b875826e8fdc%26link_id%3D_275718_1gradescope%26launch_time%3D1640384386483&ext_launch_id=c6571ca6-e857-43d2-8f32-b875826e8fdc&ext_fnds_tenant_id=e113d537-b9c5-41e0-8299-e6bca979e17e&ext_lms=bb-3900.28.0-rel.22%2B1a80aa0&lti_version=LTI-1p0&custom_launch_url=https%3A%2F%2Fwww.gradescope.com%2Fauth%2Flti%2Fcallback&lis_person_contact_email_primary=brash%40usc.edu&oauth_signature=EN%2Brrj1pWAquLzm0G8ObPMrHWEs%3D&tool_consumer_instance_description=University+of+Southern+California&ext_fnds_course_id=15713855-e18b-11eb-af8b-b5c7b4617588&oauth_consumer_key=253_blackboard&launch_presentation_locale=en-US&custom_caliper_federated_session_id=https%3A%2F%2Fcaliper-mapping.cloudbb.blackboard.com%2Fv1%2Fsites%2F4da0a596-99be-4a6d-b4ce-2f9313e6c492%2Fsessions%2F62315E6CAE80163709F959AE01A60A3D&custom_blackboard_course_membership_role=S&lis_person_sourcedid=brash&oauth_timestamp=1640384386&lis_person_name_full=Ian+Brash&tool_consumer_instance_contact_email=blackboard%40usc.edu&custom_lms_name=blackboard&lis_person_name_given=Ian&custom_tc_profile_url=https%3A%2F%2Fblackboard.usc.edu%2Flearn%2Fapi%2Fv1%2Flti%2Fprofile%3Flti_version%3DLTI-1p0&custom_gs_school_id=253&oauth_nonce=446763371810710&lti_message_type=basic-lti-launch-request&user_id=f22e6717ea2e4f958864dbe8aba50b39&oauth_callback=about%3Ablank&tool_consumer_info_version=3900.28.0-rel.22%2B1a80aa0&custom_blackboard_course_id=_275718_1&context_id=681b7c0ebb0d490abb9c630e3d724175&custom_blackboard_user_id=_397301_1&context_label=20213_math_225_39541&launch_presentation_document_target=window&ext_launch_presentation_css_url=https%3A%2F%2Fblackboard.usc.edu%2Fcommon%2Fshared.css%2Chttps%3A%2F%2Fblackboard.usc.edu%2Fthemes%2Fas_2015%2Ftheme.css
+{
+  "userId": {
+    "S": "30d7eee8-a37d-40ef-b3aa-038f6a1b2883"
+  },
+  "lastSynced": {
+    "S": "1640622174567"
+  },
+  "storage": {
+    "M": {
+      "settings": {
+        "M": {}
+      },
+      "notes": {
+        "L": [
+          {
+            "M": {
+              "noteTitle": {
+                "S": "New Note!"
+              },
+              "noteId": {
+                "S": "1"
+              },
+              "noteContent": {
+                "S": "This is definitely a note!\nNew line thats so cool wow new lines man\nso sick."
+              }
+            }
+          },
+          {
+            "M": {
+              "noteTitle": {
+                "S": "Color Test"
+              },
+              "noteId": {
+                "S": "2"
+              },
+              "noteContent": {
+                "S": "Need more colors"
+              }
+            }
+          },
+          {
+            "M": {
+              "noteTitle": {
+                "S": "Color Test 2"
+              },
+              "noteId": {
+                "S": "3"
+              },
+              "noteContent": {
+                "S": "Need more colors pt 2"
+              }
+            }
+          },
+          {
+            "M": {
+              "noteTitle": {
+                "S": "Color Test 3"
+              },
+              "noteId": {
+                "S": "4"
+              },
+              "noteContent": {
+                "S": "Need more colors pt 3"
+              }
+            }
+          },
+          {
+            "M": {
+              "noteTitle": {
+                "S": "Color Test 4"
+              },
+              "noteId": {
+                "S": "5"
+              },
+              "noteContent": {
+                "S": "Need more colors pt 4\nTuh"
+              }
+            }
+          },
+          {
+            "M": {
+              "noteTitle": {
+                "S": "Color Test 5"
+              },
+              "noteId": {
+                "S": "6"
+              },
+              "noteContent": {
+                "S": "Need more colors pt 5\nyyyyuh"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "cache": {
+    "M": {
+      "schedule": {
+        "M": {
+          "wednesday": {
+            "L": [
+              {
+                "M": {
+                  "className": {
+                    "S": "BAEP-470"
+                  },
+                  "startTime": {
+                    "S": "8:00"
+                  },
+                  "endTime": {
+                    "S": "8:50"
+                  },
+                  "classType": {
+                    "S": "Lecture"
+                  },
+                  "classLocation": {
+                    "S": "SGM-152"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "className": {
+                    "S": "MATH-225"
+                  },
+                  "startTime": {
+                    "S": "10:00"
+                  },
+                  "endTime": {
+                    "S": "11:50"
+                  },
+                  "classType": {
+                    "S": "Lecture"
+                  },
+                  "classLocation": {
+                    "S": "FCK-152"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "className": {
+                    "S": "CSCI-420"
+                  },
+                  "startTime": {
+                    "S": "13:00"
+                  },
+                  "endTime": {
+                    "S": "15:10"
+                  },
+                  "classType": {
+                    "S": "Quiz"
+                  },
+                  "classLocation": {
+                    "S": "SAL-69"
+                  }
+                }
+              }
+            ]
+          },
+          "thursday": {
+            "L": []
+          },
+          "friday": {
+            "L": []
+          },
+          "tuesday": {
+            "L": []
+          },
+          "monday": {
+            "L": []
+          }
+        }
+      },
+      "assignments": {
+        "M": {
+          "blackboard": {
+            "L": [
+              {
+                "M": {
+                  "assignmentTitle": {
+                    "S": "Homework 1"
+                  },
+                  "className": {
+                    "S": "BAEP-470"
+                  },
+                  "dueDate": {
+                    "N": "1640722174567"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "assignmentTitle": {
+                    "S": "Homework 2"
+                  },
+                  "className": {
+                    "S": "BAEP-470"
+                  },
+                  "dueDate": {
+                    "N": "1641822174567"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "assignmentTitle": {
+                    "S": "Homework 1"
+                  },
+                  "className": {
+                    "S": "MATH-225"
+                  },
+                  "dueDate": {
+                    "N": "1640722174567"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "assignmentTitle": {
+                    "S": "HW 2"
+                  },
+                  "className": {
+                    "S": "MATH-225"
+                  },
+                  "dueDate": {
+                    "N": "1641822174567"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "assignmentTitle": {
+                    "S": "Reflection 1"
+                  },
+                  "className": {
+                    "S": "ENGL-299"
+                  },
+                  "dueDate": {
+                    "N": "1641292174567"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "assignmentTitle": {
+                    "S": "PA 1"
+                  },
+                  "className": {
+                    "S": "CSCI-201"
+                  },
+                  "dueDate": {
+                    "N": "1651292174567"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "assignmentTitle": {
+                    "S": "PA 1"
+                  },
+                  "className": {
+                    "S": "CSCI-104"
+                  },
+                  "dueDate": {
+                    "N": "1651292174567"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "assignmentTitle": {
+                    "S": "hw1"
+                  },
+                  "className": {
+                    "S": "EE-109"
+                  },
+                  "dueDate": {
+                    "N": "1631292174567"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "assignmentTitle": {
+                    "S": "Quiz 3"
+                  },
+                  "className": {
+                    "S": "MATH-229"
+                  },
+                  "dueDate": {
+                    "N": "1638292174567"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "grades": {
+        "M": {
+          "blackboard": {
+            "M": {
+              "BAEP-470": {
+                "L": [
+                  {
+                    "M": {
+                      "assignmentTitle": {
+                        "S": "quiz 1"
+                      },
+                      "status": {
+                        "S": "Graded"
+                      },
+                      "grade": {
+                        "S": "0 100"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

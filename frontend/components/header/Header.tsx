@@ -26,6 +26,28 @@ const Header : FC<HeaderProps> = ({
         Router.push('/login')
     }
 
+    const getLastUpdated = (d : number) => {
+        const difference = Date.now() - d;
+        console.log(d)
+
+        console.log(`difference: ${difference}`)
+
+        // Less than a minute ago
+        if (difference < 1000 * 60) {
+            return "a few seconds ago";
+        }
+        // Less than an hour ago
+        else if (difference < 1000 * 60 * 60) {
+            return "a few minutes ago"
+        }
+        else if (difference < 1000 * 60 * 60 * 24) {
+            return `${Math.floor(difference / 1000 / 60 / 60)} hours ago`
+        }
+        else {
+            return `${Math.floor(difference / 1000 / 60 / 60)} hours ago`
+        }
+    }
+
 
     return (
         <div className="w-full h-20 flex flex-row justify-between items-center px-10 bg-slate-50 shadow-md border-t-4 border-sky-500">
@@ -37,7 +59,7 @@ const Header : FC<HeaderProps> = ({
                     </svg>
                 </div>
                 <div className="flex flex-row justify-start items-center text-slate-800 ml-2">
-                    My Dashboard <span className="hidden md:block font-medium text-slate-400 text-base pt-1 ml-1">{isSyncing ? 'Syncing...' : `(last updated ${lastSynced})`}</span>
+                    My Dashboard <span className="hidden md:block font-medium text-slate-400 text-base pt-1 ml-1">{isSyncing ? 'Syncing...' : `(last updated ${getLastUpdated(lastSynced)})`}</span>
                 </div>
             </div>
 

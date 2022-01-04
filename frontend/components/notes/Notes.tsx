@@ -1,6 +1,8 @@
 import React, {
     FC,
-    useState
+    useState,
+    useRef,
+    useEffect
 } from 'react';
 import getInitializedArray from '../../constants/functions/getInitializedArray';
 import { Note } from '../../pages/dashboard/cache';
@@ -15,6 +17,28 @@ const Notes : FC<NotesProps> = ({
     notes
 } : NotesProps) => {
 
+    const [isCreatingNewNote, setIsCreatingNewNote] = useState<boolean>(false);
+    const inputSpan = useRef<HTMLTextAreaElement>(document.createElement('textarea'));
+
+    const [newNoteTitle, setNewNoteTitle] = useState<string>('')
+    const [newNoteContent, setNewNoteContent] = useState<string>('')
+
+    function auto_grow(element : HTMLElement) {
+        element.style.height = "5px";
+        element.style.height = (element.scrollHeight)+"px";
+
+        // updates the X/maxCharLength counter
+        // we have to do this because emojis are represented by 2 unicode surrogate pairs
+        // setInputLength(Array.from(inputSpan.current.value).length)
+
+        // updates confession for preview
+        setNewNoteContent(inputSpan.current.value);
+    }
+
+    // Dynamically sets starting size on page load
+    useEffect(() => {
+        auto_grow(inputSpan.current)
+    }, [isCreatingNewNote])
 
     const noteColors = [
         {
@@ -46,8 +70,10 @@ const Notes : FC<NotesProps> = ({
     
 
     const newNote = () => {
-
+        setIsCreatingNewNote(!isCreatingNewNote)
     }
+
+    
 
     if (notes === null) {
         return (
@@ -63,9 +89,9 @@ const Notes : FC<NotesProps> = ({
             {/* Content */}
             <div className="w-full rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-start items-center space-y-4 pb-4">
 
-                {/* New Mock */}
+                {/* New Note */}
                 <div className="animate-pulse py-1 cursor-pointer bg-gray-300 transition duration-250 ease-in-out rounded-md w-full flex flex-row justify-start items-center"
-                onClick={() => newNote()}
+                onClick={() => null}
                 >
                     <div className="text-slate-700 font-medium text-lg">
                         {'ㅤ'}
@@ -90,10 +116,10 @@ const Notes : FC<NotesProps> = ({
             breakpoint='lg:block'
         >
             {/* Content */}
-            <div className="w-full rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-start items-center space-y-4 pb-4">
+            <div className="w-full rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-start items-center pb-4">
 
                 {/* New Note */}
-                <div className="py-1 cursor-pointer hover:bg-sky-100 transition duration-250 ease-in-out rounded-md w-full flex flex-row justify-start items-center"
+                <div className={`${isCreatingNewNote ? 'hidden pointer-events-none' : 'flex'} py-1 cursor-pointer hover:bg-sky-100 transition duration-250 ease-in-out rounded-md w-full flex-row justify-start items-center`}
                 onClick={() => newNote()}
                 >
                     <div className="text-sky-400 mx-1.5">
@@ -106,17 +132,66 @@ const Notes : FC<NotesProps> = ({
                     </div>
                 </div>
 
-                {
-                    notes.map((n, i) => {
-                        return <NoteComponent 
-                            key={n.noteId}
-                            noteTitle={n.noteTitle}
-                            noteContents={n.noteContent}
-                            headerColor={noteColors[i % noteColors.length]['bg600']}
-                            contentColor={noteColors[i % noteColors.length]['bg400']}
-                        />
-                    })
-                }
+                {/* When isCreatingNewNote is true! */}
+                <div className={`${isCreatingNewNote ? 'flex' : 'hidden pointer-events-none'} py-1  cursor-pointer w-full flex-col justify-start items-center`}
+                onClick={() => null}
+                >
+                    <div className="relative w-full flex flex-row justify-start items-center">
+                      
+
+                        <div className="absolute top-0 right-0 flex flex-row justify-start items-center space-x-2">
+                            <div className="w-6 h-6 rounded-lg bg-rose-400"
+                            onClick={() => setIsCreatingNewNote(false)}
+                            >
+
+                            </div>
+
+                            <div className="w-6 h-6 rounded-lg bg-emerald-400">
+
+                            </div>
+                        </div>
+
+                        <div className="text-slate-600 mx-1.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+
+                        <input
+                        className="text-slate-700 font-medium text-lg focus:outline-none bg-transparent placeholder-slate-400 "
+                        placeholder='Note title'
+                        >
+                        
+                        </input>
+
+                        
+                    </div>
+                    <textarea className="text-lg w-full bg-transparent placeholder-slate-400 font-normal h-min focus:outline-none resize-none overflow-hidden leading-6 whitespace-normal break-text"
+                    placeholder='Write something!'
+                    ref={inputSpan}
+                    onInput={e => auto_grow(e.currentTarget)}
+                    
+                    >
+                            
+                    </textarea>
+                </div>
+
+                {/* Holds actual notes */}
+                <div className="mt-4 flex flex-col justify-start items-center space-y-4">
+                    {
+                        notes.map((n, i) => {
+                            return <NoteComponent 
+                                key={n.noteId}
+                                noteTitle={n.noteTitle}
+                                noteContents={n.noteContent}
+                                headerColor={noteColors[i % noteColors.length]['bg600']}
+                                contentColor={noteColors[i % noteColors.length]['bg400']}
+                            />
+                        })
+                    }
+                </div>
+
+               
             </div>
         </ColumnContainer>
     )

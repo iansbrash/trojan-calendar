@@ -2,6 +2,7 @@ import React, {
     FC
 } from 'react';
 import getInitializedArray from '../../constants/functions/getInitializedArray';
+import gradescopeNameParser from '../../constants/functions/gradescopeNameParser';
 
 interface AssignmentBlockProps {
     headerColor: string,
@@ -19,7 +20,7 @@ const AssignmentBlock : FC<AssignmentBlockProps> = ({
     assignmentTitle
 } : AssignmentBlockProps) => {
     return (
-        <div className="cursor-pointer hover:scale-105 transition ease-in-out duration-250 w-full h-auto py-2 flex flex-col justify-start items-center drop-shadow-md relative">
+        <div className="cursor-pointer w-full  h-auto flex flex-col justify-start items-center drop-shadow-md relative py-2">
             {/* Due Date */}
             <div className="px-2 absolute w-auto h-5 bg-red-600 rounded-md top-0 -right-3 flex justify-center items-center">
                 <div className="font-bold text-white">
@@ -28,9 +29,9 @@ const AssignmentBlock : FC<AssignmentBlockProps> = ({
             </div>
 
             {/* Top Header */}
-            <div className={`h-auto w-full rounded-t-md ${headerColor} flex justify-center items-center py-2`}>
+            <div className={`w-full rounded-t-md ${headerColor} flex justify-center items-center py-2`}>
                 <div className="font-bold text-3xl text-zinc-50">
-                    {className}
+                    {className.includes(':') ? gradescopeNameParser(className) : className}
                 </div>
             </div>
 

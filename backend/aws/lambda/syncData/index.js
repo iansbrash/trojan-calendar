@@ -10,15 +10,28 @@ const { getGradescopeCookies } = require("./gradescope/getGradescopeCookies");
 AWS.config.update({
     region: "us-east-1",
 });
-var docClient = new AWS.DynamoDB.DocumentClient();
+var docClient = new AWS.DynamoDB.DocumentClient()
 
 const delayBetweenSync = 86400000 / 2; // one day, then divded by 2
 
 exports.handler = async (event) => {
     
     const claims = event.requestContext.authorizer.claims;
+
+    const lastsynced = event.headers['lastsynced'] + ''
     
     const userId = claims['cognito:username'];
+
+    if (!lastsynced) {
+        console.log(`lastsynced: ${lastsynced} is not provided`)
+        return {
+            statusCode: 400,
+            body: JSON.stringify("Error: lastsynced is not provided"),
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            }
+        }
+    }
     
     // Other Notes:
     // We should have a strict error throwing setup here since there is a lot that could go wrong
@@ -178,8 +191,24 @@ exports.handler = async (event) => {
         schedule: compiledPromise[0]
     }
 
-
+    // Update cache
+    var updateParams = {
+        TableName: 'trojandashUserData',
+        Key:{
+            "userId": userId,
+        },
+        UpdateExpression: "set cache = :c",
+        ExpressionAttributeValues:{
+            ":c": finalResponse,
+        },
+        ReturnValues:"UPDATED_NEW"
+    };
     
+    console.log("Updating the item...");
+    const res = await docClient.update(updateParams).promise()
+
+    console.log(res)
+
     let cantSyncResponse = {
         statusCode: 200,
         body: JSON.stringify(finalResponse),
