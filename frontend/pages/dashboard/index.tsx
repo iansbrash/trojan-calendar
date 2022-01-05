@@ -274,6 +274,7 @@ const Dashboard : NextPage = () => {
                         {/* For now we're gonna used cachedData, but we'll eventually set up a separate endpoiint */}
                         <Notes 
                             notes={notes ? notes : null}
+                            session={session ? session : null}
                         />
 
                         {/* For now we're gonna used cachedData, but we'll eventually set up a separate endpoiint */}

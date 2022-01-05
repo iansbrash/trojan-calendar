@@ -1,20 +1,26 @@
+import { CognitoUserSession } from 'amazon-cognito-identity-js';
+import axios from 'axios';
 import React, {
     FC,
     useState,
     useRef,
     useEffect
 } from 'react';
+import api from '../../constants/api-gateway/api';
 import getInitializedArray from '../../constants/functions/getInitializedArray';
 import { Note } from '../../pages/dashboard/cache';
 import ColumnContainer from '../multi/ColumnContainer';
 import NoteComponent, { LoadingNote } from './Note'
+import qs from 'qs';
 
 interface NotesProps {
-    notes: Note[] | null
+    notes: Note[] | null,
+    session: CognitoUserSession | null
 }
 
 const Notes : FC<NotesProps> = ({
-    notes
+    notes,
+    session
 } : NotesProps) => {
 
     const [isCreatingNewNote, setIsCreatingNewNote] = useState<boolean>(false);
@@ -71,6 +77,36 @@ const Notes : FC<NotesProps> = ({
 
     const newNote = () => {
         setIsCreatingNewNote(!isCreatingNewNote)
+    }
+
+    const submitClicked = async () => {
+        try {
+            if (!session) return;
+
+            const Response = await axios({
+                method: 'post',
+                url: `${api}/account/notes`,
+                headers: {
+                    Authorization: session.getIdToken().getJwtToken()
+                },
+                data: JSON.stringify({
+                    noteTitle: newNoteTitle,
+                    noteContent: newNoteContent
+                })
+            })         
+
+            setNewNoteContent('')
+            setNewNoteTitle('')
+
+            console.log(Response.data)
+        }
+        catch (err) {
+
+        }
+    }
+
+    const changeColorClicked = () => {
+
     }
 
     
@@ -132,48 +168,62 @@ const Notes : FC<NotesProps> = ({
                     </div>
                 </div>
 
-                {/* When isCreatingNewNote is true! */}
-                <div className={`${isCreatingNewNote ? 'flex' : 'hidden pointer-events-none'} py-1  cursor-pointer w-full flex-col justify-start items-center`}
-                onClick={() => null}
-                >
-                    <div className="relative w-full flex flex-row justify-start items-center">
-                      
 
-                        <div className="absolute top-0 right-0 flex flex-row justify-start items-center space-x-2">
-                            <div className="w-6 h-6 rounded-lg bg-rose-400"
+                {/* When we're creaitng a new now this shows */}
+                <div className={`${isCreatingNewNote ? 'flex' : 'hidden pointer-events-none'} cursor-pointer w-full h-auto flex-col justify-start items-center`}>
+                    {/* Header */}
+                    <div className={`px-2 py-1 ${'bg-sky-500'} rounded-t-md w-full relative`}>
+
+                        <div className="absolute -top-2 -right-2 flex flex-row justify-start items-center space-x-3">
+                            {/* X Button */}
+                            <div className="w-6 h-6 rounded-md bg-red-400 border-2 border-white flex justify-center items-center text-white"
                             onClick={() => setIsCreatingNewNote(false)}
                             >
-
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
                             </div>
 
-                            <div className="w-6 h-6 rounded-lg bg-emerald-400">
-
+                            {/* Change Color Button */}
+                            <div className="w-6 h-6 rounded-md bg-sky-400 border-2 border-white flex justify-center items-center text-white"
+                            onClick={() => changeColorClicked()}
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                                </svg>
                             </div>
-                        </div>
 
-                        <div className="text-slate-600 mx-1.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                            </svg>
+                            {/* Check Button */}
+                            <div className="w-6 h-6 rounded-md bg-emerald-400 border-2 border-white flex justify-center items-center text-white"
+                            onClick={() => submitClicked()}
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
                         </div>
 
                         <input
-                        className="text-slate-700 font-medium text-lg focus:outline-none bg-transparent placeholder-slate-400 "
-                        placeholder='Note title'
+                        className="w-full text-white font-medium text-lg focus:outline-none bg-transparent placeholder-slate-100 "
+                        placeholder='Note Title'
+                        onChange={e => setNewNoteTitle(e.target.value)}
+                        value={newNoteTitle}
                         >
-                        
-                        </input>
-
-                        
-                    </div>
-                    <textarea className="text-lg w-full bg-transparent placeholder-slate-400 font-normal h-min focus:outline-none resize-none overflow-hidden leading-6 whitespace-normal break-text"
-                    placeholder='Write something!'
-                    ref={inputSpan}
-                    onInput={e => auto_grow(e.currentTarget)}
-                    
-                    >
                             
-                    </textarea>
+                        </input>
+                    </div>
+
+                    <div className={`px-2 py-1 ${'bg-sky-300'} rounded-b-md w-full`}>
+                        <textarea className="text-white text-lg w-full bg-transparent placeholder-slate-100 font-normal h-min focus:outline-none resize-none overflow-hidden leading-6 whitespace-normal break-text"
+                        placeholder='Write something!'
+                        ref={inputSpan}
+                        onInput={e => auto_grow(e.currentTarget)}
+                        onChange={e => setNewNoteContent(e.target.value)}
+                        value={newNoteContent}
+                        >
+                                
+                        </textarea>
+                    </div>
                 </div>
 
                 {/* Holds actual notes */}
