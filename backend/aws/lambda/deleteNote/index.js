@@ -35,30 +35,12 @@ exports.handler = async (event) => {
     }
 
     const {
-        noteTitle,
-        noteContent,
         noteId
     } = JSON.parse(event.body)
 
-
-    // Don't allow blank notes
-    if (noteTitle === '' || noteContent === '') {
-        console.log('Recieved blank note.')
-        return {
-            statusCode: 400,
-            body: "Error: Note title or content cannot be blank",
-            headers: {
-                'Access-Control-Allow-Origin': '*'
-            }
-        }
-    }
-
     let oldNotes = getResult.Item.storage.notes;
-    let newNote = {
-        noteTitle: noteTitle,
-        noteContent: noteContent,
-        noteId: Date.now() + ''
-    }
+    
+    let oldNotesWithoutDeletedNote = oldNotes.filter(n => n.noteId !== noteId)
 
     let updateParams = {
         TableName: 'trojandashUserData',
@@ -72,7 +54,7 @@ exports.handler = async (event) => {
             "#n": "notes"
         },
         ExpressionAttributeValues:{
-            ":n": [...oldNotes, newNote],
+            ":n": oldNotesWithoutDeletedNote,
         },
         ReturnValues:"UPDATED_NEW"
 
@@ -85,7 +67,7 @@ exports.handler = async (event) => {
         console.log(err)
         return {
             statusCode: 400,
-            body: "Error: could not update notes",
+            body: "Error: could not delete note",
             headers: {
                 'Access-Control-Allow-Origin': '*'
             }
@@ -95,7 +77,7 @@ exports.handler = async (event) => {
     // TODO implement
     const response = {
         statusCode: 200,
-        body: JSON.stringify(newNote),
+        body: JSON.stringify(oldNotesWithoutDeletedNote),
         headers: {
             'Access-Control-Allow-Origin': '*'
         }

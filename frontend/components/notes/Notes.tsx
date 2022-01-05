@@ -15,12 +15,14 @@ import qs from 'qs';
 
 interface NotesProps {
     notes: Note[] | null,
-    session: CognitoUserSession | null
+    session: CognitoUserSession | null,
+    setNotes: (n : Note[]) => void
 }
 
 const Notes : FC<NotesProps> = ({
     notes,
-    session
+    session,
+    setNotes
 } : NotesProps) => {
 
     const [isCreatingNewNote, setIsCreatingNewNote] = useState<boolean>(false);
@@ -97,6 +99,8 @@ const Notes : FC<NotesProps> = ({
 
             setNewNoteContent('')
             setNewNoteTitle('')
+            setNotes([...(notes ? notes : []), Response.data])
+            setIsCreatingNewNote(false)
 
             console.log(Response.data)
         }
@@ -107,6 +111,31 @@ const Notes : FC<NotesProps> = ({
 
     const changeColorClicked = () => {
 
+    }
+
+
+    // We pass this into Notes and they call it when they want to delete themselves
+    const deleteNote = async (n : Note) => {
+        console.log("Attemping to delete noteId: " + n.noteId)
+        try {
+            if (!session) return;
+
+            const Response = await axios({
+                method: 'delete',
+                url: `${api}/account/notes`,
+                headers: {
+                    Authorization: session.getIdToken().getJwtToken()
+                },
+                data: JSON.stringify(n)
+            })         
+
+            setNotes(notes ? notes.filter(no => no.noteId !== n.noteId) : [])
+
+            console.log(Response.data)
+        }
+        catch (err) {
+
+        }
     }
 
     
@@ -152,7 +181,8 @@ const Notes : FC<NotesProps> = ({
             breakpoint='lg:block'
         >
             {/* Content */}
-            <div className="w-full rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-start items-center pb-4">
+            <div className="rounded-b-xl bg-zinc-50 w-full h-full flex flex-col justify-start items-center">
+                <div className="overflow-y-scroll scrollbar-hide px-4 pb-2 py-2  w-full h-full flex flex-col justify-start items-center">
 
                 {/* New Note */}
                 <div className={`${isCreatingNewNote ? 'hidden pointer-events-none' : 'flex'} py-1 cursor-pointer hover:bg-sky-100 transition duration-250 ease-in-out rounded-md w-full flex-row justify-start items-center`}
@@ -231,14 +261,17 @@ const Notes : FC<NotesProps> = ({
                     {
                         notes.map((n, i) => {
                             return <NoteComponent 
+                                noteId={n.noteId}
                                 key={n.noteId}
                                 noteTitle={n.noteTitle}
-                                noteContents={n.noteContent}
+                                noteContent={n.noteContent}
                                 headerColor={noteColors[i % noteColors.length]['bg600']}
                                 contentColor={noteColors[i % noteColors.length]['bg400']}
+                                deleteNote={deleteNote}
                             />
                         })
                     }
+                </div>
                 </div>
 
                
