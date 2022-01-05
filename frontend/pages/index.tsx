@@ -6,6 +6,9 @@ import React, {
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
+
+    let exampleSrc = '/images/home/preview.png';
+
     return (
         <div>
             <Head>
@@ -15,38 +18,57 @@ const Home: NextPage = () => {
             </Head>
 
 
-            <div className="w-screen h-screen flex flex-col justify-start items-center">
+            <div className="relative w-screen h-screen flex flex-col justify-start items-center">
+                {/* Wave */}
+                <div className="z-0 absolute -top-14 left-0 right-0 h-full opacity-70 drop-shadow-xl">
+                    <div className={`w-full ${styles.blurb} h-full`}></div>
+
+                </div>
                 <Header />
                 {/* First big block (2 parts) */}
-                <div className="w-full h-full flex flex-row justify-start items-center">
+                <div className="z-10 w-full h-full flex flex-row justify-start items-center">
                     {/* Tired of ____ */}
                     <div className="w-1/2 h-full flex flex-col justify-center items-center">
                         <div className="w-full flex flex-col justify-center items-start px-16">
-                            <div className="z-10 text-8xl font-bold text-slate-900">
-                                Tired of
+                            <div className="flex flex-row justify-start items-center z-10">
+                                <div className="text-sky-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                                <div className="text-8xl font-bold text-slate-900">
+                                    Tired of
+                                </div>
                             </div>
                             {/* Iterating Text */}
                             <div className={`z-0 font-bold text-9xl relative`}>
                                 <div className={`text-rose-500 absolute left-0 ${styles.tiredOfScroll1}`}>
-                                    Blackboard<span className="text-slate-700">?</span>
+                                    Blackboard<span className="text-rose-700">?</span>
                                 </div>
                                 
                                 <div className={`text-purple-500 absolute left-0 ${styles.tiredOfScroll3}`}>
-                                    Gradescope<span className="text-slate-700">?</span>
+                                    Gradescope<span className="text-purple-700">?</span>
                                 </div>
                                 <div className={`text-amber-500 absolute left-0 ${styles.tiredOfScroll2}`}>
-                                    Canvas<span className="text-slate-700">?</span>
+                                    Canvas<span className="text-amber-700">?</span>
                                 </div>
                                 <div className={`text-teal-500 absolute left-0 ${styles.tiredOfScroll4}`}>
-                                    Turnitin<span className="text-slate-700">?</span>
+                                    Turnitin<span className="text-teal-700">?</span>
                                 </div>
                             </div>
                             {/* For Spacing bc of abolute positioning */}
                             <div className="text-9xl pointer-events-none opacity-0">
                                 ㅤ
                             </div>
-                            <div className="text-slate-900 font-medium text-4xl mt-20">
-                                We are, too.
+                            <div className="flex flex-row justify-start items-center px-4 py-2 rounded-lg drop-shadow-lg bg-sky-500 ml-4 text-white font-medium text-4xl mt-20">
+                                <div className="text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-9 w-9 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                                <div className="mr-2">
+                                    We are, too.
+                                </div>
                             </div>
                         </div>
                         
@@ -55,16 +77,26 @@ const Home: NextPage = () => {
 
                     {/* Screenshot of Unidash UI */}
                     <div className="w-1/2 h-full flex flex-col justify-center items-center">
-                        <div className="w-full px-16">
-                            <div className="aspect-video bg-sky-300 rounded-xl drop-shadow-lg">
-
+                        
+                        <div className={`${styles.previewImageParent} w-full pr-32`}>
+                            <div className={`${styles.previewImage} aspect-video bg-sky-300 rounded-xl drop-shadow-lg`}>
+                                <img 
+                                className={`w-full h-full`}
+                                src={exampleSrc}
+                                />
                             </div>
 
                         </div>
                     </div>
                 </div>
                 
-
+                {/* Seconds Big Block */}
+                {/* <div className="w-full h-full flex flex-row justify-start items-center">
+                <img 
+                    className="w-full h-full"
+                    src={exampleSrc}
+                    />
+                </div> */}
             </div>
         </div>
     )
@@ -72,9 +104,33 @@ const Home: NextPage = () => {
 
 const Header : FC = () => {
     return (
-        <div className="w-full h-16 flex flex-row justify-between items-center px-10">
-            <div className="h-auto w-auto px-2 py-1 border-2 border-sky-500 rounded-lg text-white flex justify-center items-center text-lg font-bold bg-sky-500 drop-shadow-md">
-                Login
+        <div className="z-10 w-full h-16 flex flex-row justify-between items-center px-10">
+            {/* Logo + Name */}
+            <div className="relative flex h-full flex-row justify-start items-center space-x-1">
+                {/* White wave */}
+                <div className="absolute -left-5 top-5 -bottom-20 -right-32">
+                    <div className={`${styles.whiteWave} ml-20 scale-250 w-full h-full`}>
+
+                    </div>
+                </div>
+
+                <div className="z-10 text-slate-800 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <div className="text-slate-800 text-3xl font-medium drop-shadow-md">
+                    <span className="font-bold text-sky-500">uni</span>dash.
+                </div>
+            </div>
+            {/* Login/Signup/Dashboard */}
+            <div className="flex flex-row justify-start items-center space-x-4">
+                <div className="h-auto w-auto px-2 py-1 border-2 border-sky-500 rounded-lg text-sky-500 flex justify-center items-center text-lg font-bold bg-white drop-shadow-md">
+                    Sign up
+                </div>
+                <div className="h-auto w-auto px-2 py-1 border-2 border-sky-500 rounded-lg text-white flex justify-center items-center text-lg font-bold bg-sky-500 drop-shadow-md">
+                    Login
+                </div>
             </div>
         </div>
     )

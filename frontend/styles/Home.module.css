@@ -39,4 +39,26 @@
         transform: translateY(100px);
         opacity: 0%;
     }
-  }
+}
+
+.previewImageParent {
+    perspective: 1000px
+}
+
+.previewImage {
+    transform: rotate3d(0, 1, 0, -15deg);
+}
+
+.blurb {
+    clip-path: path('M0 521L64 524.7C128 528.3 256 535.7 384 497.8C512 460 640 377 768 344C896 311 1024 328 1152 353.8C1280 379.7 1408 414.3 1536 383C1664 351.7 1792 254.3 1856 205.7L1920 157L1920 0L1856 0C1792 0 1664 0 1536 0C1408 0 1280 0 1152 0C1024 0 896 0 768 0C640 0 512 0 384 0C256 0 128 0 64 0L0 0Z');
+    /* background-image: url('./emerald1.svg'); */
+    background: rgb(245,158,11);
+background: linear-gradient(90deg, rgba(245,158,11,1) 0%, rgba(139,92,246,1) 33%, rgba(6,182,212,1) 63%, rgba(236,72,153,1) 100%);
+    /* background-image: url('./blurry-gradient-haikei.svg'); */
+    /* background-image: url('./wave-haikei.svg'); */
+}
+
+.whiteWave {
+    clip-path: path('M0 52L4.8 56C9.7 60 19.3 68 28.8 74.5C38.3 81 47.7 86 57.2 81.2C66.7 76.3 76.3 61.7 85.8 58.8C95.3 56 104.7 65 114.2 65.5C123.7 66 133.3 58 142.8 48.5C152.3 39 161.7 28 171.2 23.3C180.7 18.7 190.3 20.3 195.2 21.2L200 22L200 0L195.2 0C190.3 0 180.7 0 171.2 0C161.7 0 152.3 0 142.8 0C133.3 0 123.7 0 114.2 0C104.7 0 95.3 0 85.8 0C76.3 0 66.7 0 57.2 0C47.7 0 38.3 0 28.8 0C19.3 0 9.7 0 4.8 0L0 0Z');
+    background-color: white;
+}
