@@ -1,11 +1,14 @@
 import axios from 'axios';
 import React, {
     FC,
+    useEffect,
+    useRef,
     useState
 } from 'react';
 import api from '../../constants/api-gateway/api';
 import getInitializedArray from '../../constants/functions/getInitializedArray';
 import { Note } from '../../pages/dashboard/cache';
+import EditingNote from './EditingNote';
 
 interface NoteProps {
     noteTitle: string,
@@ -13,7 +16,8 @@ interface NoteProps {
     noteId: string,
     headerColor: string,
     contentColor: string,
-    deleteNote: (n : Note) => Promise<void>
+    deleteNote: (n : Note) => Promise<void>,
+    editNote: (n : Note) => Promise<void>
 }
 
 const Note : FC<NoteProps> = ({
@@ -22,13 +26,16 @@ const Note : FC<NoteProps> = ({
     noteId,
     headerColor,
     contentColor,
-    deleteNote
+    deleteNote,
+    editNote
 } : NoteProps) => {
 
     const [hover, setHover] = useState<boolean>(false);
+    
+    const [isEditing, setIsEditing] = useState<boolean>(false);
 
     const editClicked = () => {
-
+        setIsEditing(true)
     }
 
     const deleteClicked = async () => {
@@ -37,6 +44,21 @@ const Note : FC<NoteProps> = ({
             noteContent,
             noteId
         })
+    }
+
+    if (isEditing) {
+        return (
+            <EditingNote 
+                noteTitle={noteTitle}
+                noteContent={noteContent}
+                noteId={noteId}
+                headerColor={headerColor}
+                contentColor={contentColor}
+                editNote={editNote}
+                setIsEditing={setIsEditing}
+            
+            />
+        )
     }
 
     return (
@@ -57,7 +79,9 @@ const Note : FC<NoteProps> = ({
                     </div>
 
                     {/* Edit Button */}
-                    <div className="w-6 h-6 rounded-md bg-amber-400 border-2 border-white flex justify-center items-center text-white">
+                    <div className="w-6 h-6 rounded-md bg-amber-400 border-2 border-white flex justify-center items-center text-white"
+                    onClick={() => editClicked()}
+                    >
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                         </svg>
@@ -83,6 +107,11 @@ const Note : FC<NoteProps> = ({
         </div>
     )
 }
+
+
+
+
+
 
 export const LoadingNote : FC = () => {
     return (
