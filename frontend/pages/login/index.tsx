@@ -15,6 +15,7 @@ import UserPool from '../../constants/cognito/UserPool';
 import { useRouter } from 'next/router'
 import AuthRoute from '../../components/authRoute/AuthRoute';
 import { MainHeader } from '../index';
+import { VerifyUI } from '../signup/index';
 
 const Home: NextPage = () => {
 
@@ -26,6 +27,8 @@ const Home: NextPage = () => {
     const [isLoggingIn, setIsLoggingIn] = useState<boolean>(false);
 
     const [isFetchingAuthState, setIsFetchingAuthState] = useState<boolean>(true);
+
+    const [needsVerification, setNeedsVerification] = useState<boolean>(false);
 
 
     const Router = useRouter();
@@ -39,25 +42,34 @@ const Home: NextPage = () => {
             // Now navigate to /dashboard
             Router.push('/dashboard')
         }
-        catch (err) {
-            console.error(err);
+        catch (err : any) {
+            if (err.code === 'NotAuthorizedException') {
+                console.error('Error: NotAuthorizedException')
+            }
+            else if (err.code === 'UserNotConfirmedException') {
+                console.error(`Error: UserNotConfirmedException`)
+                setNeedsVerification(true)
+            }
+            else {
+                console.error(`Unknown error: ${err.code}`)
+            }
         }
         setIsLoggingIn(false);
     }
 
     // Redirects us if we're already logged in
-    useEffect(() => {
+    // useEffect(() => {
 
-        getSession().then((session : any) => {
-            console.log("Session", session)
-            Router.push('/dashboard')
-        }).catch((err : Error) => {
-            setIsFetchingAuthState(false)
-        })
+    //     getSession().then((session : any) => {
+    //         console.log("Session", session)
+    //         Router.push('/dashboard')
+    //     }).catch((err : Error) => {
+    //         setIsFetchingAuthState(false)
+    //     })
 
-        return () => {
-        }
-    }, [])
+    //     return () => {
+    //     }
+    // }, [])
 
     return (
         <div className={"w-screen h-screen bg-slate-100"}>
@@ -75,7 +87,16 @@ const Home: NextPage = () => {
                     <div className="absolute top-0 right-0 left-0 ">
                         <MainHeader noButtons={true} />
                     </div>
-                    <div className="relative w-96 h-auto flex flex-col justify-start items-center rounded-lg drop-shadow-lg bg-zinc-50 px-4 py-4">
+
+
+                    {needsVerification ? 
+                    
+                    <VerifyUI 
+                        username={username}
+                        password={password}
+                    />
+                    
+                    : <div className="relative w-96 h-auto flex flex-col justify-start items-center rounded-lg drop-shadow-lg bg-zinc-50 px-4 py-4">
                         {/* Forgot Password Absolute */}
                         <div className="absolute -top-3 -right-3 text-sky-400 bg-zinc-50 rounded-full">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
@@ -148,7 +169,7 @@ const Home: NextPage = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>}
                 </AuthRoute>
             </main>
         </div>

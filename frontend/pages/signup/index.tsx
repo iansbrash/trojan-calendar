@@ -22,7 +22,7 @@ const Home: NextPage = () => {
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
     const [username, setUsername] = useState<string>('');
-    const [needsVerify, setNeedsVerify] = useState<boolean>(true);
+    const [needsVerify, setNeedsVerify] = useState<boolean>(false);
 
     const [isSigningUp, setIsSigningUp] = useState<boolean>(false);
 
@@ -33,28 +33,39 @@ const Home: NextPage = () => {
     const onSignUp = async (event : any) => {
         event.preventDefault();
 
+        
+
         try {
+            if (password !== confirmPassword) {
+                throw {
+                    code: 'PasswordUnequalException'
+                }
+            }
+
             const res = await register(username, confirmPassword);
+            if (!res.userConfirmed) {
+                setNeedsVerify(true);
+            }
             console.log(res)
+
         }
-        catch (err) {
-            console.error(err)
+        catch (err : any) {
+            if (err.code === 'PasswordUnequalException') {
+                console.error(`Error: PasswordUnequalException`)
+            }
+            else if (err.code === 'UsernameExistsException') {
+                console.error('Error: UsernameExistsException')
+            }
+            else if (err.code === 'InvalidParameterException') {
+                console.error('Error: InvalidParameterException')
+            }
+            else {
+                console.error(`Unknown error: ${err.code}`)
+            }
         }
 
         setIsSigningUp(false)
     }
-
-    // Redirects us if we're already logged in
-    useEffect(() => {
-
-        getSession().then((session : any) => {
-            console.log("Session", session)
-            Router.push('/dashboard')
-        })
-
-        return () => {
-        }
-    }, [])
 
     return (
         <div className={"w-screen h-screen bg-slate-100"}>
@@ -79,6 +90,7 @@ const Home: NextPage = () => {
                         needsVerify ? 
                             <VerifyUI 
                             username={username}
+                            password={password}
                             />
                         : 
                             <MiniUIContainer header={'Sign Up'}>
@@ -218,11 +230,13 @@ const MiniUIContainer : FC<MiniUIContainerProps> = ({
 }
 
 interface VerifyUIProps {
-    username: string
+    username: string,
+    password: string
 }
 
-const VerifyUI : FC<VerifyUIProps> = ({
-    username
+export const VerifyUI : FC<VerifyUIProps> = ({
+    username,
+    password
 } : VerifyUIProps) => {
 
     const [verifyInput, setVerifyInput] = useState<string>('');
@@ -247,18 +261,28 @@ const VerifyUI : FC<VerifyUIProps> = ({
         input.current.focus()
         input.current.selectionStart = input.current.selectionEnd = input.current.value.length;
     }
-    const { verify } = useContext(AccountContext)
+    const { verify, authenticate } = useContext(AccountContext)
+    const Router = useRouter();
 
     const onVerify = async () => {
         console.log(`Attemping Verification`)
         
         try {
-            await verify('test1@gullmail.com', verifyInput)
+            await verify(username, verifyInput)
+            await authenticate(username, password);
+            Router.push('/dashboard')
         }
-        catch (err) {
-
-        }
-        finally {
+        catch (err : any) {
+            if (err.code === 'CodeMismatchException') {
+                console.error('Error: CodeMismatchException')
+            }
+            // When its blank
+            else if (err.code === 'InvalidParameterException') {
+                console.error('Error: InvalidParameterException')
+            }
+            else {
+                console.error(`Unknown error: ${err.code}`)
+            }
             setIsVerifying(false)
         }
     }
@@ -268,7 +292,7 @@ const VerifyUI : FC<VerifyUIProps> = ({
             <div className="flex flex-col justify-start items-center space-y-4">
                 {/* Please Check your Email */}
                 <div className="text-lg font-medium text-slate-600 px-2 -mt-2">
-                    Please check <span className="text-slate-800 font-bold">{`iansbrash@gmail.com`}</span> for your 6-digit verification code.
+                    Please check <span className="text-slate-800 font-bold">{username}</span> for your 6-digit verification code.
 
                 </div>
 
