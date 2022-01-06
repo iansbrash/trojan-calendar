@@ -45,6 +45,28 @@ const Account : FC = (props) => {
             });
         })
     }
+
+    const verify = async (username : string, code : string) => {
+        return await new Promise((resolve, reject) => {
+            var userData = {
+                Username: username,
+                Pool: UserPool,
+            };
+
+            var cognitoUser = new CognitoUser(userData);
+
+            console.log(`Verifiying ${username} with code ${code}`)
+            cognitoUser.confirmRegistration(code, true, function(err, result) {
+                if (err) {
+                    console.error(err)
+                    reject(err)
+                }
+                console.log(result)
+                resolve(result)
+            })
+        })
+    }
+
     const authenticate = async (username : string, password : string) => {
         return await new Promise((resolve, reject) => {
             const user = new CognitoUser({
@@ -83,7 +105,7 @@ const Account : FC = (props) => {
     }
 
     return (
-        <AccountContext.Provider value={{ authenticate, getSession, register, logout }}>
+        <AccountContext.Provider value={{ authenticate, getSession, register, logout, verify }}>
             {props.children}
         </AccountContext.Provider>
     )
