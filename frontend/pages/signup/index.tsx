@@ -280,6 +280,9 @@ export const VerifyUI : FC<VerifyUIProps> = ({
             else if (err.code === 'InvalidParameterException') {
                 console.error('Error: InvalidParameterException')
             }
+            else if (err.code === 'ExpiredCodeException') {
+                console.error('Error: ExpiredCodeException')
+            }
             else {
                 console.error(`Unknown error: ${err.code}`)
             }
