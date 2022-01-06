@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Link from 'next/link';
 import React, {
     FC
 } from 'react';
@@ -24,7 +25,15 @@ const Home: NextPage = () => {
                     <div className={`w-full ${styles.blurb} h-full`}></div>
 
                 </div>
-                <Header />
+
+                {/* White Mini Wave */}
+                <div className="absolute left-20 top-28 w-96 h-64">
+                    <div className={`${styles.whiteWave} ml-20 scale-250 w-full h-full`}>
+
+                    </div>
+                </div>
+
+                <MainHeader />
                 {/* First big block (2 parts) */}
                 <div className="z-10 w-full h-full flex flex-row justify-start items-center">
                     {/* Tired of ____ */}
@@ -60,7 +69,7 @@ const Home: NextPage = () => {
                             <div className="text-9xl pointer-events-none opacity-0">
                                 ㅤ
                             </div>
-                            <div className="flex flex-row justify-start items-center px-4 py-2 rounded-lg drop-shadow-lg bg-sky-500 ml-4 text-white font-medium text-4xl mt-20">
+                            {/* <div className="flex flex-row justify-start items-center px-4 py-2 rounded-lg drop-shadow-lg bg-sky-500 ml-4 text-white font-medium text-4xl mt-20">
                                 <div className="text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-9 w-9 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 5l7 7-7 7M5 5l7 7-7 7" />
@@ -69,6 +78,43 @@ const Home: NextPage = () => {
                                 <div className="mr-2">
                                     We are, too.
                                 </div>
+                            </div> */}
+                            <div className="flex flex-col justify-start items-center px-4 py-2 ml-4 text-slate-800 font-medium text-4xl mt-20 space-y-5">
+                                <div className="flex flex-row justify-start items-start">
+                                    {/* Icon */}
+                                    <div className="mt-1 text-sky-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-9 w-9 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                                        </svg>
+                                    </div>
+
+                                    {/* Text */}
+                                    <div className="mr-2 flex flex-col justify-start items-start">
+                                        We are, too. 
+                                        <div>
+                                            Enter{' '}<span className="font-bold text-sky-500">unidash.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                {/* Signup button */}
+                                <Link href="/signup">
+                                    <div className={`${styles.cuteGradient} drop-shadow-md cursor-pointer w-full rounded-xl p-1 h-auto`}>
+                                        <div className="w-full h-full bg-white rounded-lg">
+                                            <div className={`bg-gradient-to-r from-sky-600 to-rose-600 bg-clip-text w-full h-full`}>
+                                                <div className={`text-2xl text-center font-bold text-transparent px-2 py-1`}>
+                                                    Start Now
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    {/* <button className="transition duration-250 ease-in-out hover:drop-shadow-xl w-full rounded-lg drop-shadow-md border-2 border-sky-500 bg-white h-auto">
+                                        <div className="text-2xl text-center font-medium text-sky-500 px-2 py-1">
+                                            Start Now
+                                        </div>
+                                    </button> */}
+                                </Link>
                             </div>
                         </div>
                         
@@ -76,14 +122,22 @@ const Home: NextPage = () => {
                     </div>
 
                     {/* Screenshot of Unidash UI */}
-                    <div className="w-1/2 h-full flex flex-col justify-center items-center">
+                    <div className="overflow-x-hidden scrollbar-hide w-1/2 h-full flex flex-col justify-center items-center">
                         
-                        <div className={`${styles.previewImageParent} w-full pr-32`}>
-                            <div className={`${styles.previewImage} aspect-video bg-sky-300 rounded-xl drop-shadow-lg`}>
-                                <img 
-                                className={`w-full h-full`}
-                                src={exampleSrc}
-                                />
+                        <div className={`${styles.previewImageParent} flex justify-center items-center w-full pr-32`}>
+                            <div className={`overflow-x-clip  ${styles.previewImage} w-full aspect-video rounded-xl drop-shadow-lg flex justify-start flex-col items-center`}>
+                                <div className="flex justify-center items-center relative h-full absolute scale-50" style={{
+                                    width: '200%',
+                                }}>
+                                    <iframe
+                                        className="w-full rounded-xl "
+                                        src={'/demo'}
+                                        style={{
+                                            height: '200%'
+                                        }}
+                                    />
+                                </div>
+                                
                             </div>
 
                         </div>
@@ -102,35 +156,59 @@ const Home: NextPage = () => {
     )
 }
 
-const Header : FC = () => {
+interface MainHeaderProps {
+    noButtons?: boolean
+}
+
+export const MainHeader : FC<MainHeaderProps> = ({
+    noButtons
+} : MainHeaderProps) => {
     return (
         <div className="z-10 w-full h-16 flex flex-row justify-between items-center px-10">
             {/* Logo + Name */}
-            <div className="relative flex h-full flex-row justify-start items-center space-x-1">
+            <div className="relative flex h-full flex-row justify-start items-center">
                 {/* White wave */}
-                <div className="absolute -left-5 top-5 -bottom-20 -right-32">
+                {/* <div className="absolute -left-5 top-5 -bottom-20 -right-32">
                     <div className={`${styles.whiteWave} ml-20 scale-250 w-full h-full`}>
 
                     </div>
-                </div>
-
-                <div className="z-10 text-slate-800 mt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                </div>
-                <div className="text-slate-800 text-3xl font-medium drop-shadow-md">
-                    <span className="font-bold text-sky-500">uni</span>dash.
-                </div>
+                </div> */}
+                <Link href={'/'}>
+                    <div className="flex flex-row justify-start items-center space-x-1 cursor-pointer">
+                        <div className="z-10 text-slate-800 mt-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div className="text-slate-800 text-3xl font-medium drop-shadow-md">
+                            <span className="font-bold text-sky-500">uni</span>dash.
+                        </div>
+                    </div>
+                </Link>
+                
             </div>
             {/* Login/Signup/Dashboard */}
             <div className="flex flex-row justify-start items-center space-x-4">
-                <div className="h-auto w-auto px-2 py-1 border-2 border-sky-500 rounded-lg text-sky-500 flex justify-center items-center text-lg font-bold bg-white drop-shadow-md">
-                    Sign up
-                </div>
-                <div className="h-auto w-auto px-2 py-1 border-2 border-sky-500 rounded-lg text-white flex justify-center items-center text-lg font-bold bg-sky-500 drop-shadow-md">
-                    Login
-                </div>
+                {
+                    noButtons ? null :
+                    <>
+                        <Link
+                        href="/signup"
+                        >
+                            <div className="cursor-pointer h-auto w-auto px-2 py-1 border-2 border-sky-500 rounded-lg text-sky-500 flex justify-center items-center text-lg font-bold bg-white drop-shadow-md">
+                                Sign up
+                            </div>
+                        </Link>
+                        <Link
+                        href="/login"
+                        >
+                            <div className="cursor-pointer h-auto w-auto px-2 py-1 border-2 border-sky-500 rounded-lg text-white flex justify-center items-center text-lg font-bold bg-sky-500 drop-shadow-md">
+                                Login
+                            </div>
+                        </Link>
+                    </>
+                }
+                
             </div>
         </div>
     )

@@ -14,6 +14,7 @@ import { AccountContext } from '../../constants/cognito/Account';
 import UserPool from '../../constants/cognito/UserPool';
 import { useRouter } from 'next/router'
 import AuthRoute from '../../components/authRoute/AuthRoute';
+import { MainHeader } from '../index';
 
 const Home: NextPage = () => {
 
@@ -71,6 +72,9 @@ const Home: NextPage = () => {
                     path="/dashboard"
                     redirectIfAuth={true}
                 >
+                    <div className="absolute top-0 right-0 left-0 ">
+                        <MainHeader noButtons={true} />
+                    </div>
                     <div className="relative w-96 h-auto flex flex-col justify-start items-center rounded-lg drop-shadow-lg bg-zinc-50 px-4 py-4">
                         {/* Forgot Password Absolute */}
                         <div className="absolute -top-3 -right-3 text-sky-400 bg-zinc-50 rounded-full">
