@@ -85,7 +85,9 @@ const Home: NextPage = () => {
                     redirectIfAuth={true}
                 >
                     <div className="absolute top-0 right-0 left-0 ">
-                        <MainHeader noButtons={true} />
+                        <MainHeader>
+                            {' '}
+                        </MainHeader>
                     </div>
 
 

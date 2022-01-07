@@ -2,8 +2,9 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link';
 import React, {
-    FC
+    FC, ReactNode, useContext, useEffect, useState
 } from 'react';
+import { AccountContext } from '../constants/cognito/Account';
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -31,7 +32,9 @@ const Home: NextPage = () => {
                     </div>
                 </div>
 
-                <MainHeader />
+                <MainHeader>
+                    <DynamicButtons />
+                </MainHeader>
                 {/* First big block (2 parts) */}
                 <div className="z-10 w-full h-full flex flex-row justify-start items-center">
                     {/* Tired of ____ */}
@@ -144,33 +147,102 @@ const Home: NextPage = () => {
                 
                 {/* Seconds Big Block */}
                 {/* <div className="w-full h-full flex flex-row justify-start items-center">
-                <img 
-                    className="w-full h-full"
-                    src={exampleSrc}
-                    />
+                
                 </div> */}
             </div>
         </div>
     )
 }
 
+const DynamicButtons : FC = () => {
+
+    const { getSession, logout } = useContext(AccountContext)
+
+    const [isFetchingAuthState, setIsFetchingAuthState] = useState<boolean>(true);
+    const [authed, setAuthed] = useState<boolean>(false);
+
+    // Redirects us if we're already logged in
+    useEffect(() => {
+
+        setIsFetchingAuthState(true);
+
+        (async () => {
+            try {
+                const session = await getSession();
+
+                setAuthed(true)
+            }
+            catch (err) {
+
+            }
+            finally {
+                setIsFetchingAuthState(false)
+            }
+        })();
+    }, [])
+
+    if (isFetchingAuthState) {
+        return (
+            <div>
+                Loading...
+            </div>
+        )
+    }
+    else if (authed) {
+        return (
+            <>
+                <div className="cursor-pointer h-auto w-auto px-2 py-1 border-2 border-sky-500 rounded-lg text-sky-500 flex justify-center items-center text-lg font-bold bg-white drop-shadow-md"
+                onClick={() => {
+                    logout();
+                    setAuthed(false)
+                }}
+                >
+                    Logout
+                </div>
+                <Link
+                href="/dashboard"
+                >
+                    <div className="cursor-pointer h-auto w-auto px-2 py-1 border-2 border-sky-500 rounded-lg text-white flex justify-center items-center text-lg font-bold bg-sky-500 drop-shadow-md">
+                        Dashboard
+                    </div>
+                </Link>
+            </>
+            
+        )
+    }
+    else {
+        return (
+            <>
+                <Link
+                href="/signup"
+                >
+                    <div className="cursor-pointer h-auto w-auto px-2 py-1 border-2 border-sky-500 rounded-lg text-sky-500 flex justify-center items-center text-lg font-bold bg-white drop-shadow-md">
+                        Sign up
+                    </div>
+                </Link>
+                <Link
+                href="/login"
+                >
+                    <div className="cursor-pointer h-auto w-auto px-2 py-1 border-2 border-sky-500 rounded-lg text-white flex justify-center items-center text-lg font-bold bg-sky-500 drop-shadow-md">
+                        Login
+                    </div>
+                </Link>
+            </>
+        )
+    }
+}
+
 interface MainHeaderProps {
-    noButtons?: boolean
+    children?: ReactNode
 }
 
 export const MainHeader : FC<MainHeaderProps> = ({
-    noButtons
+    children
 } : MainHeaderProps) => {
     return (
         <div className="z-10 w-full h-16 flex flex-row justify-between items-center px-10">
             {/* Logo + Name */}
             <div className="relative flex h-full flex-row justify-start items-center">
-                {/* White wave */}
-                {/* <div className="absolute -left-5 top-5 -bottom-20 -right-32">
-                    <div className={`${styles.whiteWave} ml-20 scale-250 w-full h-full`}>
-
-                    </div>
-                </div> */}
                 <Link href={'/'}>
                     <div className="flex flex-row justify-start items-center space-x-1 cursor-pointer">
                         <div className="z-10 text-slate-800 mt-1">
@@ -188,7 +260,7 @@ export const MainHeader : FC<MainHeaderProps> = ({
             {/* Login/Signup/Dashboard */}
             <div className="flex flex-row justify-start items-center space-x-4">
                 {
-                    noButtons ? null :
+                    children ? children :
                     <>
                         <Link
                         href="/signup"

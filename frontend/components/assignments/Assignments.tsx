@@ -12,7 +12,7 @@ interface AssignmentsProps {
     assignments: CompiledAssignments | null
 }
 
-const Assignments : FC<AssignmentsProps> = ({
+const Assignments : FC<AssignmentsProps> = React.memo(({
     assignments
 } : AssignmentsProps) => {
 
@@ -52,7 +52,6 @@ const Assignments : FC<AssignmentsProps> = ({
             }
         })
 
-        console.log(`obj`, obj)
 
         setAs(obj)
         setListOfClasses(Array.from(listOfC))
@@ -62,11 +61,6 @@ const Assignments : FC<AssignmentsProps> = ({
         let daysWithAssignments : any = Object.keys(obj);
         daysWithAssignments = daysWithAssignments.map((s : string) => parseInt(s));
         daysWithAssignments.sort(function(a : string, b : string){return parseInt(a)-parseInt(b)});
-
-        console.log(`daysWithAssignments`, daysWithAssignments)
-
-        // daysWithAssignments = ["0", "1", "2", "3", "4", "5", "6", "7"];
-
 
         let startingDate;
         for (let i = todaysDate, k = 0; k < 32; i++, k++) {
@@ -90,8 +84,6 @@ const Assignments : FC<AssignmentsProps> = ({
         // We do this because it lets us order the assignments in order of most close to being due
         // This assumes that we don't load any assignments that are past the due date.
         daysWithAssignments = [...daysWithAssignments, ...daysWithAssignments].slice(daysWithAssignments.indexOf(startingDate), daysWithAssignments.indexOf(startingDate) + daysWithAssignments.length);
-
-        console.log(`daysWithAssignments after 1iner`, daysWithAssignments)
 
         setAssignmentDays(daysWithAssignments)
 
@@ -194,6 +186,6 @@ const Assignments : FC<AssignmentsProps> = ({
             </div>
         </ColumnContainer>
     )
-}
+})
 
 export default Assignments;

@@ -146,16 +146,33 @@ const getMyUscCookies = async (username, password) => {
             '_eventId_proceed': '' 
         })
     }), "AUPRes");
+
+    allCookies = accumulateCookies(allCookies, returnParsedCookies(AuthUserPassResponse.headers['set-cookie']))
     
     // Then we have incorrect user/pass
     if (AuthUserPassResponse.data.indexOf('Sorry, your username and password do not match.') !== -1) {
         throw {
             isCustom: true,
-            message: "Invalid username or password"
+            message: "Invalid username or password",
+            code: "AUPRes"
         };
     }
+    else if (AuthUserPassResponse.data.indexOf('Enroll in Two-Factor Authentication') !== -1) {
+        console.log(`We need to decline 2FA`)
+        const DUO2FAResponse = await tryCatchWrapper(() => axios({
+            method: 'post',
+            url: 'https://login.usc.edu/login/warning-ack',
+            headers: genHeaders(allCookies),
+            maxRedirects: 0,
+            validateStatus: VS,
+            data: qs.stringify({
+                callback_object: getValueByDelimiters(AuthUserPassResponse.data, `aria-hidden="true" value='`, "'>")
+            })
+        }), "DUO2FAResponse");
 
-    allCookies = accumulateCookies(allCookies, returnParsedCookies(AuthUserPassResponse.headers['set-cookie']))
+        allCookies = accumulateCookies(allCookies, returnParsedCookies(DUO2FAResponse.headers['set-cookie']))
+    }
+
 
     //https://login.usc.edu/sso/saml2/continue/metaAlias/USCRealm/idp
     const Res81 = await tryCatchWrapper(() =>  axios({

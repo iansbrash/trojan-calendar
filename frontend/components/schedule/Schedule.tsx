@@ -11,7 +11,7 @@ interface ScheduleProps {
     schedule : Schedule | null
 }
 
-const Schedule : FC<ScheduleProps> = ({
+const Schedule : FC<ScheduleProps> = React.memo(({
     schedule
 } : ScheduleProps) => {
 
@@ -225,7 +225,7 @@ const Schedule : FC<ScheduleProps> = ({
             </div>
         </ColumnContainer>
     )
-}
+})
 
 
 

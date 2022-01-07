@@ -74,8 +74,6 @@ const Dashboard : NextPage = () => {
 
                 setLastSynced(checkSyncData.data.lastSynced)
                 lastSynced = checkSyncData.data.lastSynced;
-
-                console.log('checkSyncData', checkSyncData.data)
             }
             catch (err) {
                 console.error(err)
@@ -98,7 +96,6 @@ const Dashboard : NextPage = () => {
             setIsSyncing(true)
             console.log("We can sync: Will retrieve data now. LastSynced: " + lastSynced)
 
-
             
             const getSyncDataResponse = await axios({
                 method: 'post',
@@ -114,8 +111,6 @@ const Dashboard : NextPage = () => {
             })
 
             const syncData : Cache = getSyncDataResponse.data;
-
-            console.log(syncData)
 
             setSchedule(syncData.schedule)
             setAssignments(syncData.assignments)
@@ -147,8 +142,6 @@ const Dashboard : NextPage = () => {
                 })
 
                 setNotes(notesData.data)
-
-                console.log('notesData', notesData.data)
             }
             catch (err) {
                 console.error(err)
@@ -177,8 +170,6 @@ const Dashboard : NextPage = () => {
                 })
 
                 setSettings(settingsData.data)
-
-                console.log('settingsData', settingsData.data)
             }
             catch (err) {
                 console.error(err)
@@ -226,8 +217,6 @@ const Dashboard : NextPage = () => {
                 setSchedule(schedule)
                 setGrades(grades)
                 setAssignments(assignments)
-
-                console.log('cachedData', cachedData.data)
             }
             catch (err) {
                 console.error(err)

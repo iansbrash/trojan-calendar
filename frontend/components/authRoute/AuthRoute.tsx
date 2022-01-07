@@ -59,28 +59,6 @@ const AuthRoute : FC<AuthRouteProps> = ({
                 setIsFetchingAuthState(false)
             }
         })();
-
-        // getSession().then((session : any) => {
-
-        //     if (redirectIfAuth) {
-        //         Router.push(path)
-        //     }
-
-        //     console.log("Session", session)
-        // }).catch((err : Error) => {
-
-        //     if (!redirectIfAuth) {
-        //         Router.push(path)
-        //     }
-
-        //     console.error("Error", err)
-        // }).finally(() => {
-        //     setIsFetchingAuthState(false)
-        // })
-
-        return () => {
-            
-        }
     }, [])
 
     if (isFetchingAuthState || (redirectIfAuth && authed) || (!redirectIfAuth && !authed)) {

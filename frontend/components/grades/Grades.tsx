@@ -12,7 +12,7 @@ interface GradesProps {
     grades: CompiledGrades | null
 }
 
-const Grades : FC<GradesProps> = ({
+const Grades : FC<GradesProps> = React.memo(({
     grades
 } : GradesProps) => {
 
@@ -69,7 +69,7 @@ const Grades : FC<GradesProps> = ({
             </div>
         </ColumnContainer>
     )
-}
+})
 
 
 export default Grades;

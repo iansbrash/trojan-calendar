@@ -3,6 +3,7 @@ const { username, password } = require('../../private/usclogin');
 const { getBlackboardRouter } = require('../getBlackboardRouter');
 const { getBlackboardAssignments } = require('../getBlackboardAssignments');
 const { getBlackboardGrades } = require("../getBlackboardGrades");
+const { getBlackboardClasses } = require("../getBlackboardClasses");
 
 (async () => {
     let allCookies = await getMyUscCookies(username, password);
@@ -10,9 +11,11 @@ const { getBlackboardGrades } = require("../getBlackboardGrades");
 
     console.log(allCookies)
 
-    const res = await getBlackboardAssignments(allCookies);
+    const bbClasses = await getBlackboardClasses(allCookies)
 
-    console.log(res);
+    // const res = await getBlackboardAssignments(allCookies);
+
+    // console.log(res);
 
     // const getBBGradesRes = await getBlackboardGrades(allCookies);
 

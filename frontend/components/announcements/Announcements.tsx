@@ -1,6 +1,6 @@
 import React, {
     FC,
-    useState
+    useState,
 } from 'react';
 import getInitializedArray from '../../constants/functions/getInitializedArray';
 import ColumnContainer from '../multi/ColumnContainer';
@@ -10,7 +10,7 @@ interface AnnouncementsProps {
     announcements: string[] | null
 }
 
-const Announcements : FC<AnnouncementsProps> = ({
+const Announcements : FC<AnnouncementsProps> = React.memo( ({
     announcements
 } : AnnouncementsProps) => {
 
@@ -61,7 +61,7 @@ const Announcements : FC<AnnouncementsProps> = ({
             </div>
         </ColumnContainer>
     )
-}
+})
 
 
 export default Announcements;

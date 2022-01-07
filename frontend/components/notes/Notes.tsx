@@ -20,7 +20,7 @@ interface NotesProps {
     demo?: boolean
 }
 
-const Notes : FC<NotesProps> = ({
+const Notes : FC<NotesProps> = React.memo(({
     notes,
     session,
     setNotes,
@@ -309,7 +309,7 @@ const Notes : FC<NotesProps> = ({
             </div>
         </ColumnContainer>
     )
-}
+})
 
 interface NotesDemoProps {
     notes: Note[]
