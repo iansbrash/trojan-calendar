@@ -33,6 +33,34 @@ exports.handler = async (event) => {
         }
     }
     
+    
+    if (!event.body) {
+        console.log(`event.body missing`)
+        return {
+            statusCode: 400,
+            body: JSON.stringify("Error: event.body is not provided"),
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            }
+        }
+    }
+    
+     const {
+        username,
+        password
+    } = JSON.parse(event.body)
+    
+    if (!username || !password) {
+        console.log(`username/password: ${username}/${password} is not provided`)
+        return {
+            statusCode: 400,
+            body: JSON.stringify("Error: username/password is not provided"),
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            }
+        }
+    }
+    
     // Other Notes:
     // We should have a strict error throwing setup here since there is a lot that could go wrong
     
@@ -92,10 +120,25 @@ exports.handler = async (event) => {
     // So now we are sure we have authority to sync
     // We do something with our USC user/pass
 
-    const username = 'brash@usc.edu';
-    const password = 'fL&AX3%m7p3^1q8H';
-
-    let myUscCookies = await getMyUscCookies(username, password)
+    // const username = 'brash@usc.edu';
+    // const password = 'fL&AX3%m7p3^1q8H';
+    
+    let myUscCookies;
+    try {
+        myUscCookies = await getMyUscCookies(username, password)
+    }
+    catch (err) {
+        if (err.code === 'AUPRes') {
+            return {
+                statusCode: 404,
+                body: JSON.stringify("Error: user/pass is incorrect"),
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                }
+            }
+        }
+    }
+    
     
 
     // fuck this

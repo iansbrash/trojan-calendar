@@ -13,7 +13,8 @@ const tryCatchWrapper = async (asyncFunction, message) => {
     }
     throw {
         isCustom: true,
-        message: "Error in " + message
+        message: "Error in " + message,
+        code: message
     }
 }
 

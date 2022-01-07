@@ -85,38 +85,49 @@ const Dashboard : NextPage = () => {
             // If it has been like 12 or 1 day or sumn
             if (canSync) {
                 // Tell server to fetch new data and wait for response
-                try {
-                    setIsSyncing(true)
-                    console.log("We can sync: Will retrieve data now. LastSynced: " + lastSynced)
-
-
-                    
-                    const getSyncDataResponse = await axios({
-                        method: 'post',
-                        url: `${api}/account/sync`,
-                        headers: {
-                            'Authorization': token,
-                            'lastsynced': lastSynced + ''
-                        },
-                    })
-
-                    const syncData : Cache = getSyncDataResponse.data;
-
-                    console.log(syncData)
-
-                    setSchedule(syncData.schedule)
-                    setAssignments(syncData.assignments)
-                    setGrades(syncData.grades)
-                }
-                catch (err : any) {
-                    console.log(err.message)
-                }
-                finally {
-                    setIsSyncing(false)
-                }
+                // await trySync(token);
             }
         })();
     }, [session])
+
+    const trySync = async (username : string, password : string) => {
+        try {
+            if (session === null) return;
+            const token = session.getIdToken().getJwtToken()
+
+            setIsSyncing(true)
+            console.log("We can sync: Will retrieve data now. LastSynced: " + lastSynced)
+
+
+            
+            const getSyncDataResponse = await axios({
+                method: 'post',
+                url: `${api}/account/sync`,
+                headers: {
+                    'Authorization': token,
+                    'lastsynced': lastSynced + ''
+                },
+                data: JSON.stringify({
+                    username: username,
+                    password: password
+                })
+            })
+
+            const syncData : Cache = getSyncDataResponse.data;
+
+            console.log(syncData)
+
+            setSchedule(syncData.schedule)
+            setAssignments(syncData.assignments)
+            setGrades(syncData.grades)
+        }
+        catch (err : any) {
+            console.log(err.message)
+        }
+        finally {
+            setIsSyncing(false)
+        }
+    }
 
     // Load Notes
     useEffect(() => {
@@ -253,6 +264,7 @@ const Dashboard : NextPage = () => {
                     <SyncModal 
                         syncModalVisible={syncModal}
                         setSyncModalVisible={setSyncModal}
+                        trySync={trySync}
                     />
 
                     

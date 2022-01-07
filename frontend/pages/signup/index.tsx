@@ -330,6 +330,7 @@ export const VerifyUI : FC<VerifyUIProps> = ({
                         ref={input}
                         onFocus={() => setInputFocused(true)}
                         onBlur={() => setInputFocused(false)}
+                        autoComplete='one-time-code'
                     />
                     
                     
