@@ -101,7 +101,9 @@ const Account : FC = (props) => {
         
         if (user) {
            user.signOut(); 
+           return true;
         }
+        return false;
     }
 
     return (

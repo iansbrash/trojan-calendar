@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import React, {
-    FC, ReactNode, useContext
+    FC, ReactNode, useContext, useState
 } from 'react';
 import { AccountContext } from '../../constants/cognito/Account';
 
@@ -8,13 +8,15 @@ import { AccountContext } from '../../constants/cognito/Account';
 interface HeaderProps {
     setSettingsModal: (b : boolean) => void,
     isSyncing: boolean,
-    lastSynced: number
+    lastSynced: number,
+    setSyncModal: (b : boolean) => void
 }
 
 const Header : FC<HeaderProps> = ({
     setSettingsModal,
     isSyncing,
-    lastSynced
+    lastSynced,
+    setSyncModal
 } : HeaderProps) => {
 
 
@@ -22,8 +24,7 @@ const Header : FC<HeaderProps> = ({
     const Router = useRouter();
 
     const logoutAndRedirect = () => {
-        logout()
-        Router.push('/login')
+        logout() ? Router.push('/login') : null;
     }
 
     const getLastUpdated = (d : number) => {
@@ -50,7 +51,7 @@ const Header : FC<HeaderProps> = ({
 
 
     return (
-        <div className="w-full h-20 flex flex-row justify-between items-center px-10 bg-slate-50 shadow-md border-t-4 border-sky-500">
+        <div className="z-30 w-full h-20 flex flex-row justify-between items-center px-10 bg-slate-50 shadow-md border-t-4 border-sky-500">
             {/* My Dashboard */}
             <div className="h-full font-bold text-2xl flex flex-row justify-start items-center">
                 <div className="text-slate-800">
@@ -65,14 +66,24 @@ const Header : FC<HeaderProps> = ({
 
             {/* Settings Icon */}
             <div className="h-full flex justify-center items-center space-x-6">
-
-                <HeaderIconWrapper
-                onClick={() => null}
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
-                    </svg>
-                </HeaderIconWrapper>
+                <div className="h-full flex flex-col justify-center items-center">
+                    <div className="h-full flex justify-center items-center">
+                        <HeaderIconWrapper
+                        onClick={() => setSyncModal(true)}
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                                <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
+                            </svg>
+                        </HeaderIconWrapper>
+                    </div>
+                    
+                    {/* <div className="relative w-full">
+                        <div className="absolute top-0 right-0 flex justify-center items-center w-80 h-20 bg-zinc-50 border-4 rounded-xl border-sky-400">
+                              
+                        </div>
+                    </div> */}
+                </div>
+                
                     
                 <HeaderIconWrapper
                 onClick={() => setSettingsModal(true)}

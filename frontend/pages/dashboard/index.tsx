@@ -21,6 +21,7 @@ import Cache, {
     CompiledGrades, 
     Schedule as ScheduleInterface
 } from './cache'
+import SyncModal from '../../components/sync/SyncModal'
 
 const Dashboard : NextPage = () => {
 
@@ -47,6 +48,7 @@ const Dashboard : NextPage = () => {
 
     // Modal
     const [settingsModalVisible, setSettingsModalVisible] = useState<boolean>(false);
+    const [syncModal, setSyncModal] = useState<boolean>(false);
 
 
     // Check if we can sync
@@ -248,11 +250,20 @@ const Dashboard : NextPage = () => {
                         setSettingsModalVisible={setSettingsModalVisible}
                     />
 
+                    <SyncModal 
+                        syncModalVisible={syncModal}
+                        setSyncModalVisible={setSyncModal}
+                    />
+
+                    
+
+
                     <div className="absolute top-0 left-0 right-0 flex justify-start flex-col items-center">
                         <Header 
                             setSettingsModal={setSettingsModalVisible}
                             isSyncing={isSyncing}
                             lastSynced={lastSynced ? lastSynced : 0}
+                            setSyncModal={setSyncModal}
                         />
                     </div>
 

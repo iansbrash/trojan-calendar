@@ -35,7 +35,7 @@ const Home: NextPage = () => {
                 {/* First big block (2 parts) */}
                 <div className="z-10 w-full h-full flex flex-row justify-start items-center">
                     {/* Tired of ____ */}
-                    <div className="w-1/2 h-full flex flex-col justify-center items-center">
+                    <div className="z-10 w-1/2 h-full flex flex-col justify-center items-center">
                         <div className="w-full flex flex-col justify-center items-start px-16">
                             <div className="flex flex-row justify-start items-center z-10">
                                 <div className="text-sky-500">

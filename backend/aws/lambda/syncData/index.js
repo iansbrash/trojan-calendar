@@ -81,7 +81,7 @@ exports.handler = async (event) => {
     }
     else {
         return {
-            statusCode: 400,
+            statusCode: 469,
             body: JSON.stringify("Error: You are not that guy"),
             headers: {
                 'Access-Control-Allow-Origin': '*'
@@ -197,9 +197,11 @@ exports.handler = async (event) => {
         Key:{
             "userId": userId,
         },
-        UpdateExpression: "set cache = :c",
+        UpdateExpression: "set cache = :c, lastSynced = :d, timesSynced = :t",
         ExpressionAttributeValues:{
             ":c": finalResponse,
+            ":d": Date.now() + '',
+            ":t": result.Items[0].timesSynced + 1
         },
         ReturnValues:"UPDATED_NEW"
     };
