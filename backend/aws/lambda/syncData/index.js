@@ -6,6 +6,7 @@ const { getMyUscCalendar } = require('./my.usc.edu/getMyUscCalendar');
 const { getBlackboardAssignments } = require("./blackboard/getBlackboardAssignments");
 const { getBlackboardGrades } = require('./blackboard/getBlackboardGrades')
 const { getGradescopeCookies } = require("./gradescope/getGradescopeCookies");
+const { getBlackboardClasses } = require("./blackboard/getBlackboardClasses");
 
 AWS.config.update({
     region: "us-east-1",
@@ -153,7 +154,9 @@ exports.handler = async (event) => {
     const bbRouterPromise = new Promise(async (resolve, reject) => {
         let blackboardRouterCookies = await getBlackboardRouter(myUscCookies);
 
-        Promise.all([
+        let bbClasses = await getBlackboardClasses(blackboardRouterCookies);
+
+        let promiseArray = [
             
             // Gradescope Assignments + Grades
             new Promise(async (resolve, reject) => {
@@ -189,23 +192,30 @@ exports.handler = async (event) => {
                 // /|\ BLACKBOARD /|\
 
             }),
-            // Blackboard Grades
-            new Promise(async (resolve, reject) => {
-                // \|/ BLACKBOARD \|/
+        ]
 
-                try {
-                    const blackboardGradesRes = await getBlackboardGrades(blackboardRouterCookies);
-                    
+        
+        bbClasses['20213'].forEach(v => {
+            promiseArray.push(
+                // Blackboard Grades
+                new Promise(async (resolve, reject) => {
+                    // \|/ BLACKBOARD \|/
+    
+                    try {
+                        const blackboardGradesRes = await getBlackboardGrades(blackboardRouterCookies, v.course_id);
+                        
+    
+                        resolve(blackboardGradesRes)
+                    }
+                    catch (err) {
+                        reject(err);
+                    }
+                    // /|\ BLACKBOARD /|\
+    
+                }),)
+        })
 
-                    resolve(blackboardGradesRes)
-                }
-                catch (err) {
-                    reject(err);
-                }
-                // /|\ BLACKBOARD /|\
-
-            }),
-        ]).then(v => resolve(v)).catch(e => reject(e))
+        Promise.all(promiseArray).then(v => resolve(v)).catch(e => reject(e))
     });
 
     // Promise Tree
@@ -218,9 +228,20 @@ exports.handler = async (event) => {
     // Schedule, bbRouterPromise
     let compiledPromise = await Promise.all([
         schedulePromise, 
-        // GS Assignments+Grades, BB Assignments, BB Grades
+        // GS Assignments+Grades, BB Assignments, ...BB Grades
         bbRouterPromise, 
     ]);
+
+    let bbGradesCompiledTemp = compiledPromise[1].slice(2, compiledPromise[1].length);
+
+    let bbGradesCompiled = {}
+
+    bbGradesCompiledTemp.forEach(v => bbGradesCompiled[Object.keys(v)[0]] = v[Object.keys(v)[0]]);
+
+    console.log(`bbGradesCompiled`)
+    console.log(bbGradesCompiled)
+
+
 
     let finalResponse = {
         assignments: {
@@ -229,7 +250,7 @@ exports.handler = async (event) => {
         },
         grades: {
             gradescope: compiledPromise[1][0]['grades'],
-            blackboard: compiledPromise[1][2]
+            blackboard: bbGradesCompiled
         },
         schedule: compiledPromise[0]
     }

@@ -1,18 +1,27 @@
-const { getMyUscCookies } = require("../../usc/getMyUscCookies");
+const { getMyUscCookies } = require("../../my.usc.edu/getMyUscCookies");
 const { username, password } = require('../../private/usclogin');
 const { getBlackboardRouter } = require('../../blackboard/getBlackboardRouter');
 const { getGradescopeCookies } = require('../getGradescopeCookies');
 const { getGSAssignmentsAndGrades } = require('../getGSAssignmentsAndGrades');
+const { getGradescopeClasses } = require('../getGradescopeClasses');
 
 (async () => {
     let allCookies = await getMyUscCookies(username, password);
     allCookies = await getBlackboardRouter(allCookies);
 
+    const course_id = '_274692_1'// `_275718_1`; 
+    let gsResponse = await getGradescopeCookies(allCookies, course_id)
 
-    let gsResponse = await getGradescopeCookies(allCookies)
 
     let gradescopeCookies = gsResponse.cookies;
     let gsLink = gsResponse.link;
+
+
+    // let term = 'Spring 2021' 
+    // let term = 'Fall 2021' 
+    let term = 'Fall 2020'
+    await getGradescopeClasses(gradescopeCookies, term)
+
 
     console.log(gradescopeCookies)
     console.log(gsLink);

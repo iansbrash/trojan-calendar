@@ -43,11 +43,6 @@ const getBlackboardGrades = async (
             gradeTitle = getValueByDelimiters(gradeTitle, '>', '<')
         }
 
-        // We skip these cuz they aren't conventional grades
-        if (gradeTitle === 'Total' || gradeTitle === 'Weighted Total' || gradeTitle === 'Grade') {
-            peelingData = peelingData.substring(peelingData.indexOf('<!-- Calculated Rows -->') + '<!-- Calculated Rows -->'.length)
-            continue;
-        }
 
         // Graded Upcoming
         let gradeStatus = getValueByDelimiters(gradeDiv, '<span class="activityType">', '</span>')
@@ -60,6 +55,23 @@ const getBlackboardGrades = async (
         let gradeNumerator = gradeDiv.substring(gradeDiv.indexOf('<span class="grade"') + '<span class="grade"'.length)
         gradeNumerator = getValueByDelimiters(gradeNumerator, '>', '</span>')
         gradeNumerator === '-' ? gradeNumerator = 0 : null;
+
+
+
+        
+        // We skip these cuz they aren't conventional grades
+        // if (
+        //     gradeTitle === 'Total' || 
+        //     gradeTitle === 'Weighted Total' || 
+        //     gradeTitle === 'Grade') {
+        //     peelingData = peelingData.substring(peelingData.indexOf('<!-- Calculated Rows -->') + '<!-- Calculated Rows -->'.length)
+        //     continue;
+        // }
+        // We skip these cuz they aren't conventional grades
+        if (gradeDiv.indexOf('<span class="pointsPossible clearfloats">/') === -1) {
+            peelingData = peelingData.substring(peelingData.indexOf('<!-- Calculated Rows -->') + '<!-- Calculated Rows -->'.length)
+            continue;
+        } 
 
         let gradeDenominator = getValueByDelimiters(gradeDiv, '<span class="pointsPossible clearfloats">/', '</span>')
         // Title, Status, Grade
