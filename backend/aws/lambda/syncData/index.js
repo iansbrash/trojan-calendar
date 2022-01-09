@@ -7,6 +7,7 @@ const { getBlackboardAssignments } = require("./blackboard/getBlackboardAssignme
 const { getBlackboardGrades } = require('./blackboard/getBlackboardGrades')
 const { getGradescopeCookies } = require("./gradescope/getGradescopeCookies");
 const { getBlackboardClasses } = require("./blackboard/getBlackboardClasses");
+const { getGradescopeClasses } = require("./gradescope/getGradescopeClasses");
 
 AWS.config.update({
     region: "us-east-1",
@@ -160,14 +161,50 @@ exports.handler = async (event) => {
             
             // Gradescope Assignments + Grades
             new Promise(async (resolve, reject) => {
+
+                
                 // \|/ GRADESCOPE \|/
                 try {
-                    let gsResponse = await getGradescopeCookies(blackboardRouterCookies)
+
+                    if (Object.keys(bbClasses).length === 0) {
+                        console.log('Resolving because bbClasses.length === 0')
+                        resolve({
+                            assignments: [
+                                
+                            ],
+                            grades: {
+                    
+                            },
+                        })
+                    }
+                    console.log(`bbClasses`)
+                    console.log(bbClasses)
+
+                    console.log('About to call getGradescopeCookies')
+                    let gsResponse = await getGradescopeCookies(blackboardRouterCookies, bbClasses['20213'][0].course_id)
+
+                    console.log('About to call getGradescopeClasses')
+                    const classes = await getGradescopeClasses(gsResponse.cookies, 'Fall 2020')
+                    console.log(`Classes:`)
+                    console.log(classes)
+
+                    if (Object.keys(classes).length === 0) {
+                        console.log('Resolving because classes.length === 0')
+                        resolve({
+                            assignments: [
+                                
+                            ],
+                            grades: {
+                    
+                            },
+                        })
+                    }
+
                     let gradescopeCookies = gsResponse.cookies;
-                    let gsLink = gsResponse.link;
+                    // let gsLink = gsResponse.link;
     
                     // Returns an array for now
-                    let gradescopeAssignments = await getGSAssignmentsAndGrades(gradescopeCookies, gsLink);
+                    let gradescopeAssignments = await getGSAssignmentsAndGrades(gradescopeCookies, `https://www.gradescope.com/courses/${classes[Object.keys(classes)[0]].courseId}`);
 
                     resolve (gradescopeAssignments)
                 }

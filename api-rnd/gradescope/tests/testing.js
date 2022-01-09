@@ -9,7 +9,7 @@ const { getGradescopeClasses } = require('../getGradescopeClasses');
     let allCookies = await getMyUscCookies(username, password);
     allCookies = await getBlackboardRouter(allCookies);
 
-    const course_id = '_274692_1'// `_275718_1`; 
+    const course_id = `_275718_1`; 
     let gsResponse = await getGradescopeCookies(allCookies, course_id)
 
 
@@ -20,7 +20,9 @@ const { getGradescopeClasses } = require('../getGradescopeClasses');
     // let term = 'Spring 2021' 
     // let term = 'Fall 2021' 
     let term = 'Fall 2020'
-    await getGradescopeClasses(gradescopeCookies, term)
+
+    // [{courseId: ____}, ...]
+    let courseIds = await getGradescopeClasses(gradescopeCookies, term)
 
 
     console.log(gradescopeCookies)

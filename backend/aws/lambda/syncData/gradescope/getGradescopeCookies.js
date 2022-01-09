@@ -14,11 +14,9 @@ const qs = require('qs');
 const fs = require('fs');
 
 
-const getGradescopeCookies = async (bbCookies) => {
+const getGradescopeCookies = async (bbCookies, course_id) => {
     let allCookies = bbCookies;
 
-    // As it turns out, this is kinda irrelevant
-    const course_id = `_275718_1`;
 
     // This is very relevant. This value works.
     const blti_placement_id= `_237_1`
