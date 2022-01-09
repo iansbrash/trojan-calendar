@@ -3,7 +3,7 @@ const {
     VS 
 } = require("../functions/requestFunctions");
 const { tryCatchWrapper } = require('../functions/tryCatchWrapper');
-const { genHeaders } = require('../usc/genHeaders');
+const { genHeaders } = require('../my.usc.edu/genHeaders');
 
 const getBlackboardAssignments = async (
     bbCookies,

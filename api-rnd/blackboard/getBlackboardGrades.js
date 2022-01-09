@@ -5,13 +5,14 @@ const {
     VS, getValueByDelimiters 
 } = require("../functions/requestFunctions");
 const { tryCatchWrapper } = require('../functions/tryCatchWrapper');
-const { genHeaders } = require('../usc/genHeaders');
+const { genHeaders } = require('../my.usc.edu/genHeaders');
 
 const getBlackboardGrades = async (
     bbCookies,
+    course_id
 ) => {
 
-    const course_id = '_275718_1'; //'_251705_1'
+    // const course_id = '_275718_1'; //'_251705_1'
 
     const base = 'https://blackboard.usc.edu/webapps/bb-mygrades-BB5fd94affdac6c/myGrades';
 
@@ -34,7 +35,13 @@ const getBlackboardGrades = async (
     while (peelingData.indexOf('<!-- Calculated Rows -->') !== -1) {
         let gradeDiv = getValueByDelimiters(peelingData, '<!-- Calculated Rows -->', '<!--  Status Column -->')
 
-        const gradeTitle = getValueByDelimiters(gradeDiv, '<div class="cell gradable" role="cell">', '<div').trim()
+        let gradeTitle = getValueByDelimiters(gradeDiv, '<div class="cell gradable" role="cell">', '<div').trim()
+
+        // in case we are left with something that looks like
+        // <a ...> Quiz 1 </a>
+        if (gradeTitle.includes('>')) {
+            gradeTitle = getValueByDelimiters(gradeTitle, '>', '<')
+        }
 
         // We skip these cuz they aren't conventional grades
         if (gradeTitle === 'Total' || gradeTitle === 'Weighted Total' || gradeTitle === 'Grade') {
