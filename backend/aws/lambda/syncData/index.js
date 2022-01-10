@@ -177,6 +177,7 @@ exports.handler = async (event) => {
                             },
                         })
                     }
+                    
                     console.log(`bbClasses`)
                     console.log(bbClasses)
 
@@ -185,8 +186,6 @@ exports.handler = async (event) => {
 
                     console.log('About to call getGradescopeClasses')
                     const classes = await getGradescopeClasses(gsResponse.cookies, 'Fall 2020')
-                    console.log(`Classes:`)
-                    console.log(classes)
 
                     if (Object.keys(classes).length === 0) {
                         console.log('Resolving because classes.length === 0')
@@ -204,9 +203,39 @@ exports.handler = async (event) => {
                     // let gsLink = gsResponse.link;
     
                     // Returns an array for now
-                    let gradescopeAssignments = await getGSAssignmentsAndGrades(gradescopeCookies, `https://www.gradescope.com/courses/${classes[Object.keys(classes)[0]].courseId}`);
+                    // {assignments: [], grades: { }}
+                    let gsAssignmentsPromises = []
+                    Object.keys(classes).forEach((key) => {
+                        gsAssignmentsPromises.push(new Promise(async (resolve, reject) => {
+                            try {
+                                let gradescopeAssignments = await getGSAssignmentsAndGrades(gradescopeCookies, `https://www.gradescope.com/courses/${classes[key].courseId}`);
+                                resolve(gradescopeAssignments)
+                            }
+                            catch {
+                                reject();
+                            }
 
-                    resolve (gradescopeAssignments)
+                        }))
+                    })
+
+                    Promise.all(gsAssignmentsPromises).then(compiledGS => {
+                        let toReturn = {
+                            assignments: [],
+                            grades: {
+                                // courseName
+                            }
+                        }
+                        compiledGS.forEach(cV => {
+                            toReturn.assignments = [...toReturn.assignments, ...cV.assignments];
+                            toReturn.grades = {...toReturn.grades, ...cV.grades}
+                        })
+
+                        resolve(toReturn)
+                    })
+
+                    // let gradescopeAssignments = await getGSAssignmentsAndGrades(gradescopeCookies, `https://www.gradescope.com/courses/${classes[Object.keys(classes)[0]].courseId}`);
+
+                    // resolve (gradescopeAssignments)
                 }
                 catch (err) {
                     reject(err);

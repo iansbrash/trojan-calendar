@@ -7,7 +7,7 @@ const tryCatchWrapper = async (asyncFunction, message) => {
             return res;
         }
         catch {
-            console.log("Error in tryCatchWrapper, attempt #" + i);
+            console.log("Error in tryCatchWrapper, attempt #" + i + " " + message);
         }
         
     }

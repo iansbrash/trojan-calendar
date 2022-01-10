@@ -93,11 +93,14 @@ const ClassGradeBox : FC<ClassGradeBoxProps> = ({
             <div className={`w-full flex flex-row justify-start items-center cursor-pointer transition duration-250 ease-in-out ${highlightColor} py-1 rounded-md`}
             onClick={() => setIsToggled(!isToggled)}
             >
+                <div className="h-full flex flex-col justify-start items-center pt-1">
                 <div className={`${chevronColor} mx-1 ${isToggled ? 'rotate-90' : 'rotate-0' } transition duration-500 ease-in-out`}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
                     </svg>
                 </div>
+                </div>
+                
                 <div className="font-medium text-2xl text-slate-800">
                     {className}
                 </div>
