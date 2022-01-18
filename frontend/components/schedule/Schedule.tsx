@@ -47,7 +47,7 @@ const Schedule : FC<ScheduleProps> = React.memo(({
 
         let day : any = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'][(new Date()).getDay()]
 
-        day = 'wednesday';
+        // day = 'wednesday';
 
         // @ts-ignore
         setTodaysSchedule(schedule[day].sort((e1 : Event, e2 : Event) => {
@@ -158,6 +158,7 @@ const Schedule : FC<ScheduleProps> = React.memo(({
                         let hypIndex = todaysSchedule?.findIndex((e) => n + ':' === e.startTime.substring(0, (n + ':').length));
                         let event;
                         let height;
+                        let startMinute = 0;
 
                         // This code is actually fucking insane
                         if (todaysSchedule && hypIndex !== null && hypIndex !== undefined && hypIndex !== -1) {
@@ -166,7 +167,7 @@ const Schedule : FC<ScheduleProps> = React.memo(({
                             let startHour = parseInt(event.startTime.split(':')[0])
                             let endHour = parseInt(event.endTime.split(':')[0])  
 
-                            let startMinute = parseInt(event.startTime.split(':')[1])
+                            startMinute = parseInt(event.startTime.split(':')[1])
                             let endMinute = parseInt(event.endTime.split(':')[1])
 
                             let hourDifference = endHour - startHour;
@@ -183,7 +184,7 @@ const Schedule : FC<ScheduleProps> = React.memo(({
                             height = timeIncrements[`${heightIncrement}/6`];
                             
                         }
-                        
+
                         return <div className={`w-full flex flex-1 justify-start items-center border-t`}
                         key={n}
                         >
@@ -210,6 +211,8 @@ const Schedule : FC<ScheduleProps> = React.memo(({
 
                                             // @ts-ignore
                                             height={height}
+                                            // initialOffset={}
+                                            startMinute={startMinute}
                                         />
                                     </>
                                     : null

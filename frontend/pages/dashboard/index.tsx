@@ -44,7 +44,7 @@ const Dashboard : NextPage = () => {
     const [isSyncing, setIsSyncing] = useState<boolean>(false);
 
     // Sync
-    const [lastSynced, setLastSynced] = useState<number>()
+    const [lastSynced, setLastSynced] = useState<number | null>(null)
 
     // Modal
     const [settingsModalVisible, setSettingsModalVisible] = useState<boolean>(false);
@@ -97,9 +97,9 @@ const Dashboard : NextPage = () => {
             console.log("We can sync: Will retrieve data now. LastSynced: " + lastSynced)
 
             
-            const getSyncDataResponse = await axios({
+            const getSyncDataResponse1 = await axios({
                 method: 'post',
-                url: `${api}/account/sync`,
+                url: `${api}/account/sync?stage=${1}`,
                 headers: {
                     'Authorization': token,
                     'lastsynced': lastSynced + ''
@@ -110,11 +110,34 @@ const Dashboard : NextPage = () => {
                 })
             })
 
-            const syncData : Cache = getSyncDataResponse.data;
+            console.log(`getSyncDataResponse1.data: ${getSyncDataResponse1.data}`)
+
+            const getSyncDataResponse2 = await axios({
+                method: 'post',
+                url: `${api}/account/sync?stage=${2}`,
+                headers: {
+                    'Authorization': token,
+                },
+            })
+
+            console.log(`getSyncDataResponse2.data: ${getSyncDataResponse2.data}`)
+
+            const getSyncDataResponse3 = await axios({
+                method: 'post',
+                url: `${api}/account/sync?stage=${3}`,
+                headers: {
+                    'Authorization': token,
+                },
+            })
+
+            console.log(`getSyncDataResponse3.data: ${getSyncDataResponse3.data}`)
+
+            const syncData : Cache = getSyncDataResponse3.data;
 
             setSchedule(syncData.schedule)
             setAssignments(syncData.assignments)
             setGrades(syncData.grades)
+            setLastSynced(Date.now())
         }
         catch (err : any) {
             console.log(err.message)
@@ -263,7 +286,7 @@ const Dashboard : NextPage = () => {
                         <Header 
                             setSettingsModal={setSettingsModalVisible}
                             isSyncing={isSyncing}
-                            lastSynced={lastSynced ? lastSynced : 0}
+                            lastSynced={lastSynced}
                             setSyncModal={setSyncModal}
                         />
                     </div>

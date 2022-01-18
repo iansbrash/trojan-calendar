@@ -9,8 +9,8 @@ const getBlackboardAssignments = async (
     bbCookies,
 ) => {
 
-    const start = 1622632400000;
-    const end = 1646261200000;
+    const start = Date.now() //1622632400000;
+    const end = start + (86400000 * 21) // 1646261200000;
     const course_id = '_275718_1'; //'_251705_1'
     const mode = 'course';
 

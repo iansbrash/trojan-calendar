@@ -71,4 +71,43 @@ const colors = [
     }
 ]
 
+export const gradientColors = [
+    {
+        'bg600': 'bg-gradient-to-r from-sky-600 to-blue-600',
+        'bg400': 'bg-gradient-to-r from-sky-400 to-blue-400',
+    },
+    {
+        'bg600': 'bg-gradient-to-r from-emerald-600 to-green-600',
+        'bg400': 'bg-gradient-to-r from-emerald-400 to-green-400',
+    },
+    {
+        'bg600': 'bg-gradient-to-r from-indigo-600 to-violet-600',
+        'bg400': 'bg-gradient-to-r from-indigo-400 to-violet-400',
+    },
+    {
+        'bg600': 'bg-gradient-to-r from-fuchsia-600 to-pink-600',
+        'bg400': 'bg-gradient-to-r from-fuchsia-400 to-pink-400',
+    },
+    {
+        'bg600': 'bg-gradient-to-r from-pink-600 to-rose-600',
+        'bg400': 'bg-gradient-to-r from-pink-400 to-rose-400',
+    },
+    {
+        'bg600': 'bg-gradient-to-r from-teal-600 to-cyan-600',
+        'bg400': 'bg-gradient-to-r from-teal-400 to-cyan-400',
+    },
+    {
+        'bg600': 'bg-gradient-to-r from-orange-600 to-amber-600',
+        'bg400': 'bg-gradient-to-r from-orange-400 to-amber-400',
+    },
+    {
+        'bg600': 'bg-gradient-to-r from-teal-600 to-sky-600',
+        'bg400': 'bg-gradient-to-r from-teal-400 to-sky-400',
+    },
+    {
+        'bg600': 'bg-gradient-to-r from-cyan-600 to-blue-600',
+        'bg400': 'bg-gradient-to-r from-cyan-400 to-blue-400',
+    },
+]
+
 export default colors;
