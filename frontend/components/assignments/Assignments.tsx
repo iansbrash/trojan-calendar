@@ -4,7 +4,7 @@ import React, {
 import AssignmentBlock, { LoadingAssignmentBlock } from './AssignmentBlock';
 import DayContainer, { LoadingDayContainer } from './DayContainer';
 import ColumnContainer from '../multi/ColumnContainer';
-import { CompiledAssignments, UpcomingAssignment } from '../../pages/dashboard/cache';
+import { CompiledAssignments, UpcomingAssignment } from '../../constants/interfaces/cache';
 import getInitializedArray from '../../constants/functions/getInitializedArray';
 import colors, {
     gradientColors as colors2

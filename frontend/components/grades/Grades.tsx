@@ -3,7 +3,7 @@ import React, {
     useState
 } from 'react';
 import getInitializedArray from '../../constants/functions/getInitializedArray';
-import { CompiledGrades } from '../../pages/dashboard/cache';
+import { CompiledGrades } from '../../constants/interfaces/cache';
 import ColumnContainer from '../multi/ColumnContainer';
 import ClassGradeBox, { LoadingClassGradeBox } from './ClassGradeBox';
 import colors from '../assignments/colors';

@@ -20,7 +20,7 @@ import Cache, {
     CompiledAssignments, 
     CompiledGrades, 
     Schedule as ScheduleInterface
-} from './cache'
+} from '../../constants/interfaces/cache'
 import SyncModal from '../../components/sync/SyncModal'
 
 const Dashboard : NextPage = () => {

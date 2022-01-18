@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import api from '../../constants/api-gateway/api';
 import getInitializedArray from '../../constants/functions/getInitializedArray';
-import { Note } from '../../pages/dashboard/cache';
+import { Note } from '../../constants/interfaces/cache';
 import EditingNote from './EditingNote';
 
 interface NoteProps {

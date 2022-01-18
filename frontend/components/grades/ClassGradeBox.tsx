@@ -5,7 +5,7 @@ import React, {
     useState
 } from 'react';
 import getInitializedArray from '../../constants/functions/getInitializedArray';
-import { IndividualGrade } from '../../pages/dashboard/cache';
+import { IndividualGrade } from '../../constants/interfaces/cache';
 
 enum AssignmentStatus {
     GRADED,

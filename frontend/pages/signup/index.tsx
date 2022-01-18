@@ -257,7 +257,7 @@ export const VerifyUI : FC<VerifyUIProps> = ({
 
     const [inputFocused, setInputFocused] = useState<boolean>(false);
 
-    const input = useRef(document.createElement('input'));
+    const input = useRef(document?.createElement('input'));
 
     const onDivClick = () => {
         input.current.focus()

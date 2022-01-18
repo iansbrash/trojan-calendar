@@ -7,20 +7,17 @@ import Schedule from '../../components/schedule/Schedule'
 import Notes from '../../components/notes/Notes'
 import Announcements from '../../components/announcements/Announcements'
 import React, {
-    useEffect,
     useState
 } from 'react';
-import axios from 'axios';
 import { CognitoUserSession } from 'amazon-cognito-identity-js'
-import AuthRoute from '../../components/authRoute/AuthRoute'
-import api from '../../constants/api-gateway/api'
 import SettingsModal from '../../components/settings/SettingsModal'
 import Cache, {
     Note, 
     CompiledAssignments, 
     CompiledGrades, 
     Schedule as ScheduleInterface
-} from '../dashboard/cache'
+} from '../../constants/interfaces/cache'
+import NotesDemo from '../../components/notes/NotesDemo'
 
 const Dashboard : NextPage = () => {
 
@@ -355,7 +352,7 @@ const Dashboard : NextPage = () => {
                         />
 
                         {/* For now we're gonna used cachedData, but we'll eventually set up a separate endpoiint */}
-                        <Notes 
+                        <NotesDemo 
                             notes={[
                                 {
                                     "noteTitle": "To-do",
@@ -383,9 +380,6 @@ const Dashboard : NextPage = () => {
                                     "noteId": "1641405753780"
                                 }
                             ]}
-                            session={session ? session : null}
-                            setNotes={setNotes}
-                            demo={true}
                         />
 
                         {/* For now we're gonna used cachedData, but we'll eventually set up a separate endpoiint */}

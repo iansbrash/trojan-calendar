@@ -4,7 +4,7 @@ import React, {
     useRef,
     useState
 } from 'react';
-import { Note } from '../../pages/dashboard/cache';
+import { Note } from '../../constants/interfaces/cache';
 
 
 interface EditingNoteProps {
@@ -58,7 +58,7 @@ const EditingNote : FC<EditingNoteProps> = ({
     const [editTitle, setEditTitle] = useState<string>(noteTitle)
     const [editContent, setEditContent] = useState<string>(noteContent)
 
-    const inputSpan = useRef<HTMLTextAreaElement>(document.createElement('textarea'));
+    const inputSpan = useRef<HTMLTextAreaElement>(document?.createElement('textarea'));
 
     // TODO: Fix bug
     function auto_grow(element : HTMLElement) {

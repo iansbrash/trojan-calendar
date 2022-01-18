@@ -3,7 +3,7 @@ import React, {
     useEffect,
     useState
 } from 'react';
-import { Event, Schedule } from '../../pages/dashboard/cache';
+import { Event, Schedule } from '../../constants/interfaces/cache';
 import ColumnContainer from '../multi/ColumnContainer';
 import CalendarItem, { LoadingCalendarItem } from './CalendarItem';
 import colors, {
