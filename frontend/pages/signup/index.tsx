@@ -345,7 +345,7 @@ export const VerifyUI : FC<VerifyUIProps> = ({
                         <SubButton
                             path="/login"
                             text={'Resend Code'}
-                            isLoading={false}
+                            isLoading={isVerifying}
                         />
 
                         <MainButton 
@@ -354,7 +354,7 @@ export const VerifyUI : FC<VerifyUIProps> = ({
                                 await onVerify()
                             }}
                             text={'Verify'}
-                            isLoading={false}
+                            isLoading={isVerifying}
                         />
                     </div>
                 </div>
