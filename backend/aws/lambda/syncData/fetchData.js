@@ -13,6 +13,9 @@ AWS.config.update({
 });
 var docClient = new AWS.DynamoDB.DocumentClient()
 
+const bbTerm = '20221' // '20213'
+const gsTerm = 'Spring 2022' //'Fall 2020'
+
 const fetchData = async (event) => {
     
     const claims = event.requestContext.authorizer.claims;
@@ -93,10 +96,10 @@ const fetchData = async (event) => {
                     console.log(bbClasses)
 
                     console.log('About to call getGradescopeCookies')
-                    let gsResponse = await getGradescopeCookies(blackboardRouterCookies, bbClasses['20213'][0].course_id)
+                    let gsResponse = await getGradescopeCookies(blackboardRouterCookies, bbClasses[bbTerm][0].course_id)
 
                     console.log('About to call getGradescopeClasses')
-                    const classes = await getGradescopeClasses(gsResponse.cookies, 'Fall 2020')
+                    const classes = await getGradescopeClasses(gsResponse.cookies, gsTerm)
 
                     if (Object.keys(classes).length === 0) {
                         console.log('Resolving because classes.length === 0')
@@ -172,7 +175,7 @@ const fetchData = async (event) => {
         ]
 
         
-        bbClasses['20213'].forEach(v => {
+        bbClasses[bbTerm].forEach(v => {
             promiseArray.push(
                 // Blackboard Grades
                 new Promise(async (resolve, reject) => {

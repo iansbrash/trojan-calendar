@@ -27,12 +27,23 @@ const EditingNote : FC<EditingNoteProps> = ({
     setIsEditing
 } : EditingNoteProps) => {
 
+    const [isProcessing, setisProcessing] = useState<boolean>(false);
+
     const checkButtonClicked = async () => {
+
+        // If no changes
+        if (noteContent === editContent && noteTitle === editTitle) {
+            setIsEditing(false);
+            return;
+        }
+
+        setisProcessing(true)
         await editNote({
             noteId: noteId,
             noteContent:editContent,
             noteTitle: editTitle
         })
+        setisProcessing(false)
         setIsEditing(false)
     }
 
@@ -69,9 +80,28 @@ const EditingNote : FC<EditingNoteProps> = ({
     }, [])
 
     return (
-        <div className={`flex cursor-pointer w-full h-auto flex-col justify-start items-center`}>
+        <div className={`${isProcessing ? 'pointer-events-none' : ''} relative flex cursor-pointer w-full h-auto flex-col justify-start items-center`}>
+
+            <div className={`flex justify-center items-center z-10 transition duration-250 ease-in-out ${isProcessing ? 'opacity-50' : 'opacity-0 pointer-events-none'} rounded-md absolute top-0 left-0 bottom-0 right-0 bg-white`}>
+                
+            </div>
+
+            <div className={`flex justify-center items-center z-20 transition duration-250 ease-in-out ${isProcessing ? 'opacity-100' : 'opacity-0 pointer-events-none'} absolute top-0 left-0 bottom-0 right-0`}>
+                {isProcessing ?
+                    <div 
+                    className={`h-${6} w-${6} animate-spin loader ease-linear rounded-full border-4 border-t-4 border-sky-300`}
+                    style={{
+                        // borderTopColor: '#e0f2fe' //#f0f9ff
+                        borderTopColor: '#38bdf8'// '#f0f9ff' //#f0f9ff
+                    }}
+                    >
+                    </div> : null
+                }
+            </div>
+
+
             <div className={`px-2 py-1 ${headerColor} rounded-t-md w-full relative`}>
-                <div className="absolute -top-2 -right-2 flex flex-row justify-start items-center space-x-3">
+                <div className={`${isProcessing ? 'hidden pointer-events-none' : 'flex'} absolute -top-2 -right-2 flex flex-row justify-start items-center space-x-3`}>
                     {/* X Button */}
                     <div className="w-6 h-6 rounded-md bg-red-400 border-2 border-white flex justify-center items-center text-white"
                     onClick={() => xButtonClicked()}

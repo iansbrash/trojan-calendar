@@ -6,6 +6,9 @@ import React, {
 import { Event, Schedule } from '../../pages/dashboard/cache';
 import ColumnContainer from '../multi/ColumnContainer';
 import CalendarItem, { LoadingCalendarItem } from './CalendarItem';
+import colors, {
+    gradientColors
+} from '../assignments/colors';
 
 interface ScheduleProps {
     schedule : Schedule | null
@@ -207,7 +210,7 @@ const Schedule : FC<ScheduleProps> = React.memo(({
                                             className={event.className}
                                             classType={event.classType}
                                             classLocation={event.classLocation}
-                                            bgColor={Math.random() * 10 > 5 ? 'bg-sky-400' : 'bg-emerald-400'}
+                                            bgColor={gradientColors[hypIndex!]['bg400']}
 
                                             // @ts-ignore
                                             height={height}

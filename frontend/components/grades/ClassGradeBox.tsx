@@ -108,6 +108,22 @@ const ClassGradeBox : FC<ClassGradeBoxProps> = ({
 
             {/* Grades */}
             <div className={`${isToggled ? 'flex' : 'hidden'} w-full h-auto flex-col justify-start items-center`}>
+
+                {/* When there's no grades */}
+                {ass?.length === 0 ? 
+                <div className="w-full flex flex-row justify-start items-center">
+                    <div className={`font-bold text-3xl mx-2.5 ${bulletColor}`}>
+                        •
+                    </div>
+
+                    {/* Assignment Title */}
+                    <div className="text-lg text-slate-700 font-medium">
+                        No grades yet
+                    </div>
+                </div>
+                : null}
+
+                {/* When there are grades! */}
                 {ass?.map((gradeObject : any, index : number) => 
                     <div className="w-full flex flex-row justify-between items-center" key={index}>
                         <div className="flex flex-row justify-start items-center">

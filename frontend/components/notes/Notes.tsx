@@ -37,6 +37,7 @@ const Notes : FC<NotesProps> = React.memo(({
 
     const [newNoteTitle, setNewNoteTitle] = useState<string>('')
     const [newNoteContent, setNewNoteContent] = useState<string>('')
+    const [isProcessing, setIsProcessing] = useState<boolean>(false);
 
 
     const inputSpan = useRef<HTMLTextAreaElement>(document.createElement('textarea'));
@@ -91,6 +92,7 @@ const Notes : FC<NotesProps> = React.memo(({
     }
 
     const submitClicked = async () => {
+        setIsProcessing(true)
         try {
             if (!session) return;
 
@@ -115,6 +117,9 @@ const Notes : FC<NotesProps> = React.memo(({
         }
         catch (err) {
 
+        }
+        finally {
+            setIsProcessing(false)
         }
     }
 
@@ -232,11 +237,27 @@ const Notes : FC<NotesProps> = React.memo(({
 
 
                     {/* When we're creaitng a new now this shows */}
-                    <div className={`${isCreatingNewNote ? 'flex' : 'hidden pointer-events-none'} cursor-pointer w-full h-auto flex-col justify-start items-center`}>
+                    <div className={`${isCreatingNewNote ? 'flex' : 'hidden pointer-events-none'} relative cursor-pointer w-full h-auto flex-col justify-start items-center`}>
+
+                    {/* Processing overlay */}
+                    <div className={`flex justify-center items-center z-10 transition duration-250 ease-in-out ${isProcessing ? 'opacity-50' : 'opacity-0 pointer-events-none'} rounded-md absolute top-0 left-0 bottom-0 right-0 bg-white`}></div>
+                    <div className={`flex justify-center items-center z-20 transition duration-250 ease-in-out ${isProcessing ? 'opacity-100' : 'opacity-0 pointer-events-none'} absolute top-0 left-0 bottom-0 right-0`}>
+                        {isProcessing ?
+                            <div 
+                            className={`h-${6} w-${6} animate-spin loader ease-linear rounded-full border-4 border-t-4 border-sky-300`}
+                            style={{
+                                // borderTopColor: '#e0f2fe' //#f0f9ff
+                                borderTopColor: '#38bdf8'// '#f0f9ff' //#f0f9ff
+                            }}
+                            >
+                            </div> : null
+                        }
+                    </div>
+
                         {/* Header */}
                         <div className={`px-2 py-1 ${'bg-sky-500'} rounded-t-md w-full relative`}>
 
-                            <div className="absolute -top-2 -right-2 flex flex-row justify-start items-center space-x-3">
+                            <div className={`${isProcessing ? 'hidden pointer-events-none' : 'flex'} absolute -top-2 -right-2  flex-row justify-start items-center space-x-3`}>
                                 {/* X Button */}
                                 <div className="w-6 h-6 rounded-md bg-red-400 border-2 border-white flex justify-center items-center text-white"
                                 onClick={() => setIsCreatingNewNote(false)}

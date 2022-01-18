@@ -7,6 +7,8 @@ AWS.config.update({
 });
 var docClient = new AWS.DynamoDB.DocumentClient()
 
+const delayBetweenSync = 86400000 / 2; // one day, then divded by 2
+
 const initiateDuo = async (event) => {
     const claims = event.requestContext.authorizer.claims;
 

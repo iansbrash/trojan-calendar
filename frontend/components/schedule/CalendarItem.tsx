@@ -27,7 +27,7 @@ const CalendarItem : FC<CalendarItemProps> = ({
                 
                 if (startMinute === v) {
                     return (
-                        <div className="flex flex-1 w-full relative">
+                        <div className="flex flex-1 w-full relative" key={v}>
                             <div className="w-full relative absolute top-0 left-0 right-0 h-600">
                                 <div className={`cursor-pointer absolute top-0 left-0 right-0 ${height} ${bgColor} rounded-md flex flex-col justify-start items-center`}>
                                     <div className="w-full h-full relative flex flex-col justify-start items-center px-2 py-1">
@@ -52,7 +52,7 @@ const CalendarItem : FC<CalendarItemProps> = ({
                     )
                 }
                 else {
-                    return <div className="flex flex-1 w-full relative"></div>
+                    return <div className="flex flex-1 w-full relative" key={v}></div>
                 }
 
             })}

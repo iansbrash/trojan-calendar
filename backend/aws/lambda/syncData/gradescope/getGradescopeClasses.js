@@ -33,6 +33,12 @@ const getGradescopeClasses = async (gsCookies, term) => {
 
     let termDelimiter = `<h2 class="courseList--term pageSubheading">${term}</h2>`
 
+
+    // If we can't find the term... i.e. no GradeScope classes
+    if (coursesBegin.indexOf(termDelimiter) === -1) {
+        return {}
+    }
+
     coursesBegin = coursesBegin.substring(coursesBegin.indexOf(termDelimiter))
 
     let coursesSnippet = coursesBegin.substring(coursesBegin.indexOf('<div class="courseList--coursesForTerm">'))

@@ -38,7 +38,7 @@ const Home: NextPage = () => {
                 {/* First big block (2 parts) */}
                 <div className="z-10 w-full h-full flex flex-row justify-start items-center">
                     {/* Tired of ____ */}
-                    <div className="z-10 w-1/2 h-full flex flex-col justify-center items-center">
+                    <div className="z-10 w-full xl:w-1/2 h-full flex flex-col justify-center items-center">
                         <div className="w-full flex flex-col justify-center items-start px-16">
                             <div className="flex flex-row justify-start items-center z-10">
                                 <div className="text-sky-500">
@@ -123,7 +123,7 @@ const Home: NextPage = () => {
                     </div>
 
                     {/* Screenshot of Unidash UI */}
-                    <div className="overflow-x-hidden scrollbar-hide w-1/2 h-full flex flex-col justify-center items-center">
+                    <div className="overflow-x-hidden scrollbar-hide w-1/2 h-full hidden xl:flex flex-col justify-center items-center">
                         
                         <div className={`${styles.previewImageParent} flex justify-center items-center w-full pr-32`}>
                             <div className={`overflow-x-clip  ${styles.previewImage} w-full aspect-video rounded-xl drop-shadow-lg flex justify-start flex-col items-center`}>

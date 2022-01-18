@@ -33,17 +33,20 @@ const Note : FC<NoteProps> = ({
     const [hover, setHover] = useState<boolean>(false);
     
     const [isEditing, setIsEditing] = useState<boolean>(false);
+    const [isProcessing, setIsProccessing] = useState<boolean>(false);
 
     const editClicked = () => {
         setIsEditing(true)
     }
 
     const deleteClicked = async () => {
+        setIsProccessing(true)
         await deleteNote({
             noteTitle,
             noteContent,
             noteId
         })
+        setIsProccessing(false)
     }
 
     if (isEditing) {
@@ -62,10 +65,27 @@ const Note : FC<NoteProps> = ({
     }
 
     return (
-        <div className="cursor-pointer w-full h-auto flex flex-col justify-start items-center drop-shadow-md"
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
+        <div className={`${isProcessing ? 'pointer-events-none' : ''} relative cursor-pointer w-full h-auto flex flex-col justify-start items-center drop-shadow-md`}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
         >
+            <div className={`flex justify-center items-center z-10 transition duration-250 ease-in-out ${isProcessing ? 'opacity-50' : 'opacity-0 pointer-events-none'} rounded-md absolute top-0 left-0 bottom-0 right-0 bg-white`}>
+                
+            </div>
+
+            <div className={`flex justify-center items-center z-20 transition duration-250 ease-in-out ${isProcessing ? 'opacity-100' : 'opacity-0 pointer-events-none'} absolute top-0 left-0 bottom-0 right-0`}>
+                {isProcessing ?
+                    <div 
+                    className={`h-${6} w-${6} animate-spin loader ease-linear rounded-full border-4 border-t-4 border-sky-300`}
+                    style={{
+                        // borderTopColor: '#e0f2fe' //#f0f9ff
+                        borderTopColor: '#38bdf8'// '#f0f9ff' //#f0f9ff
+                    }}
+                    >
+                    </div> : null
+                }
+            </div>
+
             {/* Header */}
             <div className={`px-2 py-1 ${headerColor} rounded-t-md w-full relative`}>
                 <div className={`z-40 ${hover ? 'opacity-100 ' : 'opacity-0 pointer-events-none'} cursor-pointer transition duration-250 ease-in-out absolute -top-2 -right-2 flex flex-row justify-start items-center space-x-3`}>

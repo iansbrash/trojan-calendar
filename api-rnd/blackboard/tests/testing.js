@@ -14,8 +14,8 @@ const { getBlackboardClasses } = require("../getBlackboardClasses");
     const bbClasses = await getBlackboardClasses(allCookies)
     console.log(bbClasses)
 
-    bbClasses['20213'].forEach(async (v) => {
-        console.log(await getBlackboardGrades(allCookies, v.course_id))
-    })
+    // bbClasses['20213'].forEach(async (v) => {
+    //     console.log(await getBlackboardGrades(allCookies, v.course_id))
+    // })
 
 })();
