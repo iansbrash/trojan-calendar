@@ -73,5 +73,7 @@ const Grades : FC<GradesProps> = React.memo(({
     )
 })
 
+Grades.displayName = "Grades";
+
 
 export default Grades;

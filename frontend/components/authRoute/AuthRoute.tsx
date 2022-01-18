@@ -59,7 +59,7 @@ const AuthRoute : FC<AuthRouteProps> = ({
                 setIsFetchingAuthState(false)
             }
         })();
-    }, [])
+    }, [Router, getSession, path, redirectIfAuth, setSession])
 
     if (isFetchingAuthState || (redirectIfAuth && authed) || (!redirectIfAuth && !authed)) {
         return (

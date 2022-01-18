@@ -27,14 +27,9 @@ const Notes : FC<NotesProps> = React.memo(({
     demo
 } : NotesProps) => {
 
-    if (demo) {
-        return (
-            <NotesDemo notes={notes!}/>
-        )
-    }
+    
 
     const [isCreatingNewNote, setIsCreatingNewNote] = useState<boolean>(false);
-
     const [newNoteTitle, setNewNoteTitle] = useState<string>('')
     const [newNoteContent, setNewNoteContent] = useState<string>('')
     const [isProcessing, setIsProcessing] = useState<boolean>(false);
@@ -175,7 +170,11 @@ const Notes : FC<NotesProps> = React.memo(({
         }
     }
 
-    
+    if (demo) {
+        return (
+            <NotesDemo notes={notes!}/>
+        )
+    }
 
     if (notes === null) {
         return (
@@ -331,6 +330,8 @@ const Notes : FC<NotesProps> = React.memo(({
         </ColumnContainer>
     )
 })
+
+Notes.displayName = 'Notes';
 
 interface NotesDemoProps {
     notes: Note[]

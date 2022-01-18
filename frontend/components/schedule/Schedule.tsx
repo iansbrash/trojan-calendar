@@ -233,6 +233,8 @@ const Schedule : FC<ScheduleProps> = React.memo(({
     )
 })
 
+Schedule.displayName = 'Schedule';
+
 
 
 export default Schedule;

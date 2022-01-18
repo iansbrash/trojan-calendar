@@ -62,6 +62,7 @@ const Announcements : FC<AnnouncementsProps> = React.memo( ({
         </ColumnContainer>
     )
 })
-
+// This is so dumb.
+Announcements.displayName = "Announcements";
 
 export default Announcements;

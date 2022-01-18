@@ -311,7 +311,7 @@ export const VerifyUI : FC<VerifyUIProps> = ({
                             const ca = verifyInput.charAt(v);
 
                             return (
-                                <div className="flex flex-col w-1/6 px-2 h-full justify-center items-center">
+                                <div className="flex flex-col w-1/6 px-2 h-full justify-center items-center" key={v}>
                                     <div className={`text-5xl font-medium ${ca === '' ? 'text-slate-300' : 'text-slate-800'} `}>
                                         {ca === '' ? '0' : ca}
                                     </div>

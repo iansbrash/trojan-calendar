@@ -99,7 +99,7 @@ const Home: NextPage = () => {
                                 </div>
                                 
                                 {/* Signup button */}
-                                <Link href="/signup">
+                                <Link href="/signup" passHref>
                                     <div className={`${styles.cuteGradient} drop-shadow-md cursor-pointer w-full rounded-xl p-1 h-auto`}>
                                         <div className="w-full h-full bg-white rounded-lg">
                                             <div className={`bg-gradient-to-r from-sky-600 to-rose-600 bg-clip-text w-full h-full`}>
@@ -179,7 +179,7 @@ const DynamicButtons : FC = () => {
                 setIsFetchingAuthState(false)
             }
         })();
-    }, [])
+    }, [getSession])
 
     if (isFetchingAuthState) {
         return (
@@ -200,6 +200,7 @@ const DynamicButtons : FC = () => {
                     Logout
                 </div>
                 <Link
+                passHref
                 href="/dashboard"
                 >
                     <div className="cursor-pointer h-auto w-auto px-2 py-1 border-2 border-sky-500 rounded-lg text-white flex justify-center items-center text-lg font-bold bg-sky-500 drop-shadow-md">
@@ -214,6 +215,7 @@ const DynamicButtons : FC = () => {
         return (
             <>
                 <Link
+                passHref
                 href="/signup"
                 >
                     <div className="cursor-pointer h-auto w-auto px-2 py-1 border-2 border-sky-500 rounded-lg text-sky-500 flex justify-center items-center text-lg font-bold bg-white drop-shadow-md">
@@ -221,6 +223,7 @@ const DynamicButtons : FC = () => {
                     </div>
                 </Link>
                 <Link
+                passHref
                 href="/login"
                 >
                     <div className="cursor-pointer h-auto w-auto px-2 py-1 border-2 border-sky-500 rounded-lg text-white flex justify-center items-center text-lg font-bold bg-sky-500 drop-shadow-md">
@@ -243,7 +246,7 @@ export const MainHeader : FC<MainHeaderProps> = ({
         <div className="z-10 w-full h-16 flex flex-row justify-between items-center px-10">
             {/* Logo + Name */}
             <div className="relative flex h-full flex-row justify-start items-center">
-                <Link href={'/'}>
+                <Link href={'/'} passHref>
                     <div className="flex flex-row justify-start items-center space-x-1 cursor-pointer">
                         <div className="z-10 text-slate-800 mt-1">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -263,6 +266,7 @@ export const MainHeader : FC<MainHeaderProps> = ({
                     children ? children :
                     <>
                         <Link
+                        passHref
                         href="/signup"
                         >
                             <div className="cursor-pointer h-auto w-auto px-2 py-1 border-2 border-sky-500 rounded-lg text-sky-500 flex justify-center items-center text-lg font-bold bg-white drop-shadow-md">
@@ -271,6 +275,7 @@ export const MainHeader : FC<MainHeaderProps> = ({
                         </Link>
                         <Link
                         href="/login"
+                        passHref
                         >
                             <div className="cursor-pointer h-auto w-auto px-2 py-1 border-2 border-sky-500 rounded-lg text-white flex justify-center items-center text-lg font-bold bg-sky-500 drop-shadow-md">
                                 Login

@@ -17,6 +17,7 @@ const SubButton : FC<SubButtonProps> = ({
     return (    
         <Link
         href={path}
+        passHref
         >
             <button 
             disabled={isLoading}

@@ -56,7 +56,7 @@ const Header : FC<HeaderProps> = ({
             <div className="w-full h-20 flex flex-row justify-between items-center px-10 bg-slate-50 shadow-md">
 
                 {/* My Dashboard */}
-                <Link href="/">
+                <Link href="/" passHref>
                     <div className="cursor-pointer h-full font-bold text-2xl flex flex-row justify-start items-center">
                         <div className="text-slate-800">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">

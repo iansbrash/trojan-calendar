@@ -18,7 +18,7 @@ const Assignments : FC<AssignmentsProps> = React.memo(({
     assignments
 } : AssignmentsProps) => {
 
-    const todaysDate = (new Date()).getDate();
+    const [todaysDate, setTodaysDate] = useState<number>((new Date()).getDate());
     const [as, setAs] = useState<any>([])
     const [assignmentDays, setAssignmentDays] = useState<number[]>();
     const [listOfClasses, setListOfClasses] = useState<string[]>();
@@ -89,7 +89,7 @@ const Assignments : FC<AssignmentsProps> = React.memo(({
 
         setAssignmentDays(daysWithAssignments)
 
-    }, [assignments]);
+    }, [assignments, todaysDate]);
 
     
 
@@ -189,5 +189,7 @@ const Assignments : FC<AssignmentsProps> = React.memo(({
         </ColumnContainer>
     )
 })
+
+Assignments.displayName = 'Assignments';
 
 export default Assignments;

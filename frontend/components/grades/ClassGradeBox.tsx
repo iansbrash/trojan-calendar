@@ -73,7 +73,7 @@ const ClassGradeBox : FC<ClassGradeBoxProps> = ({
         })
 
         setAss(a);
-    }, [])
+    }, [individualGrades])
 
     const getColorBasedOnStatus = (status : AssignmentStatus) => {
         switch (status) {

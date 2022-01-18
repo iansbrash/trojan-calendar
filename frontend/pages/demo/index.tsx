@@ -66,6 +66,7 @@ const Dashboard : NextPage = () => {
                             setSettingsModal={(a : boolean) => null}
                             isSyncing={false}
                             lastSynced={(Date.now() - 10000)}
+                            setSyncModal={(x : boolean) => null}
                         />
                     </div>
 
