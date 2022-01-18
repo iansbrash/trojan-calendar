@@ -129,6 +129,207 @@ const Assignments : FC<AssignmentsProps> = React.memo(({
             <div className="rounded-b-xl bg-zinc-50 w-full h-full flex flex-col justify-start items-center">
                 <div className="overflow-y-scroll scrollbar-hide px-4 pb-2 py-2  w-full h-full flex flex-col justify-start items-center">
 
+
+
+{/* GESTING */}
+                <div className="cursor-pointer w-full  h-auto flex flex-col justify-start items-center drop-shadow-md relative py-2">
+                    {/* Due Date */}
+                    <div className="px-2 absolute w-auto h-5 bg-red-600 rounded-md top-0 -right-3 flex justify-center items-center">
+                        <div className="font-bold text-white">
+                            {'11:45'}
+                        </div>
+                    </div>
+
+                    {/* Top Header */}
+                    <div className={`w-full rounded-t-md bg-gradient-to-r from-sky-600 to-blue-600 flex justify-center items-center py-2`}>
+                        <div className="font-bold text-3xl text-zinc-50">
+                            {'MATH-123'}
+                        </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className={`w-full h-full bg-gradient-to-r from-sky-400 to-blue-400 rounded-b-md px-2 py-2 text-zinc-50 text-2xl text-center`}>
+                        {'Hw3'}
+                    </div>
+                </div>
+
+                <div className="cursor-pointer w-full  h-auto flex flex-col justify-start items-center drop-shadow-md relative py-2">
+                    {/* Due Date */}
+                    <div className="px-2 absolute w-auto h-5 bg-red-600 rounded-md top-0 -right-3 flex justify-center items-center">
+                        <div className="font-bold text-white">
+                            {'11:45'}
+                        </div>
+                    </div>
+
+                    {/* Top Header */}
+                    <div className={`w-full rounded-t-md bg-gradient-to-r from-emerald-600 to-green-600 flex justify-center items-center py-2`}>
+                        <div className="font-bold text-3xl text-zinc-50">
+                            {'MATH-123'}
+                        </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className={`w-full h-full bg-gradient-to-r from-emerald-400 to-green-400 rounded-b-md px-2 py-2 text-zinc-50 text-2xl text-center`}>
+                        {'Hw3'}
+                    </div>
+                </div>
+
+                <div className="cursor-pointer w-full  h-auto flex flex-col justify-start items-center drop-shadow-md relative py-2">
+                    {/* Due Date */}
+                    <div className="px-2 absolute w-auto h-5 bg-red-600 rounded-md top-0 -right-3 flex justify-center items-center">
+                        <div className="font-bold text-white">
+                            {'11:45'}
+                        </div>
+                    </div>
+
+                    {/* Top Header */}
+                    <div className={`w-full rounded-t-md bg-gradient-to-r from-indigo-600 to-violet-600 flex justify-center items-center py-2`}>
+                        <div className="font-bold text-3xl text-zinc-50">
+                            {'MATH-123'}
+                        </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className={`w-full h-full bg-gradient-to-r from-indigo-400 to-violet-400 rounded-b-md px-2 py-2 text-zinc-50 text-2xl text-center`}>
+                        {'Hw3'}
+                    </div>
+                </div>
+
+                <div className="cursor-pointer w-full  h-auto flex flex-col justify-start items-center drop-shadow-md relative py-2">
+                    {/* Due Date */}
+                    <div className="px-2 absolute w-auto h-5 bg-red-600 rounded-md top-0 -right-3 flex justify-center items-center">
+                        <div className="font-bold text-white">
+                            {'11:45'}
+                        </div>
+                    </div>
+
+                    {/* Top Header */}
+                    <div className={`w-full rounded-t-md bg-gradient-to-r from-fuchsia-600 to-pink-600 flex justify-center items-center py-2`}>
+                        <div className="font-bold text-3xl text-zinc-50">
+                            {'MATH-123'}
+                        </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className={`w-full h-full bg-gradient-to-r from-fuchsia-400 to-pink-400 rounded-b-md px-2 py-2 text-zinc-50 text-2xl text-center`}>
+                        {'Hw3'}
+                    </div>
+                </div>
+
+                <div className="cursor-pointer w-full  h-auto flex flex-col justify-start items-center drop-shadow-md relative py-2">
+                    {/* Due Date */}
+                    <div className="px-2 absolute w-auto h-5 bg-red-600 rounded-md top-0 -right-3 flex justify-center items-center">
+                        <div className="font-bold text-white">
+                            {'11:45'}
+                        </div>
+                    </div>
+
+                    {/* Top Header */}
+                    <div className={`w-full rounded-t-md bg-gradient-to-r from-pink-600 to-rose-600 flex justify-center items-center py-2`}>
+                        <div className="font-bold text-3xl text-zinc-50">
+                            {'MATH-123'}
+                        </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className={`w-full h-full bg-gradient-to-r from-pink-400 to-rose-400 rounded-b-md px-2 py-2 text-zinc-50 text-2xl text-center`}>
+                        {'Hw3'}
+                    </div>
+                </div>
+
+                <div className="cursor-pointer w-full  h-auto flex flex-col justify-start items-center drop-shadow-md relative py-2">
+                    {/* Due Date */}
+                    <div className="px-2 absolute w-auto h-5 bg-red-600 rounded-md top-0 -right-3 flex justify-center items-center">
+                        <div className="font-bold text-white">
+                            {'11:45'}
+                        </div>
+                    </div>
+
+                    {/* Top Header */}
+                    <div className={`w-full rounded-t-md bg-gradient-to-r from-teal-600 to-cyan-600 flex justify-center items-center py-2`}>
+                        <div className="font-bold text-3xl text-zinc-50">
+                            {'MATH-123'}
+                        </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className={`w-full h-full bg-gradient-to-r from-teal-400 to-cyan-400 rounded-b-md px-2 py-2 text-zinc-50 text-2xl text-center`}>
+                        {'Hw3'}
+                    </div>
+                </div>
+
+                <div className="cursor-pointer w-full  h-auto flex flex-col justify-start items-center drop-shadow-md relative py-2">
+                    {/* Due Date */}
+                    <div className="px-2 absolute w-auto h-5 bg-red-600 rounded-md top-0 -right-3 flex justify-center items-center">
+                        <div className="font-bold text-white">
+                            {'11:45'}
+                        </div>
+                    </div>
+
+                    {/* Top Header */}
+                    <div className={`w-full rounded-t-md bg-gradient-to-r from-orange-600 to-amber-600 flex justify-center items-center py-2`}>
+                        <div className="font-bold text-3xl text-zinc-50">
+                            {'MATH-123'}
+                        </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className={`w-full h-full bg-gradient-to-r from-orange-400 to-amber-400 rounded-b-md px-2 py-2 text-zinc-50 text-2xl text-center`}>
+                        {'Hw3'}
+                    </div>
+                </div>
+
+                <div className="cursor-pointer w-full  h-auto flex flex-col justify-start items-center drop-shadow-md relative py-2">
+                    {/* Due Date */}
+                    <div className="px-2 absolute w-auto h-5 bg-red-600 rounded-md top-0 -right-3 flex justify-center items-center">
+                        <div className="font-bold text-white">
+                            {'11:45'}
+                        </div>
+                    </div>
+
+                    {/* Top Header */}
+                    <div className={`w-full rounded-t-md bg-gradient-to-r from-teal-600 to-sky-600 flex justify-center items-center py-2`}>
+                        <div className="font-bold text-3xl text-zinc-50">
+                            {'MATH-123'}
+                        </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className={`w-full h-full bg-gradient-to-r from-teal-400 to-sky-400 rounded-b-md px-2 py-2 text-zinc-50 text-2xl text-center`}>
+                        {'Hw3'}
+                    </div>
+                </div>
+
+                <div className="cursor-pointer w-full  h-auto flex flex-col justify-start items-center drop-shadow-md relative py-2">
+                    {/* Due Date */}
+                    <div className="px-2 absolute w-auto h-5 bg-red-600 rounded-md top-0 -right-3 flex justify-center items-center">
+                        <div className="font-bold text-white">
+                            {'11:45'}
+                        </div>
+                    </div>
+
+                    {/* Top Header */}
+                    <div className={`w-full rounded-t-md bg-gradient-to-r from-cyan-600 to-blue-600 flex justify-center items-center py-2`}>
+                        <div className="font-bold text-3xl text-zinc-50">
+                            {'MATH-123'}
+                        </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className={`w-full h-full bg-gradient-to-r from-cyan-400 to-blue-400 rounded-b-md px-2 py-2 text-zinc-50 text-2xl text-center`}>
+                        {'Hw3'}
+                    </div>
+                </div>
+
+
+
+
+
+
+
+{/* GESTING */}
+
+
                 {assignmentDays?.map((day, index) => {
 
                     let assignmentList : UpcomingAssignment[] = as[day + ''];
