@@ -9,5 +9,4 @@ const { username, password } = require('../../private/usclogin')
 
     const finalResponse = await getMyUscCookiesDuo2(bundledData)
     console.log(finalResponse)
-
 })()
