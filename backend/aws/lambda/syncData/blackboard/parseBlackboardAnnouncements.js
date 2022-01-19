@@ -1,11 +1,15 @@
 const {
     getValueByDelimiters
-} = require('../../functions/requestFunctions');
+} = require('../functions/requestFunctions');
 
 const parseBlackboardAnnouncements = (announcements) => {
 
 
     let announcementBlock = getValueByDelimiters(announcements, '<form name="announcementForm" id="announcementForm" method="post" action="https://blackboard.usc.edu/webapps/blackboard/execute/announcement">', '</form>')
+
+    let returnAnnouncements = [
+
+    ]
 
     // Could use this:
     // <!-- showOnCourses can be true only for system announcements -->
@@ -31,12 +35,20 @@ const parseBlackboardAnnouncements = (announcements) => {
         console.log(`${postedBy} to ${postedTo}`)
         console.log(details)
 
+        returnAnnouncements.push({
+            announcementTitle: title,
+            postedBy: postedBy,
+            postedOn: postedOn,
+            postedTo: postedTo, //className
+            details: details
+        })
+
         
 
         announcementBlock = announcementBlock.substring(announcementBlock.indexOf('<div class="announcementInfo">') + '<div class="announcementInfo">'.length);
     }
 
-    return announcementBlock;
+    return returnAnnouncements;
 }
 
 const removeStyling = (parsingAnnouncementBlock) => {

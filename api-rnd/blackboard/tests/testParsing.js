@@ -623,6 +623,6 @@ let easyParse = `
 ;(() => {
     const res = parseBlackboardAnnouncements(ann);
 
-    console.log('res:')
-    console.log(res);
+    // console.log('res:')
+    // console.log(res);
 })();

@@ -7,6 +7,7 @@ const { getBlackboardGrades } = require('./blackboard/getBlackboardGrades')
 const { getGradescopeCookies } = require("./gradescope/getGradescopeCookies");
 const { getBlackboardClasses } = require("./blackboard/getBlackboardClasses");
 const { getGradescopeClasses } = require("./gradescope/getGradescopeClasses");
+const { getBlackboardAnnouncements } = require("./blackboard/getBlackboardAnnouncements");
 
 AWS.config.update({
     region: "us-east-1",
@@ -172,6 +173,23 @@ const fetchData = async (event) => {
                 // /|\ BLACKBOARD /|\
 
             }),
+            // Blackboard Announcements
+            new Promise(async (resolve, reject) => {
+                // \|/ BLACKBOARD \|/
+
+                try {
+                    // An array of objects
+                    const bbAnnouncementsRes = await getBlackboardAnnouncements(blackboardRouterCookies);
+                    
+
+                    resolve(bbAnnouncementsRes)
+                }
+                catch (err) {
+                    reject(err);
+                }
+                // /|\ BLACKBOARD /|\
+
+            }),
         ]
 
         
@@ -212,7 +230,7 @@ const fetchData = async (event) => {
         bbRouterPromise, 
     ]);
 
-    let bbGradesCompiledTemp = compiledPromise[1].slice(2, compiledPromise[1].length);
+    let bbGradesCompiledTemp = compiledPromise[1].slice(3, compiledPromise[1].length);
 
     let bbGradesCompiled = {}
 
@@ -232,7 +250,10 @@ const fetchData = async (event) => {
             gradescope: compiledPromise[1][0]['grades'],
             blackboard: bbGradesCompiled
         },
-        schedule: compiledPromise[0]
+        schedule: compiledPromise[0],
+        announcements: {
+            blackboard: compiledPromise[1][2]
+        }
     }
 
     // Update cache
