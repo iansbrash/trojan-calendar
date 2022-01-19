@@ -137,7 +137,7 @@ const getMyUscCookiesDuo1 = async (username, password) => {
 
     allCookies = accumulateCookies(allCookies, returnParsedCookies(Res8.headers['set-cookie']))
 
-    const AuthUserPassResponse = await tryCatchWrapper(() => axios({
+    let AuthUserPassResponse = await tryCatchWrapper(() => axios({
         method: 'post',
         url: 'https://login.usc.edu/login/authuserpassword',
         headers: genHeaders(allCookies),
@@ -173,6 +173,7 @@ const getMyUscCookiesDuo1 = async (username, password) => {
             })
         }), "DUO2FAResponse");
 
+        AuthUserPassResponse.data = DUO2FAResponse.data;
         allCookies = accumulateCookies(allCookies, returnParsedCookies(DUO2FAResponse.headers['set-cookie']))
     }
 

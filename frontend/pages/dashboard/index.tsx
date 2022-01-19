@@ -21,9 +21,11 @@ import Cache, {
     CompiledGrades, 
     Schedule as ScheduleInterface
 } from '../../constants/interfaces/cache'
-import SyncModal from '../../components/sync/SyncModal'
+import SyncModal, { SyncStage } from '../../components/sync/SyncModal'
 
 const Dashboard : NextPage = () => {
+
+    const [syncStage, setSyncStage] = useState<SyncStage>(SyncStage.idle)
 
     const [userIsLoaded, setUserIsLoaded] = useState<boolean>(true);
 
@@ -96,6 +98,7 @@ const Dashboard : NextPage = () => {
             setIsSyncing(true)
             console.log("We can sync: Will retrieve data now. LastSynced: " + lastSynced)
 
+            setSyncStage(SyncStage.initiate)
             
             const getSyncDataResponse1 = await axios({
                 method: 'post',
@@ -110,7 +113,9 @@ const Dashboard : NextPage = () => {
                 })
             })
 
-            console.log(`getSyncDataResponse1.data: ${getSyncDataResponse1.data}`)
+            setSyncStage(SyncStage.confirm)
+
+            console.log(`getSyncDataResponse1.data`, getSyncDataResponse1.data)
 
             const getSyncDataResponse2 = await axios({
                 method: 'post',
@@ -120,7 +125,10 @@ const Dashboard : NextPage = () => {
                 },
             })
 
-            console.log(`getSyncDataResponse2.data: ${getSyncDataResponse2.data}`)
+            setSyncStage(SyncStage.fetch)
+
+
+            console.log(`getSyncDataResponse2.data`, getSyncDataResponse2.data)
 
             const getSyncDataResponse3 = await axios({
                 method: 'post',
@@ -130,7 +138,9 @@ const Dashboard : NextPage = () => {
                 },
             })
 
-            console.log(`getSyncDataResponse3.data: ${getSyncDataResponse3.data}`)
+
+
+            console.log(`getSyncDataResponse3.data`, getSyncDataResponse3.data)
 
             const syncData : Cache = getSyncDataResponse3.data;
 
@@ -144,6 +154,7 @@ const Dashboard : NextPage = () => {
         }
         finally {
             setIsSyncing(false)
+            setSyncStage(SyncStage.idle)
         }
     }
 
@@ -250,8 +261,6 @@ const Dashboard : NextPage = () => {
         })();
     }, [session]);
 
-    
-
     return (
         <div className={"w-screen h-screen bg-slate-100"}>
             <Head>
@@ -277,6 +286,7 @@ const Dashboard : NextPage = () => {
                         syncModalVisible={syncModal}
                         setSyncModalVisible={setSyncModal}
                         trySync={trySync}
+                        setSyncStage={setSyncStage}
                     />
 
                     
@@ -288,6 +298,7 @@ const Dashboard : NextPage = () => {
                             isSyncing={isSyncing}
                             lastSynced={lastSynced}
                             setSyncModal={setSyncModal}
+                            syncStage={syncStage}
                         />
                     </div>
 

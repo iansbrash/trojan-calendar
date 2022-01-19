@@ -230,23 +230,23 @@ const Notes : FC<NotesProps> = React.memo(({
                     {/* When we're creaitng a new now this shows */}
                     <div className={`${isCreatingNewNote ? 'flex' : 'hidden pointer-events-none'} relative cursor-pointer w-full h-auto flex-col justify-start items-center`}>
 
-                    {/* Processing overlay */}
-                    <div className={`flex justify-center items-center z-10 transition duration-250 ease-in-out ${isProcessing ? 'opacity-50' : 'opacity-0 pointer-events-none'} rounded-md absolute top-0 left-0 bottom-0 right-0 bg-white`}></div>
-                    <div className={`flex justify-center items-center z-20 transition duration-250 ease-in-out ${isProcessing ? 'opacity-100' : 'opacity-0 pointer-events-none'} absolute top-0 left-0 bottom-0 right-0`}>
-                        {isProcessing ?
-                            <div 
-                            className={`h-${6} w-${6} animate-spin loader ease-linear rounded-full border-4 border-t-4 border-sky-300`}
-                            style={{
-                                // borderTopColor: '#e0f2fe' //#f0f9ff
-                                borderTopColor: '#38bdf8'// '#f0f9ff' //#f0f9ff
-                            }}
-                            >
-                            </div> : null
-                        }
-                    </div>
+                        {/* Processing overlay */}
+                        <div className={`flex justify-center items-center z-10 transition duration-250 ease-in-out ${isProcessing ? 'opacity-50' : 'opacity-0 pointer-events-none'} rounded-md absolute top-0 left-0 bottom-0 right-0 bg-white`}></div>
+                        <div className={`flex justify-center items-center z-20 transition duration-250 ease-in-out ${isProcessing ? 'opacity-100' : 'opacity-0 pointer-events-none'} absolute top-0 left-0 bottom-0 right-0`}>
+                            {isProcessing ?
+                                <div 
+                                className={`h-${6} w-${6} animate-spin loader ease-linear rounded-full border-4 border-t-4 border-sky-300`}
+                                style={{
+                                    // borderTopColor: '#e0f2fe' //#f0f9ff
+                                    borderTopColor: '#38bdf8'// '#f0f9ff' //#f0f9ff
+                                }}
+                                >
+                                </div> : null
+                            }
+                        </div>
 
                         {/* Header */}
-                        <div className={`px-2 py-1 ${'bg-sky-500'} rounded-t-md w-full relative`}>
+                        <div className={`px-2 py-1 ${'bg-slate-600'} rounded-t-md w-full relative`}>
 
                             <div className={`${isProcessing ? 'hidden pointer-events-none' : 'flex'} absolute -top-2 -right-2  flex-row justify-start items-center space-x-3`}>
                                 {/* X Button */}
@@ -259,13 +259,13 @@ const Notes : FC<NotesProps> = React.memo(({
                                 </div>
 
                                 {/* Change Color Button */}
-                                <div className="w-6 h-6 rounded-md bg-sky-400 border-2 border-white flex justify-center items-center text-white"
+                                {/* <div className="w-6 h-6 rounded-md bg-sky-400 border-2 border-white flex justify-center items-center text-white"
                                 onClick={() => changeColorClicked()}
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                         <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                                     </svg>
-                                </div>
+                                </div> */}
 
                                 {/* Check Button */}
                                 <div className="w-6 h-6 rounded-md bg-emerald-400 border-2 border-white flex justify-center items-center text-white"
@@ -287,7 +287,7 @@ const Notes : FC<NotesProps> = React.memo(({
                             </input>
                         </div>
 
-                        <div className={`px-2 py-1 ${'bg-sky-300'} rounded-b-md w-full`}>
+                        <div className={`px-2 py-1 ${'bg-slate-400'} rounded-b-md w-full`}>
                             <textarea className="text-white text-lg w-full bg-transparent placeholder-slate-100 font-normal h-min focus:outline-none resize-none overflow-hidden leading-6 whitespace-normal break-text"
                             placeholder='Write something!'
                             ref={inputSpan}

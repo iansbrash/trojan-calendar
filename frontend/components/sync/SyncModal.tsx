@@ -3,10 +3,18 @@ import React, {
 } from 'react';
 import Modal from '../multi/Modal';
 
+export enum SyncStage {
+    idle,
+    initiate,
+    confirm,
+    fetch,
+}
+
 interface SyncModalProps {
     syncModalVisible: boolean,
     setSyncModalVisible: (b : boolean) => void,
-    trySync: (u : string, p : string) => Promise<void>
+    trySync: (u : string, p : string) => Promise<void>,
+    setSyncStage: (ss : SyncStage) => void
 }
 
 const SyncModal : FC<SyncModalProps> = ({
@@ -23,6 +31,7 @@ const SyncModal : FC<SyncModalProps> = ({
     const syncSubmitted = async () => {
         try {
             setWa(wa + 1)
+            setSyncModalVisible(false)
             await trySync(uscUsername, uscPassword)
         }
         catch (err : any) {

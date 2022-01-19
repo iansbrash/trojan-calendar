@@ -27,6 +27,7 @@ const parseBlackboardAnnouncements = (announcements) => {
 
         let details = liBlock.substring(liBlock.indexOf('<div class="details">'))
         let postedOn = getValueByDelimiters(liBlock, '<p><span>Posted on:', '</span></p>').trim()
+        console.log(details);
 
         // details = details.substring(details.indexOf('<div class="vtbegenerated">'))
         details = getValueByDelimiters(details, '<p></p>', '<p></p>')
