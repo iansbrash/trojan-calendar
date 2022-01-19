@@ -41,7 +41,7 @@ const parseBlackboardAnnouncements = (announcements) => {
         console.log(`${postedBy} to ${postedTo}`)
         console.log(details)
 
-        returnAnnouncements.push({
+        returnAnnouncements.unshift({
             announcementTitle: title,
             postedBy: postedBy,
             postedOn: postedOn,

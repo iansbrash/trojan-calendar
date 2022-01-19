@@ -48,17 +48,17 @@ const Announcements : FC<AnnouncementsProps> = React.memo( ({
             breakpoint='2xl:block'
         >
             {/* Content */}
-            <div className="w-full flex-1 rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-start items-center space-y-4">
-                {/* Individual Announcement */}
-                <Announcement 
-                    text={'Add/Drop Period Ends February 3rd'}
-                    chevronColor='text-amber-500'
-                />
+            <div className="rounded-b-xl bg-zinc-50 w-full h-full flex flex-col justify-start items-center">
+                <div className="overflow-y-scroll scrollbar-hide px-4 pb-2 py-2  w-full h-full flex flex-col justify-start items-center space-y-4">
 
-                <Announcement 
-                    text={'IFC Confirms Sigma Nu Suspended Indefinitely'}
-                    chevronColor='text-sky-500'
-                />
+                    {announcements['blackboard'].map(ann => {
+                        return (
+                            <Announcement 
+                                announcement={ann}
+                            />
+                        )
+                    })}
+                </div>
             </div>
         </ColumnContainer>
     )
