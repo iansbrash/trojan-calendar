@@ -18,6 +18,7 @@ import Cache, {
     Schedule as ScheduleInterface
 } from '../../constants/interfaces/cache'
 import NotesDemo from '../../components/notes/NotesDemo'
+import { SyncStage } from '../../components/sync/SyncModal'
 
 const Dashboard : NextPage = () => {
 
@@ -64,6 +65,7 @@ const Dashboard : NextPage = () => {
                             isSyncing={false}
                             lastSynced={(Date.now() - 10000)}
                             setSyncModal={(x : boolean) => null}
+                            syncStage={SyncStage.idle}
                         />
                     </div>
 

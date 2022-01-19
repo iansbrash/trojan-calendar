@@ -18,7 +18,7 @@ const Home: NextPage = () => {
             </Head>
 
 
-            <div className="relative w-screen h-screen flex flex-col justify-start items-center">
+            <div className="overflow-x-hidden relative w-screen h-screen flex flex-col justify-start items-center">
                 {/* Wave */}
                 <div className="z-0 absolute -top-14 left-0 right-0 h-full opacity-70 drop-shadow-xl">
                     <div className={`w-full ${styles.blurb} h-full`}></div>
@@ -39,19 +39,20 @@ const Home: NextPage = () => {
                 <div className="z-10 w-full h-full flex flex-row justify-start items-center">
                     {/* Tired of ____ */}
                     <div className="z-10 w-full xl:w-1/2 h-full flex flex-col justify-center items-center">
-                        <div className="w-full flex flex-col justify-center items-start px-16">
-                            <div className="flex flex-row justify-start items-center z-10">
+
+                        <div className="w-full flex flex-col justify-center items-start sm:px-16">
+                            <div className="flex flex-row justify-start items-center w-full sm:w-auto z-10">
                                 <div className="text-sky-500">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M9 5l7 7-7 7" />
                                     </svg>
                                 </div>
-                                <div className="text-8xl font-bold text-slate-900">
+                                <div className="text-6xl md:text-7xl lg:text-8xl font-bold text-slate-900">
                                     Tired of
                                 </div>
                             </div>
                             {/* Iterating Text */}
-                            <div className={`z-0 font-bold text-9xl relative`}>
+                            <div className={`z-0 font-bold text-7xl  md:text-8xl lg:text-9xl relative`}>
                                 <div className={`text-rose-500 absolute left-0 ${styles.tiredOfScroll1}`}>
                                     Blackboard<span className="text-rose-700">?</span>
                                 </div>
