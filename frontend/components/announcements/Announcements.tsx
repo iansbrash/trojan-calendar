@@ -3,11 +3,12 @@ import React, {
     useState,
 } from 'react';
 import getInitializedArray from '../../constants/functions/getInitializedArray';
+import { CompiledAnnouncements } from '../../constants/interfaces/cache';
 import ColumnContainer from '../multi/ColumnContainer';
 import Announcement, { LoadingAnnouncement } from './Announcement';
 
 interface AnnouncementsProps {
-    announcements: string[] | null
+    announcements: CompiledAnnouncements | null
 }
 
 const Announcements : FC<AnnouncementsProps> = React.memo( ({

@@ -21,6 +21,7 @@ const parseBlackboardAnnouncements = (announcements) => {
         let postedTo = getValueByDelimiters(announcementInfo, '<p><span>Posted to:</span>', '</p>').trim();
 
         let liBlock = getValueByDelimiters(announcementBlock, '<li', '<div class="announcementInfo">')
+        // liBlock = announcementBlock.substring(announcementBlock.indexOf('<li') + '<li'.length, announcementBlock.indexOf('<div class="announcementInfo">') + '<div class="announcementInfo">'.length);
 
         let title = getValueByDelimiters(liBlock, '<h3', 'h3>')
         title = getValueByDelimiters(title, '">', '</').trim()
@@ -30,7 +31,11 @@ const parseBlackboardAnnouncements = (announcements) => {
         console.log(details);
 
         // details = details.substring(details.indexOf('<div class="vtbegenerated">'))
-        details = getValueByDelimiters(details, '<p></p>', '<p></p>')
+        // details = getValueByDelimiters(details, '<p></p>', '<p></p>')
+        details = details.substring(0, details.lastIndexOf('</div>'))
+        details = details.substring(0, details.lastIndexOf('</p>'))
+        details = details.substring(details.indexOf('<div class="vtbegenerated">'))
+
         details = removeStyling(details);
         console.log(`\t${title} on ${postedOn}`)
         console.log(`${postedBy} to ${postedTo}`)

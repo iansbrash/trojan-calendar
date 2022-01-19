@@ -19,7 +19,8 @@ import Cache, {
     Note, 
     CompiledAssignments, 
     CompiledGrades, 
-    Schedule as ScheduleInterface
+    Schedule as ScheduleInterface,
+    CompiledAnnouncements
 } from '../../constants/interfaces/cache'
 import SyncModal, { SyncStage } from '../../components/sync/SyncModal'
 
@@ -35,6 +36,7 @@ const Dashboard : NextPage = () => {
     const [assignments, setAssignments] = useState<CompiledAssignments>();
     const [grades, setGrades] = useState<CompiledGrades>();
     const [schedule, setSchedule] = useState<ScheduleInterface>();
+    const [announcements, setAnnouncements] = useState<CompiledAnnouncements>()
 
     const [notes, setNotes] = useState<Note[] | null>(null);
     const [settings, setSettings] = useState<any | null>(null)
@@ -147,6 +149,7 @@ const Dashboard : NextPage = () => {
             setSchedule(syncData.schedule)
             setAssignments(syncData.assignments)
             setGrades(syncData.grades)
+            setAnnouncements(syncData.announcements)
             setLastSynced(Date.now())
         }
         catch (err : any) {
@@ -243,7 +246,8 @@ const Dashboard : NextPage = () => {
                 const {
                     schedule,
                     assignments,
-                    grades
+                    grades,
+                    announcements
                 } = cachedData.data
 
                 // setCachedData(cachedData.data)
@@ -251,6 +255,7 @@ const Dashboard : NextPage = () => {
                 setSchedule(schedule)
                 setGrades(grades)
                 setAssignments(assignments)
+                setAnnouncements(announcements)
             }
             catch (err) {
                 console.error(err)
@@ -326,7 +331,7 @@ const Dashboard : NextPage = () => {
 
                         {/* For now we're gonna used cachedData, but we'll eventually set up a separate endpoiint */}
                         <Announcements 
-                            announcements={cachedData ? [] : null}
+                            announcements={announcements ? announcements : null}
                         
                         />
                     </div>

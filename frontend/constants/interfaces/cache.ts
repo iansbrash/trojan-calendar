@@ -1,7 +1,22 @@
 interface Cache {
     schedule: Schedule,
     assignments: CompiledAssignments,
-    grades: CompiledGrades
+    grades: CompiledGrades,
+    announcements: any
+}
+
+// Keys are sources
+// i.e. Blackboard, Canvas, USCDen
+export interface CompiledAnnouncements {
+    [key : string]: Announcement[]
+}
+
+export interface Announcement {
+    announcementTitle: string,
+    postedBy: string,
+    postedOn: string,
+    postedTo: string,
+    details: string
 }
 
 export interface Schedule {
