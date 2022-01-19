@@ -386,7 +386,7 @@ const Dashboard : NextPage = () => {
 
                         {/* For now we're gonna used cachedData, but we'll eventually set up a separate endpoiint */}
                         <Announcements 
-                            announcements={cachedData ? [] : null}
+                            announcements={cachedData ? cachedData.announcements : null}
                         
                         />
                     </div>

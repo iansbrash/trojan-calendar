@@ -51,9 +51,10 @@ const Announcements : FC<AnnouncementsProps> = React.memo( ({
             <div className="rounded-b-xl bg-zinc-50 w-full h-full flex flex-col justify-start items-center">
                 <div className="overflow-y-scroll scrollbar-hide px-4 pb-2 py-2  w-full h-full flex flex-col justify-start items-center space-y-4">
 
-                    {announcements['blackboard'].map(ann => {
+                    {announcements['blackboard'].map((ann, i) => {
                         return (
                             <Announcement 
+                                key={i}
                                 announcement={ann}
                             />
                         )
