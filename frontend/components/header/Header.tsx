@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, {
-    FC, ReactNode, useContext, useState
+    FC, ReactNode, useContext, useEffect, useState
 } from 'react';
 import { AccountContext } from '../../constants/cognito/Account';
 import { SyncStage } from '../sync/SyncModal';
@@ -22,6 +22,27 @@ const Header : FC<HeaderProps> = ({
     setSyncModal,
     syncStage
 } : HeaderProps) => {
+
+    const [syncText, setSyncText] = useState<string>('')
+    const [needsPopup, setNeedsPopup] = useState<boolean>(false);
+
+    useEffect(() => {
+        setNeedsPopup(stageNeedsPopup(syncStage))
+    }, [syncStage])
+
+    const stageNeedsPopup = (syncStage : SyncStage) => {
+        if (syncStage === SyncStage.confirm) {
+            setSyncText('Please accept the Duo 2FA notification on your phone')
+            return true;
+        }
+        else if (syncStage === SyncStage.ERRORbadlogin) {
+            setSyncText('The username or password you provided is incorrect')
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
 
     const { logout } = useContext(AccountContext)
@@ -93,20 +114,32 @@ const Header : FC<HeaderProps> = ({
                             onClick={() => setSyncModal(true)}
                             extraChild={
                                 <>
-                                    <div className={`transition duration-250 ease-in-out relative ${syncStage === SyncStage.confirm ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                                    <div className={`transition duration-250 ease-in-out relative ${needsPopup ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                                         <div className="absolute relative top-3 -right-7">
-
+                                            {/* Triangle */}
                                             <div className="absolute -top-2 right-4">
                                                 <div className="w-6 h-6 bg-indigo-500 rotate-45">
 
                                                 </div>
                                             </div>
+
+                                            
                                             <div className="absolute top-0 right-0 h-auto w-96 flex flex-row justify-end"
                                             onClick={e => e.stopPropagation()}
                                             >
+                                                {/* X Button */}
+                                                <div className="absolute -top-2 -left-2">
+                                                    <div className="cursor-pointer w-6 h-6 bg-sky-500 rounded-full text-white flex justify-center items-center"
+                                                    onClick={() => setNeedsPopup(false)}
+                                                    >
+                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
                                                 <div className="p-1 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 ">
                                                     <div className="bg-zinc-50 p-2 rounded-lg text-lg font-medium text-slate-800 flex">
-                                                        Please accept the Duo 2FA notification on your phone
+                                                        {syncText}
                                                     </div>
                                                 </div>
                                             </div>

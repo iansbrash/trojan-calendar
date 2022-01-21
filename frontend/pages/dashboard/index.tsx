@@ -94,6 +94,7 @@ const Dashboard : NextPage = () => {
 
     const trySync = async (username : string, password : string) => {
         try {
+            console.log(`username: ${username}, password: ${password}`)
             if (session === null) return;
             const token = session.getIdToken().getJwtToken()
 
@@ -153,7 +154,10 @@ const Dashboard : NextPage = () => {
             setLastSynced(Date.now())
         }
         catch (err : any) {
-            console.log(err.message)
+            console.log(err)
+            console.log(err.response)
+
+            throw err.response.data
         }
         finally {
             setIsSyncing(false)
