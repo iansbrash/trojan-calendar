@@ -49,8 +49,13 @@ const Schedule : FC<ScheduleProps> = React.memo(({
         if (!schedule) return;
 
         let day : any = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'][(new Date()).getDay()]
+        setTimes([8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20])
 
         // day = 'wednesday';
+        if (day === 'sunday' || day === 'saturday') {
+            setTodaysSchedule([]);
+            return;
+        }
 
         // @ts-ignore
         setTodaysSchedule(schedule[day].sort((e1 : Event, e2 : Event) => {
@@ -91,7 +96,6 @@ const Schedule : FC<ScheduleProps> = React.memo(({
 
         }))
 
-        setTimes([8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20])
     }, [schedule])
 
 
@@ -108,6 +112,7 @@ const Schedule : FC<ScheduleProps> = React.memo(({
             }
             header={`My Schedule`}
             breakpoint='xl:block'
+            w={'w-1/4 2xl:w-1/5'}
             >
                 {/* Content */}
                 <div className="w-full flex-1 rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-between items-center">
@@ -150,6 +155,7 @@ const Schedule : FC<ScheduleProps> = React.memo(({
             }
             header={`My Schedule`}
             breakpoint='xl:block'
+            w={'w-1/4 2xl:w-1/5'}
         >
             {/* Content */}
             <div className="w-full flex-1 rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-between items-center">

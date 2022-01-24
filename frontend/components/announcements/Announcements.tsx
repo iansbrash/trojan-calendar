@@ -25,6 +25,7 @@ const Announcements : FC<AnnouncementsProps> = React.memo( ({
                 }
                 header={`Announcements`}
                 breakpoint='2xl:block'
+                w={'w-1/5'}
             >
                 {/* Content */}
                 <div className="w-full flex-1 rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-start items-center space-y-4">
@@ -46,6 +47,7 @@ const Announcements : FC<AnnouncementsProps> = React.memo( ({
             }
             header={`Announcements`}
             breakpoint='2xl:block'
+            w={'w-1/5'}
         >
             {/* Content */}
             <div className="rounded-b-xl bg-zinc-50 w-full h-full flex flex-col justify-start items-center">

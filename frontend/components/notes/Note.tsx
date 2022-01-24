@@ -46,7 +46,6 @@ const Note : FC<NoteProps> = ({
             noteContent,
             noteId
         })
-        setIsProccessing(false)
     }
 
     if (isEditing) {
@@ -114,7 +113,7 @@ const Note : FC<NoteProps> = ({
             </div>
 
             <div className={`px-2 py-1 ${contentColor} rounded-b-md w-full`}>
-                <div className="text-lg text-white">
+                <div className="text-lg text-white break-words">
                     {noteContent.split('\n').map((line, index) => {
                         return (
                             <div key={index}>

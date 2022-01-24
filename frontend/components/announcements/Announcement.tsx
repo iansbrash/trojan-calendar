@@ -16,7 +16,7 @@ const Announcement : FC<AnnouncementProps> = ({
     let date = (new Date(announcement.postedOn));
 
     return (
-        <div className="flex flex-col justify-start items-center w-full h-auto ">
+        <div className="flex flex-col justify-start items-center w-full h-auto">
             <div className="w-full flex flex-row justify-start items-center">
                 <div className="text-slate-800 text-lg font-medium">
                     {gradescopeNameParser( announcement.postedTo.split(':')[0] )}
@@ -51,7 +51,9 @@ const Announcement : FC<AnnouncementProps> = ({
                     {announcement.announcementTitle}
                 </div>
             </div>
-            <div className="text-slate-700 text-md max-w-xxs break-words" dangerouslySetInnerHTML={{__html: announcement.details}}></div>
+            <div className=" w-full">
+                <div className="text-slate-700 text-md max-w-xxs break-words" dangerouslySetInnerHTML={{__html: announcement.details}}></div>
+            </div>
             
         </div>
     )

@@ -30,7 +30,7 @@ const getBlackboardAssignments = async (
     return getCalendarEventsResponse.data.map(r => {
         return {
             assignmentTitle: r.title,
-            dueDate: (new Date(r.end)).getTime(),
+            dueDate: (new Date(r.endDate)).getTime(),
             // eventType: r.eventType, // Test or Assignment.. some other weird shit too
             className: r.calendarName
         }
