@@ -29,10 +29,15 @@ exports.handler = async (event, context, callback) => {
                 "grades": {
                     "blackboard": {},
                     "gradescope": {}
+                },
+                "announcements": {
+                    "blackboard": []
                 }
             },
             "storage": {
-                "settings": {},
+                "settings": {
+                    "needsTutorial": true
+                },
                 "notes": []
             }
         }
