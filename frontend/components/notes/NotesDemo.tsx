@@ -52,6 +52,7 @@ const NotesDemo : FC<NotesDemoProps> = ({
             }
             header={`My Notes`}
             breakpoint='lg:block'
+            w={'w-1/3 xl:w-1/4 2xl:w-1/5'}
         >
             {/* Content */}
             <div className="rounded-b-xl bg-zinc-50 w-full h-full flex flex-col justify-start items-center">

@@ -67,7 +67,7 @@ const Tutorial : FC<TutProps> = ({
             
         })();
         
-    }, [step])
+    }, [step, session, setTutorialModalVisible])
 
     if (!tutorialModalVisible) {
         return null;
