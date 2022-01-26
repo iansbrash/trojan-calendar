@@ -386,7 +386,17 @@ const Dashboard : NextPage = () => {
 
                         {/* For now we're gonna used cachedData, but we'll eventually set up a separate endpoiint */}
                         <Announcements 
-                            announcements={cachedData ? cachedData.announcements : null}
+                            announcements={{
+                                blackboard: [
+                                    {
+                                        "announcementTitle": "Zoom link for class today",
+                                        "postedBy": "Professor Leon Schroeder",
+                                        "postedOn": "Tuesday, January 11, 2022 11:27:54 AM PST",
+                                        "details": "<div>\n <p>Hello class,&nbsp;</p> \n <p>I look forward to meeting you later today for our first class! Zoom links have been populated for all classes over the semester, but in case you are having any difficulty accessing the link, here is an invitation to WRIT 340. I will see you soon!</p> \n <p>Professor Leon</p> \n ",
+                                        "postedTo": "20221_writ_150_42253: Writing and Critical Reasoning",
+                                    }
+                                ]
+                            }}
                         
                         />
                     </div>

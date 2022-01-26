@@ -10,7 +10,7 @@ import Modal from '../multi/Modal';
 import axios from 'axios';
 import api from '../../constants/api-gateway/api';
 import { CognitoUserSession } from 'amazon-cognito-identity-js';
-import { Step1, Step2 } from './Steps';
+import { Step1, Step2, Step3, Step4, Step5, Step6, Step7 } from './Steps';
 
 const numSteps = 10;
 
@@ -77,6 +77,7 @@ const Tutorial : FC<TutProps> = ({
         <Modal
         modalVisible={tutorialModalVisible}
         setModalVisible={setTutorialModalVisible}
+        clickExitDisabled={true}
         >
             <div className="w-full h-full relative">
                 {/* Main modal */}
@@ -94,12 +95,20 @@ const Tutorial : FC<TutProps> = ({
                     {/* Icons div */}
                     <div className="flex justify-start items-center space-x-6">
                         {/* Sync */}
-                        <div className="w-8 h-8">
+                        <div className="w-12 h-12 flex flex-col bg-black">
+                            <div className="w-12 h-12 bg-black">
 
+                            </div>
+                            <div className="relative w-12">
+                                {step === 7 ? <Step7 
+                                    step={step}
+                                    setStep={setStep}
+                                /> : null}
+                            </div>
                         </div>
 
                         {/* Logout */}
-                        <div className="w-8 h-8">
+                        <div className="w-12 h-12 bg-black">
 
                         </div>
 
@@ -114,11 +123,11 @@ const Tutorial : FC<TutProps> = ({
                             block
                             w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5
                     `}>
-                        <div className="w-full relative">
-                            <Step2 
+                        <div className="w-full h-full relative">
+                            {step === 2 ? <Step2 
                                 step={step}
                                 setStep={setStep}
-                            />
+                            /> : null}
                         </div>
 
                     </div>
@@ -126,25 +135,53 @@ const Tutorial : FC<TutProps> = ({
                     <div className={`h-full p-5
                             hidden md:block
                             w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5
-                    `}></div>
+                    `}>
+                        <div className="w-full h-full relative">
+                            {step === 3 ? <Step3 
+                                step={step}
+                                setStep={setStep}
+                            /> : null}
+                        </div>
+                    </div>
 
                     {/* Schedule */}
                     <div className={`h-full p-5
                             hidden lg:block
                             w-1/3 xl:w-1/4 2xl:w-1/5
-                    `}></div>
+                    `}>
+                        <div className="w-full h-full relative">
+                            {step === 4 ? <Step4 
+                                step={step}
+                                setStep={setStep}
+                            /> : null}
+                        </div>
+                    </div>
 
                     {/* Notes */}
                     <div className={`h-full p-5
                             hidden xl:block
                             w-1/4 2xl:w-1/5
-                    `}></div>
+                    `}>
+                        <div className="w-full h-full relative">
+                            {step === 5 ? <Step5
+                                step={step}
+                                setStep={setStep}
+                            /> : null}
+                        </div>
+                    </div>
 
                     {/* Announcements */}
                     <div className={`h-full p-5
                             hidden 2xl:block
                             w-1/5
-                    `}></div>
+                    `}>
+                        <div className="w-full h-full relative">
+                            {step === 6 ? <Step6
+                                step={step}
+                                setStep={setStep}
+                            /> : null}
+                        </div>
+                    </div>
 
                 </div>
     

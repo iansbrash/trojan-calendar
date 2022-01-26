@@ -23,6 +23,7 @@ import Cache, {
     CompiledAnnouncements
 } from '../../constants/interfaces/cache'
 import SyncModal, { SyncStage } from '../../components/sync/SyncModal'
+import Tutorial from '../../components/tutorial/Tutorial'
 
 const Dashboard : NextPage = () => {
 
@@ -53,6 +54,9 @@ const Dashboard : NextPage = () => {
     // Modal
     const [settingsModalVisible, setSettingsModalVisible] = useState<boolean>(false);
     const [syncModal, setSyncModal] = useState<boolean>(false);
+
+    // Tut
+    const [tutorial, setTutorial] = useState<boolean>(true);
 
 
     // Check if we can sync
@@ -296,6 +300,12 @@ const Dashboard : NextPage = () => {
                         setSyncModalVisible={setSyncModal}
                         trySync={trySync}
                         setSyncStage={setSyncStage}
+                    />
+
+                    <Tutorial 
+                        tutorialModalVisible={tutorial}
+                        setTutorialModalVisible={setTutorial}
+                        session={session}
                     />
 
                     

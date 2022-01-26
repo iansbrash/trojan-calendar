@@ -1,10 +1,44 @@
 import React, {
-    FC
+    FC, ReactNode
 } from 'react';
+
+
+interface StepBaseProps {
+    children: ReactNode,
+    stepForwards: () => void,
+    stepBackwards: () => void
+}
+
+const StepBase : FC<StepBaseProps> = ({
+    children,
+    stepForwards,
+    stepBackwards
+} : StepBaseProps) => {
+    return (
+        <div className="w-full h-auto rounded-lg bg-zinc-50 flex flex-col justify-start items-center p-6">
+            {children}
+
+            {/* Next / Back */}
+            <div className="w-full flex flex-row justify-between items-center space-x-8 mt-4">
+                <div className="cursor-pointer border-2 border-sky-500 px-2 flex flex-1 justify-center items-center hover:bg-zinc-100 transition duration-250 ease-in-out font-medium text-lg text-slate-800 rounded-lg"
+                onClick={() => stepBackwards()}
+                >
+                    Back
+                </div>
+
+                <div className="cursor-pointer border-2 border-sky-500 px-2 flex flex-1 justify-center items-center hover:bg-zinc-100 transition duration-250 ease-in-out font-medium text-lg text-slate-800 rounded-lg"
+                onClick={() => stepForwards()}
+                >
+                    Next
+                </div>
+            </div>
+        </div>
+    )
+}
 
 interface StepProps {
     step: number,
-    setStep: (x : number) => void
+    setStep: (x : number) => void,
 }
 
 const StepRenderer : FC<StepProps> = ({
@@ -24,9 +58,12 @@ export const Step1 : FC<StepProps> = ({
     setStep
 } : StepProps) => {
     return (
-        <div className="w-full h-full flex justify-center items-center flex-col">
+        <div className="z-20 absolute w-full h-full flex justify-center items-center flex-col">
             <div className="max-w-md px-2">
-                <div className="w-full h-auto rounded-lg bg-zinc-50 flex flex-col justify-start items-center">
+                <StepBase
+                stepBackwards={() => setStep(1)}
+                stepForwards={() => setStep(step + 1)}
+                >
                     {/* Welcome */}
                     <div className="font-bold text-slate-800 text-lg">
                         Welcome to Unidash!
@@ -36,7 +73,7 @@ export const Step1 : FC<StepProps> = ({
                     <div className="font-medium text-slate-800 text-lg">
                         Unidash is a simple dashboard meant to help organize your schoolwork and track your grades, designed specifically for USC students.
                     </div>
-                </div>
+                </StepBase>
                     
             </div>
         </div>
@@ -46,11 +83,172 @@ export const Step1 : FC<StepProps> = ({
 // Assignments
 export const Step2 : FC<StepProps> = ({
     step,
-    setStep
+    setStep,
 } : StepProps) => {
     return (
-        <div className="absolute bottom-0 left-0 right-0 flex ">
+        <div className={`top-20 absolute w-full h-auto flex justify-center items-center flex-col`}>
+            <div className="max-w-md px-2">
+                <StepBase
+                stepBackwards={() => setStep(step - 1)}
+                stepForwards={() => setStep(step + 1)}
+                >
+                    {/* Welcome */}
+                    <div className="font-bold text-slate-800 text-lg">
+                        Assignments
+                    </div>
 
+                    {/* Explanation */}
+                    <div className="font-medium text-slate-800 text-lg">
+                        Here, you'll see all your assignments from Blackboard and Gradescope (more sites coming soon!)
+                    </div>
+                </StepBase>
+                    
+            </div>
+        </div>
+    )
+}
+
+// Grades
+export const Step3 : FC<StepProps> = ({
+    step,
+    setStep,
+} : StepProps) => {
+    return (
+        <div className={`top-20 absolute w-full h-auto flex justify-center items-center flex-col`}>
+            <div className="max-w-md px-2">
+                <StepBase
+                stepBackwards={() => setStep(step - 1)}
+                stepForwards={() => setStep(step + 1)}
+                >
+                    {/* Welcome */}
+                    <div className="font-bold text-slate-800 text-lg">
+                        Grades
+                    </div>
+
+                    {/* Explanation */}
+                    <div className="font-medium text-slate-800 text-lg">
+                        Here, you'll see all your grades, also synced from Gradescope and Blackboard
+                    </div>
+                </StepBase>
+                    
+            </div>
+        </div>
+    )
+}
+
+// Schedule
+export const Step4 : FC<StepProps> = ({
+    step,
+    setStep,
+} : StepProps) => {
+    return (
+        <div className={`top-20 absolute w-full h-auto flex justify-center items-center flex-col`}>
+            <div className="max-w-md px-2">
+                <StepBase
+                stepBackwards={() => setStep(step - 1)}
+                stepForwards={() => setStep(step + 1)}
+                >
+                    {/* Welcome */}
+                    <div className="font-bold text-slate-800 text-lg">
+                        Schedule
+                    </div>
+
+                    {/* Explanation */}
+                    <div className="font-medium text-slate-800 text-lg">
+                        Here, you'll see all your schedule for the day, synced from my.usc.edu
+                    </div>
+                </StepBase>
+                    
+            </div>
+        </div>
+    )
+}
+
+// Notes
+export const Step5 : FC<StepProps> = ({
+    step,
+    setStep,
+} : StepProps) => {
+    return (
+        <div className={`top-20 absolute w-full h-auto flex justify-center items-center flex-col`}>
+            <div className="max-w-md px-2">
+                <StepBase
+                stepBackwards={() => setStep(step - 1)}
+                stepForwards={() => setStep(step + 1)}
+                >
+                    {/* Welcome */}
+                    <div className="font-bold text-slate-800 text-lg">
+                        Notes
+                    </div>
+
+                    {/* Explanation */}
+                    <div className="font-medium text-slate-800 text-lg">
+                        You can create, update, and delete notes about whatever you want here! Press 'Add Note' to get started
+                    </div>
+                </StepBase>
+                    
+            </div>
+        </div>
+    )
+}
+
+// Announcements
+export const Step6 : FC<StepProps> = ({
+    step,
+    setStep,
+} : StepProps) => {
+    return (
+        <div className={`top-20 absolute w-full h-auto flex justify-center items-center flex-col`}>
+            <div className="max-w-md px-2">
+                <StepBase
+                stepBackwards={() => setStep(step - 1)}
+                stepForwards={() => setStep(step + 1)}
+                >
+                    {/* Welcome */}
+                    <div className="font-bold text-slate-800 text-lg">
+                        Announcements
+                    </div>
+
+                    {/* Explanation */}
+                    <div className="font-medium text-slate-800 text-lg">
+                        Any announcements from teachers on Blackboard will appear here
+                    </div>
+                </StepBase>
+                    
+            </div>
+        </div>
+    )
+}
+
+// Announcements
+export const Step7 : FC<StepProps> = ({
+    step,
+    setStep,
+} : StepProps) => {
+    return (
+        <div className={`z-20 right-20 top-10 absolute w-full h-auto flex justify-center items-center flex-col`}>
+            <div className="max-w-md px-2">
+                <StepBase
+                stepBackwards={() => setStep(step - 1)}
+                stepForwards={() => setStep(step + 1)}
+                >
+                    {/* Welcome */}
+                    <div className="font-bold text-slate-800 text-lg">
+                        Syncing Data
+                    </div>
+
+                    {/* Explanation */}
+                    <div className="font-medium text-slate-800 text-lg">
+                        In order to use all these features, you need to sync information from Blackboard, Gradescope, etc.
+                    </div>
+
+                    {/* Explanation */}
+                    <div className="font-medium text-slate-800 text-lg">
+                        To do so, click the Sync button and put in your @usc.edu email and password (not the login you created for this website)
+                    </div>
+                </StepBase>
+                    
+            </div>
         </div>
     )
 }
