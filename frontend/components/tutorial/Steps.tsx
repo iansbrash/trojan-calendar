@@ -99,7 +99,7 @@ export const Step2 : FC<StepProps> = ({
 
                     {/* Explanation */}
                     <div className="font-medium text-slate-800 text-lg">
-                        Here, you'll see all your assignments from Blackboard and Gradescope (more sites coming soon!)
+                        Here, you&apos;ll see all your assignments from Blackboard and Gradescope (more sites coming soon!)
                     </div>
                 </StepBase>
                     
@@ -127,7 +127,7 @@ export const Step3 : FC<StepProps> = ({
 
                     {/* Explanation */}
                     <div className="font-medium text-slate-800 text-lg">
-                        Here, you'll see all your grades, also synced from Gradescope and Blackboard
+                        Here, you&apos;ll see all your grades, also synced from Gradescope and Blackboard
                     </div>
                 </StepBase>
                     
@@ -155,7 +155,7 @@ export const Step4 : FC<StepProps> = ({
 
                     {/* Explanation */}
                     <div className="font-medium text-slate-800 text-lg">
-                        Here, you'll see all your schedule for the day, synced from my.usc.edu
+                        Here, you&apos;ll see all your schedule for the day, synced from my.usc.edu
                     </div>
                 </StepBase>
                     
@@ -183,7 +183,7 @@ export const Step5 : FC<StepProps> = ({
 
                     {/* Explanation */}
                     <div className="font-medium text-slate-800 text-lg">
-                        You can create, update, and delete notes about whatever you want here! Press 'Add Note' to get started
+                        You can create, update, and delete notes about whatever you want here! Press &apos;Add Note&apos; to get started
                     </div>
                 </StepBase>
                     
@@ -310,7 +310,7 @@ export const Step9 : FC<StepProps> = ({
 
                     {/* Explanation */}
                     <div className="font-medium text-slate-800 text-lg">
-                        Once you do that, you'll get a Duo 2FA notification that you'll have to accept. After, your data will be synced to your dashboard!
+                        Once you do that, you&apos;ll get a Duo 2FA notification that you&apos;ll have to accept. After, your data will be synced to your dashboard!
                     </div>
                 </StepBase>
                     
