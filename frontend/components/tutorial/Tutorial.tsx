@@ -10,9 +10,9 @@ import Modal from '../multi/Modal';
 import axios from 'axios';
 import api from '../../constants/api-gateway/api';
 import { CognitoUserSession } from 'amazon-cognito-identity-js';
-import { Step1, Step2, Step3, Step4, Step5, Step6, Step7 } from './Steps';
+import { Step1, Step10, Step2, Step3, Step4, Step5, Step6, Step7, Step8, Step9 } from './Steps';
 
-const numSteps = 10;
+const numSteps = 11;
 
 interface TutProps {
     tutorialModalVisible: boolean,
@@ -86,6 +86,11 @@ const Tutorial : FC<TutProps> = ({
                     setStep={setStep}
                 /> : null}
 
+                {step === 10 ? <Step10
+                    step={step}
+                    setStep={setStep}
+                /> : null}
+
 
                 {/* Mock header, h-20 */}
                 <div className="h-20 w-full absolute top-0 left-0 right-0 px-10 flex justify-between items-center">
@@ -99,8 +104,18 @@ const Tutorial : FC<TutProps> = ({
                             <div className="w-12 h-12 bg-black">
 
                             </div>
-                            <div className="relative w-12">
+                            <div className="relative">
                                 {step === 7 ? <Step7 
+                                    step={step}
+                                    setStep={setStep}
+                                /> : null}
+
+                                {step === 8 ? <Step8 
+                                    step={step}
+                                    setStep={setStep}
+                                /> : null}
+
+                                {step === 9 ? <Step9 
                                     step={step}
                                     setStep={setStep}
                                 /> : null}

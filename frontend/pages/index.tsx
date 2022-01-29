@@ -38,11 +38,11 @@ const Home: NextPage = () => {
                 {/* First big block (2 parts) */}
                 <div className="z-10 w-full h-full flex flex-row justify-start items-center">
                     {/* Tired of ____ */}
-                    <div className="z-10 w-full xl:w-1/2 h-full flex flex-col justify-center items-center">
+                    <div className="z-10 w-full xl:w-1/2 h-full flex flex-col justify-start sm:pt-0 pt-24 sm:justify-center items-center">
 
-                        <div className="w-full flex flex-col justify-center items-start sm:px-16">
-                            <div className="flex flex-row justify-start items-center w-full sm:w-auto z-10">
-                                <div className="text-sky-500">
+                        <div className="w-full flex flex-col justify-center items-center items-center xl:items-start sm:px-16">
+                            <div className="flex flex-row justify-start items-center w-full w-auto  z-10">
+                                <div className="text-sky-500 hidden xl:block">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M9 5l7 7-7 7" />
                                     </svg>
@@ -52,18 +52,18 @@ const Home: NextPage = () => {
                                 </div>
                             </div>
                             {/* Iterating Text */}
-                            <div className={`z-0 font-bold text-7xl  md:text-8xl lg:text-9xl relative`}>
-                                <div className={`text-rose-500 absolute left-0 ${styles.tiredOfScroll1}`}>
+                            <div className={`z-0 w-full font-bold text-6xl sm:text-7xl  md:text-8xl lg:text-9xl relative text-center`}>
+                                <div className={`text-rose-500 absolute left-0 right-0  ${styles.tiredOfScroll1}`}>
                                     Blackboard<span className="text-rose-700">?</span>
                                 </div>
                                 
-                                <div className={`text-purple-500 absolute left-0 ${styles.tiredOfScroll3}`}>
+                                <div className={`text-purple-500 absolute left-0 right-0 ${styles.tiredOfScroll3}`}>
                                     Gradescope<span className="text-purple-700">?</span>
                                 </div>
-                                <div className={`text-amber-500 absolute left-0 ${styles.tiredOfScroll2}`}>
+                                <div className={`text-amber-500 absolute left-0 right-0 ${styles.tiredOfScroll2}`}>
                                     Canvas<span className="text-amber-700">?</span>
                                 </div>
-                                <div className={`text-teal-500 absolute left-0 ${styles.tiredOfScroll4}`}>
+                                <div className={`text-teal-500 absolute left-0 right-0 ${styles.tiredOfScroll4}`}>
                                     Turnitin<span className="text-teal-700">?</span>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@ const Home: NextPage = () => {
                                     We are, too.
                                 </div>
                             </div> */}
-                            <div className="flex flex-col justify-start items-center px-4 py-2 ml-4 text-slate-800 font-medium text-4xl mt-20 space-y-5">
+                            <div className="flex flex-col justify-start items-center px-4 py-2 ml-4 text-slate-800 font-medium text-4xl mt-0 sm:mt-20 space-y-5">
                                 <div className="flex flex-row justify-start items-start">
                                     {/* Icon */}
                                     <div className="mt-1 text-sky-500">
@@ -184,8 +184,13 @@ const DynamicButtons : FC = () => {
 
     if (isFetchingAuthState) {
         return (
-            <div>
-                Loading...
+            <div 
+                className={`h-${6} w-${6} animate-spin loader ease-linear rounded-full border-4 border-t-4 border-sky-300`}
+                style={{
+                    // borderTopColor: '#e0f2fe' //#f0f9ff
+                    borderTopColor: '#38bdf8'// '#f0f9ff' //#f0f9ff
+                }}
+                >
             </div>
         )
     }
@@ -219,7 +224,7 @@ const DynamicButtons : FC = () => {
                 passHref
                 href="/signup"
                 >
-                    <div className="cursor-pointer h-auto w-auto px-2 py-1 border-2 border-sky-500 rounded-lg text-sky-500 flex justify-center items-center text-lg font-bold bg-white drop-shadow-md">
+                    <div className="hidden pointer-events-none sm:flex sm:pointer-events-auto cursor-pointer h-auto w-auto px-2 py-1 border-2 border-sky-500 rounded-lg text-sky-500  justify-center items-center text-lg font-bold bg-white drop-shadow-md">
                         Sign up
                     </div>
                 </Link>
