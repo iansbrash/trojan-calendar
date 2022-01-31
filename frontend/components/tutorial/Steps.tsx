@@ -327,10 +327,7 @@ export const Step10 : FC<StepProps> = ({
     return (
         <div className={`z-20 absolute w-full h-full flex justify-center items-center flex-col`}>
             <div className="max-w-md px-2">
-                <StepBase
-                stepBackwards={() => setStep(step - 1)}
-                stepForwards={() => setStep(step + 1)}
-                >
+                <div className="w-full h-auto rounded-lg bg-zinc-50 flex flex-col justify-start items-center p-6">
                     {/* Welcome */}
                     <div className="font-bold text-slate-800 text-lg">
                         Get started!
@@ -338,10 +335,18 @@ export const Step10 : FC<StepProps> = ({
 
                     {/* Explanation */}
                     <div className="font-medium text-slate-800 text-lg">
-                        Wait
+                        Let&apos;s begin by syncing your data from your @usc.edu account!
                     </div>
-                </StepBase>
-                    
+
+                    {/* Next / Back */}
+                    <div className="w-full flex flex-row justify-between items-center space-x-8 mt-4">
+                        <div className="cursor-pointer border-2 border-sky-500 px-2 flex flex-1 justify-center items-center hover:bg-zinc-100 transition duration-250 ease-in-out font-medium text-lg text-slate-800 rounded-lg"
+                        onClick={() => setStep(step + 1)}
+                        >
+                            Sync
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )

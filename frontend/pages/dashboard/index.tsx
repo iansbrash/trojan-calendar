@@ -56,7 +56,7 @@ const Dashboard : NextPage = () => {
     const [syncModal, setSyncModal] = useState<boolean>(false);
 
     // Tut
-    const [tutorial, setTutorial] = useState<boolean>(true);
+    const [tutorial, setTutorial] = useState<boolean>(false);
 
 
     // Check if we can sync
@@ -215,6 +215,10 @@ const Dashboard : NextPage = () => {
                 })
 
                 setSettings(settingsData.data)
+
+                if (settingsData.data.needsTutorial) {
+                    setTutorial(true)
+                }
             }
             catch (err) {
                 console.error(err)
@@ -302,11 +306,12 @@ const Dashboard : NextPage = () => {
                         setSyncStage={setSyncStage}
                     />
 
-                    <Tutorial 
+                    {tutorial ? <Tutorial 
                         tutorialModalVisible={tutorial}
                         setTutorialModalVisible={setTutorial}
                         session={session}
-                    />
+                        setSyncModalVisible={setSyncModal}
+                    /> : null}
 
                     
 

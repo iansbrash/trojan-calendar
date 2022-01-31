@@ -52,7 +52,7 @@ const Home: NextPage = () => {
                                 </div>
                             </div>
                             {/* Iterating Text */}
-                            <div className={`z-0 w-full font-bold text-6xl sm:text-7xl  md:text-8xl lg:text-9xl relative text-center`}>
+                            <div className={`z-0 w-full font-bold text-6xl sm:text-7xl  md:text-8xl lg:text-9xl relative xl:text-left text-center`}>
                                 <div className={`text-rose-500 absolute left-0 right-0  ${styles.tiredOfScroll1}`}>
                                     Blackboard<span className="text-rose-700">?</span>
                                 </div>
@@ -103,10 +103,8 @@ const Home: NextPage = () => {
                                 <Link href="/signup" passHref>
                                     <div className={`${styles.cuteGradient} drop-shadow-md cursor-pointer w-full rounded-xl p-1 h-auto`}>
                                         <div className="w-full h-full bg-white rounded-lg">
-                                            <div className={`bg-gradient-to-r from-sky-600 to-rose-600 bg-clip-text w-full h-full`}>
-                                                <div className={`text-2xl text-center font-bold text-transparent px-2 py-1`}>
-                                                    Start Now
-                                                </div>
+                                            <div className={`bg-gradient-to-r from-sky-600 to-rose-600 bg-clip-text w-full h-full text-2xl text-center font-bold text-transparent px-2 py-1`}>
+                                                Start Now
                                             </div>
                                             
                                         </div>

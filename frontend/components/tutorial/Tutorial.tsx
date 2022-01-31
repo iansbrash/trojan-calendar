@@ -18,13 +18,15 @@ interface TutProps {
     tutorialModalVisible: boolean,
     setTutorialModalVisible: (x : boolean) => void,
     session: CognitoUserSession | null,
+    setSyncModalVisible: (x : boolean) => void
 
 }
 
 const Tutorial : FC<TutProps> = ({
     tutorialModalVisible,
     setTutorialModalVisible,
-    session
+    session,
+    setSyncModalVisible
 } : TutProps) => {
 
     const [step, setStep] = useState<number>(1);
@@ -49,15 +51,20 @@ const Tutorial : FC<TutProps> = ({
             try {
                 if (step === numSteps) {
                     // Api call to set needsTutorial = false
-                    // const setTutorialFalseResponse = await axios({
-                    //     method: 'get',
-                    //     url: `${api}/....`,
-                    //     headers: {
-                    //         Authorization: session.getIdToken().getJwtToken()
-                    //     }
-                    // })
+                    const setTutorialFalseResponse = axios({
+                        method: 'post',
+                        url: `${api}/account/settings`,
+                        headers: {
+                            Authorization: session.getIdToken().getJwtToken()
+                        },
+                        data: JSON.stringify({
+                            settings: {
+                                needsTutorial: false
+                            }
+                        })
+                    })
     
-    
+                    setSyncModalVisible(true);
                     setTutorialModalVisible(false);
                 }
             }
@@ -67,7 +74,7 @@ const Tutorial : FC<TutProps> = ({
             
         })();
         
-    }, [step, session, setTutorialModalVisible])
+    }, [step, session, setTutorialModalVisible, setSyncModalVisible])
 
     if (!tutorialModalVisible) {
         return null;
@@ -100,8 +107,8 @@ const Tutorial : FC<TutProps> = ({
                     {/* Icons div */}
                     <div className="flex justify-start items-center space-x-6">
                         {/* Sync */}
-                        <div className="w-12 h-12 flex flex-col bg-black">
-                            <div className="w-12 h-12 bg-black">
+                        <div className="w-12 h-12 flex flex-col">
+                            <div className="w-12 h-12">
 
                             </div>
                             <div className="relative">
@@ -123,7 +130,7 @@ const Tutorial : FC<TutProps> = ({
                         </div>
 
                         {/* Logout */}
-                        <div className="w-12 h-12 bg-black">
+                        <div className="w-12 h-12">
 
                         </div>
 
