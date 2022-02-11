@@ -30,6 +30,8 @@ const Home: NextPage = () => {
 
     const [needsVerification, setNeedsVerification] = useState<boolean>(false);
 
+    const [error, setError] = useState<string | null>();
+
 
     const Router = useRouter();
 
@@ -45,6 +47,7 @@ const Home: NextPage = () => {
         catch (err : any) {
             if (err.code === 'NotAuthorizedException') {
                 console.error('Error: NotAuthorizedException')
+                setError("Invalid login")
             }
             else if (err.code === 'UserNotConfirmedException') {
                 console.error(`Error: UserNotConfirmedException`)
@@ -52,6 +55,7 @@ const Home: NextPage = () => {
             }
             else {
                 console.error(`Unknown error: ${err.code}`)
+                setError(err.code);
             }
         }
         setIsLoggingIn(false);
@@ -168,6 +172,16 @@ const Home: NextPage = () => {
                                         text={'Login'}
                                         isLoading={isLoggingIn}
                                     />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="relative w-full bg-black">
+                            <div className={`transition duration-250 ease-in-out ${error ? 'opacity-100' : 'pointer-events-none opacity-0'} absolute top-0 -left-4 -right-4 flex flex-col`}>
+                                <div className="mt-8 w-full h-auto p-2 rounded-lg shadow-md bg-gradient-to-br from-sky-500 to-indigo-500 text-lg font-medium text-white text-center flex flex-row justify-center items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                    </svg>
+                                    {error ? error : 'NOERROR FIX'}
                                 </div>
                             </div>
                         </div>

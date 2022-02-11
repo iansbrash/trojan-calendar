@@ -27,6 +27,9 @@ const qs = require('qs');
         // const timeWeWant = '8:30 - 10:30 PM'
         // const timeWeWant = '10:45 - 11:59 PM';
         const timeWeWant = '1:15 - 3:15 PM'
+        // const timeWeWant = '3:45 - 5:45 PM';
+        // const timeWeWant = '3 - 5 PM'
+        // const timeWeWant = '7:30 - 9:15 PM'
 
 
         const month = (new Date).getMonth() + 1;
@@ -59,8 +62,13 @@ const qs = require('qs');
         }
 
         if (blockWeWant === "") {
-            console.log(parseData)
+            console.log(BookingResponse)
             console.log("Time doesnt exist")
+
+            // if its been 20min and we need to login again
+            if (BookingResponse.status === 302) {
+
+            }
             return;
         }
 

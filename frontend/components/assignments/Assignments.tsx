@@ -132,7 +132,23 @@ const Assignments : FC<AssignmentsProps> = React.memo(({
             {/* Content */}
             <div className="rounded-b-xl bg-zinc-50 w-full h-full flex flex-col justify-start items-center">
                 <div className="overflow-y-scroll scrollbar-hide px-4 pb-2 py-2  w-full h-full flex flex-col justify-start items-center">
-
+                {assignmentDays?.length === 0 ?
+                <>
+                    <div className="flex flex-row justify-center items-center my-8 space-x-2">
+                        
+                        
+                        <div className="text-lg text-slate-800 font-medium">
+                            No Assignments
+                        </div>
+                        <div className="text-slate-600 flex justify-center items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                            </svg>
+                        </div>
+                    </div>
+                    
+                </>
+                : null}
                 {assignmentDays?.map((day, index) => {
 
                     let assignmentList : UpcomingAssignment[] = as[day + ''];
