@@ -8,11 +8,14 @@ import ColumnContainer from '../multi/ColumnContainer';
 import Announcement, { LoadingAnnouncement } from './Announcement';
 
 interface AnnouncementsProps {
-    announcements: CompiledAnnouncements | null
+    announcements: CompiledAnnouncements | null,
+    tutorialStep: number
+
 }
 
 const Announcements : FC<AnnouncementsProps> = React.memo( ({
-    announcements
+    announcements,
+    tutorialStep
 } : AnnouncementsProps) => {
 
     if (announcements === null) {

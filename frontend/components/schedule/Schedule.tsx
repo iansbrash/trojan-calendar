@@ -1,6 +1,7 @@
 import React, {
     FC,
     useEffect,
+    useRef,
     useState
 } from 'react';
 import { Event, Schedule } from '../../constants/interfaces/cache';
@@ -11,11 +12,13 @@ import colors, {
 } from '../assignments/colors';
 
 interface ScheduleProps {
-    schedule : Schedule | null
+    schedule : Schedule | null,
+    tutorialStep: number
 }
 
 const Schedule : FC<ScheduleProps> = React.memo(({
-    schedule
+    schedule,
+    tutorialStep
 } : ScheduleProps) => {
 
 
@@ -98,6 +101,17 @@ const Schedule : FC<ScheduleProps> = React.memo(({
 
     }, [schedule])
 
+    const divRef = useRef<HTMLDivElement>(document.createElement('div'));
+
+    useEffect(() => {
+        if (tutorialStep === 4) {
+            divRef.current.scrollIntoView({
+                behavior: 'smooth',
+                inline: 'end',
+            });
+        }
+    }, [tutorialStep])
+
 
     if (schedule === null) {
 
@@ -113,6 +127,7 @@ const Schedule : FC<ScheduleProps> = React.memo(({
             header={`My Schedule`}
             breakpoint='xl:block'
             w={'w-1/4 2xl:w-1/5'}
+            ref={divRef}
             >
                 {/* Content */}
                 <div className="w-full flex-1 rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-between items-center">
@@ -156,9 +171,10 @@ const Schedule : FC<ScheduleProps> = React.memo(({
             header={`My Schedule`}
             breakpoint='xl:block'
             w={'w-1/4 2xl:w-1/5'}
+            ref={divRef}
         >
             {/* Content */}
-            <div className="w-full flex-1 rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-between items-center">
+            <div ref={divRef} className="bg-emerald-300 w-full flex-1 rounded-b-xl bg-zinc-50 px-4 py-2 flex flex-col justify-between items-center">
 
                 {/* Container just in case */}
                 <div className="relative w-full h-full flex flex-col justify-start items-center">

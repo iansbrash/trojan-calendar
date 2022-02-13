@@ -8,7 +8,8 @@ interface ColumnContainerProps {
     icon: ReactNode,
     children: ReactNode,
     breakpoint?: string,
-    w: string
+    w: string,
+    ref: React.RefObject<HTMLDivElement>
 }
 
 const ColumnContainer : FC<ColumnContainerProps> = ({
@@ -16,10 +17,11 @@ const ColumnContainer : FC<ColumnContainerProps> = ({
     icon,
     children,
     breakpoint,
-    w
+    w,
+    ref
 } : ColumnContainerProps) => {
     return (
-        <div className={`h-full ${w} p-5 ${breakpoint ? `hidden ${breakpoint}` : 'block'}`}>
+        <div ref={ref}  className={`h-full min-w-[24rem] p-5 ${Math.random() * 10 > 5 ? 'bg-indigo-300' : 'bg-indigo-400'}`}>
             <div className="relative w-full h-full flex-col justify-start items-center drop-shadow-md">
 
                 {/* Header */}

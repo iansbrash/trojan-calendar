@@ -9,11 +9,13 @@ import ClassGradeBox, { LoadingClassGradeBox } from './ClassGradeBox';
 import colors from '../assignments/colors';
 
 interface GradesProps {
-    grades: CompiledGrades | null
+    grades: CompiledGrades | null,
+    tutorialStep: number
 }
 
 const Grades : FC<GradesProps> = React.memo(({
-    grades
+    grades,
+    tutorialStep
 } : GradesProps) => {
 
     if (grades === null) {

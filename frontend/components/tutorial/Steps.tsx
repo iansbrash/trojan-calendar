@@ -1,5 +1,5 @@
 import React, {
-    FC, ReactNode
+    FC, ReactNode, useEffect, useRef
 } from 'react';
 
 
@@ -141,6 +141,10 @@ export const Step4 : FC<StepProps> = ({
     step,
     setStep,
 } : StepProps) => {
+
+
+    
+
     return (
         <div className={`top-20 absolute w-full h-auto flex justify-center items-center flex-col`}>
             <div className="max-w-md px-2">

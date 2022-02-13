@@ -44,7 +44,7 @@ const parseBlackboardAnnouncements = (announcements) => {
         returnAnnouncements.unshift({
             announcementTitle: title,
             postedBy: postedBy,
-            postedOn: postedOn,
+            postedOn: new Date(postedOn).getTime(),
             postedTo: postedTo, //className
             details: details
         })
@@ -54,7 +54,17 @@ const parseBlackboardAnnouncements = (announcements) => {
         announcementBlock = announcementBlock.substring(announcementBlock.indexOf('<div class="announcementInfo">') + '<div class="announcementInfo">'.length);
     }
 
-    return returnAnnouncements;
+    return returnAnnouncements.sort((firstEl, secondEl) => {
+        if (firstEl.postedOn > secondEl.postedOn) {
+            return -1;
+        }
+        else if (firstEl.postedOn < secondEl.postedOn) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    } );
 }
 
 const removeStyling = (parsingAnnouncementBlock) => {
