@@ -29,7 +29,7 @@ const Assignments : FC<AssignmentsProps> = React.memo(({
     useEffect(() => {
         if (tutorialStep === 2) {
             divRef.current.scrollIntoView({
-                behavior: 'smooth',
+                // behavior: 'smooth',
                 inline: 'end',
             });
         }
@@ -106,7 +106,6 @@ const Assignments : FC<AssignmentsProps> = React.memo(({
     if (assignments === null) {
         return (
             <ColumnContainer
-            ref={divRef}
             icon={
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -138,11 +137,10 @@ const Assignments : FC<AssignmentsProps> = React.memo(({
                 </svg>
             }
             header={`My Assignments`}
-            ref={divRef}
             w={'w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5'}
         >
             {/* Content */}
-            <div className="rounded-b-xl bg-zinc-50 w-full h-full flex flex-col justify-start items-center">
+            <div ref={divRef} className="rounded-b-xl bg-zinc-50 w-full h-full flex flex-col justify-start items-center">
                 <div className="overflow-y-scroll scrollbar-hide px-4 pb-2 py-2  w-full h-full flex flex-col justify-start items-center">
                 {assignmentDays?.length === 0 ?
                 <>
