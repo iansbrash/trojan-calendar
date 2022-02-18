@@ -101,11 +101,10 @@ const Schedule : FC<ScheduleProps> = React.memo(({
 
     }, [schedule])
 
-    const divRef = useRef<HTMLDivElement>(document.createElement('div'));
-
+    const divRef = useRef<HTMLDivElement>(typeof window === 'undefined' ? null : document.createElement('div'));
     useEffect(() => {
-        if (tutorialStep === 4) {
-            divRef.current.scrollIntoView({
+        if (typeof window !== 'undefined' && tutorialStep === 4) {
+            divRef.current!.scrollIntoView({
                 // behavior: 'smooth',
                 inline: 'end',
             });

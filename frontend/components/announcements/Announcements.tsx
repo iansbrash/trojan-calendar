@@ -21,10 +21,11 @@ const Announcements : FC<AnnouncementsProps> = React.memo( ({
 } : AnnouncementsProps) => {
 
 
-    const divRef = useRef<HTMLDivElement>(document.createElement('div'));
+    const divRef = useRef<HTMLDivElement>(typeof window === 'undefined' ? null : document.createElement('div'));
     useEffect(() => {
-        if (tutorialStep === 6) {
-            divRef.current.scrollIntoView({
+        if (typeof window !== 'undefined' && tutorialStep === 6) {
+            divRef.current!.scrollIntoView({
+                // behavior: 'smooth',
                 inline: 'end',
             });
         }

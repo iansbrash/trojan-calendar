@@ -130,7 +130,7 @@ const Home: NextPage = () => {
                                     width: '200%',
                                 }}>
                                     <iframe
-                                        className="w-full rounded-xl "
+                                        className="w-full rounded-xl overflow-hidden"
                                         src={'/demo'}
                                         style={{
                                             height: '200%'

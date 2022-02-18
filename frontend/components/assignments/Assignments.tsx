@@ -25,10 +25,10 @@ const Assignments : FC<AssignmentsProps> = React.memo(({
     const [assignmentDays, setAssignmentDays] = useState<number[]>();
     const [listOfClasses, setListOfClasses] = useState<string[]>();
 
-    const divRef = useRef<HTMLDivElement>(document?.createElement('div'));
+    const divRef = useRef<HTMLDivElement>(typeof window === 'undefined' ? null : document.createElement('div'));
     useEffect(() => {
-        if (tutorialStep === 2) {
-            divRef.current.scrollIntoView({
+        if (typeof window !== 'undefined' && tutorialStep === 2) {
+            divRef.current!.scrollIntoView({
                 // behavior: 'smooth',
                 inline: 'end',
             });

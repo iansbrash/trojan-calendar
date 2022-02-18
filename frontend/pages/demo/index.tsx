@@ -70,7 +70,8 @@ const Dashboard : NextPage = () => {
                     </div>
 
                     {/* Main Item Holder */}
-                    <div className="pt-20 w-full h-full flex flex-row justify-start items-center p-5">
+                    <div className="scrollbar-thin scrollbar-thumb-sky-500 scrollbar-track-sky-200 pt-20 w-full h-full flex flex-row justify-start items-center p-5 overflow-x-scroll">
+                    {/* <div className="pt-20 w-full h-full flex flex-row justify-start items-center p-5"> */}
 
                         <Assignments 
                             tutorialStep={1}

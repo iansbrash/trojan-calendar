@@ -23,11 +23,10 @@ const Grades : FC<GradesProps> = React.memo(({
 
 
 
-    const divRef = useRef<HTMLDivElement>(document.createElement('div'));
-
+    const divRef = useRef<HTMLDivElement>(typeof window === 'undefined' ? null : document.createElement('div'));
     useEffect(() => {
-        if (tutorialStep === 3) {
-            divRef.current.scrollIntoView({
+        if (typeof window !== 'undefined' && tutorialStep === 3) {
+            divRef.current!.scrollIntoView({
                 // behavior: 'smooth',
                 inline: 'end',
             });
