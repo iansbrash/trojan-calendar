@@ -73,6 +73,7 @@ const Dashboard : NextPage = () => {
                     <div className="pt-20 w-full h-full flex flex-row justify-start items-center p-5">
 
                         <Assignments 
+                            tutorialStep={1}
                             assignments={{
                                 "blackboard": [
                                     {
@@ -106,6 +107,7 @@ const Dashboard : NextPage = () => {
                         />
 
                         <Grades 
+                            tutorialStep={1}
                             grades={{
                                 "blackboard": {
                                     "20213_math_225_39541": [
@@ -269,6 +271,7 @@ const Dashboard : NextPage = () => {
                         />
 
                         <Schedule 
+                            tutorialStep={1}
                             schedule={{
                                 "wednesday": [
                                     {
@@ -386,6 +389,8 @@ const Dashboard : NextPage = () => {
 
                         {/* For now we're gonna used cachedData, but we'll eventually set up a separate endpoiint */}
                         <Announcements 
+                        // wow
+                            tutorialStep={1}
                             announcements={{
                                 blackboard: [
                                     {

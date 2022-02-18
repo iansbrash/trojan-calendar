@@ -50,10 +50,15 @@ const qs = require('qs');
 
         await sleep(2000);
 
-        
 
-
-        
+        // const timeWeWant = '11:45 AM - 1 PM'
+        // const timeWeWant = '8:30 - 10:30 PM'
+        // const timeWeWant = '10:45 - 11:59 PM';
+        // const timeWeWant = '1:15 - 3:15 PM'
+        // const timeWeWant = '3:45 - 5:45 PM';
+        const timeWeWant = '3 - 5 PM'
+        // const timeWeWant = '7:30 - 9:15 PM'
+        // const timeWeWant = '5:15 - 7:15 PM';
 
 
 

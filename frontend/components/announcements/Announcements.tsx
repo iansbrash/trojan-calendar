@@ -1,5 +1,7 @@
 import React, {
     FC,
+    useEffect,
+    useRef,
     useState,
 } from 'react';
 import getInitializedArray from '../../constants/functions/getInitializedArray';
@@ -8,12 +10,25 @@ import ColumnContainer from '../multi/ColumnContainer';
 import Announcement, { LoadingAnnouncement } from './Announcement';
 
 interface AnnouncementsProps {
-    announcements: CompiledAnnouncements | null
+    announcements: CompiledAnnouncements | null,
+    tutorialStep: number
+
 }
 
 const Announcements : FC<AnnouncementsProps> = React.memo( ({
-    announcements
+    announcements,
+    tutorialStep
 } : AnnouncementsProps) => {
+
+
+    const divRef = useRef<HTMLDivElement>(document.createElement('div'));
+    useEffect(() => {
+        if (tutorialStep === 6) {
+            divRef.current.scrollIntoView({
+                inline: 'end',
+            });
+        }
+    }, [tutorialStep])
 
     if (announcements === null) {
         return (
@@ -50,7 +65,7 @@ const Announcements : FC<AnnouncementsProps> = React.memo( ({
             w={'w-1/5'}
         >
             {/* Content */}
-            <div className="rounded-b-xl bg-zinc-50 w-full h-full flex flex-col justify-start items-center">
+            <div ref={divRef} className="rounded-b-xl bg-zinc-50 w-full h-full flex flex-col justify-start items-center">
                 <div className="overflow-y-scroll scrollbar-hide px-4 pb-2 py-2  w-full h-full flex flex-col justify-start items-center space-y-4">
                     {announcements['blackboard'].length === 0 ?
                     <>

@@ -6,11 +6,11 @@ import gradescopeNameParser from '../../constants/functions/gradescopeNameParser
 import { Announcement as AnnouncementInterface } from '../../constants/interfaces/cache';
 
 interface AnnouncementProps {
-    announcement: AnnouncementInterface
+    announcement: AnnouncementInterface,
 }
 
 const Announcement : FC<AnnouncementProps> = ({
-    announcement
+    announcement,
 } : AnnouncementProps) => {
 
     let date = (new Date(announcement.postedOn));

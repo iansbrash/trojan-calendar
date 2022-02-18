@@ -8,7 +8,7 @@ interface ColumnContainerProps {
     icon: ReactNode,
     children: ReactNode,
     breakpoint?: string,
-    w: string
+    w: string,
 }
 
 const ColumnContainer : FC<ColumnContainerProps> = ({
@@ -16,10 +16,10 @@ const ColumnContainer : FC<ColumnContainerProps> = ({
     icon,
     children,
     breakpoint,
-    w
+    w,
 } : ColumnContainerProps) => {
     return (
-        <div className={`h-full ${w} p-5 ${breakpoint ? `hidden ${breakpoint}` : 'block'}`}>
+        <div className={`h-full min-w-[24rem] p-5 `}>
             <div className="relative w-full h-full flex-col justify-start items-center drop-shadow-md">
 
                 {/* Header */}

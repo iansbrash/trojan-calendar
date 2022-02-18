@@ -4,7 +4,8 @@
 import React, {
     FC,
     useState,
-    useEffect
+    useEffect,
+    useRef
 } from 'react';
 import Modal from '../multi/Modal';
 import axios from 'axios';
@@ -18,7 +19,9 @@ interface TutProps {
     tutorialModalVisible: boolean,
     setTutorialModalVisible: (x : boolean) => void,
     session: CognitoUserSession | null,
-    setSyncModalVisible: (x : boolean) => void
+    setSyncModalVisible: (x : boolean) => void,
+    step: number,
+    setStep: (x : number) => void
 
 }
 
@@ -26,22 +29,10 @@ const Tutorial : FC<TutProps> = ({
     tutorialModalVisible,
     setTutorialModalVisible,
     session,
-    setSyncModalVisible
+    setSyncModalVisible,
+    step,
+    setStep
 } : TutProps) => {
-
-    const [step, setStep] = useState<number>(1);
-
-    const stepForward = () => {
-        if (step < numSteps) {
-            setStep(step + 1)
-        }
-    }
-
-    const stepBackwards = () => {
-        if (step > 1) {
-            setStep(step - 1);
-        }
-    }
 
 
     useEffect(() => {
@@ -75,6 +66,43 @@ const Tutorial : FC<TutProps> = ({
         })();
         
     }, [step, session, setTutorialModalVisible, setSyncModalVisible])
+
+    const step2Ref = useRef<HTMLDivElement>(document.createElement('div'));
+    const step3Ref = useRef<HTMLDivElement>(document.createElement('div'));
+    const step4Ref = useRef<HTMLDivElement>(document.createElement('div'));
+    const step5Ref = useRef<HTMLDivElement>(document.createElement('div'));
+    const step6Ref = useRef<HTMLDivElement>(document.createElement('div'));
+
+    const handleRef = (ref : React.RefObject<HTMLDivElement>) => {
+        if (ref.current) { // && !isScrolledIntoView(ref.current)
+            ref.current.scrollIntoView({
+                // behavior: 'smooth',
+                inline: 'end',
+            });
+        }
+    }
+
+    useEffect(() => {
+        switch (step) {
+            case 2:
+                handleRef(step2Ref)
+                break;
+            case 3:
+                handleRef(step3Ref)
+                break;
+            case 4:
+                handleRef(step4Ref)
+                break;
+            case 5:
+                handleRef(step5Ref)
+                break;
+            case 6:
+                handleRef(step6Ref)
+                break;
+            default:
+                break;
+        } 
+    }, [step])
 
     if (!tutorialModalVisible) {
         return null;
@@ -139,13 +167,12 @@ const Tutorial : FC<TutProps> = ({
     
     
                 {/* Columns container */}
-                <div className="w-full h-full pt-20 flex flex-row justify-center items-center p-5">
+                <div className="w-full h-full pt-20 flex flex-row justify-start items-center p-5 overflow-x-hidden">
                     {/* Assignments */}
                     <div className={`h-full p-5
-                            block
-                            w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5
+                            min-w-[24rem]
                     `}>
-                        <div className="w-full h-full relative">
+                        <div ref={step2Ref}  className="w-full h-full relative">
                             {step === 2 ? <Step2 
                                 step={step}
                                 setStep={setStep}
@@ -155,10 +182,9 @@ const Tutorial : FC<TutProps> = ({
                     </div>
                     {/* Grades */}
                     <div className={`h-full p-5
-                            hidden md:block
-                            w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5
+                            min-w-[24rem]
                     `}>
-                        <div className="w-full h-full relative">
+                        <div ref={step3Ref} className="w-full h-full relative">
                             {step === 3 ? <Step3 
                                 step={step}
                                 setStep={setStep}
@@ -168,10 +194,9 @@ const Tutorial : FC<TutProps> = ({
 
                     {/* Schedule */}
                     <div className={`h-full p-5
-                            hidden lg:block
-                            w-1/3 xl:w-1/4 2xl:w-1/5
+                            min-w-[24rem]
                     `}>
-                        <div className="w-full h-full relative">
+                        <div ref={step4Ref}  className="w-full h-full relative">
                             {step === 4 ? <Step4 
                                 step={step}
                                 setStep={setStep}
@@ -181,10 +206,9 @@ const Tutorial : FC<TutProps> = ({
 
                     {/* Notes */}
                     <div className={`h-full p-5
-                            hidden xl:block
-                            w-1/4 2xl:w-1/5
+                            min-w-[24rem]
                     `}>
-                        <div className="w-full h-full relative">
+                        <div ref={step5Ref} className="w-full h-full relative">
                             {step === 5 ? <Step5
                                 step={step}
                                 setStep={setStep}
@@ -194,10 +218,9 @@ const Tutorial : FC<TutProps> = ({
 
                     {/* Announcements */}
                     <div className={`h-full p-5
-                            hidden 2xl:block
-                            w-1/5
+                            min-w-[24rem]
                     `}>
-                        <div className="w-full h-full relative">
+                        <div ref={step6Ref} className="w-full h-full relative">
                             {step === 6 ? <Step6
                                 step={step}
                                 setStep={setStep}

@@ -17,12 +17,14 @@ interface NotesProps {
     notes: Note[] | null,
     session: CognitoUserSession | null,
     setNotes: (n : Note[]) => void,
+    tutorialStep: number
 }
 
 const Notes : FC<NotesProps> = React.memo(({
     notes,
     session,
     setNotes,
+    tutorialStep
 } : NotesProps) => {
 
     
@@ -32,8 +34,18 @@ const Notes : FC<NotesProps> = React.memo(({
     const [newNoteContent, setNewNoteContent] = useState<string>('')
     const [isProcessing, setIsProcessing] = useState<boolean>(false);
 
+    const divRef = useRef<HTMLDivElement>(document.createElement('div'));
+    useEffect(() => {
+        if (tutorialStep === 5) {
+            divRef.current.scrollIntoView({
+                inline: 'end',
+            });
+        }
+    }, [tutorialStep])
 
     const inputSpan = useRef<HTMLTextAreaElement>(document?.createElement('textarea'));
+
+
     function auto_grow(element : HTMLElement) {
         element.style.height = "5px";
         element.style.height = (element.scrollHeight)+"px";
@@ -211,7 +223,7 @@ const Notes : FC<NotesProps> = React.memo(({
             w={'w-1/3 xl:w-1/4 2xl:w-1/5'}
         >
             {/* Content */}
-            <div className="rounded-b-xl bg-zinc-50 w-full h-full flex flex-col justify-start items-center">
+            <div ref={divRef} className="rounded-b-xl bg-zinc-50 w-full h-full flex flex-col justify-start items-center">
                 <div className="overflow-y-scroll scrollbar-hide px-4 pb-2 py-2  w-full h-full flex flex-col justify-start items-center">
 
                     {/* New Note */}
